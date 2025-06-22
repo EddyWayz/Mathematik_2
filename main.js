@@ -27,6 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme') || 'light';
         applyTheme(savedTheme);
     }
+    // --- Dynamic Date ---
+    const dateElem = document.querySelector(".date[data-dynamic]");
+    if (dateElem) {
+        const now = new Date();
+        const fmt = new Intl.DateTimeFormat("de-DE", { day: "numeric", month: "long", year: "numeric" });
+        dateElem.textContent = fmt.format(now);
+        dateElem.setAttribute("datetime", now.toISOString());
+    }
+
+    // --- Top Navigation ---
+    const footerNav = document.querySelector("footer .page-nav");
+    const header = document.querySelector("header.page-header");
+    if (footerNav && header) {
+        const topNav = footerNav.cloneNode(true);
+        topNav.classList.add("top");
+        header.insertAdjacentElement("afterend", topNav);
+    }
+
 
 
     // --- Back to Top Button ---
