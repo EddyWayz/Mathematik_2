@@ -284,6 +284,9 @@ footer {
     display: flex;
     justify-content: space-between;
 }
+.page-nav.top {
+    margin: 1rem 0;
+}
 .page-nav a {
     font-weight: 600;
     padding: 8px 16px;
@@ -368,7 +371,7 @@ footer {
     background-color: var(--bg-color-subtle);
 }
 
-.image-placeholder {
+figure.image-placeholder {
     border: 2px dashed var(--border-color);
     padding: 2.5rem;
     text-align: center;
