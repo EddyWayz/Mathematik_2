@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lerneinheit über partielle Ableitungen für Funktionen mehrerer Veränderlicher, den Gradientenvektor und das totale Differential.">
+    <title>7 Partielle Ableitungen und der Gradient - Lernskript Mathe</title>
+
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 7: Partielle Ableitungen</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <h2 id="sec7">7 Partielle Ableitungen und der Gradient</h2>
+        <h3>7.1 Lernziel</h3>
+        <p>Nach dieser Lerneinheit wirst du verstehen, wie das Konzept der Ableitung auf Funktionen mit mehreren Variablen erweitert wird. Du wirst in der Lage sein, partielle Ableitungen erster Ordnung korrekt zu berechnen, sie als Steigung in Richtung der Koordinatenachsen zu interpretieren und sie zum Gradientenvektor zusammenzufassen. Außerdem wirst du das totale Differential als lineare Näherung für Funktionsänderungen kennen.</p>
+        <h3>7.2 Motivation und Kontext</h3>
+        <p>In der realen Welt hängen die meisten Größen von mehr als nur einem Faktor ab. Der Gewinn einer Firma hängt vom Preis, den Werbeausgaben und den Produktionskosten ab. Die Temperatur in einem Raum ist eine Funktion von drei Raumkoordinaten $(x,y,z)$. Um solche Systeme zu analysieren und zu optimieren, müssen wir verstehen, wie sich die Funktion ändert, wenn wir <em>eine</em> der Einflussgrößen verändern, während wir die anderen festhalten. Genau das leistet die partielle Ableitung.</p>
+        <p>In der Informatik ist dieses Konzept das Herzstück der Optimierung und des maschinellen Lernens. Ein neuronales Netz hat Millionen von Parametern (Variablen). Um das Netz zu trainieren, muss man wissen, wie sich der Fehler ändert, wenn man jeden einzelnen Parameter leicht anpasst. Der Vektor all dieser partiellen Ableitungen ist der <strong>Gradient</strong>, und die Methode des <strong>Gradientenabstiegs</strong> ist das Standardverfahren, um neuronale Netze zu trainieren.</p>
+        <h3>7.3 Definitionen & Begriffe</h3>
+        <dl>
+            <dt>Funktion mehrerer Veränderlicher</dt>
+            <dd>Eine Funktion, deren Ergebnis von mehreren unabhängigen Variablen abhängt, z.B. $f(x, y)$. Geometrisch beschreibt eine Funktion von zwei Variablen eine Fläche im dreidimensionalen Raum, eine Art "Funktionsgebirge".</dd>
+            <dt>Partielle Ableitung</dt>
+            <dd>Die Ableitung einer Funktion nach <em>einer</em> ihrer Variablen, wobei alle anderen Variablen während des Ableitens als Konstanten behandelt werden. Die partielle Ableitung von $f(x,y)$ nach $x$ wird mit $f_x$ oder $\frac{\partial f}{\partial x}$ bezeichnet.</dd>
+            
+            <div class="info-box video-box">
+                <h5>Erklärendes Video: Partielle Ableitungen</h5>
+                <p>Dieses Video erklärt anschaulich, wie man eine Funktion mit mehreren Variablen partiell ableitet.</p>
+                <a href="http://www.youtube.com/watch?v=N0Y9E0wdLKk" target="_blank">MathemaTrick: PARTIELLE ABLEITUNG einfach erklärt</a>
+            </div>
+
+            <div class="info-box tip">
+                <h5>Praxis-Tipp: Die goldene Regel des partiellen Ableitens</h5>
+                <p>Wenn du nach einer Variable (z.B. $x$) ableitest, stelle dir vor, alle anderen Variablen (z.B. $y$ und $z$) wären konkrete Zahlen wie 5 oder $\pi$. Wende dann die bekannten Ableitungsregeln an. Zum Beispiel wird der Term $y^2x^3$ bei der Ableitung nach $x$ zu $y^2 \cdot 3x^2$, weil $y^2$ wie ein konstanter Faktor behandelt wird.</p>
+            </div>
+
+            <dt>Gradient</dt>
+            <dd>Der Vektor, der alle partiellen Ableitungen erster Ordnung einer Funktion zusammenfasst. Für $f(x,y)$ ist der Gradient $\nabla f = \text{grad}(f) = \begin{pmatrix} f_x \\ f_y \end{pmatrix}$.</dd>
+
+            <div class="info-box key-concept">
+                <h5>Kernaussage: Der Gradient als Kompass</h5>
+                <p>Stell dir vor, du stehst an einem Punkt auf einem "Funktionsgebirge" $f(x,y)$. Der Gradientenvektor $\nabla f$ an diesem Punkt ist wie ein Kompass, der zwei Dinge verrät:</p>
+                <ul>
+                    <li><strong>Die Richtung:</strong> Er zeigt genau in die Richtung des steilsten Anstiegs. Wenn du einen Berg erklimmen willst, folgst du dem Gradienten. Willst du am schnellsten absteigen (wie beim maschinellen Lernen), folgst du dem negativen Gradienten $-\nabla f$.</li>
+                    <li><strong>Die Länge:</strong> Die Länge (der Betrag) des Vektors, $|\nabla f|$, gibt an, <em>wie steil</em> es in dieser steilsten Richtung bergauf geht.</li>
+                </ul>
+                <div class="info-box video-box" style="margin-top: 15px;">
+                    <h5>Erklärendes Video: Der Gradient</h5>
+                    <p>Hier wird die Bedeutung des Gradienten als Vektor der steilsten Steigung anschaulich erklärt.</p>
+                    <a href="http://www.youtube.com/watch?v=Iav4s81ctWI" target="_blank">Mathe by Daniel Jung: Gradient formell und anschaulich</a>
+                </div>
+            </div>
+
+            <dt>Tangentialebene</dt>
+            <dd>Die beste lineare Annäherung an das "Funktionsgebirge" an einem Punkt $P(x_0, y_0)$. Ihre Steigung in x- und y-Richtung wird durch die jeweiligen partiellen Ableitungen an diesem Punkt bestimmt.</dd>
+            <dt>Totales Differential</dt>
+            <dd>Die lineare Näherung der Gesamtänderung $\Delta f$ des Funktionswertes, wenn sich alle Variablen um kleine Beträge ($dx, dy, \dots$) ändern. Es ist die Summe der partiellen Differentiale. $$ df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy $$</dd>
+            
+            <div class="info-box tip">
+                <h5>Anwendung: Fehlerfortpflanzung</h5>
+                <p>Das totale Differential ist perfekt zur Abschätzung von Fehlern. Beispiel: Die Fläche eines Rechtecks ist $A(x,y) = xy$. Du misst $x$ und $y$ mit kleinen Fehlern $\Delta x$ und $\Delta y$. Wie groß ist der maximale Fehler $\Delta A$ der Fläche?<br>
+                $\Delta A \approx dA = \frac{\partial A}{\partial x} \Delta x + \frac{\partial A}{\partial y} \Delta y = y \cdot \Delta x + x \cdot \Delta y$.</p>
+                <div class="info-box video-box" style="margin-top: 15px;">
+                    <h5>Erklärendes Video: Das Totale Differential</h5>
+                    <p>Dieses Video zeigt, wie man das totale Differential berechnet und wofür man es verwendet.</p>
+                    <a href="http://www.youtube.com/watch?v=T8Qy5czGWgo" target="_blank">MathemaTrick: Totales Differential berechnen</a>
+                </div>
+            </div>
+        </dl>
+        
+        <h3>7.5 Beispielaufgaben</h3>
+        <h4>7.5.1 Beispiel 1: Partielle Ableitungen berechnen</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Berechnen Sie alle partiellen Ableitungen erster Ordnung für die Funktion $f(x_{1},x_{2},x_{3})=x_{1}^{2}x_{2}+5x_{2}x_{3}-x_{3}+10$.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Ableitung nach $x_1$:</strong> Behandle $x_2$ und $x_3$ als Konstanten. $$ \frac{\partial f}{\partial x_1} = 2x_1 \cdot x_2 $$</li>
+                    <li><strong>Ableitung nach $x_2$:</strong> Behandle $x_1$ und $x_3$ als Konstanten. $$ \frac{\partial f}{\partial x_2} = x_1^2 + 5x_3 $$</li>
+                    <li><strong>Ableitung nach $x_3$:</strong> Behandle $x_1$ und $x_2$ als Konstanten. $$ \frac{\partial f}{\partial x_3} = 5x_2 - 1 $$</li>
+                </ol>
+            </li>
+        </ul>
+        <h4>7.5.2 Beispiel 2: Gradient und totales Differential</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Gegeben sei $f(x,y) = x^2y - 3y$. Bestimmen Sie den Gradienten und das totale Differential.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Partielle Ableitungen berechnen:</strong> $$ \frac{\partial f}{\partial x} = 2xy \quad (\text{y ist hier ein konstanter Faktor}) $$ $$ \frac{\partial f}{\partial y} = x^2 - 3 \quad (\text{beide Terme werden nach y abgeleitet}) $$</li>
+                    <li><strong>Gradient zusammenstellen:</strong> $$ \nabla f(x,y) = \begin{pmatrix} f_x \\ f_y \end{pmatrix} = \begin{pmatrix} 2xy \\ x^2 - 3 \end{pmatrix} $$</li>
+                    <li><strong>Totales Differential aufstellen:</strong> $$ df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy = (2xy)dx + (x^2 - 3)dy $$</li>
+                </ol>
+            </li>
+        </ul>
+        <h3>7.6 Übungsaufgaben</h3>
+        <div class="task-hint">
+            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder 1 ist, wähle stattdessen 5 bzw. 6.</p>
+        </div>
+        <ol>
+            <li><strong>(Einfach)</strong> Berechnen Sie alle ersten partiellen Ableitungen der Funktion $f(x,y,z)=ze^{\frac{x}{y}}$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>
+                        $f_x = z \cdot e^{x/y} \cdot \frac{1}{y} = \frac{z}{y}e^{x/y}$<br>
+                        $f_y = z \cdot e^{x/y} \cdot (-\frac{x}{y^2}) = -\frac{zx}{y^2}e^{x/y}$<br>
+                        $f_z = 1 \cdot e^{x/y} = e^{x/y}$
+                    </p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Bestimmen Sie den Gradienten $\nabla T$ der Funktion $T(x,y,r,s,t)=\frac{r-t}{r^{2}+1}+xe^{\frac{ay}{x^{2}}}+\sqrt{x-y}+\ln(r\cdot\sqrt{s}\cdot t^{2})$.
+                 <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>
+                        $\frac{\partial T}{\partial x} = e^{\frac{ay}{x^2}} + x \cdot e^{\frac{ay}{x^2}} \cdot (-\frac{2ay}{x^3}) + \frac{1}{2\sqrt{x-y}} = e^{\frac{ay}{x^2}}(1 - \frac{2ay}{x^2}) + \frac{1}{2\sqrt{x-y}}$<br>
+                        $\frac{\partial T}{\partial y} = x \cdot e^{\frac{ay}{x^2}} \cdot \frac{a}{x^2} - \frac{1}{2\sqrt{x-y}} = \frac{a}{x}e^{\frac{ay}{x^2}} - \frac{1}{2\sqrt{x-y}}$<br>
+                        $\frac{\partial T}{\partial r} = \frac{1(r^2+1) - (r-t)(2r)}{(r^2+1)^2} + \frac{1}{r} = \frac{-r^2+2rt+1}{(r^2+1)^2} + \frac{1}{r}$<br>
+                        $\frac{\partial T}{\partial s} = \frac{1}{s \cdot 2\sqrt{s}} \cdot \sqrt{s} = \frac{1}{2s}$ (nach Vereinfachung des Logarithmus $\ln(\dots) = \dots + \frac{1}{2}\ln s + \dots$)<br>
+                        $\frac{\partial T}{\partial t} = \frac{-1}{r^2+1} + \frac{2}{t}$ (nach Vereinfachung des Logarithmus $\ln(\dots) = \dots + 2\ln t$)<br>
+                        Der Gradient $\nabla T$ ist der Vektor dieser fünf Ableitungen.
+                    </p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Für $f(x,y) = \sin(x)\cos(y)$, ermitteln Sie die Gleichung der Tangentialebene im Punkt $P(\pi, 0, ?)$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>1. <strong>Punkt vervollständigen:</strong> $z_0 = f(\pi, 0) = \sin(\pi)\cos(0) = 0 \cdot 1 = 0$. Der Punkt ist $P(\pi, 0, 0)$.<br>
+                    2. <strong>Partielle Ableitungen:</strong> $f_x = \cos(x)\cos(y)$, $f_y = -\sin(x)\sin(y)$.<br>
+                    3. <strong>Ableitungen am Punkt auswerten:</strong> $f_x(\pi, 0) = \cos(\pi)\cos(0) = -1 \cdot 1 = -1$. $f_y(\pi, 0) = -\sin(\pi)\sin(0) = 0$.<br>
+                    4. <strong>Formel anwenden:</strong> $z - z_0 = f_x(x-x_0) + f_y(y-y_0) \implies z - 0 = -1(x-\pi) + 0(y-0)$.<br>
+                    <strong>Ergebnis:</strong> $z = -x + \pi$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Für die Funktion $f(x,y)=x\cdot e^{-\frac{y}{x}}$, bestimmen Sie die Steigung an der Stelle $p=(1,0)$ in Richtung des Vektors $r=\binom{3}{4}$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Dies ist eine Richtungsableitung. Formel: $D_u f = \nabla f \cdot \vec{u}$.<br>
+                    1. <strong>Richtungsvektor normieren:</strong> $|\vec{r}|=\sqrt{3^2+4^2}=5$. $\vec{u} = \frac{1}{5}\binom{3}{4}$.<br>
+                    2. <strong>Gradient berechnen:</strong> $f_x = 1 \cdot e^{-y/x} + x \cdot e^{-y/x} \cdot (\frac{y}{x^2}) = e^{-y/x}(1+\frac{y}{x})$. $f_y = x \cdot e^{-y/x} \cdot (-\frac{1}{x}) = -e^{-y/x}$.<br>
+                    3. <strong>Gradient am Punkt $p(1,0)$ auswerten:</strong> $f_x(1,0) = e^0(1+0) = 1$. $f_y(1,0) = -e^0 = -1$. $\nabla f(1,0) = \binom{1}{-1}$.<br>
+                    4. <strong>Skalarprodukt bilden:</strong> $D_u f = \binom{1}{-1} \cdot \binom{3/5}{4/5} = 1 \cdot \frac{3}{5} + (-1) \cdot \frac{4}{5} = \frac{3}{5} - \frac{4}{5} = -\frac{1}{5}$.<br>
+                    <strong>Ergebnis:</strong> Die Steigung in die angegebene Richtung ist $-0.2$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Das Volumen eines Kreiszylinders ist $V(R, h) = \pi R^2 h$. Leiten Sie mit Hilfe des totalen Differentials eine Näherungsformel für die prozentuale Änderung des Volumens, $\frac{\Delta V}{V}$, her, wenn sich Radius $R$ und Höhe $h$ geringfügig ändern.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>1. <strong>Totales Differential bilden:</strong> $dV = \frac{\partial V}{\partial R}dR + \frac{\partial V}{\partial h}dh$.<br>
+                    2. <strong>Partielle Ableitungen:</strong> $\frac{\partial V}{\partial R} = 2\pi R h$. $\frac{\partial V}{\partial h} = \pi R^2$.<br>
+                    3. <strong>Einsetzen:</strong> $dV = (2\pi R h)dR + (\pi R^2)dh$.<br>
+                    4. <strong>Durch V teilen:</strong> Wir teilen die ganze Gleichung durch $V = \pi R^2 h$.<br>
+                    $\frac{dV}{V} = \frac{2\pi R h \cdot dR}{\pi R^2 h} + \frac{\pi R^2 \cdot dh}{\pi R^2 h}$.<br>
+                    5. <strong>Kürzen und Ergebnis:</strong> $\frac{dV}{V} = 2\frac{dR}{R} + \frac{dh}{h}$.<br>
+                    Die relative Volumenänderung ist also die Summe aus der relativen Höhenänderung und dem Doppelten der relativen Radiusänderung.</p>
+                </details>
+            </li>
+        </ol>
+
+    </main>
+
+    <footer>
+        <nav class="page-nav">
+            <a href="06-ableitungsregeln.html">← Vorheriges Kapitel</a>
+            <a href="08-extremwerte-mehrere-var.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

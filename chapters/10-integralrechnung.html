@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Einführung in die Integralrechnung, den Hauptsatz der Differential- und Integralrechnung und die Integrationstechniken partielle Integration und Substitution.">
+    <title>10 Integralrechnung - Lernskript Mathe</title>
+
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 10: Integralrechnung</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+
+        <h2 id="sec10">10 Integralrechnung: Der Hauptsatz und Integrationstechniken</h2>
+        <h3>10.1 Lernziel</h3>
+        <p>Nach dieser Lerneinheit wirst du den fundamentalen Zusammenhang zwischen Differenzieren und Integrieren verstehen. Du wirst den Begriff der Stammfunktion kennen und den Hauptsatz der Differential- und Integralrechnung anwenden können, um bestimmte Integrale zu berechnen. Du wirst die grundlegenden Integrationstechniken, insbesondere die partielle Integration und die Integration durch Substitution, beherrschen, um auch komplexere Integrale zu lösen.</p>
+        <h3>10.2 Motivation und Kontext</h3>
+        <p>Die Integralrechnung ist die Umkehrung der Differentialrechnung. Während die Ableitung eine Änderungsrate misst (z.B. Geschwindigkeit), kann das Integral aus der Rate die Gesamtänderung über einen Zeitraum rekonstruieren (z.B. den zurückgelegten Weg). Die Integralrechnung ist unverzichtbar in vielen Bereichen:</p>
+        <ul>
+            <li><strong>Flächen- und Volumenberechnung:</strong> Die Berechnung der Querschnittsfläche einer Rampe oder des Volumens eines Rotationskörpers sind klassische Anwendungen.</li>
+            <li><strong>Physik:</strong> Berechnung von Arbeit (Integral von Kraft über den Weg), Ladung (Integral des Stroms über die Zeit) oder Schwerpunkten.</li>
+            <li><strong>Statistik und Wahrscheinlichkeit:</strong> Die Wahrscheinlichkeit, dass eine Zufallsvariable in einem bestimmten Intervall liegt, wird durch das Integral über die Wahrscheinlichkeitsdichtefunktion berechnet.</li>
+            <li><strong>Signalverarbeitung:</strong> Techniken wie die Fourier-Transformation, die Signale in ihre Frequenzanteile zerlegt, basieren auf der Berechnung von Integralen.</li>
+        </ul>
+
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Einführung in die Integralrechnung</h5>
+            <p>Eine grundlegende Einführung, was ein Integral ist und wofür man es braucht.</p>
+            <a href="http://www.youtube.com/watch?v=0vdcvDg-Lkk" target="_blank">MathemaTrick: INTEGRALRECHNUNG einfach erklärt</a>
+        </div>
+
+        <h3>10.3 Definitionen & Begriffe</h3>
+        <dl>
+            <dt>Stammfunktion (unbestimmtes Integral)</dt>
+            <dd>Eine Funktion $F(x)$ heißt Stammfunktion von $f(x)$, wenn ihre Ableitung wieder $f(x)$ ergibt, also $F'(x)=f(x)$. Da die Ableitung einer Konstante null ist, gibt es unendlich viele Stammfunktionen, die sich durch eine Konstante $C$ unterscheiden. Man schreibt: $\int f(x)dx = F(x)+C$.</dd>
+            <dt>Bestimmtes Integral</dt>
+            <dd>Das Integral mit einer unteren Grenze $a$ und einer oberen Grenze $b$, geschrieben als $\int_{a}^{b} f(x)dx$. Es berechnet die vorzeichenbehaftete Fläche zwischen dem Graphen von $f(x)$ und der x-Achse im Intervall $[a,b]$.</dd>
+            <dt>Hauptsatz der Differential- und Integralrechnung</dt>
+            <dd>Dieser Satz verbindet die beiden Hauptkonzepte der Analysis: die <a href="05-ableitung-einfuehrung.html#sec5">Ableitung</a> und das Integral.
+                <ol>
+                    <li>Die Ableitung einer Integralfunktion $\frac{d}{dt} \int_a^t f(x)dx$ ist die ursprüngliche Funktion $f(t)$.</li>
+                    <li>Der Wert eines bestimmten Integrals ist die Differenz der Stammfunktionswerte an den Grenzen: $$ \int_{a}^{b} f(x)dx = [F(x)]_a^b = F(b) - F(a) $$</li>
+                </ol>
+            </dd>
+        </dl>
+        
+        <div class="info-box key-concept">
+            <h5>Kernaussage: Die Bedeutung des Hauptsatzes</h5>
+            <p>Der Hauptsatz ist das Herzstück der Analysis. Er besagt, dass Differentiation und Integration zueinander inverse Operationen sind, so wie Addition und Subtraktion oder Multiplikation und Division.</p>
+            <p>Teil 2 des Satzes ist das entscheidende Werkzeug: Er gibt uns ein "Kochrezept", um Flächen (bestimmte Integrale) zu berechnen, indem wir lediglich eine Stammfunktion finden und zwei Werte einsetzen. Das umgeht die extrem aufwändige Berechnung über den Grenzwert von Flächensummen (Riemann-Summe).</p>
+            <div class="info-box video-box" style="margin-top: 15px;">
+                <h5>Erklärendes Video: Der Hauptsatz</h5>
+                <p>Dieses Video erklärt den fundamentalen Zusammenhang zwischen Ableiten und Integrieren.</p>
+                <a href="http://www.youtube.com/watch?v=bkSRmaxU58o" target="_blank">Herr Locher: Hauptsatz der Differential und Integralrechnung</a>
+            </div>
+        </div>
+
+        <dl>
+            <dt>Partielle Integration</dt>
+            <dd>Eine Integrationstechnik, die aus der Produktregel der Ableitung hergeleitet wird. Sie ist nützlich für Integranden, die ein Produkt sind. $$ \int u(x)v'(x)dx = u(x)v(x) - \int u'(x)v(x)dx $$</dd>
+            <dt>Integration durch Substitution</dt>
+            <dd>Eine Integrationstechnik, die aus der Kettenregel der Ableitung hergeleitet wird. Sie ist nützlich für Integranden, die eine verkettete Funktion enthalten.</dd>
+        </dl>
+        
+        <div class="info-box tip">
+            <h5>Praxis-Tipp: Welche Integrationstechnik soll ich wählen?</h5>
+            <p>Die Wahl der richtigen Methode ist Übungssache. Hier sind einige Heuristiken und passende Videos:</p>
+            <ul>
+                <li><strong>Grundintegral?</strong> Ist das Integral bereits eine bekannte Stammfunktion (z.B. $\int \cos x dx$)? Wenn ja, fertig.</li>
+                <li><strong>Substitution?</strong> Sieht der Integrand wie eine verkettete Funktion aus, bei der die innere Ableitung als Faktor vorkommt? Beispiel: $\int 2x \cdot \cos(x^2)dx$. Die innere Funktion ist $x^2$, ihre Ableitung $2x$ steht davor. Perfekt für Substitution.<br>
+                <a href="http://www.youtube.com/watch?v=cLaIbPmqOx8" target="_blank">Video: Integration durch SUBSTITUTION</a></li>
+                <li><strong>Partielle Integration?</strong> Ist der Integrand ein Produkt aus zwei "verschiedenartigen" Funktionen, die nicht durch Substitution verknüpft sind? Beispiel: $\int x \cdot e^x dx$ (Polynom mal Exponentialfunktion). Perfekt für partielle Integration. Wähle den Teil als $u(x)$, der beim Ableiten einfacher wird (hier: $x$).<br>
+                <a href="http://www.youtube.com/watch?v=S5MopJe3iuk" target="_blank">Video: Partielle Integration (Herleitung & Beispiel)</a></li>
+            </ul>
+        </div>
+        
+        <h3>10.4 Schritt-für-Schritt-Erklärung: Integrationstechniken</h3>
+        <h4>10.4.1 Partielle Integration ("Produktintegration")</h4>
+        <ol>
+            <li><strong>Analyse:</strong> Der Integrand muss als Produkt $u(x) \cdot v'(x)$ geschrieben werden.</li>
+            <li><strong>Wahl:</strong> Wähle $u(x)$ und $v'(x)$ geschickt. Eine gute Heuristik ist, $u(x)$ so zu wählen, dass seine Ableitung $u'(x)$ einfacher wird (z.B. Polynome). Wähle $v'(x)$ so, dass seine Stammfunktion $v(x)$ leicht zu finden ist (z.B. $e^x, \sin x, \cos x$).</li>
+            <li><strong>Anwendung:</strong> Setze $u, v, u'$ in die Formel $\int uv' = uv - \int u'v$ ein.</li>
+            <li><strong>Lösen:</strong> Berechne das neue, hoffentlich einfachere Integral $\int u'v dx$.</li>
+        </ol>
+        <h4>10.4.2 Integration durch Substitution ("Kettenregel rückwärts")</h4>
+        <ol>
+            <li><strong>Analyse:</strong> Der Integrand enthält typischerweise eine "innere Funktion" $z=g(x)$, deren Ableitung $g'(x)$ (oder ein Vielfaches davon) ebenfalls als Faktor im Integranden vorkommt.</li>
+            <li><strong>Substitution:</strong> Setze $z = g(x)$.</li>
+            <li><strong>Differential ersetzen:</strong> Berechne $\frac{dz}{dx} = g'(x)$ und stelle nach $dx$ um: $dx = \frac{dz}{g'(x)}$.</li>
+            <li><strong>Einsetzen und Kürzen:</strong> Setze $z$ und $dx$ in das Integral ein. Im Idealfall kürzt sich der $g'(x)$-Term weg und es bleibt ein einfacheres Integral, das nur noch von $z$ abhängt.</li>
+            <li><strong>Integrieren und Rücksubstitution:</strong> Löse das Integral nach $z$ und ersetze am Ende $z$ wieder durch $g(x)$.</li>
+        </ol>
+
+        <h4>10.4.3 Uneigentliche Integrale</h4>
+        <p>Integrale, bei denen mindestens eine der Integrationsgrenzen unendlich ist oder die Funktion innerhalb des Integrationsintervalls nicht definiert (z.B. eine Polstelle) ist, nennt man uneigentliche Integrale. Man löst sie über einen Grenzwertprozess.</p>
+        <ul>
+            <li><strong>Fall 1: Unendliche Grenze.</strong> Man ersetzt die unendliche Grenze durch eine Variable (z.B. $b$) und lässt diese dann gegen unendlich laufen:
+            $$ \int_a^\infty f(x)dx = \lim_{b \to \infty} \int_a^b f(x)dx $$
+            Wenn dieser Grenzwert existiert und endlich ist, konvergiert das Integral.</li>
+            <li><strong>Fall 2: Polstelle.</strong> Angenommen, die Funktion hat bei $x=b$ eine Polstelle. Man integriert bis kurz vor die Polstelle (z.B. $b-\epsilon$) und lässt dann $\epsilon \to 0^+$ gehen:
+            $$ \int_a^b f(x)dx = \lim_{\epsilon \to 0^+} \int_a^{b-\epsilon} f(x)dx $$</li>
+        </ul>
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Uneigentliche Integrale</h5>
+            <p>Dieses Video erklärt, wie man mit Integralen umgeht, deren Grenzen im Unendlichen liegen oder die Polstellen enthalten.</p>
+            <a href="http://www.youtube.com/watch?v=Ce9Din83uFY" target="_blank">MathemaTrick: Uneigentliche INTEGRALE berechnen</a>
+        </div>
+        
+        <div class="info-box warning">
+            <h5>Häufige Fehler bei der Integration</h5>
+            <ul>
+                <li><strong>Konstante vergessen:</strong> Bei <strong>unbestimmten</strong> Integralen immer die Integrationskonstante `+ C` am Ende hinzufügen!</li>
+                <li><strong>Grenzen nicht transformiert:</strong> Bei der Substitution von <strong>bestimmten</strong> Integralen müssen auch die Integrationsgrenzen in die neue Variable umgerechnet werden. Vergisst man dies, ist das Ergebnis falsch.</li>
+            </ul>
+        </div>
+        
+        <h3>10.5 Beispielaufgaben</h3>
+        <h4>10.5.1 Beispiel 1: Partielle Integration</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Berechnen Sie $\int x \cdot \cos x \,dx$.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Wahl:</strong> Wir wählen $u(x)=x$ (wird durch Ableiten einfacher) und $v'(x)=\cos x$.</li>
+                    <li><strong>Teile vorbereiten:</strong> $u'(x)=1$ und $v(x)=\int \cos x \,dx = \sin x$.</li>
+                    <li><strong>Formel anwenden:</strong> $\int x \cos x \,dx = x \sin x - \int 1 \cdot \sin x \,dx$.</li>
+                    <li><strong>Restintegral lösen:</strong> $\int \sin x \,dx = -\cos x$.</li>
+                    <li><strong>Zusammensetzen:</strong> $x \sin x - (-\cos x) + C = x \sin x + \cos x + C$.</li>
+                </ol>
+            </li>
+        </ul>
+        <h4>10.5.2 Beispiel 2: Integration durch Substitution</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Berechnen Sie $\int \frac{\cos(\ln x)}{x} \,dx$.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Analyse:</strong> Wir sehen die verkettete Funktion $\cos(\ln x)$. Die innere Funktion ist $\ln x$. Ihre Ableitung ist $\frac{1}{x}$, was ebenfalls als Faktor vorhanden ist.</li>
+                    <li><strong>Substitution:</strong> Setze $z = \ln x$.</li>
+                    <li><strong>Differential ersetzen:</strong> $\frac{dz}{dx} = \frac{1}{x} \implies dx = x \cdot dz$.</li>
+                    <li><strong>Einsetzen:</strong> $\int \frac{\cos(z)}{x} \cdot (x \cdot dz) = \int \cos(z) \,dz$.</li>
+                    <li><strong>Integrieren und Rücksubstituieren:</strong> $\int \cos(z) \,dz = \sin(z) + C = \sin(\ln x) + C$.</li>
+                </ol>
+            </li>
+        </ul>
+        <h3>10.6 Übungsaufgaben</h3>
+        <div class="task-hint">
+            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder 1 ist, wähle stattdessen 5 bzw. 6.</p>
+        </div>
+        <ol>
+            <li><strong>(Einfach)</strong> Berechnen Sie das bestimmte Integral $\int_{0}^{1} (ax^2 - 4x + \frac{1}{a}) \,dx$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>1. <strong>Stammfunktion bilden:</strong> $F(x) = a\frac{x^3}{3} - 4\frac{x^2}{2} + \frac{1}{a}x = \frac{a}{3}x^3 - 2x^2 + \frac{x}{a}$.<br>
+                    2. <strong>Grenzen einsetzen:</strong> $F(1) - F(0) = (\frac{a}{3}(1)^3 - 2(1)^2 + \frac{1}{a}) - (0) = \frac{a}{3} - 2 + \frac{1}{a}$.</p>
+                </details>
+            </li>
+            <li><strong>(Partielle Integration)</strong> Berechnen Sie das bestimmte Integral $\int_{0}^{2\pi} x \sin x \,dx$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Partielle Integration mit $u=x$ und $v'=\sin x$. Dann ist $u'=1$ und $v=-\cos x$.<br>
+                    $\int x\sin x dx = -x\cos x - \int 1\cdot(-\cos x)dx = -x\cos x + \sin x$.<br>
+                    Grenzen einsetzen: $[-x\cos x + \sin x]_0^{2\pi} = (-2\pi\cos(2\pi) + \sin(2\pi)) - (-0\cos 0 + \sin 0) = (-2\pi \cdot 1 + 0) - 0 = -2\pi$.</p>
+                </details>
+            </li>
+            <li><strong>(Substitution)</strong> Berechnen Sie das uneigentliche Integral $\int_{0}^{\infty} \frac{e^x}{(1+e^x)^2} \,dx$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Substitution: $z = 1+e^x$, dann ist $dz=e^x dx$.<br>
+                    Grenzen transformieren: $x=0 \implies z=1+e^0=2$. $x\to\infty \implies z\to\infty$.<br>
+                    Das Integral wird zu $\int_2^\infty \frac{1}{z^2} dz = [-\frac{1}{z}]_2^\infty = \lim_{b\to\infty}(-\frac{1}{b}) - (-\frac{1}{2}) = 0 + \frac{1}{2} = \frac{1}{2}$.</p>
+                </details>
+            </li>
+            <li><strong>(Gemischt)</strong> Berechnen Sie das unbestimmte Integral $\int x \sqrt{x-1} \,dx$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Substitution: $u = x-1 \implies du=dx$ und $x=u+1$.<br>
+                    $\int (u+1)\sqrt{u} du = \int (u^{3/2} + u^{1/2}) du = \frac{u^{5/2}}{5/2} + \frac{u^{3/2}}{3/2} + C = \frac{2}{5}(x-1)^{5/2} + \frac{2}{3}(x-1)^{3/2} + C$.</p>
+                </details>
+            </li>
+            <li><strong>(Anwendung)</strong> Das seitliche Profil einer Rampe wird durch $f(x)=0.2x^2 - 2x + 4.95$ für $x \in [1.5, 4.5]$ beschrieben. Berechnen Sie die Querschnittsfläche unter der Rampe.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Fläche $A = \int_{1.5}^{4.5} (0.2x^2 - 2x + 4.95) dx$.<br>
+                    Stammfunktion: $F(x) = 0.2\frac{x^3}{3} - x^2 + 4.95x$.<br>
+                    $F(4.5) = \frac{1}{15}(4.5)^3 - (4.5)^2 + 4.95(4.5) = 6.075 - 20.25 + 22.275 = 8.1$.<br>
+                    $F(1.5) = \frac{1}{15}(1.5)^3 - (1.5)^2 + 4.95(1.5) = 0.225 - 2.25 + 7.425 = 5.4$.<br>
+                    $A = 8.1 - 5.4 = 2.7$ (Flächeneinheiten).</p>
+                </details>
+            </li>
+        </ol>
+
+    </main>
+    
+    <footer>
+        <nav class="page-nav">
+            <a href="09-anwendungen-diff.html">← Vorheriges Kapitel</a>
+            <a href="11-unendliche-reihen.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

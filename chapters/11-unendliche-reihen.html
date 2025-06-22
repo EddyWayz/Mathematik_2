@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lerneinheit über unendliche Reihen, Konvergenz, geometrische und harmonische Reihe sowie wichtige Konvergenzkriterien.">
+    <title>11 Unendliche Reihen - Lernskript Mathe</title>
+
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 11: Unendliche Reihen</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+
+        <h2 id="sec11">11 Unendliche Reihen: Konvergenz und wichtige Beispiele</h2>
+        <h3>11.1 Lernziel</h3>
+        <p>Nach Abschluss dieser Lerneinheit wirst du das Konzept einer unendlichen Reihe verstehen. Du wirst in der Lage sein, Konvergenz von Divergenz zu unterscheiden, die Summe einer geometrischen Reihe zu berechnen und die wichtigsten Konvergenzkriterien (Nullfolgenkriterium, Majoranten-/Minorantenkriterium, Quotientenkriterium, Leibniz-Kriterium) anzuwenden, um das Verhalten von Reihen zu bestimmen.</p>
+        <h3>11.2 Motivation und Kontext</h3>
+        <p>Was passiert, wenn man unendlich oft Zahlen addiert? Intuitiv würde man erwarten, dass das Ergebnis immer unendlich groß wird. Doch die faszinierende Antwort ist: nicht immer! Dieses Konzept, die <strong>unendliche Reihe</strong>, hat tiefgreifende praktische und philosophische Implikationen.</p>
+        <ul>
+            <li><strong>Digitale Repräsentation:</strong> Jede periodische Dezimalzahl, wie $0,\overline{3} = 0,3 + 0,03 + 0,003 + \dots$, ist eine unendliche Reihe, die gegen einen endlichen Wert ($\frac{1}{3}$) konvergiert.</li>
+            <li><strong>Physik und Paradoxien:</strong> Zenons berühmtes Paradoxon von Achilles und der Schildkröte lässt sich elegant auflösen, indem man die unendlich vielen, aber immer kürzer werdenden Streckenabschnitte als konvergente geometrische Reihe modelliert.</li>
+            <li><strong>Näherungsrechnung:</strong> Viele wichtige Funktionen und Konstanten (wie $e$ oder $\pi$) können als unendliche Reihen dargestellt werden. Durch Berechnen der ersten Glieder (Partialsummen) können wir extrem genaue Näherungen erhalten.</li>
+        </ul>
+        <h3>11.3 Definitionen & Begriffe</h3>
+        <dl>
+            <dt>Reihe</dt>
+            <dd>Eine Reihe entsteht durch die Summation der Glieder einer unendlichen Zahlenfolge $(a_n)$. Man schreibt sie als $\sum_{n=0}^{\infty} a_n = a_0 + a_1 + a_2 + \dots$.</dd>
+            <dt>Partialsumme</dt>
+            <dd>Die Summe der ersten $m+1$ Glieder einer Reihe wird als $m$-te Partialsumme $s_m$ bezeichnet: $s_m = \sum_{n=0}^{m} a_n$.</dd>
+            <dt>Konvergenz</dt>
+            <dd>Eine Reihe heißt <strong>konvergent</strong>, wenn die Folge ihrer Partialsummen $(s_m)$ einen endlichen Grenzwert $S$ besitzt. Dieser Grenzwert $S$ wird als der <strong>Wert der Reihe</strong> bezeichnet.</dd>
+            <dt>Divergenz</dt>
+            <dd>Eine Reihe, die nicht konvergiert, heißt <strong>divergent</strong>.</dd>
+            <dt>Geometrische Reihe</dt>
+            <dd>Eine Reihe der Form $\sum_{n=0}^{\infty} q^n$. Sie ist eine der wichtigsten Reihen, da ihr Wert exakt berechenbar ist:
+                <ul>
+                    <li>Sie konvergiert für $|q|<1$ gegen den Wert $S = \frac{1}{1-q}$.</li>
+                    <li>Sie divergiert für $|q| \ge 1$.</li>
+                </ul>
+                <div class="info-box video-box" style="margin-top: 15px;">
+                    <h5>Erklärendes Video: Die Geometrische Reihe</h5>
+                    <p>Ein Mathe-Song, der die geometrische Reihe und ihre Summenformel erklärt.</p>
+                    <a href="http://www.youtube.com/watch?v=2TCDiK7GpNM" target="_blank">DorFuchs: Geometrische Reihe (Mathe-Song)</a>
+                </div>
+            </dd>
+            <dt>Harmonische Reihe</dt>
+            <dd>Die spezielle Reihe $\sum_{n=1}^{\infty} \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \dots$.</dd>
+        </dl>
+
+        <div class="info-box key-concept">
+            <h5>Kernaussage: Die divergente harmonische Reihe</h5>
+            <p>Die harmonische Reihe ist das wichtigste Gegenbeispiel der Reihenlehre. Obwohl ihre Glieder $a_n = \frac{1}{n}$ eine Nullfolge bilden, ist die Reihe selbst <strong>bestimmt divergent</strong> (sie wächst, wenn auch extrem langsam, gegen unendlich).</p>
+            <p>Dies zeigt: Das Nullfolgenkriterium ist nur eine notwendige, aber keine hinreichende Bedingung für Konvergenz. Die p-Reihe $\sum \frac{1}{n^p}$ konvergiert nur für $p>1$.</p>
+        </div>
+
+        <h3>11.4 Schritt-für-Schritt-Erklärung: Konvergenz testen</h3>
+        <p>Um zu entscheiden, ob eine Reihe konvergiert, ohne ihren Wert zu kennen, verwendet man Konvergenzkriterien.</p>
+        <h4>11.4.1 Schritt 1: Notwendige Bedingung prüfen (Nullfolgenkriterium)</h4>
+        <p>Wenn eine Reihe $\sum a_n$ konvergiert, dann müssen die Glieder $a_n$ eine Nullfolge bilden ($\lim_{n\to\infty} a_n = 0$).<br>
+        <strong>Praktische Anwendung:</strong> Wenn die Glieder <strong>keine</strong> Nullfolge bilden, ist die Reihe <strong>sofort als divergent entlarvt</strong>.</p>
+        <h4>11.4.2 Schritt 2: Kriterien für Reihen mit positiven Gliedern</h4>
+        <ul>
+            <li><strong>Majorantenkriterium:</strong> Findet man eine konvergente Reihe $\sum c_n$ (die "Majorante"), deren Glieder immer größer sind als die Beträge der eigenen Reihenglieder ($|a_n| \le c_n$), dann konvergiert auch die eigene Reihe $\sum a_n$ (sogar absolut).</li>
+            <li><strong>Quotientenkriterium:</strong> Man untersucht das Verhältnis aufeinanderfolgender Glieder. Berechne den Grenzwert $L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|$.
+                <ul>
+                    <li>Wenn $L < 1$: Die Reihe konvergiert (absolut).</li>
+                    <li>Wenn $L > 1$: Die Reihe divergiert.</li>
+                    <li>Wenn $L = 1$: Das Kriterium trifft keine Aussage.</li>
+                </ul>
+            Dies ist besonders nützlich bei Reihen, die Fakultäten oder Potenzen enthalten.</li>
+        </ul>
+        
+        <h4>11.4.3 Ausblick: Potenzreihen und Konvergenzradius</h4>
+        <p>Eine <strong>Potenzreihe</strong> ist eine Reihe, deren Glieder von einer Variablen $x$ abhängen, wie z.B. eine <a href="12-taylorreihen.html#sec12">Taylorreihe</a>: $\sum_{k=0}^{\infty} c_k (x-x_0)^k$. Sie konvergiert typischerweise nicht für alle $x$. Der Bereich, in dem sie konvergiert, ist das <strong>Konvergenzintervall</strong>, dessen "halbe Breite" der <strong>Konvergenzradius $R$</strong> ist. Man kann $R$ oft mit dem Quotientenkriterium bestimmen:</p>
+        $$ R = \lim_{k\to\infty} \left| \frac{c_k}{c_{k+1}} \right| $$
+        <p>Die Reihe konvergiert dann (mindestens) für alle $x$ mit $|x-x_0| < R$. Das Verhalten an den Rändern des Intervalls muss separat geprüft werden.</p>
+        <h4>11.4.4 Das Leibniz-Kriterium für alternierende Reihen</h4>
+        <p>Eine alternierende Reihe hat die Form $\sum (-1)^n b_n$, wobei $b_n \ge 0$ ist. Sie konvergiert, wenn zwei einfache Bedingungen erfüllt sind:</p>
+        <ol>
+            <li>Die Folge der Beträge $(b_n)$ ist eine <strong>Nullfolge</strong> ($\lim_{n\to\infty} b_n = 0$).</li>
+            <li>Die Folge der Beträge $(b_n)$ ist <strong>monoton fallend</strong>.</li>
+        </ol>
+        <p>Das klassische Beispiel ist die alternierende harmonische Reihe $\sum_{n=1}^{\infty} (-1)^{n+1} \frac{1}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \dots$, die gegen $\ln(2)$ konvergiert, weil $b_n = \frac{1}{n}$ eine monoton fallende Nullfolge ist.</p>
+        <div class="info-box tip">
+            <h5>Praxis-Tipp: Welches Konvergenzkriterium wählen?</h5>
+            <ol>
+                <li><strong>Immer zuerst: Nullfolgenkriterium!</strong> Lässt sich der Grenzwert von $a_n$ leicht berechnen und ist er $\neq 0$? Dann ist die Reihe divergent und du bist fertig.</li>
+                <li><strong>Ist es eine alternierende Reihe</strong> (mit $(-1)^n$)? Dann ist das <strong>Leibniz-Kriterium</strong> der Standardansatz.</li>
+                <li><strong>Enthält die Reihe Fakultäten ($n!$) oder Potenzen ($c^n$)?</strong> Das ist ein starkes Indiz für das <strong>Quotientenkriterium</strong>.</li>
+                <li><strong>Sieht die Reihe "fast so aus" wie eine bekannte Reihe</strong> (z.B. geometrische Reihe oder $\sum 1/n^p$)? Dann ist das <strong>Majoranten- oder Minorantenkriterium</strong> oft der beste Weg.</li>
+            </ol>
+            <div class="info-box video-box" style="margin-top: 15px;">
+                <h5>Erklärendes Video: Übersicht der Konvergenzkriterien</h5>
+                <p>Eine Übersicht, welches Kriterium man wann am besten anwendet.</p>
+                <a href="http://www.youtube.com/watch?v=9Hjs_Te7TWM" target="_blank">MathePeter: Konvergenz von Reihen Übersicht</a>
+            </div>
+        </div>
+        
+        <div class="info-box key-concept">
+            <h5>Absolute und bedingte Konvergenz</h5>
+            <p>Man unterscheidet zwei Arten der Konvergenz:</p>
+            <ul>
+                <li><strong>Absolute Konvergenz:</strong> Eine Reihe $\sum a_n$ konvergiert absolut, wenn sogar die Reihe der Beträge $\sum |a_n|$ konvergiert. Dies ist eine sehr "stabile" Form der Konvergenz. Das Quotientenkriterium und das Majorantenkriterium prüfen auf absolute Konvergenz.</li>
+                <li><strong>Bedingte Konvergenz:</strong> Eine Reihe konvergiert, aber nicht absolut. Das ist nur bei alternierenden Reihen möglich, die das Leibniz-Kriterium erfüllen, deren Beträge aber eine divergente Reihe bilden (wie die alternierende harmonische Reihe).</li>
+            </ul>
+        </div>
+        
+        <h3>11.5 Beispielaufgaben</h3>
+        <h4>11.5.1 Beispiel 1: Wert einer geometrischen Reihe</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Berechnen Sie den Wert der Reihe $\sum_{k=0}^{\infty} \frac{(-3)^k}{4^k}$.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Analyse:</strong> Wir formen den Ausdruck um: $\sum_{k=0}^{\infty} \left(\frac{-3}{4}\right)^k$. Dies ist eine geometrische Reihe mit $q = -3/4$.</li>
+                    <li><strong>Konvergenz prüfen:</strong> Da $|q| = |-3/4| = 3/4 < 1$, konvergiert die Reihe.</li>
+                    <li><strong>Formel anwenden:</strong> Der Wert der Reihe ist $S = \frac{1}{1-q} = \frac{1}{1 - (-3/4)} = \frac{1}{1 + 3/4} = \frac{1}{7/4} = \frac{4}{7}$.</li>
+                </ol>
+            </li>
+        </ul>
+        <h4>11.5.2 Beispiel 2: Quotientenkriterium anwenden</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Untersuchen Sie die Konvergenz der Reihe $\sum_{k=1}^{\infty} \frac{100^k}{k!}$.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Analyse:</strong> Das Vorkommen von $k!$ und einer Potenz legt das Quotientenkriterium nahe.</li>
+                    <li><strong>Quotienten bilden:</strong> $a_k = \frac{100^k}{k!}$, also ist $a_{k+1} = \frac{100^{k+1}}{(k+1)!}$. $$ \left| \frac{a_{k+1}}{a_k} \right| = \frac{100^{k+1}}{(k+1)!} \cdot \frac{k!}{100^k} = \frac{100^{k} \cdot 100}{(k+1) \cdot k!} \cdot \frac{k!}{100^k} = \frac{100}{k+1} $$</li>
+                    <li><strong>Grenzwert berechnen:</strong> $$ L = \lim_{k\to\infty} \frac{100}{k+1} = 0 $$</li>
+                    <li><strong>Schlussfolgerung:</strong> Da $L=0 < 1$, konvergiert die Reihe absolut.</li>
+                </ol>
+            </li>
+        </ul>
+        <h3>11.6 Übungsaufgaben</h3>
+        <ol>
+            <li><strong>(Einfach)</strong> Berechnen Sie den Wert der Reihe $\sum_{i=2}^{\infty} 12 \cdot \left(\frac{1}{4}\right)^{i-1}$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>1. <strong>Konstante herausziehen und Index verschieben:</strong> $12 \sum_{i=2}^{\infty} (\frac{1}{4})^{i-1}$. Setze $k=i-1$. Wenn $i=2$, ist $k=1$. Die Reihe ist $12 \sum_{k=1}^{\infty} (\frac{1}{4})^k$.<br>
+                    2. <strong>Wert der geometrischen Reihe berechnen:</strong> Die Summenformel für Start bei $k=1$ ist $\frac{q}{1-q}$. Hier: $\frac{1/4}{1-1/4} = \frac{1/4}{3/4} = \frac{1}{3}$.<br>
+                    3. <strong>Endergebnis:</strong> $12 \cdot \frac{1}{3} = 4$.</p>
+                </details>
+            </li>
+            <li><strong>(Einfach)</strong> Entscheiden Sie mit dem Nullfolgenkriterium, ob die Reihe $\sum_{n=1}^{\infty} \frac{n^3}{n^3+1}$ konvergiert oder divergiert.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Wir prüfen den Grenzwert der Glieder: $\lim_{n\to\infty} a_n = \lim_{n\to\infty} \frac{n^3}{n^3+1} = 1$.<br>
+                    Da der Grenzwert nicht 0 ist, ist das Nullfolgenkriterium nicht erfüllt. Die Reihe <strong>divergiert</strong>.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Untersuchen Sie mit dem Majorantenkriterium, ob die Reihe $\sum_{n=1}^{\infty} \frac{n}{(n+1)^3}$ konvergiert. (Tipp: Vergleichen Sie mit $\sum \frac{1}{n^2}$)
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Wir suchen eine Majorante $c_n$. Es gilt $n < n+1$. Daher ist $\frac{n}{(n+1)^3} < \frac{n+1}{(n+1)^3} = \frac{1}{(n+1)^2}$.<br>
+                    Die Reihe $\sum_{n=1}^{\infty} \frac{1}{(n+1)^2}$ ist eine verschobene p-Reihe mit $p=2 > 1$, sie konvergiert. (Sie ist kleiner als die konvergente Reihe $\sum \frac{1}{n^2}$).<br>
+                    Da unsere Reihe durch eine konvergente Majorante nach oben beschränkt ist, <strong>konvergiert</strong> sie nach dem Majorantenkriterium.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Prüfen Sie mit dem Quotientenkriterium die Konvergenz von $\sum_{k=1}^{\infty} \frac{(k+1)^2}{k!}$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p> $L = \lim_{k\to\infty} \left| \frac{a_{k+1}}{a_k} \right| = \lim_{k\to\infty} \frac{(k+2)^2}{(k+1)!} \cdot \frac{k!}{(k+1)^2} = \lim_{k\to\infty} \frac{(k+2)^2}{(k+1)(k+1)^2} = \lim_{k\to\infty} \frac{(k+2)^2}{(k+1)^3}$.<br>
+                    Da der Nennergrad (3) größer ist als der Zählergrad (2), ist der Grenzwert $L=0$.<br>
+                    Weil $L < 1$, <strong>konvergiert</strong> die Reihe.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Untersuchen Sie die Reihe $\sum_{n=1}^{\infty} (-1)^n \frac{2^n}{n^9}$ auf Konvergenz.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Wir prüfen zuerst das Nullfolgenkriterium für die Glieder: $a_n = (-1)^n \frac{2^n}{n^9}$.<br>
+                    Der Betrag der Glieder ist $|a_n| = \frac{2^n}{n^9}$. Da die Exponentialfunktion $2^n$ wesentlich schneller wächst als jede Potenzfunktion $n^9$, gilt $\lim_{n\to\infty} |a_n| = \infty$.<br>
+                    Die Glieder der Reihe bilden keine Nullfolge. Daher ist die notwendige Bedingung für Konvergenz nicht erfüllt. Die Reihe <strong>divergiert</strong>.</p>
+                </details>
+            </li>
+        </ol>
+
+    </main>
+
+    <footer>
+        <nav class="page-nav">
+            <a href="10-integralrechnung.html">← Vorheriges Kapitel</a>
+            <a href="12-taylorreihen.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

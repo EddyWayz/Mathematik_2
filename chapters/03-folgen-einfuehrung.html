@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eine umfassende Lerneinheit über Zahlenfolgen, von den Grundlagen (Monotonie, Beschränktheit) bis zur Konvergenz, Grenzwertberechnung und Wachstumshierarchie.">
+    <title>3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte - Lernskript Mathe</title>
+    
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 3: Zahlenfolgen</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <h2 id="sec3">3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte</h2>
+
+        <h3>3.1 Lernziel</h3>
+        <p>Nach dieser Lerneinheit wirst du die Konzepte von Zahlenfolgen, ihren Eigenschaften und ihrem Langzeitverhalten beherrschen. Du wirst explizite und rekursive Bildungsvorschriften herleiten , Folgen auf Monotonie und Beschränktheit prüfen  und Grenzwerte mit Hilfe der Rechenregeln und der Wachstumshierarchie sicher berechnen können.</p>
+
+        <h3>3.2 Motivation und Kontext</h3>
+        <p>Folgen sind ein fundamentales Konzept der Analysis und haben direkte Anwendungen in der Informatik. Sie sind die Brücke zwischen der diskreten Welt der ganzen Zahlen und der kontinuierlichen Welt der reellen Funktionen.</p>
+        <ul>
+            <li><strong>Algorithmen:</strong> Viele Algorithmen arbeiten iterativ. Die Zustände nach jedem Schritt bilden eine Folge, wie z.B. bei der Heron-Folge zur Wurzelberechnung. Das Verständnis ihres Langzeitverhaltens (Grenzwert) ist entscheidend für die Analyse der Korrektheit und Effizienz.</li>
+            <li><strong>Modellierung:</strong> Dynamische Prozesse, die sich in Zeitschritten entwickeln, werden oft durch Folgen beschrieben. Das SIR-Modell zur Ausbreitung von Epidemien ist ein System von drei gekoppelten Folgen.</li>
+            <li><strong>Grundlage der Analysis:</strong> Der Begriff der Konvergenz ist die Basis für zentrale Konzepte wie Stetigkeit und Differenzierbarkeit.</li>
+        </ul>
+
+        <h3>3.3 Definitionen und grundlegende Eigenschaften</h3>
+        <dl>
+            <dt>Zahlenfolge</dt>
+            <dd>Eine Zahlenfolge ist eine Funktion, die jeder natürlichen Zahl $n$ (oft beginnend bei $n=0$ oder $n=1$) eine reelle Zahl $a_n$ zuordnet. Man schreibt sie als $(a_n)_{n \in \mathbb{N}_0}$ oder $a_0, a_1, a_2, \ldots$.</dd>
+            
+            <dt>Bildungsvorschrift</dt>
+            <dd>Die Regel, nach der die Glieder der Folge erzeugt werden.
+                <ul>
+                    <li><strong>Explizit:</strong> Eine direkte Formel, die $a_n$ als Funktion von $n$ darstellt. Beispiel: $a_n = 2 \cdot (2a)^n$.</li>
+                    <li><strong>Rekursiv:</strong> Eine Regel, die ein Glied $a_n$ mithilfe von Vorgängergliedern definiert. Beispiel: $a_n = a_{n-1} + a_{n-2}$ mit $a_0=0, a_1=1$ (Fibonacci-Folge).</li>
+                </ul>
+            </dd>
+
+            <dt>Monotonie</dt>
+            <dd>Beschreibt, ob eine Folge tendenziell nur steigt oder nur fällt.
+                <ul>
+                    <li><strong>Monoton wachsend</strong>, wenn $a_{n+1} \ge a_n$ für alle $n$.</li>
+                    <li><strong>Monoton fallend</strong>, wenn $a_{n+1} \le a_n$ für alle $n$.</li>
+                </ul>
+            </dd>
+            
+            <dt>Beschränktheit</dt>
+            <dd>Beschreibt, ob die Werte der Folge innerhalb bestimmter Grenzen bleiben. Sie ist beschränkt, wenn es eine obere und eine untere Schranke gibt.</dd>
+        </dl>
+
+        <h3>3.4 Konvergenz und Grenzwerte</h3>
+        <dl>
+             <dt>Konvergenz</dt>
+            <dd>Eine Folge $(a_n)$ konvergiert gegen einen Grenzwert $a$, wenn der Abstand der Folgenglieder zu $a$ für hinreichend große $n$ beliebig klein wird. Formal bedeutet das: Für jede noch so kleine positive Zahl $\epsilon$ gibt es einen Index $N$, sodass für alle $n > N$ gilt: $|a_n - a| < \epsilon$.</dd>
+
+            <dt>Divergenz</dt>
+            <dd>Eine Folge, die nicht konvergiert, heißt divergent. Man unterscheidet:
+                <ul>
+                    <li><strong>Bestimmte Divergenz:</strong> Die Folge strebt gegen $+\infty$ oder $-\infty$. Beispiel: $a_n=e^n \to \infty$.</li>
+                    <li><strong>Unbestimmte Divergenz:</strong> Die Folge hat keinen Grenzwert, oszilliert aber (z.B. zwischen festen Werten oder unbeschränkt). Beispiel: $a_n = (-1)^n$.</li>
+                </ul>
+            </dd>
+        </dl>
+        <div class="info-box key-concept">
+            <h5>Kernaussage: Der Monotoniesatz</h5>
+            <p><strong>Jede Folge, die sowohl monoton als auch beschränkt ist, ist konvergent.</strong></p>
+            <p>Dies ist ein zentraler Satz, der die Existenz eines Grenzwertes garantiert, auch wenn man seinen genauen Wert nicht kennt.</p>
+        </div>
+
+        <h3>3.5 Rechenregeln für Grenzwerte</h3>
+        <p>Für konvergente Folgen $ \lim a_n = A $ und $ \lim b_n = B $ gelten folgende Regeln, solange die Ergebnisse definiert sind:</p>
+        <ul>
+            <li><strong>Summe/Differenz:</strong> $ \lim (a_n \pm b_n) = A \pm B $ </li>
+            <li><strong>Produkt:</strong> $ \lim (a_n \cdot b_n) = A \cdot B $ </li>
+            <li><strong>Quotient:</strong> $ \lim \frac{a_n}{b_n} = \frac{A}{B} $ (falls $B \ne 0$) </li>
+            <li><strong>Stetige Funktion anwenden:</strong> $ \lim f(a_n) = f(A) $ </li>
+        </ul>
+
+        <div class="info-box warning">
+            <h5>Unbestimmte Ausdrücke </h5>
+            <p>Die Rechenregeln sind nicht direkt anwendbar, wenn folgende Formen auftreten. Hier sind Umformungen oder spezielle Verfahren nötig.</p>
+            <p style="text-align:center; font-size: 1.2em; letter-spacing: 5px;">
+                $ \frac{0}{0} \quad \frac{\infty}{\infty} \quad  \quad \infty - \infty \quad  \quad 0 \cdot \infty \quad  \quad 1^\infty \quad  \quad \infty^0 \quad  $
+            </p>
+        </div>
+
+        <h3>3.6 Wichtiges Werkzeug: Die Wachstumshierarchie</h3>
+        <p>Um Grenzwerte von Brüchen zu bestimmen (Fall $\frac{\infty}{\infty}$), ist es entscheidend zu wissen, welche Funktionen für große $n$ am schnellsten wachsen.</p>
+        <p><strong>Hierarchie (langsam nach schnell für große $n$):</strong> </p>
+        <p style="text-align:center; font-size: 1.2em;">
+            $ \ln(n) \ll \sqrt[p]{n} \ll n \ll n^p \ll a^n \ll n! \ll n^n $ (für $p>1, a>1$)
+        </p>
+        <div class="info-box tip">
+            <h5>Anwendung der Hierarchie bei Brüchen:</h5>
+            <p>Klammere im Zähler und Nenner jeweils den dominantesten Term aus und kürze. Das Ergebnis hängt davon ab, ob der Zähler, der Nenner oder beide gleich schnell wachsen.</p>
+        </div>
+
+        <h3>3.7 Beispielaufgaben</h3>
+        <h4>3.7.1 Bildungsvorschriften finden </h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Gegeben sei die Folge $2, 4a, 8a^2, 16a^3, \dots$ mit Startglied $a_0=2$. Geben Sie eine explizite und eine rekursive Bildungsvorschrift an.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Rekursiv:</strong> Jedes Glied entsteht aus dem vorherigen durch Multiplikation mit $2a$. Die Vorschrift ist $a_n = (2a) \cdot a_{n-1}$ mit dem Startwert $a_0 = 2$.</li>
+                    <li><strong>Explizit:</strong> Man erkennt das Muster $a_0 = 2\cdot(2a)^0$, $a_1=2\cdot(2a)^1$, $a_2=2\cdot(2a)^2$. Die Formel lautet also $a_n = 2 \cdot (2a)^n$.</li>
+                </ol>
+            </li>
+        </ul>
+        <h4>3.7.2 Grenzwert eines Bruchs berechnen</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Berechnen Sie den Grenzwert $L = \lim_{n\to\infty}\frac{4-3\sqrt{n}-2n^{4}}{1+n(1-n)^{2}}$.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Analyse:</strong> Dies ist der unbestimmte Ausdruck $\frac{\infty}{\infty}$.</li>
+                    <li><strong>Dominante Terme:</strong> Im Zähler ist es $-2n^4$, im Nenner (nach ausmultiplizieren $1+n-2n^2+n^3$) ist es $n^3$.</li>
+                    <li><strong>Vergleich:</strong> Der Zähler wächst mit $n^4$ schneller als der Nenner mit $n^3$. Da der Koeffizient im Zähler negativ ist, ist das Ergebnis $-\infty$.</li>
+                    <li><strong>Formale Rechnung:</strong> $L = \lim_{n\to\infty}\frac{n^4(\frac{4}{n^4}-\frac{3}{n^{3.5}}-2)}{n^3(\frac{1}{n^3}+\frac{1}{n^2}-\frac{2}{n}+1)} = \lim_{n\to\infty} n \cdot \frac{-2}{1} = -\infty$. Die Folge ist bestimmt divergent.</li>
+                </ol>
+            </li>
+        </ul>
+        
+        <h3>3.8 Übungsaufgaben aus dem Skript</h3>
+        <div class="task-hint">
+            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer (0→5, 1→6).</p>
+        </div>
+        <ol>
+            <li><strong>(Aufgabe 2a)</strong> Geben Sie zu der Folge $1, -3, 1, -3, \dots$ (Startglied $a_0=1$) eine explizite und eine rekursive Bildungsvorschrift an.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p><strong>Rekursiv:</strong> $a_n = -a_{n-1} - 2$ mit $a_0=1$.<br>
+                    <strong>Explizit:</strong> $a_n = -1 + 2 \cdot (-1)^n$.</p>
+                </details>
+            </li>
+            <li><strong>(Aufgabe 3b)</strong> Kreuzen Sie die Eigenschaften an, die auf die Folge $a_{n+1}=a_{n}^{0,2}$ mit Startwert $a_0=3$ zutreffen: Monoton, Beschränkt, Konvergent, Bestimmt divergent.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Die Glieder sind $a_0=3$, $a_1=3^{0.2} \approx 1.24$, $a_2=(1.24)^{0.2} \approx 1.04$, ... Die Glieder sind immer $>1$ und werden kleiner.
+                    <br><strong>Monoton:</strong> Ja (fallend).
+                    <br><strong>Beschränkt:</strong> Ja (nach oben durch 3, nach unten durch 1).
+                    <br><strong>Konvergent:</strong> Ja (da monoton und beschränkt). Der Grenzwert ist 1.
+                    <br><strong>Bestimmt divergent:</strong> Nein.</p>
+                </details>
+            </li>
+             <li><strong>(Aufgabe 4)</strong> Im SIR-Modell ist $S_{n+1}=S_{n}-\beta\frac{S_{n}}{N}\cdot I_{n}$. Welche Bedeutung hat der Grenzwert $S_{\infty}=lim_{n\rightarrow\infty}S_{n}$? 
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>$S_n$ ist die Anzahl der für die Krankheit empfänglichen Personen zum Zeitpunkt $n$. Der Grenzwert $S_{\infty}$ beschreibt die Anzahl der Personen, die die Krankheit am Ende der Epidemie *niemals* bekommen haben, also dauerhaft gesund geblieben sind.</p>
+                </details>
+            </li>
+        </ol>
+
+    </main>
+
+    <footer>
+        <nav class="page-nav">
+            <a href="02-kombinationen.html">← Vorheriges Kapitel</a>
+            <a href="05-stetigkeit.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lerneinheit über die grundlegenden Zählprinzipien der Kombinatorik: Summenregel, Produktregel und Inklusion-Exklusion.">
+    <title>1 Grundlegende Zählprinzipien - Lernskript Mathe</title>
+    
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 1: Zählprinzipien</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <h2 id="sec1">1 Grundlegende Zählprinzipien</h2>
+
+        <h3>1.1 Lernziel</h3>
+        <p>Am Ende dieser Lerneinheit wirst du in der Lage sein, die grundlegenden Zählprinzipien – die Summenregel, die Produktregel und das Inklusions-Exklusions-Prinzip – sicher auf verschiedene Abzählprobleme anzuwenden. Du wirst verstehen, wann welches Prinzip genutzt wird und wie sie kombiniert werden können, um komplexe Fragestellungen zu lösen.</p>
+        
+        <h3>1.2 Motivation und Kontext</h3>
+        <p>Die Kombinatorik ist ein faszinierendes Gebiet der Mathematik, das man auch als <strong>„Kunst des Zählens“</strong> bezeichnen kann. Sie entstand im 17. Jahrhundert aus der Analyse von Glücksspielen, hat heute aber weitreichende und wichtige Anwendungen in der Informatik:</p>
+        <ul>
+            <li><strong>Sicherheit:</strong> Wie viele verschiedene Passwörter einer bestimmten Länge und Komplexität gibt es? Dies bestimmt, wie schwer es ist, ein Passwort zu knacken. </li>
+            <li><strong>Algorithmik:</strong> Wie viele Rechenschritte benötigt ein Algorithmus, um ein Problem zu lösen? Dies ist entscheidend für die Effizienz von Software. </li>
+            <li><strong>Wahrscheinlichkeitstheorie:</strong> Um die Wahrscheinlichkeit eines Ereignisses zu berechnen (z.B. „6 Richtige im Lotto“), muss man zuerst wissen, wie viele mögliche Ergebnisse es überhaupt gibt. </li>
+        </ul>
+        <p>Diese Lerneinheit legt das Fundament, auf dem komplexere kombinatorische Methoden wie Permutationen und Kombinationen aufbauen. </p>
+        
+        <div class="info-box tip">
+            <h5>Voraussetzung: Mengenlehre</h5>
+            <p>Dieses Kapitel baut direkt auf deinem Wissen über Mengen und Mengenoperationen auf. Stelle sicher, dass du mit den Konzepten von Durchschnitt ($A \cap B$), Vereinigung ($A \cup B$), Differenz ($A \setminus B$) und Komplement ($\bar{A}$) vertraut bist, da die Zählprinzipien formal über Mengen definiert werden.</p>
+        </div>
+
+        <div class="info-box tip">
+            <h5>Praxis-Tipp: Die zentrale Entscheidungsfrage</h5>
+            <p>Um zwischen Summen- und Produktregel zu unterscheiden, stelle dir die Frage: "Muss ich eine <strong>'ENTWEDER-ODER'</strong>-Entscheidung treffen oder eine Sequenz von <strong>'UND-DANN'</strong>-Entscheidungen?"</p>
+            <ul>
+                <li>"Ich wähle ENTWEDER einen Kleinwagen ODER einen Mittelklassewagen." → Summenregel.</li>
+                <li>"Ich fahre von Wien UND DANN von Graz nach Marburg." → Produktregel.</li>
+            </ul>
+        </div>
+
+        <h3>1.3 Definitionen & Begriffe</h3>
+        <dl>
+            <dt>Kombinatorik</dt>
+            <dd>Der Bereich der Mathematik, der sich mit der Bestimmung der Anzahl möglicher Anordnungen oder Auswahlen von Objekten beschäftigt. </dd>
+            
+            <dt>Summenregel</dt>
+            <dd>Wenn sich zwei Eigenschaften gegenseitig ausschließen, ist die Gesamtzahl der Möglichkeiten die Summe der einzelnen Möglichkeiten. Man wendet sie bei einer <strong>„Entweder-oder“-Entscheidung</strong> an.
+                <ul>
+                    <li><em>Formel für disjunkte (sich ausschließende) Mengen A und B, wobei $A \cap B = \emptyset$:</em> $ |A \cup B| = |A| + |B| $ </li>
+                </ul>
+            </dd>
+            
+            <dt>Produktregel</dt>
+            <dd>Kann eine Aufgabe in mehrere Teilschritte zerlegt werden, die nacheinander ausgeführt werden, ist die Gesamtzahl der Möglichkeiten das Produkt der Möglichkeiten für jeden Teilschritt. Man wendet sie bei einer <strong>„Sowohl-als-auch“- oder sequenziellen Entscheidung</strong> an.
+                <ul>
+                    <li><em>Formel für das kartesische Produkt von Mengen A und B:</em> $ |A \times B| = |A| \cdot |B| $ </li>
+                    <li><em>Allgemein für k Teilschritte:</em> $|A_1 \times A_2 \times \dots \times A_k| = |A_1| \cdot |A_2| \cdot \dots \cdot |A_k|$ </li>
+                </ul>
+            </dd>
+            
+            <dt>Inklusions-Exklusions-Prinzip</dt>
+            <dd>Dies ist eine Verallgemeinerung der Summenregel für Mengen, die sich nicht gegenseitig ausschließen (nicht disjunkt sind). Um eine Doppelzählung der gemeinsamen Elemente zu vermeiden, wird die Größe der Schnittmenge subtrahiert. 
+                <ul>
+                    <li><em>Formel für beliebige Mengen A und B:</em> $ |A \cup B| = |A| + |B| - |A \cap B| $ </li>
+                    <li><em>Formel für drei Mengen A, B und C:</em> $|A \cup B \cup C| = |A| + |B| + |C| - (|A \cap B| + |A \cap C| + |B \cap C|) + |A \cap B \cap C|$ </li>
+                </ul>
+            </dd>
+            
+            <dt>Komplementärereignis</dt>
+            <dd>Manchmal ist es einfacher, die Anzahl der <em>unerwünschten</em> Ergebnisse von der Gesamtzahl aller Ergebnisse abzuziehen, um die Anzahl der <em>erwünschten</em> Ergebnisse zu erhalten. </dd>
+        </dl>
+        
+        <h3>1.4 Schritt-für-Schritt-Erklärung</h3>
+        
+        <h4>1.4.1 Summenregel (für getrennte Fälle)</h4>
+        <p><strong>Beispiel:</strong> Eine Mietwagenfirma bietet 12 Kleinwagen und 7 Mittelklassewagen an. Da ein Auto nicht gleichzeitig ein Kleinwagen und ein Mittelklassewagen sein kann, sind die Optionen disjunkt. Du hast $12 + 7 = 19$ Möglichkeiten, ein Auto auszuwählen. </p>
+        
+        <h4>1.4.2 Produktregel (für sequentielle Schritte)</h4>
+        <p><strong>Beispiel:</strong> Um von Wien über Graz nach Marburg zu fahren, gibt es 3 Routen von Wien nach Graz und 4 Routen von Graz nach Marburg. Die Gesamtzahl der Wege ist das Produkt: $3 \cdot 4 = 12$ mögliche Gesamtrouten. </p>
+        
+        <div class="info-box">
+            <h5>Visualisierung mit dem Baumdiagramm</h5>
+            <p>Die Produktregel lässt sich hervorragend mit einem <strong>Baumdiagramm</strong> visualisieren. Jede Stufe des Baumes repräsentiert einen Teilschritt der Entscheidung. Die Gesamtzahl der Möglichkeiten entspricht der Anzahl der Pfade von der Wurzel bis zu den Blättern des Baumes. Für das Routen-Beispiel würde man von Wien aus 3 Äste (die Routen nach Graz) zeichnen. Von jedem dieser 3 Endpunkte würden dann jeweils 4 neue Äste (die Routen nach Marburg) abgehen, was zu insgesamt $3 \cdot 4 = 12$ Pfaden (Gesamtrouten) führt. </p>
+        </div>
+
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Zählprinzipien in der Praxis</h5>
+            <p>Dieses Video erklärt die grundlegenden Zählprinzipien (Summen- und Produktregel) anhand von Beispielen wie dem Baumdiagramm.</p>
+            <a href="http://www.youtube.com/watch?v=GpioDtIFtN4" target="_blank">Lehrerschmidt: Anzahl der Möglichkeiten berechnen</a>
+        </div>
+        
+        <h4>1.4.3 Inklusions-Exklusions-Prinzip (für überlappende Fälle)</h4>
+        <p><strong>Beispiel:</strong> Wie viele achtstellige Dualzahlen beginnen mit `0` <em>oder</em> enden mit `11`? </p>
+        <ul>
+            <li>Menge A: Zahlen, die mit `0` beginnen. Es gibt $2^7 = 128$ solche Zahlen. </li>
+            <li>Menge B: Zahlen, die mit `11` enden. Es gibt $2^6 = 64$ solche Zahlen. </li>
+            <li><strong>Doppelzählung:</strong> Zahlen, die <em>sowohl</em> mit `0` beginnen <em>als auch</em> mit `11` enden, sind in beiden Mengen enthalten. Es gibt $2^5 = 32$ solcher Zahlen. </li>
+        </ul>
+        <p><strong>Anwendung:</strong> Wir addieren die Einzelmengen und subtrahieren die Schnittmenge: $128 + 64 - 32 = 160$ Möglichkeiten. </p>
+
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Inklusions-Exklusions-Prinzip</h5>
+            <p>Eine detaillierte Erklärung, wie man mit überlappenden Mengen umgeht, um Doppelzählungen zu vermeiden.</p>
+            <a href="http://www.youtube.com/watch?v=R2ySKsTBeDU" target="_blank">Weitz / HAW Hamburg: Das Inklusions-Exklusions-Prinzip (Kombinatorik)</a>
+        </div>
+        
+        <h4>1.4.4 Komplementärzählen</h4>
+        <p><strong>Beispiel:</strong> Wie viele Passwörter der Länge 6 (nur Kleinbuchstaben oder Ziffern) enthalten <em>mindestens eine Ziffer</em>? </p>
+        <ul>
+            <li><strong>Gesamtanzahl:</strong> Es gibt 36 mögliche Zeichen (26 Buchstaben + 10 Ziffern), also $36^6$ Passwörter. </li>
+            <li><strong>Unerwünschte Anzahl:</strong> Passwörter, die <em>keine</em> Ziffer enthalten, bestehen nur aus den 26 Buchstaben. Davon gibt es $26^6$. </li>
+        </ul>
+        <p><strong>Anwendung:</strong> Erwünschte Anzahl = (Alle mit Länge 6) - (Alle ohne Ziffern mit Länge 6) = $36^6 - 26^6$. </p>
+        
+        <h3>1.5 Beispielaufgaben</h3>
+        
+        <h4>1.5.1 Beispiel 1: Produktregel (Autokennzeichen)</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Wie viele mögliche Autokennzeichen gibt es, wenn ein Kennzeichen aus zwei Großbuchstaben gefolgt von vier Ziffern besteht und Wiederholungen erlaubt sind? </li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Problemzerlegung:</strong> Die Erstellung des Kennzeichens kann in 6 sequentielle Teilschritte zerlegt werden. </li>
+                    <li><strong>Möglichkeiten pro Schritt:</strong> Für Buchstaben gibt es 26 Möglichkeiten, für Ziffern 10. </li>
+                    <li><strong>Anwendung der Produktregel:</strong> $$ \text{Anzahl} = 26 \cdot 26 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 26^2 \cdot 10^4 = 6.760.000 $$ </li>
+                    <li><strong>Antwort:</strong> Es gibt 6.760.000 verschiedene mögliche Kennzeichen. </li>
+                </ol>
+            </li>
+        </ul>
+        
+        <h4>1.5.2 Beispiel 2: Kombination aller Regeln (Passwörter)</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Ein Passwort kann aus sechs bis acht Zeichen bestehen (nur Kleinbuchstaben oder Ziffern). Mindestens eines der Zeichen muss eine Ziffer sein. Wie viele mögliche Passwörter gibt es? </li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Problemzerlegung (Summenregel):</strong> Die Gesamtzahl $Z$ ist die Summe der gültigen Passwörter jeder Länge: $Z = Z_6 + Z_7 + Z_8$. </li>
+                    <li><strong>Berechnung für Länge 6 ($Z_6$) (Komplementäransatz):</strong> $Z_6 = (\text{Alle mit Länge 6}) - (\text{Alle ohne Ziffern mit Länge 6}) = 36^6 - 26^6$. </li>
+                    <li><strong>Berechnung für Länge 7 und 8:</strong> Analog gilt: $Z_7 = 36^7 - 26^7$ und $Z_8 = 36^8 - 26^8$. </li>
+                    <li><strong>Gesamtergebnis (Summenregel):</strong> $$ Z = (36^6 - 26^6) + (36^7 - 26^7) + (36^8 - 26^8) = 2.684.483.063.360 $$ </li>
+                    <li><strong>Antwort:</strong> Es gibt 2.684.483.063.360 mögliche Passwörter. </li>
+                </ol>
+            </li>
+        </ul>
+        
+        <h3>1.6 Übungsaufgaben</h3>
+
+        <div class="info-box warning">
+            <h5>Wichtige Hinweise zur Bearbeitung</h5>
+            <p>Beachte die allgemeinen Anweisungen aus den Übungsblättern, die auch in einer Klausur gelten könnten:</p>
+            <ul>
+                <li><strong>Variable 'a' ersetzen:</strong> In den Aufgaben musst du die Variable 'a' durch die letzte Ziffer deiner Matrikelnummer ersetzen.  Falls diese Ziffer 0 oder 1 ist, musst du stattdessen 5 bzw. 6 verwenden. </li>
+                <li><strong>Exaktes Rechnen:</strong> Sofern nicht anders angegeben, solltest du Ergebnisse exakt (z.B. als Bruch oder Potenz) oder auf vier Nachkommastellen genau angeben. </li>
+            </ul>
+        </div>
+
+        <div class="task-hint">
+            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder 1 ist, wähle stattdessen 5 bzw. 6. </p>
+        </div>
+        <ol>
+            <li><strong>(Einfach)</strong> Ein Restaurant bietet 5 Vorspeisen, $a$ Hauptgerichte und 3 Desserts an. Wie viele verschiedene 3-Gänge-Menüs können zusammengestellt werden?
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Hier muss die Produktregel angewendet werden: $5 \cdot a \cdot 3 = 15a$. Es gibt $15a$ verschiedene Menüs.</p>
+                </details>
+            </li>
+            <li><strong>(Einfach)</strong> In einem Kurs sind 15 Studierende aus dem 2. Semester und $a+10$ Studierende aus dem 4. Semester. Wie viele Möglichkeiten gibt es, eine:n Sprecher:in für den Kurs zu wählen?
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Hier muss die Summenregel angewendet werden, da die Mengen disjunkt sind: $15 + (a+10) = a+25$. Es gibt $a+25$ Möglichkeiten.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Wie viele achtstellige Dualzahlen gibt es, die nicht aus einer einzigen Ziffer bestehen (also nicht 00000000 und nicht 11111111)?
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Komplementärzählen: Gesamtanzahl ($2^8=256$) minus die zwei unerwünschten Fälle. $256 - 2 = 254$.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> In einer Schule gibt es 100 Schüler, von denen 60 in einem Sportverein, 50 in einem Musikverein und 30 in beiden Vereinen aktiv sind. Wie viele Schüler sind in mindestens einem der beiden Vereine aktiv?
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Inklusions-Exklusions-Prinzip: $|S \cup M| = |S| + |M| - |S \cap M| = 60 + 50 - 30 = 80$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Ein PIN-Code besteht aus 4 Ziffern (0-9). Wie viele verschiedene PINs gibt es, bei denen die erste Ziffer nicht $a$ und die letzte Ziffer gerade sein darf?
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Produktregel für 4 Positionen. P1: 9 Möglichkeiten (alle außer $a$). P2: 10 Möglichkeiten. P3: 10 Möglichkeiten. P4: 5 Möglichkeiten (0,2,4,6,8). Gesamt: $9 \cdot 10 \cdot 10 \cdot 5 = 4500$.</p>
+                </details>
+            </li>
+        </ol>
+
+        <h3>1.7 Ausblick: Von Zählprinzipien zu Permutationen und Kombinationen</h3>
+        <p>Die hier besprochenen Grundregeln sind das Werkzeug, um komplexere Abzählprobleme zu lösen. Die nächsten wichtigen Konzepte der Kombinatorik, die darauf aufbauen, sind <strong>Permutationen</strong> (Anordnung von Objekten) und <strong>Kombinationen</strong> (Auswahl von Objekten).  Um deren Anzahl effizient zu berechnen, werden zwei wichtige mathematische Werkzeuge eingeführt:</p>
+        <ul>
+            <li>Die <strong>Fakultät</strong> (z.B. $n!$), um die Anzahl der Anordnungen aller Elemente einer Menge zu beschreiben. </li>
+            <li>Der <strong>Binomialkoeffizient</strong> $\binom{n}{k}$, der angibt, auf wie viele Arten man $k$ Objekte aus einer Menge von $n$ Objekten auswählen kann. </li>
+        </ul>
+        <p>Diese Konzepte werden im nächsten Kapitel detailliert behandelt.</p>
+
+    </main>
+
+    <footer>
+        <nav class="page-nav">
+            <a href="../index.html" class="disabled">← Vorheriges Kapitel</a>
+            <a href="02-kombinationen.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anwendung der Ableitungsregeln: Potenz-, Faktor-, Summen-, Produkt-, Quotienten- und Kettenregel mit Beispielen.">
+    <title>6 Technik des Differenzierens - Lernskript Mathe</title>
+    
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 6: Ableitungsregeln</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <h2 id="sec6">6 Technik des Differenzierens: Die Ableitungsregeln</h2>
+        <h3>6.1 Lernziel</h3>
+        <p>Nach dieser Lerneinheit wirst du die grundlegenden Ableitungsregeln (Potenz-, Faktor-, Summen-, Produkt-, Quotienten- und Kettenregel) sicher beherrschen. Du wirst in der Lage sein, die Ableitungen der wichtigsten Grundfunktionen zu benennen und diese Regeln zu kombinieren, um auch komplexe, zusammengesetzte Funktionen korrekt und effizient abzuleiten.</p>
+        <h3>6.2 Motivation und Kontext</h3>
+        <p>Die Ableitung über den Differentialquotienten (den Grenzwert der Sekantensteigung) herzuleiten, ist fundamental für das Verständnis, aber für die Praxis extrem aufwendig. Stell dir vor, du müsstest für jede Funktion eine komplexe Grenzwertberechnung durchführen!</p>
+        <p>Glücklicherweise haben Mathematiker diesen Prozess einmal für grundlegende Funktionsbausteine durchgeführt und daraus allgemeingültige Ableitungsregeln entwickelt. Diese Regeln sind dein Handwerkszeug. Sie erlauben es dir, die Ableitung einer fast beliebigen Funktion mechanisch zu bestimmen, indem du sie in ihre Bausteine zerlegst und die passende Regel anwendest. Das Beherrschen dieser Technik ist die Voraussetzung für alle weiterführenden Anwendungen wie die Kurvendiskussion, Optimierungsaufgaben oder die Lösung von Differentialgleichungen.</p>
+
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Übersicht aller Ableitungsregeln</h5>
+            <p>Ein umfassendes Video, das alle wichtigen Ableitungsregeln mit Beispielen vorstellt.</p>
+            <a href="http://www.youtube.com/watch?v=GtVWdeevZpw" target="_blank">MathemaTrick: ALLE Ableitungsregeln mit Beispielen – Übersicht</a>
+        </div>
+
+        <h3>6.3 Definitionen & Begriffe</h3>
+        <dl>
+            <dt>Grundableitungen</dt>
+            <dd>Die auswendig zu lernenden Ableitungen der elementaren Funktionen (z.B. von $x^n$, $e^x$, $\sin x$ etc.), die die Basis für alle weiteren Berechnungen bilden.</dd>
+            <dt>Potenzregel</dt>
+            <dd>Die Regel zur Ableitung von Potenzfunktionen der Form $f(x)=x^r$.</dd>
+            <dt>Faktor- und Summenregel</dt>
+            <dd>Regeln für Funktionen, die durch die Multiplikation mit einer Konstante oder die Addition/Subtraktion anderer Funktionen entstehen.</dd>
+            <dt>Produktregel</dt>
+            <dd>Die Regel zur Ableitung eines Produkts zweier Funktionen.</dd>
+            <dt>Quotientenregel</dt>
+            <dd>Die Regel zur Ableitung eines Bruchs zweier Funktionen.</dd>
+            <dt>Kettenregel</dt>
+            <dd>Die wichtigste und vielseitigste Regel zur Ableitung von verketteten (ineinander geschachtelten) Funktionen. Man spricht auch von der Ableitung der "äußeren Funktion mal der inneren Ableitung" (Nachdifferenzieren).</dd>
+        </dl>
+        <h3>6.4 Schritt-für-Schritt-Erklärung</h3>
+        <h4>6.4.1 Das Fundament: Grundableitungen</h4>
+        <p>Diese Ableitungen solltest du kennen. Viele andere, wie die von $\sqrt{x}$ oder $\frac{1}{x}$, lassen sich mit der Potenzregel herleiten.</p>
+        <center>
+            <table>
+                <thead>
+                    <tr><th><strong>Funktion</strong> $f(x)$</th><th><strong>Ableitung</strong> $f'(x)$</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>$c$ (Konstante)</td><td>$0$</td></tr>
+                    <tr><td>$x^r$</td><td>$r \cdot x^{r-1}$</td></tr>
+                    <tr><td>$e^x$</td><td>$e^x$</td></tr>
+                    <tr><td>$\ln x$</td><td>$\frac{1}{x}$</td></tr>
+                    <tr><td>$\sin x$</td><td>$\cos x$</td></tr>
+                    <tr><td>$\cos x$</td><td>$-\sin x$</td></tr>
+                </tbody>
+            </table>
+        </center>
+        <h4>6.4.2 Die Basis-Regeln</h4>
+        <p>Für eine Funktion $f(x) = c \cdot u(x) \pm d \cdot v(x)$:</p>
+        <ul>
+            <li><strong>Faktorregel:</strong> $(c \cdot u(x))' = c \cdot u'(x)$. Ein konstanter Faktor bleibt beim Ableiten einfach erhalten.</li>
+            <li><strong>Summenregel:</strong> $(u(x) \pm v(x))' = u'(x) \pm v'(x)$. Summanden werden einzeln abgeleitet und die Ergebnisse addiert/subtrahiert.</li>
+        </ul>
+        <h4>6.4.3 Die Regeln für verknüpfte Funktionen</h4>
+        <ul>
+            <li><strong>Produktregel:</strong> Für $f(x) = u(x) \cdot v(x)$ gilt: $f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$.
+                <div class="info-box warning">
+                    <h5>Häufiger Fehler</h5>
+                    <p>Die Ableitung eines Produkts ist <strong>NICHT</strong> das Produkt der Ableitungen! $(u \cdot v)' \neq u' \cdot v'$. Das ist einer der häufigsten Fehler in Klausuren.</p>
+                </div>
+            </li>
+            <li><strong>Quotientenregel:</strong> Für $f(x) = \frac{u(x)}{v(x)}$ gilt: $f'(x) = \frac{u'(x) \cdot v(x) - u(x) \cdot v'(x)}{[v(x)]^2}$.
+                <div class="info-box tip">
+                    <h5>Eselsbrücke für die Quotientenregel</h5>
+                    <p>Ein Spruch zum Merken: "N A Z minus Z A N durch N N"
+                    <br>(<strong>N</strong>enner mal <strong>A</strong>bleitung <strong>Z</strong>ähler <strong>minus</strong> <strong>Z</strong>ähler mal <strong>A</strong>bleitung <strong>N</strong>enner, durch <strong>N</strong>enner mal <strong>N</strong>enner).</p>
+                    <p>Achte auf das Minuszeichen im Zähler – das ist die zweite häufige Fehlerquelle!</p>
+                </div>
+            </li>
+            <li><strong>Kettenregel:</strong> Für eine verkettete Funktion $f(x) = v(u(x))$ gilt: $f'(x) = v'(u(x)) \cdot u'(x)$.
+                <div class="info-box key-concept">
+                    <h5>Kernaussage: Die Kettenregel ist die wichtigste Regel!</h5>
+                    <p>Die Kettenregel ist die mächtigste und am häufigsten benötigte Regel. Fast jede interessante Funktion ist eine Verkettung.</p>
+                    <p>Stell es dir wie eine Zwiebel vor: Du leitest von außen nach innen ab. Zuerst die äußerste Schale (äußere Funktion), dann multiplizierst du es mit der Ableitung der nächsten Schale (innere Funktion), und so weiter. Diesen zweiten Faktor nennt man "nachdifferenzieren". Ihn zu vergessen ist ein klassischer Fehler.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Produkt-, Quotienten- & Kettenregel</h5>
+            <p>Eine gute Zusammenfassung der drei wichtigsten Regeln für verknüpfte Funktionen.</p>
+            <a href="http://www.youtube.com/watch?v=47bKq2lXGs8" target="_blank">Mathe - simpleclub: Produkt-, Quotienten- und Kettenregel</a>
+        </div>
+
+        <h3>6.5 Beispielaufgaben</h3>
+        <h4>6.5.1 Beispiel 1: Produkt- und Potenzregel</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Leiten Sie $f(x) = x^2 \cdot e^x$ ab.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Analyse:</strong> Die Funktion ist ein Produkt aus $u(x) = x^2$ und $v(x) = e^x$. Wir benötigen die Produktregel.</li>
+                    <li><strong>Teile ableiten:</strong> $u'(x) = 2x$ (Potenzregel). $v'(x) = e^x$ (Grundableitung).</li>
+                    <li><strong>Regel anwenden:</strong> $f'(x) = u'(x)v(x) + u(x)v'(x)$ $$ f'(x) = (2x) \cdot (e^x) + (x^2) \cdot (e^x) $$</li>
+                    <li><strong>Vereinfachen:</strong> $f'(x) = e^x (2x + x^2)$.</li>
+                </ol>
+            </li>
+        </ul>
+        <h4>6.5.2 Beispiel 2: Ketten- und Quotientenregel</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Leiten Sie $f(x) = \frac{1}{(1+3x)^2}$ ab.</li>
+            <li><strong>Lösung (mit Kettenregel):</strong>
+                <ol>
+                    <li><strong>Analyse:</strong> Wir schreiben die Funktion als Potenz: $f(x) = (1+3x)^{-2}$. Dies ist eine verkettete Funktion.</li>
+                    <li><strong>Zerlegung:</strong> Äußere Funktion $v(u) = u^{-2}$. Innere Funktion $u(x) = 1+3x$.</li>
+                    <li><strong>Teile ableiten:</strong> $v'(u) = -2u^{-3}$. $u'(x) = 3$.</li>
+                    <li><strong>Regel anwenden:</strong> $f'(x) = v'(u(x)) \cdot u'(x)$ $$ f'(x) = -2(1+3x)^{-3} \cdot 3 = -6(1+3x)^{-3} = \frac{-6}{(1+3x)^3} $$</li>
+                    <li><strong>Kontrolle (mit Quotientenregel):</strong> $u(x)=1 \Rightarrow u'(x)=0$. $v(x)=(1+3x)^2 \Rightarrow v'(x)=2(1+3x)\cdot 3 = 6(1+3x)$. $$ f'(x) = \frac{0 \cdot (1+3x)^2 - 1 \cdot 6(1+3x)}{((1+3x)^2)^2} = \frac{-6(1+3x)}{(1+3x)^4} = \frac{-6}{(1+3x)^3} $$ Beide Wege führen zum selben Ergebnis.</li>
+                </ol>
+            </li>
+        </ul>
+        <h3>6.6 Übungsaufgaben</h3>
+        <ol>
+            <li><strong>(Einfach)</strong> Leiten Sie ab: $f(x)=\frac{x^{5}}{2}-\frac{2}{x^{5}}+\frac{5}{x}-\frac{x}{5}+\frac{5}{\sqrt{x}}$
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>1. <strong>Umschreiben als Potenzen:</strong> $f(x) = \frac{1}{2}x^5 - 2x^{-5} + 5x^{-1} - \frac{1}{5}x^1 + 5x^{-1/2}$.<br>
+                    2. <strong>Potenz- und Summenregel anwenden:</strong><br>
+                    $f'(x) = \frac{1}{2}(5x^4) - 2(-5x^{-6}) + 5(-1x^{-2}) - \frac{1}{5}(1) + 5(-\frac{1}{2}x^{-3/2})$<br>
+                    3. <strong>Vereinfachen:</strong> $f'(x) = \frac{5}{2}x^4 + 10x^{-6} - 5x^{-2} - \frac{1}{5} - \frac{5}{2}x^{-3/2}$.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Leiten Sie ab: $f(x)=\sqrt{x^{3}+3x^{2}+2}$
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Kettenregel. Äußere Funktion: $\sqrt{u}$, innere Funktion: $u=x^3+3x^2+2$.<br>
+                    $f'(x) = \frac{1}{2\sqrt{x^3+3x^2+2}} \cdot (3x^2+6x) = \frac{3x^2+6x}{2\sqrt{x^3+3x^2+2}}$.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Leiten Sie ab: $f(x)=\frac{\ln(1-x)}{x^{3}}$
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Quotientenregel. $u = \ln(1-x)$, $v = x^3$.<br>
+                    $u' = \frac{1}{1-x} \cdot (-1) = \frac{-1}{1-x}$. $v' = 3x^2$.<br>
+                    $f'(x) = \frac{u'v - uv'}{v^2} = \frac{(\frac{-1}{1-x}) \cdot x^3 - \ln(1-x) \cdot 3x^2}{(x^3)^2} = \frac{\frac{-x^3}{1-x} - 3x^2\ln(1-x)}{x^6}$.<br>
+                    Vereinfacht (durch $x^2$ kürzen): $f'(x) = \frac{\frac{-x}{1-x} - 3\ln(1-x)}{x^4}$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Leiten Sie ab: $f(x)=2\cos^{3}(x^{4}+5)$
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Mehrfache Kettenregel. Von außen nach innen:<br>
+                    1. Äußere Funktion: $2u^3 \rightarrow 6u^2$.<br>
+                    2. Mittlere Funktion: $\cos(v) \rightarrow -\sin(v)$.<br>
+                    3. Innere Funktion: $v = x^4+5 \rightarrow 4x^3$.<br>
+                    $f'(x) = \underbrace{6\cos^2(x^4+5)}_{\text{äußere Abl.}} \cdot \underbrace{(-\sin(x^4+5))}_{\text{mittlere Abl.}} \cdot \underbrace{(4x^3)}_{\text{innere Abl.}}$<br>
+                    $f'(x) = -24x^3 \sin(x^4+5) \cos^2(x^4+5)$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Leiten Sie ab: $f(x)=e^{2^{x^{2}}}$
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Mehrfache Kettenregel. Von außen nach innen:<br>
+                    1. Äußere Funktion: $e^u \rightarrow e^u$.<br>
+                    2. Mittlere Funktion: $2^v \rightarrow 2^v \ln(2)$.<br>
+                    3. Innere Funktion: $v = x^2 \rightarrow 2x$.<br>
+                    $f'(x) = \underbrace{e^{2^{x^2}}}_{\text{äußere Abl.}} \cdot \underbrace{(2^{x^2}\ln(2))}_{\text{mittlere Abl.}} \cdot \underbrace{(2x)}_{\text{innere Abl.}}$<br>
+                    $f'(x) = 2x \ln(2) \cdot 2^{x^2} \cdot e^{2^{x^2}}$.</p>
+                </details>
+            </li>
+        </ol>
+        <div class="spickzettel-box">
+            <h3>Zusammenfassung: Die Ableitungsregeln</h3>
+            <table>
+                <thead>
+                    <tr><th><strong>Regel</strong></th><th><strong>Formel</strong></th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Potenzregel</strong></td><td>$(x^r)' = r \cdot x^{r-1}$</td></tr>
+                    <tr><td><strong>Faktorregel</strong></td><td>$(c \cdot u)' = c \cdot u'$</td></tr>
+                    <tr><td><strong>Summenregel</strong></td><td>$(u \pm v)' = u' \pm v'$</td></tr>
+                    <tr><td><strong>Produktregel</strong></td><td>$(u \cdot v)' = u'v + uv'$</td></tr>
+                    <tr><td><strong>Quotientenregel</strong></td><td>$\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$</td></tr>
+                    <tr><td><strong>Kettenregel</strong></td><td>$(v(u(x)))' = v'(u(x)) \cdot u'(x)$</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+    
+    <footer>
+        <nav class="page-nav">
+            <a href="05-ableitung-einfuehrung.html">← Vorheriges Kapitel</a>
+            <a href="07-partielle-ableitungen.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anwendungen der Differentialrechnung: Vollständige Kurvendiskussion, Monotonie, Krümmung, Extremwerte, Wendepunkte und Optimierungsaufgaben.">
+    <title>9 Anwendungen der Differentialrechnung - Lernskript Mathe</title>
+    
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 9: Anwendungen Diff.</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+
+        <h2 id="sec9">9 Anwendungen der Differentialrechnung: Kurvendiskussion und Optimierung</h2>
+        <h3>9.1 Lernziel</h3>
+        <p>Nach dieser Lerneinheit wirst du die Ableitungen einer Funktion nutzen können, um deren Verhalten vollständig zu analysieren. Du wirst in der Lage sein, Monotonie- und Krümmungsintervalle zu bestimmen, lokale Extremwerte (Maxima, Minima) und Wendepunkte zu berechnen und eine vollständige Kurvendiskussion durchzuführen. Darüber hinaus wirst du diese Kenntnisse anwenden, um praktische Optimierungsaufgaben zu lösen.</p>
+        <h3>9.2 Motivation und Kontext</h3>
+        <p>Die Ableitung einer Funktion gibt uns deren lokale Steigung. Diese eine Information ist der Schlüssel, um den kompletten Charakter einer Funktion zu entschlüsseln.</p>
+        <ul>
+            <li><strong>Verlauf analysieren:</strong> Ist unser Unternehmensgewinn im Moment steigend oder fallend ($f'>0$ oder $f'<0$)? Nimmt das Wachstum zu oder ab (Analyse der Krümmung mit $f''$)? Die Ableitungen erlauben uns, Funktionsverläufe exakt zu verstehen, ohne unzählige Punkte zeichnen zu müssen.</li>
+            <li><strong>Optimierung:</strong> Dies ist eine der wichtigsten Anwendungen der Mathematik. Bei welchem Preis ist der Gewinn maximal? Welche Abmessungen einer Verpackung minimieren den Materialverbrauch bei gegebenem Volumen? All diese Fragen führen auf die Suche nach Extremwerten, deren zentrales Kriterium $f'(x)=0$ ist.</li>
+            <li><strong>Grenzwerte berechnen:</strong> Selbst für die Berechnung von <a href="04-grenzwerte.html#sec4">Grenzwerten</a>, die auf unbestimmte Ausdrücke wie $\frac{0}{0}$ oder $\frac{\infty}{\infty}$ führen, liefert die Ableitung mit der Regel von de l'Hospital ein mächtiges Werkzeug.</li>
+        </ul>
+        <h3>9.3 Definitionen & Begriffe</h3>
+        <dl>
+            <dt>Monotonie</dt>
+            <dd>Gibt an, ob ein Funktionsgraph steigt oder fällt. Der Zusammenhang zur ersten Ableitung $f'$ ist zentral:
+                <ul>
+                    <li>$f'(x) > 0$ auf einem Intervall $I \implies f$ ist auf $I$ streng monoton wachsend.</li>
+                    <li>$f'(x) < 0$ auf einem Intervall $I \implies f$ ist auf $I$ streng monoton fallend.</li>
+                </ul>
+            </dd>
+            <dt>Lokales Extremum (Maximum/Minimum)</dt>
+            <dd>Ein "Gipfel" oder eine "Talsohle" des Graphen.
+                <ul>
+                    <li><strong>Notwendige Bedingung:</strong> An einer Extremstelle $x_0$ muss die Tangente waagerecht sein, also $f'(x_0) = 0$.</li>
+                    <li><strong>Hinreichende Bedingung:</strong> Gilt zusätzlich $f''(x_0) < 0$, ist es ein lokales Maximum. Gilt $f''(x_0) > 0$, ist es ein lokales Minimum.</li>
+                </ul>
+            </dd>
+            <dt>Krümmungsverhalten</dt>
+            <dd>Beschreibt, ob ein Graph links- oder rechtsgekrümmt ist. Dies wird durch die zweite Ableitung $f''$ bestimmt:
+                <ul>
+                    <li>$f''(x) > 0$ auf $I \implies f$ ist auf $I$ <strong>konvex</strong> (Linkskurve, wie eine lächelnde Mundöffnung).</li>
+                    <li>$f''(x) < 0$ auf $I \implies f$ ist auf $I$ <strong>konkav</strong> (Rechtskurve, wie eine traurige Mundöffnung).</li>
+                </ul>
+            </dd>
+            <dt>Wendepunkt</dt>
+            <dd>Ein Punkt, an dem sich das Krümmungsverhalten ändert (von konvex zu konkav oder umgekehrt).
+                <ul>
+                    <li><strong>Notwendige Bedingung:</strong> An einem Wendepunkt $x_w$ muss gelten: $f''(x_w) = 0$.</li>
+                    <li><strong>Hinreichende Bedingung:</strong> Gilt zusätzlich $f'''(x_w) \neq 0$, liegt tatsächlich ein Wendepunkt vor.</li>
+                </ul>
+            </dd>
+        </dl>
+
+        <div class="info-box key-concept">
+            <h5>Kernaussage: Die Hierarchie der Ableitungen</h5>
+            <p>Die Beziehungen zwischen Funktion und ihren Ableitungen folgen immer demselben Muster:</p>
+            <p>$f''(x)$ beschreibt die <strong>Steigung</strong> von $f'(x)$.<br>
+            $f'(x)$ beschreibt die <strong>Steigung</strong> von $f(x)$.</p>
+            <p>Ein Maximum von $f(x)$ (Steigung 0) bedeutet also eine Nullstelle bei $f'(x)$. Ein Wendepunkt bei $f(x)$ (Punkt der stärksten/schwächsten Steigung) bedeutet ein Extremum bei $f'(x)$ und somit eine Nullstelle bei $f''(x)$.</p>
+        </div>
+
+        <h3>9.4 Schritt-für-Schritt-Erklärung: Die Kurvendiskussion</h3>
+        <p>Eine vollständige Analyse einer Funktion $f(x)$ erfolgt systematisch:</p>
+        <ol>
+            <li><strong>Ableitungen bilden:</strong> Berechne die ersten drei Ableitungen: $f'(x)$, $f''(x)$ und $f'''(x)$.</li>
+            <li><strong>Definitionsbereich und Nullstellen:</strong> Bestimme den Definitionsbereich $D$ und löse $f(x)=0$, um die Schnittpunkte mit der x-Achse zu finden.</li>
+            <li><strong>Extrema finden:</strong> Löse $f'(x)=0$, um die Kandidaten $x_E$ für Extremstellen zu finden. Setze jeden Kandidaten in $f''(x)$ ein, um ihn als Maximum ($f''(x_E)<0$), Minimum ($f''(x_E)>0$) oder unentschieden ($f''(x_E)=0$) zu klassifizieren. Berechne die y-Werte $f(x_E)$.</li>
+            <li><strong>Wendepunkte finden:</strong> Löse $f''(x)=0$, um die Kandidaten $x_W$ für Wendestellen zu finden. Setze jeden Kandidaten in $f'''(x)$ ein, um ihn zu bestätigen ($f'''(x_W) \neq 0$). Berechne die y-Werte $f(x_W)$.</li>
+            <li><strong>Verhalten analysieren:</strong> Bestimme die Intervalle für Monotonie und Krümmung, indem du die Vorzeichen von $f'(x)$ und $f''(x)$ zwischen den gefundenen Extrem- und Wendestellen analysierst.</li>
+            <li><strong>Grenzverhalten:</strong> Untersuche $\lim_{x \to \pm\infty} f(x)$ und das Verhalten an Polstellen.</li>
+            <li><strong>Graph skizzieren:</strong> Zeichne alle gefundenen Punkte (Nullstellen, Extrema, Wendepunkte) in ein Koordinatensystem und verbinde sie unter Berücksichtigung des Monotonie- und Krümmungsverhaltens.</li>
+        </ol>
+
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Vollständige Kurvendiskussion</h5>
+            <p>Dieses Video führt Schritt für Schritt durch eine komplette Kurvendiskussion einer ganzrationalen Funktion.</p>
+            <a href="http://www.youtube.com/watch?v=0F0CeyAbpmA" target="_blank">MathemaTrick: Vollständige KURVENDISKUSSION ganzrationale Funktion</a>
+        </div>
+        
+        <div class="info-box tip">
+            <h5>Praxis-Tipp: Rezept für Optimierungsaufgaben</h5>
+            <p>Textaufgaben zur Optimierung (Minimierung/Maximierung) folgen fast immer diesem Schema:</p>
+            <ol>
+                <li><strong>Hauptbedingung (HB):</strong> Was soll optimiert werden? Formuliere dies als Funktion mit mehreren Variablen. Z.B. Oberfläche $O(r,h)$.</li>
+                <li><strong>Nebenbedingung(en) (NB):</strong> Welche festen Vorgaben gibt es? Formuliere dies als Gleichung. Z.B. Volumen $V=1000$.</li>
+                <li><strong>Zielfunktion erstellen:</strong> Löse die NB nach einer Variablen auf und setze sie in die HB ein. Übrig bleibt eine Funktion mit nur noch einer Variable. Z.B. $O(r)$.</li>
+                <li><strong>Extremum suchen:</strong> Leite die Zielfunktion ab, setze sie gleich null und löse nach der verbliebenen Variable auf. Prüfe mit der zweiten Ableitung, ob es ein Minimum oder Maximum ist.</li>
+            </ol>
+             <div class="info-box video-box" style="margin-top: 15px;">
+                <h5>Erklärendes Video: Optimierungsaufgaben</h5>
+                <p>Hier wird das Vorgehen bei klassischen Extremwertaufgaben (Optimierung) erklärt.</p>
+                <a href="http://www.youtube.com/watch?v=9V3H3ha-Cxo" target="_blank">Mathe by Daniel Jung: Extremwertproblem, Ablauf, Optimierungsaufgabe</a>
+            </div>
+        </div>
+
+        <h3>9.5 Beispielaufgaben</h3>
+        <h4>9.5.1 Beispiel 1: Kurvendiskussion</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Führen Sie eine Kurvendiskussion für $f(x) = x^3 - 6x^2 + 9x + 1$ durch.</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Ableitungen:</strong> $f'(x)=3x^2-12x+9$, $f''(x)=6x-12$, $f'''(x)=6$.</li>
+                    <li><strong>Extrema:</strong> $f'(x) = 3(x^2-4x+3) = 3(x-1)(x-3) = 0$. Kandidaten sind $x_1=1, x_2=3$.
+                        <ul>
+                            <li>$f''(1) = 6(1)-12 = -6 < 0 \implies$ Lokales Maximum bei $(1, f(1))=(1,5)$.</li>
+                            <li>$f''(3) = 6(3)-12 = 6 > 0 \implies$ Lokales Minimum bei $(3, f(3))=(3,1)$.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Wendepunkte:</strong> $f''(x) = 6x-12 = 0 \implies x_W=2$.
+                        <ul>
+                            <li>$f'''(2)=6 \neq 0 \implies$ Wendepunkt bei $(2, f(2))=(2,3)$.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Verhalten:</strong> Die Funktion ist monoton steigend für $x<1$ und $x>3$, fallend für $1<x<3$. Sie ist konkav für $x<2$ und konvex für $x>2$.</li>
+                </ol>
+            </li>
+        </ul>
+        <h4>9.5.2 Beispiel 2: Optimierungsaufgabe</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Welche minimale Oberfläche (Materialverbrauch) hat eine zylindrische Dose mit Volumen $V = 1000 \cdot a \text{ cm}^3$?</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Hauptbedingung (zu minimieren):</strong> Die Oberfläche $O(r,h) = 2\pi r^2 + 2\pi rh$.</li>
+                    <li><strong>Nebenbedingung (gegeben):</strong> Das Volumen $V = \pi r^2 h = 1000a$.</li>
+                    <li><strong>Zielfunktion aufstellen:</strong> Löse die Nebenbedingung nach einer Variablen auf, z.B. $h = \frac{1000a}{\pi r^2}$, und setze sie in die Hauptbedingung ein. $$ O(r) = 2\pi r^2 + 2\pi r \left(\frac{1000a}{\pi r^2}\right) = 2\pi r^2 + \frac{2000a}{r} $$</li>
+                    <li><strong>Extremum finden:</strong> Leite nach $r$ ab und setze gleich null. $$ O'(r) = 4\pi r - \frac{2000a}{r^2} = 0 \implies 4\pi r^3 = 2000a \implies r = \sqrt[3]{\frac{500a}{\pi}} $$ Eine Prüfung mit der zweiten Ableitung bestätigt, dass dies ein Minimum ist.</li>
+                    <li><strong>Antwort:</strong> Mit dem gefundenen Radius $r$ kann nun die Höhe $h$ und die minimale Oberfläche berechnet werden.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>9.6 Übungsaufgaben</h3>
+        <div class="info-box key-concept">
+            <h5>Kernaussage: Globale Extrema in einem Intervall [a, b] finden</h5>
+            <p>Um den absolut größten und kleinsten Wert einer stetigen Funktion in einem abgeschlossenen Intervall $[a, b]$ zu finden, gehe wie folgt vor:</p>
+            <ol>
+                <li>Finde alle kritischen Punkte (wo $f'(x)=0$ ist) <strong>innerhalb</strong> des Intervalls $(a,b)$.</li>
+                <li>Erstelle eine Liste von Kandidaten: die kritischen Punkte aus Schritt 1 und die beiden <strong>Ränder des Intervalls</strong>, $a$ und $b$.</li>
+                <li>Setze alle Kandidaten in die Originalfunktion $f(x)$ ein.</li>
+                <li>Der größte Funktionswert ist das globale Maximum, der kleinste das globale Minimum im Intervall.</li>
+            </ol>
+        </div>
+        <ol>
+            <li><strong>(Einfach)</strong> Bestimmen Sie die Intervalle, in denen $f(x) = xe^{-x}$ monoton wachsend bzw. fallend ist.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>1. <strong>Ableiten:</strong> $f'(x) = 1 \cdot e^{-x} + x \cdot e^{-x}(-1) = e^{-x}(1-x)$.<br>
+                    2. <strong>Nullstellen der Ableitung:</strong> $e^{-x}$ ist immer $>0$, also wird $f'(x)=0$ nur wenn $1-x=0 \implies x=1$.<br>
+                    3. <strong>Vorzeichen analysieren:</strong><br>
+                    - Für $x<1$: $(1-x)$ ist positiv $\implies f'(x)>0 \implies$ streng monoton wachsend auf $(-\infty, 1)$.<br>
+                    - Für $x>1$: $(1-x)$ ist negativ $\implies f'(x)<0 \implies$ streng monoton fallend auf $(1, \infty)$.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Bestimmen Sie alle lokalen Extremwerte und Wendepunkte von $f(x)=-x^{4}+2x^{3}-1$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>
+                    $f'(x) = -4x^3+6x^2 = -2x^2(2x-3)$. $f'(x)=0 \implies x=0, x=3/2$.<br>
+                    $f''(x) = -12x^2+12x = -12x(x-1)$. $f''(x)=0 \implies x=0, x=1$.<br>
+                    $f'''(x) = -24x+12$.<br>
+                    <strong>Extrema:</strong><br>
+                    - $x=3/2$: $f''(3/2)=-12(3/2)(3/2-1)=-9 < 0 \implies$ Lokales Maximum.<br>
+                    - $x=0$: $f''(0)=0$. VZW-Kriterium für $f'$: $f'(-0.1)>0$, $f'(0.1)>0$. Kein VZW $\implies$ Terrassenpunkt (Sattelpunkt).<br>
+                    <strong>Wendepunkte:</strong><br>
+                    - $x=0$: $f'''(0)=12\neq 0 \implies$ Wendepunkt.<br>
+                    - $x=1$: $f'''(1)=-12\neq 0 \implies$ Wendepunkt.</p>
+                </details>
+            </li>
+            <li><strong>(Mittel)</strong> Wenden Sie die Regel von de l'Hospital an, um $\lim_{x\to\infty} \frac{\ln x}{x}$ zu berechnen.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Der Grenzwert ist von der Form $\frac{\infty}{\infty}$, also ist de l'Hospital anwendbar.<br>
+                    $\lim_{x\to\infty} \frac{(\ln x)'}{(x)'} = \lim_{x\to\infty} \frac{1/x}{1} = \lim_{x\to\infty} \frac{1}{x} = 0$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Eine Firma stellt Kuckucksuhren her. Bei einem Preis von 200€ werden 400 Stück verkauft. Jede Preisreduktion um 1€ steigert den Absatz um 5 Stück. Bei welchem Preis wird der Umsatz maximiert?
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Sei $x$ die Anzahl der 1€-Preisreduktionen.<br>
+                    Preis: $P(x) = 200 - x$.<br>
+                    Menge: $M(x) = 400 + 5x$.<br>
+                    Umsatz: $U(x) = P(x) \cdot M(x) = (200-x)(400+5x) = 80000 + 600x - 5x^2$.<br>
+                    Maximum finden: $U'(x) = 600 - 10x = 0 \implies x=60$.<br>
+                    $U''(x)=-10 < 0$, also ein Maximum.<br>
+                    Optimaler Preis: $P(60) = 200 - 60 = 140€$.</p>
+                </details>
+            </li>
+            <li><strong>(Schwer)</strong> Bestimmen Sie das globale Maximum und Minimum von $f(x)=xe^{-x}$ im Intervall $[0, 8]$.
+                <details>
+                    <summary>Lösung anzeigen</summary>
+                    <p>Kandidaten für globale Extrema sind die lokalen Extrema im Intervall und die Ränder des Intervalls.<br>
+                    1. <strong>Lokale Extrema:</strong> Aus Aufgabe 1 wissen wir, es gibt ein lokales Maximum bei $x=1$. $f(1) = 1 \cdot e^{-1} \approx 0.368$.<br>
+                    2. <strong>Ränder prüfen:</strong><br>
+                    - $f(0) = 0 \cdot e^0 = 0$.<br>
+                    - $f(8) = 8 \cdot e^{-8} \approx 0.0027$.<br>
+                    3. <strong>Werte vergleichen:</strong> Die Kandidatenwerte sind $0.368$, $0$ und $0.0027$.<br>
+                    - Das <strong>globale Maximum</strong> ist $1/e \approx 0.368$ an der Stelle $x=1$.<br>
+                    - Das <strong>globale Minimum</strong> ist $0$ an der Stelle $x=0$.</p>
+                </details>
+            </li>
+        </ol>
+
+    </main>
+
+    <footer>
+        <nav class="page-nav">
+            <a href="08-extremwerte-mehrere-var.html">← Vorheriges Kapitel</a>
+            <a href="10-integralrechnung.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>

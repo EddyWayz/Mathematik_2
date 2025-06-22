@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Klausurvorbereitung mit Aufgaben im Klausurstil zu allen Themen des Skripts, inklusive Kombinatorik, Analysis und Reihen.">
+    <title>15 Klausurvorbereitung - Lernskript Mathe</title>
+
+    <script>
+      MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Kapitel 15: Klausurvorbereitung</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+
+        <h2 id="sec15">15 Klausurvorbereitung: Aufgaben im Klausurstil</h2>
+
+        <div class="info-box tip">
+            <h5>Praxis-Tipp: Strategien für eine erfolgreiche Klausurvorbereitung</h5>
+            <ul>
+                <li><strong>Altklausuren lösen:</strong> Das ist die beste Vorbereitung. Löse so viele alte Klausuren wie möglich unter realistischen Zeitbedingungen.</li>
+                <li><strong>Konzepte erklären:</strong> Versuche, einem Freund (oder einer Gummiente) ein Konzept zu erklären. Wenn du es einfach erklären kannst, hast du es wirklich verstanden.</li>
+                <li><strong>Lücken identifizieren:</strong> Markiere beim Lernen die Themen, bei denen du unsicher bist. Gehe diese gezielt noch einmal durch. Es ist besser, Schwächen zu beheben, als Stärken weiter zu stärken.</li>
+                <li><strong>Formeln verstehen, nicht nur auswendig lernen:</strong> Verstehe, woher eine Formel kommt und was sie bedeutet. Das hilft enorm, wenn eine Aufgabe leicht abgewandelt wird.</li>
+                <li><strong>Sauber arbeiten:</strong> In der Klausur zählt der Lösungsweg. Eine saubere, nachvollziehbare Schreibweise verhindert Flüchtigkeitsfehler und sichert dir Teilpunkte, auch wenn das Endergebnis nicht stimmt.</li>
+            </ul>
+        </div>
+        
+        <div class="info-box video-box">
+            <h5>Erklärendes Video: Vorbereitung auf die Analysis-Klausur</h5>
+            <p>Ein Video, das typische Aufgaben und Lösungsstrategien für eine Analysis-Klausur bespricht.</p>
+            <a href="http://www.youtube.com/watch?v=m0VzWwBgQ3E" target="_blank">Mathe by Daniel Jung: Analysis 2 in Kürze, Anfänge</a>
+        </div>
+
+        <h3>15.1 Hinweise zur Klausur</h3>
+        <p>Die folgenden Punkte sind typische Vorgaben und Hinweise für die Bearbeitung der Klausur in Mathematik 2.</p>
+        <ol>
+            <li>Die Klausur darf nur in prüfungsfähigem Zustand angetreten werden.</li>
+            <li>Schreiben Sie auf den Aufgabensatz sowie auf alle Ihre Lösungsblätter Ihren Namen, Matrikelnummer und Studiengang. Der komplette Aufgabensatz ist mit allen Lösungsblättern abzugeben.</li>
+            <li>Prüfen Sie zu Beginn den Aufgabensatz auf Vollständigkeit.</li>
+            <li>Verwenden Sie für Ihre Lösungen die Ihnen ausgeteilten Lösungsblätter oder den Aufgabenbogen. Lösungen auf selbst mitgebrachten Blättern werden nicht gewertet.</li>
+            <li>Beschriften Sie Ihre Lösungen mit der zugehörigen Aufgabe.</li>
+            <li>Schreiben Sie deutlich lesbar mit Kugelschreiber oder Füller und nicht in Rot. Mit Bleistift geschriebene oder unleserliche Antworten werden nicht gewertet.</li>
+            <li>Erlaubte Hilfsmittel sind ein nicht-programmierbarer und nicht-grafikfähiger Taschenrechner, die Skript-Formelsammlung sowie eine genehmigte Standard-Formelsammlung in Print-Form, alles ohne eigene Ergänzungen. Internet-Nutzung ist nicht erlaubt.</li>
+            <li>Die Lösungswege müssen mit Zwischenrechnungen deutlich und lesbar dargestellt werden. Ergebnisse ohne klar erkennbare Lösungswege werden nicht gewertet. Der Taschenrechner darf nur zur Berechnung von Werten der Grundfunktionen verwendet werden; das Lösen von Gleichungen mit dem Taschenrechner ist in den Lösungswegen nicht zulässig.</li>
+            <li>Sofern nicht anders gefordert, rechnen Sie exakt oder dezimal gerundet auf 2 Nachkommastellen. Bruchzahlen können stehen gelassen werden.</li>
+            <li>Ein Täuschungsversuch führt zum Nicht-Bestehen der Klausur.</li>
+            <li>Die Bearbeitungszeit beträgt 90 Minuten.</li>
+        </ol>
+        
+        <h3>15.2 Aufgabenbeispiele</h3>
+        <h4>15.2.1 Beispiel 1</h4>
+        <h5>Aufgabe 1.1 (30P) Grundlagen Analysis in einer Variablen</h5>
+        <ul>
+            <li><strong>a)</strong> (6 P) Die zulässigen Zeichen eines Passwortes seien Groß-, Kleinbuchstaben (ohne Umlaute) und die Ziffern 0...9. Bitte (nur) die Berechnungsformeln aufstellen: Wie viele 12-stellige Passwörter gibt es...
+                <ol>
+                    <li>..., die mit A beginnen oder mit 9 enden?</li>
+                    <li>... mit genau den 12 Zeichen Ym0r3B5aAg9c, deren Reihenfolge beliebig vertauscht werden darf?</li>
+                    <li>... mit genau 4 Ziffern und 8 Groß-/Kleinbuchstaben?</li>
+                </ol>
+            </li>
+            <li><strong>b)</strong> (10+4 P) Berechnen Sie den Grenzwert bzw. begründen Sie ggf. die Divergenz:
+                <ol>
+                    <li>$ \lim_{x\to 0} \frac{\sin(2x)-2x}{x\sin(2x)} $</li>
+                    <li>... der Folge $ a_n = \frac{(-1)^n(7-4n^2-6n^3)}{1-n^2+\sqrt{n}} $</li>
+                </ol>
+            </li>
+            <li><strong>c)</strong> (10 P) Integration durch explizite Substitution der Funktion im Nenner (keine Integraltafel): $$ \int \frac{1}{3+\sqrt{x}} dx $$</li>
+        </ul>
+        <h5>Aufgabe 1.2 (27P) Differentialrechnung in mehreren Variablen</h5>
+        <ul>
+            <li><strong>a)</strong> (12 P) Berechnen Sie den Gradienten der Funktion $ f(x,y) = \sin(x \cdot y) \cdot \cos(x \cdot y) $. Fassen Sie die entstehenden Terme so weit wie möglich zusammen. Bestimmen Sie zusätzlich die Richtung der maximalen Steigung an der Stelle (1, $\pi$).</li>
+            <li><strong>b)</strong> (15 P) Finden Sie die lokalen Extrema der Funktion f und entscheiden Sie, ob ein Minimum oder Maximum vorliegt. $$ f(x,y) = -5x + 5\frac{x^2}{y} + \frac{1}{4}y^5 $$</li>
+        </ul>
+        <h5>Aufgabe 1.3 (19P) Reihen und Potenzreihen, Taylorpolynome</h5>
+        <ul>
+            <li><strong>a)</strong> (11 P) Berechnen Sie die Stammfunktion des Integranden näherungsweise durch Integrieren von dessen Taylorpolynom vom Grad 4 und werten Sie danach den Integralwert damit aus. $$ I = \int_{0}^{0,1} \frac{e^{x^2}-1}{x^2} dx $$</li>
+            <li><strong>b)</strong> (8 P) Leiten Sie das Taylorpolynom 2. Grades von $ f(x) = \frac{1}{\sqrt{2x+1}} $ um den Entwicklungspunkt $ x_0 = 3 $ durch explizite Berechnung der Taylorkoeffizienten her. Inwiefern ist dieses das beste Polynom 2. Grades zu f?</li>
+        </ul>
+        <h5>Aufgabe 1.4 (14P) Fourierreihen</h5>
+        <div class="image-placeholder">
+            <p>(Hier wäre die Skizze des periodischen Signals aus der Originalklausur. Annahme für die Aufgabe: Ein Sägezahnsignal, das auf $[-\pi, \pi)$ durch $f(x)=x/2$ definiert ist und die Periode $T=2\pi$ hat.)</p>
+        </div>
+        <p>Stellen Sie für den im Originaldokument skizzierten Verlauf eines periodischen Signals eine Funktionsvorschrift auf. Von den zugehörigen Fourierkoeffizienten ist bekannt: $$ a_n = \frac{(-1)^n - 1}{n^2\pi^2}, \quad b_n = \frac{(-1)^{n+1}}{n\pi} \quad (n \ge 1) $$ Leiten Sie $a_0$ und $a_n$ (n $\ge$ 1) her. Geben Sie das Fourierpolynom $F_m(x)$ für $m=2$ explizit an. Inwiefern ist $F_2$ bzgl. des Ausdrucks $\frac{2}{T}\int_{T} (f(x)-F_m(x))^2 dx$ bestmöglich und was kann man sich anschaulich darunter vorstellen?</p>
+        
+        <h4>15.2.2 Beispiel 2</h4>
+        <h4>15.2.3 Ergänzung: Aufgaben zur Modulorechnung</h4>
+        <h3>15.3 Kurzlösungen zu den Aufgabenbeispielen</h3>
+        <div class="info-box tip">
+            <p>Klappe die Lösungen nur für die Aufgaben auf, die du bereits bearbeitet hast, um Spoilereffekte zu vermeiden.</p>
+        </div>
+        
+        <details>
+            <summary>Lösungen zu Beispiel 1</summary>
+            <ul>
+                <li><details><summary><strong>Aufgabe 1.1</strong></summary>
+                    <p><strong>a.1):</strong> $|A \cup B| = |A|+|B|-|A \cap B| \implies 1 \cdot 62^{11} + 62^{11} \cdot 1 - 1 \cdot 62^{10} \cdot 1 $</p>
+                    <p><strong>a.2):</strong> Alle Zeichen sind verschieden. Permutation: $ 12! $</p>
+                    <p><strong>a.3):</strong> Positionen für Ziffern wählen, dann Ziffern und Buchstaben platzieren: $ \binom{12}{4} \cdot 10^4 \cdot 52^8 $</p>
+                    <p><strong>b.1):</strong> Grenzwert ist 0 (l'Hospital mehrmals anwenden).</p>
+                    <p><strong>b.2):</strong> Hauptterm ist $(-1)^n(-6n^3)/(-n^2) = (-1)^n(6n)$. Folge der geraden Indizes geht gegen $+\infty$, die der ungeraden gegen $-\infty$, daher divergent.</p>
+                    <p><strong>c):</strong> Mit $u=3+\sqrt{x}$ erhält man $ 2(3+\sqrt{x}) - 6\ln|3+\sqrt{x}| + C $</p>
+                </details></li>
+                <li><details><summary><strong>Aufgabe 1.2</strong></summary>
+                    <p><strong>a):</strong> Mit $f(x,y)=\frac{1}{2}\sin(2xy)$ ist der Gradient $\nabla f = (\cos(2xy) \cdot y, \cos(2xy) \cdot x)^T$. Am Punkt $(1,\pi)$: $\nabla f(1,\pi) = (\cos(2\pi)\cdot\pi, \cos(2\pi)\cdot 1)^T = (\pi, 1)^T$.</p>
+                    <p><strong>b):</strong> $f_x = -5 + 10x/y=0$, $f_y=-5x^2/y^2 + 5/4 y^4=0$. Lösung führt zu: Lokales Minimum bei (0.5 | 1), lokales Maximum bei (-0.5 | -1).</p>
+                </details></li>
+                <li><details><summary><strong>Aufgabe 1.3</strong></summary>
+                    <p><strong>a):</strong> Der Integrand ist $f(x)=\frac{e^{x^2}-1}{x^2}$. Sein Taylorpolynom 4. Grades ist $T_4(x)=1+\frac{x^2}{2}+\frac{x^4}{6}$. Integration: $\int (1+\frac{x^2}{2}+\frac{x^4}{6})dx = x+\frac{x^3}{6}+\frac{x^5}{30}$. Wert: $0.1+\frac{0.1^3}{6}+\frac{0.1^5}{30} \approx 0,100167$.</p>
+                    <p><strong>b):</strong> $ f(3)=1/\sqrt{7} $, $ f'(3)=-1/7^{3/2} $, $ f''(3)=3/7^{5/2} $.
+                    $ T_2(x) = \frac{1}{\sqrt{7}} - \frac{1}{7^{3/2}}(x-3) + \frac{3}{2 \cdot 7^{5/2}}(x-3)^2 $. Es ist das beste Polynom, weil es in den Ableitungen 0 bis 2 mit der Funktion am Punkt $x_0=3$ übereinstimmt.</p>
+                </details></li>
+                 <li><details><summary><strong>Aufgabe 1.4</strong></summary>
+                    <p>Die Aufgabe ist mit der Annahme $f(x)=x/2$ inkonsistent, da diese auf $a_n=0$ führen würde. Mit den gegebenen Koeffizienten und der Annahme $a_0 = 0.5$ ist das korrekte Fourierpolynom 2. Grades (für $T=2\pi$ ist $\omega=1$): $ F_2(x) = \frac{1}{4} - \frac{2}{\pi^2}\cos(x) + \frac{1}{\pi}\sin(x) - \frac{1}{2\pi}\sin(2x) $. Die Näherung ist bestmöglich, da die mittlere quadratische Flächenabweichung (die "Energie" des Fehlers) minimal wird.</p>
+                </details></li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>Lösungen zu Beispiel 2</summary>
+            </details>
+
+        <details>
+            <summary>Lösungen zu den Ergänzungsaufgaben</summary>
+            </details>
+
+        <h3>15.4 Typische Fehlerquellen in der Klausur</h3>
+        <p>Achte besonders auf diese klassischen Fehler, die oft zu Punktabzug führen:</p>
+        <ul>
+            <li><strong>Ableitungsregeln:</strong> Die Ableitung eines Produkts ist <strong>nicht</strong> das Produkt der Ableitungen! $(uv)' \neq u'v'$. Dasselbe gilt für die Quotientenregel. Achte auf das Minuszeichen im Zähler der Quotientenregel.</li>
+            <li><strong>Kettenregel:</strong> Das "Nachdifferenzieren" (Multiplikation mit der inneren Ableitung) wird sehr häufig vergessen.</li>
+            <li><strong>Integrationskonstante:</strong> Bei allen <strong>unbestimmten</strong> Integralen muss am Ende `+ C` stehen.</li>
+            <li><strong>Konvergenzkriterien:</strong> Das Nullfolgenkriterium ist nur eine <strong>notwendige</strong> Bedingung. Wenn $\lim a_n = 0$, heißt das nicht, dass die Reihe konvergiert (Gegenbeispiel: Harmonische Reihe).</li>
+            <li><strong>Mehrdimensionale Extrema:</strong> Wenn die Determinante der Hesse-Matrix null ist ($\det(H_f)=0$), kann <strong>keine Aussage</strong> über die Art des Extrempunkts getroffen werden. Es ist weder automatisch ein Sattelpunkt noch ein Extremum.</li>
+            <li><strong>Vorzeichenfehler:</strong> Ein kleiner Vorzeichenfehler kann das gesamte Ergebnis verändern. Arbeite langsam und kontrolliere deine Rechenschritte.</li>
+            <li><strong>Lösungsweg:</strong> Ein korrektes Endergebnis ohne nachvollziehbaren Lösungsweg gibt in der Regel keine Punkte.</li>
+        </ul>
+        <h3>15.5 Meta-Aufgabe: Der ultimative Spickzettel</h3>
+        <div class="info-box key-concept">
+            <h5>Aufgabe an dich: Erstelle deine persönliche Formelsammlung</h5>
+            <p>Eine der besten Lernmethoden ist das aktive Verdichten von Informationen. Nimm dir ein leeres Blatt Papier (oder zwei) und versuche, die wichtigsten Konzepte und Formeln dieses Skripts darauf zusammenzufassen. Dies zwingt dich, die Inhalte zu priorisieren und zu strukturieren.</p>
+            <p>Was sollte darauf stehen?</p>
+            <ul>
+                <li>Die 4 Kombinatorik-Modelle mit Formeln und Schlüsselwörtern.</li>
+                <li>Die wichtigsten Ableitungs- und Integrationsregeln.</li>
+                <li>Die Maclaurin-Reihen der wichtigsten Funktionen ($e^x, \sin x, \cos x, \frac{1}{1-x}, \ln(1+x)$).</li>
+                <li>Das Vorgehen bei der Kurvendiskussion (1D und 2D).</li>
+                <li>Die Formeln für die Fourierkoeffizienten und die Symmetrieregeln.</li>
+                <li>Die wichtigsten Konvergenzkriterien für Reihen.</li>
+            </ul>
+            <p>Allein der Prozess, diesen "Spickzettel" zu erstellen (auch wenn du ihn in der Klausur nicht benutzen darfst), ist eine extrem effektive Vorbereitung.</p>
+        </div>
+        </main>
+
+    <footer>
+        <nav class="page-nav">
+            <a href="14-dgl.html">← Vorheriges Kapitel</a>
+            <a href="../index.html">Zurück zum Inhaltsverzeichnis →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben">↑</button>
+    
+    <script src="../main.js"></script>
+</body>
+</html>
