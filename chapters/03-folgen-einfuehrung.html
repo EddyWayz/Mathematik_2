@@ -69,6 +69,15 @@
             <dt>Beschränktheit</dt>
             <dd>Beschreibt, ob die Werte der Folge innerhalb bestimmter Grenzen bleiben. Sie ist beschränkt, wenn es eine obere und eine untere Schranke gibt.</dd>
         </dl>
+        
+        <div class="info-box tip">
+            <h5>Wichtige rekursive Folgen</h5>
+            <ul>
+                <li><strong>Fibonacci-Folge:</strong> $a_{n+1}=a_{n}+a_{n-1}$ mit $a_1=0, a_2=1$. Die Folge $(0,1,1,2,3,5,\dots)$ beschreibt viele Wachstumsprozesse in der Natur.</li>
+                <li><strong>Heron-Folge:</strong> $h_{n}=\frac{1}{2}(h_{n-1}+\frac{x}{h_{n-1}})$. Dieses iterative Verfahren nähert sich sehr schnell dem Wert von $\sqrt{x}$ an und ist ein klassisches Beispiel für einen numerischen Algorithmus.</li>
+            </ul>
+        </div>
+
 
         <h3>3.4 Konvergenz und Grenzwerte</h3>
         <dl>
@@ -107,10 +116,10 @@
         </div>
 
         <h3>3.6 Wichtiges Werkzeug: Die Wachstumshierarchie</h3>
-        <p>Um Grenzwerte von Brüchen zu bestimmen (Fall $\frac{\infty}{\infty}$), ist es entscheidend zu wissen, welche Funktionen für große $n$ am schnellsten wachsen.</p>
+        <p>Um Grenzwerte von Brüchen zu bestimmen (Fall $\frac{\infty}{\infty}$), ist es entscheidend zu wissen, welche Funktionen für große $n$ am schnellsten wachsen. Die Landau-Symbole (O-Notation) werden verwendet, um die Wachstumsordnung formal zu klassifizieren.</p>
         <p><strong>Hierarchie (langsam nach schnell für große $n$):</strong> </p>
         <p style="text-align:center; font-size: 1.2em;">
-            $ \ln(n) \ll \sqrt[p]{n} \ll n \ll n^p \ll a^n \ll n! \ll n^n $ (für $p>1, a>1$)
+            $ \ln(n) \ll \sqrt[p]{n} \ll n \ll n \log n \ll n^p \ll a^n \ll n! \ll n^n $ (für $p>1, a>1$)
         </p>
         <div class="info-box tip">
             <h5>Anwendung der Hierarchie bei Brüchen:</h5>
@@ -176,7 +185,7 @@
     <footer>
         <nav class="page-nav" aria-label="Seitennavigation">
             <a href="02-kombinationen.html">← Vorheriges Kapitel</a>
-            <a href="05-stetigkeit.html">Nächstes Kapitel →</a>
+            <a href="04-grenzwerte.html">Nächstes Kapitel →</a>
         </nav>
     </footer>
 

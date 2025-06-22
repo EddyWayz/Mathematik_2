@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lerneinheit zur Bestimmung und Klassifikation von lokalen Extremwerten und Sattelpunkten von Funktionen mehrerer Variablen mittels Gradient und Hesse-Matrix.">
+    <meta name="description" content="Lerneinheit zur Bestimmung und Klassifikation von lokalen Extremwerten und Sattelpunkten von Funktionen mehrerer Variablen mittels Gradient und Hesse-Matrix, sowie Extrema unter Nebenbedingungen mit der Lagrange-Methode.">
     <title>8 Extremwerte von Funktionen mehrerer Variablen - Lernskript Mathe</title>
     
     <script>
@@ -34,7 +34,7 @@
         
         <h2 id="sec8">8 Extremwerte von Funktionen mehrerer Variablen</h2>
         <h3>8.1 Lernziel</h3>
-        <p>Nach dieser Lerneinheit wirst du in der Lage sein, lokale Extremwerte (Maxima und Minima) sowie Sattelpunkte von Funktionen mit zwei Variablen zu finden und zu klassifizieren. Du wirst das notwendige Kriterium (Gradient gleich null) und das hinreichende Kriterium (mithilfe der Hesse-Matrix) systematisch anwenden können. Zusätzlich wirst du die Strategie zur Bestimmung von globalen Extrema auf kompakten Mengen kennen.</p>
+        <p>Nach dieser Lerneinheit wirst du in der Lage sein, lokale Extremwerte (Maxima und Minima) sowie Sattelpunkte von Funktionen mit zwei oder mehr Variablen zu finden und zu klassifizieren. Du wirst das notwendige Kriterium (Gradient gleich null) und das hinreichende Kriterium (mithilfe der Hesse-Matrix) systematisch anwenden können. Zusätzlich wirst du die Lagrange-Methode zur Bestimmung von Extrema unter Nebenbedingungen beherrschen.</p>
         
         <div class="info-box key-concept">
             <h5>Kernaussage: Analogie zur Kurvendiskussion in 1D</h5>
@@ -43,13 +43,13 @@
                 <li><strong>Notwendige Bedingung:</strong>
                     <ul>
                         <li>1D: "Steigung muss null sein" → $f'(x)=0$.</li>
-                        <li>2D: "Tangentialebene muss waagerecht sein" → $\nabla f(x,y)=\vec{0}$.</li>
+                        <li>nD: "Tangentialebene muss waagerecht sein" → $\nabla f(x,y)=\vec{0}$.</li>
                     </ul>
                 </li>
                 <li><strong>Hinreichende Bedingung:</strong>
                     <ul>
                         <li>1D: "Test mit der zweiten Ableitung" → $f''(x)$ entscheidet über Min/Max.</li>
-                        <li>2D: "Test mit den zweiten Ableitungen" → Die Hesse-Matrix $H_f$ entscheidet über Min/Max/Sattelpunkt.</li>
+                        <li>nD: "Test mit den zweiten Ableitungen" → Die Hesse-Matrix $H_f$ entscheidet über Min/Max/Sattelpunkt.</li>
                     </ul>
                 </li>
             </ul>
@@ -59,7 +59,7 @@
         <p>Die Suche nach Optimalwerten ist eine der wichtigsten praktischen Anwendungen der Mathematik. Während wir bei Funktionen einer Variablen Maxima und Minima auf einer Kurve gesucht haben, suchen wir nun die "Gipfel" und "Talsohlen" auf einem mehrdimensionalen "Funktionsgebirge".</p>
         <ul>
             <li><strong>Wirtschaft:</strong> Ein Unternehmen möchte seinen Gewinn maximieren, der von den Produktionsmengen mehrerer Produkte abhängt ($G(x_1, x_2, \dots)$). Die Bestimmung der optimalen Produktionsmengen ist eine mehrdimensionale Extremwertaufgabe.</li>
-            <li><strong>Data Science & KI:</strong> Das Trainieren eines maschinellen Lernmodells bedeutet, eine Fehlerfunktion (Loss Function) zu minimieren. Diese Funktion hängt von Tausenden oder Millionen von Modellparametern ab. Die Suche nach dem Minimum dieser Funktion ist das Kernproblem, das mit den hier gelernten Methoden (insbesondere dem Gradienten) gelöst wird.</li>
+            <li><strong>Data Science & KI:</strong> Das Trainieren eines maschinellen Lernmodells bedeutet, eine Fehlerfunktion (Loss Function) zu minimieren. Diese Funktion hängt von Tausenden oder Millionen von Modellparametern ab. Die Suche nach dem Minimum dieser Funktion ist das Kernproblem, das mit den hier gelernten Methoden (insbesondere dem Gradienten) gelöst wird. Die "Methode der kleinsten Quadrate" zur linearen Regression ist ein klassisches Beispiel hierfür.</li>
             <li><strong>Ingenieurwesen:</strong> Die Form eines Bauteils so zu gestalten, dass bei minimalem Materialeinsatz die Stabilität maximal ist, ist ein klassisches Optimierungsproblem mit mehreren geometrischen Variablen.</li>
         </ul>
         
@@ -69,43 +69,47 @@
             <a href="http://www.youtube.com/watch?v=GwyPVdoQ37g" target="_blank">MathemaTrick: EXTREMSTELLEN mehrdimensional</a>
         </div>
         
-        <h3>8.3 Definitionen & Begriffe</h3>
+        <h3>8.3 Extrema ohne Nebenbedingungen</h3>
+        <h4>8.3.1 Definitionen & Begriffe</h4>
         <dl>
             <dt>Lokales Maximum/Minimum</dt>
             <dd>Ein Punkt $p=(x_0, y_0)$ ist ein lokales Maximum (bzw. Minimum), wenn der Funktionswert $f(p)$ größer (bzw. kleiner) ist als alle Funktionswerte in einer kleinen Umgebung um $p$.</dd>
             <dt>Stationärer (kritischer) Punkt</dt>
             <dd>Ein Punkt $p$, an dem der Gradient der Funktion der Nullvektor ist: $\nabla f(p) = \vec{0}$. Dies ist die <strong>notwendige Bedingung</strong> für das Vorliegen eines Extremums im Inneren des Definitionsbereichs. An diesen Stellen ist die Tangentialebene "waagerecht" (parallel zur xy-Ebene).</dd>
             <dt>Hesse-Matrix $H_f$</dt>
-            <dd>Die Matrix der zweiten <a href="07-partielle-ableitungen.html#sec7">partiellen Ableitungen</a>. Für eine Funktion $f(x,y)$ ist sie gegeben durch: $$ H_f(x,y) = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix} $$ Nach dem Satz von Schwarz ist sie symmetrisch ($f_{xy} = f_{yx}$).</dd>
+            <dd>Die Matrix der zweiten partiellen Ableitungen. Für eine Funktion $f(x,y)$ ist sie gegeben durch: $$ H_f(x,y) = \begin{pmatrix} f_{xx} & f_{xy} \\ f_{yx} & f_{yy} \end{pmatrix} $$ Nach dem Satz von Schwarz ist sie symmetrisch ($f_{xy} = f_{yx}$), wenn die Ableitungen stetig sind.</dd>
             <dt>Sattelpunkt</dt>
             <dd>Ein stationärer Punkt, der kein Extremum ist. Die Funktion verläuft in einer Richtung wie ein Minimum und in einer anderen wie ein Maximum, ähnlich der Form eines Reitsattels.</dd>
         </dl>
-        <h3>8.4 Schritt-für-Schritt-Erklärung: Kurvendiskussion im $\mathbb{R}^2$</h3>
+        
+        <h4>8.3.2 Schritt-für-Schritt-Erklärung: Kurvendiskussion im $\mathbb{R}^2$</h4>
         <p>Um die lokalen Extrema einer Funktion $f(x,y)$ zu finden, folgt man einem klaren "Kochrezept":</p>
-        <h4>8.4.1 Schritt 1: Kandidaten finden (Notwendige Bedingung)</h4>
-        <p>Wir finden alle Punkte, an denen die Tangentialebene waagerecht ist.</p>
         <ol>
-            <li>Berechne die ersten partiellen Ableitungen: $f_x = \frac{\partial f}{\partial x}$ und $f_y = \frac{\partial f}{\partial y}$.</li>
-            <li>Setze beide Ableitungen gleich null, um den Gradienten zu nullen: \begin{align*} f_x(x,y) &= 0 \\ f_y(x,y) &= 0 \end{align*}</li>
-            <li>Löse dieses (möglicherweise nicht-lineare) Gleichungssystem. Die Lösungen $(x_0, y_0)$ sind deine stationären Punkte und die einzigen Kandidaten für lokale Extrema.</li>
-        </ol>
-        <h4>8.4.2 Schritt 2: Kandidaten klassifizieren (Hinreichende Bedingung)</h4>
-        <p>Wir müssen nun jeden Kandidaten $(x_0, y_0)$ überprüfen, ob es sich um einen Gipfel, ein Tal oder einen Sattelpunkt handelt. Dies geschieht mit den zweiten Ableitungen, zusammengefasst in der Hesse-Matrix.</p>
-        <ol>
-            <li>Berechne alle zweiten partiellen Ableitungen: $f_{xx}$, $f_{yy}$ und $f_{xy}$.</li>
-            <li>Bilde die Determinante der Hesse-Matrix: $\det(H_f) = f_{xx} \cdot f_{yy} - (f_{xy})^2$.</li>
-            <li>Setze die Koordinaten des stationären Punktes $(x_0, y_0)$ in $\det(H_f)$ und $f_{xx}$ ein.</li>
-            <li>Wende das Klassifikationskriterium an:
-                <ul>
-                    <li>Wenn $\det(H_f(x_0, y_0)) > 0$: Es liegt ein <strong>lokales Extremum</strong> vor.
+            <li><strong>Kandidaten finden (Notwendige Bedingung)</strong>
+                <ol>
+                    <li>Berechne die ersten partiellen Ableitungen: $f_x = \frac{\partial f}{\partial x}$ und $f_y = \frac{\partial f}{\partial y}$.</li>
+                    <li>Setze beide Ableitungen gleich null: $\nabla f(x,y) = \vec{0}$.</li>
+                    <li>Löse dieses Gleichungssystem. Die Lösungen $(x_0, y_0)$ sind deine stationären Punkte.</li>
+                </ol>
+            </li>
+            <li><strong>Kandidaten klassifizieren (Hinreichende Bedingung)</strong>
+                <ol>
+                    <li>Berechne alle zweiten partiellen Ableitungen: $f_{xx}$, $f_{yy}$ und $f_{xy}$.</li>
+                    <li>Bilde die Determinante der Hesse-Matrix: $\det(H_f) = f_{xx} \cdot f_{yy} - (f_{xy})^2$.</li>
+                    <li>Setze die Koordinaten des stationären Punktes $(x_0, y_0)$ in $\det(H_f)$ und $f_{xx}$ ein.</li>
+                    <li>Wende das Klassifikationskriterium an:
                         <ul>
-                            <li>Wenn zusätzlich $f_{xx}(x_0, y_0) < 0$: Es ist ein <strong>lokales Maximum</strong> (in alle Richtungen "traurig"/konkav gekrümmt).</li>
-                            <li>Wenn zusätzlich $f_{xx}(x_0, y_0) > 0$: Es ist ein <strong>lokales Minimum</strong> (in alle Richtungen "fröhlich"/konvex gekrümmt).</li>
+                            <li>Wenn $\det(H_f(x_0, y_0)) > 0$: Es liegt ein <strong>lokales Extremum</strong> vor.
+                                <ul>
+                                    <li>Wenn zusätzlich $f_{xx}(x_0, y_0) < 0$: Es ist ein <strong>lokales Maximum</strong>.</li>
+                                    <li>Wenn zusätzlich $f_{xx}(x_0, y_0) > 0$: Es ist ein <strong>lokales Minimum</strong>.</li>
+                                </ul>
+                            </li>
+                            <li>Wenn $\det(H_f(x_0, y_0)) < 0$: Es liegt ein <strong>Sattelpunkt</strong> vor.</li>
+                            <li>Wenn $\det(H_f(x_0, y_0)) = 0$: Das Kriterium liefert keine Aussage.</li>
                         </ul>
                     </li>
-                    <li>Wenn $\det(H_f(x_0, y_0)) < 0$: Es liegt ein <strong>Sattelpunkt</strong> vor (Krümmung in verschiedene Richtungen unterschiedlich).</li>
-                    <li>Wenn $\det(H_f(x_0, y_0)) = 0$: Das Kriterium liefert keine Aussage.</li>
-                </ul>
+                </ol>
             </li>
         </ol>
 
@@ -116,34 +120,52 @@
         </div>
 
         <div class="info-box tip">
-            <h5>Praxis-Tipp: Intuition hinter dem Hesse-Test</h5>
-            <p>$f_{xx}$ und $f_{yy}$ beschreiben die Krümmung der Fläche in x- bzw. y-Richtung. Die Determinante $\det(H_f)$ ist ein Maß dafür, ob die Krümmung in alle Richtungen das gleiche Vorzeichen hat.</p>
+            <h5>Hinreichendes Kriterium für n Variablen (Definitheit)</h5>
+            <p>Für Funktionen mit mehr als zwei Variablen wird der Test verallgemeinert. Man prüft, ob die Hesse-Matrix $H_f$ am stationären Punkt $p$ definit ist. Die Definitheit kann über die Vorzeichen der Hauptunterdeterminanten (die Determinanten der linken oberen k x k Matrizen) geprüft werden:</p>
             <ul>
-                <li>$\det(H_f) > 0$: Die Krümmungen ($f_{xx}, f_{yy}$) haben dasselbe Vorzeichen. Die Fläche ist überall nach oben oder überall nach unten gekrümmt → Minimum oder Maximum.</li>
-                <li>$\det(H_f) < 0$: Die Krümmungen haben unterschiedliche Vorzeichen. In eine Richtung geht es hoch, in die andere runter → Sattelpunkt.</li>
+                <li>$H_f(p)$ <strong>positiv definit</strong> $\implies$ lokales Minimum. (Alle Hauptunterdeterminanten sind positiv: $D_1 > 0, D_2 > 0, \dots$).</li>
+                <li>$H_f(p)$ <strong>negativ definit</strong> $\implies$ lokales Maximum. (Hauptunterdeterminanten alternieren im Vorzeichen, beginnend mit negativ: $D_1<0, D_2>0, D_3<0, \dots$).</li>
+                <li>$H_f(p)$ <strong>indefinit</strong> $\implies$ kein Extremum (z.B. Sattelpunkt). (Andere Vorzeichenkombinationen).</li>
             </ul>
         </div>
-
-        <h4>8.4.3 Globale Extrema auf kompakten Mengen</h4>
-        <p>Das bisherige Verfahren findet nur <strong>lokale</strong> Extrema. Um den absolut größten (globales Maximum) und kleinsten Wert (globales Minimum) einer stetigen Funktion auf einem <strong>abgeschlossenen und beschränkten Bereich</strong> (z.B. ein Rechteck, ein Kreis) zu finden, muss man zusätzlich die Ränder des Bereichs untersuchen.</p>
+        
+        <h3>8.4 Extrema unter Nebenbedingungen (Lagrange-Methode)</h3>
+        <p>Oft sucht man nicht das globale Maximum einer Funktion, sondern das Maximum unter einer oder mehrerer einschränkenden Bedingungen (Nebenbedingungen). Zum Beispiel: Maximiere das Volumen einer Dose bei gegebener Materialoberfläche. Wenn sich die Nebenbedingung nicht leicht auflösen und einsetzen lässt, verwendet man die Lagrange-Methode.</p>
+        
+        <h4>8.4.1 Das Vorgehen</h4>
         <ol>
-            <li><strong>Kandidaten im Inneren finden:</strong> Bestimme alle stationären Punkte im Inneren des Bereichs mit der Methode aus 8.4.1 und berechne deren Funktionswerte.</li>
-            <li><strong>Kandidaten am Rand finden:</strong> Untersuche die Funktion auf den Randkurven. Oft kann man hierfür die Randbedingung in die Funktion einsetzen und erhält so ein eindimensionales Extremwertproblem, das mit den bekannten Methoden aus der Schule gelöst werden kann. Dies ist oft der aufwändigste Schritt.</li>
-            <li><strong>Alle Kandidaten vergleichen:</strong> Erstelle eine Liste aller gefundenen Kandidaten (aus dem Inneren und vom Rand) und setze sie in die Originalfunktion $f(x,y)$ ein. Der größte Funktionswert ist das globale Maximum, der kleinste das globale Minimum.</li>
+            <li><strong>Problem aufstellen:</strong> Definiere die zu optimierende Hauptfunktion $f(x_1, \dots, x_n)$ und die Nebenbedingung(en) in der Form $g_j(x_1, \dots, x_n) = 0$.</li>
+            <li><strong>Lagrange-Funktion bilden:</strong> Führe für jede Nebenbedingung $g_j$ eine neue Variable $\lambda_j$ (Lagrange-Multiplikator) ein und bilde die Lagrange-Funktion $L$:
+            $$ L(x_1, \dots, x_n, \lambda_1, \dots, \lambda_m) = f + \lambda_1 g_1 + \dots + \lambda_m g_m $$</li>
+            <li><strong>Stationäre Punkte von L finden (Notwendige Bedingung):</strong> Berechne alle partiellen Ableitungen von $L$ (nach allen $x_i$ und allen $\lambda_j$) und setze sie gleich null.
+            $$ \frac{\partial L}{\partial x_i} = 0 \quad \text{und} \quad \frac{\partial L}{\partial \lambda_j} = 0 $$
+            Die Ableitung nach $\lambda_j$ reproduziert einfach die Nebenbedingung $g_j=0$.</li>
+            <li><strong>Gleichungssystem lösen:</strong> Löse das resultierende System aus $n+m$ Gleichungen. Die $x$-Komponenten der Lösung sind die Kandidaten für die Extremstellen.</li>
         </ol>
-        <h3>8.5 Beispielaufgaben</h3>
-        <h4>8.5.1 Beispiel 1: Quadratische Funktion (lineares Gleichungssystem)</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Untersuchen Sie $f(x,y)=-4x^{2}-4y^{2}+16x+12y-xy-10$ auf Extremstellen.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Stationäre Punkte finden:</strong> \begin{align*} f_x &= -8x + 16 - y = 0 \\ f_y &= -8y + 12 - x = 0 \end{align*} Dieses lineare Gleichungssystem hat die eindeutige Lösung $p \approx (1.84, 1.27)$.</li>
-                    <li><strong>Zweite Ableitungen berechnen:</strong> $$ f_{xx} = -8, \quad f_{yy} = -8, \quad f_{xy} = -1 $$ Die Hesse-Matrix ist hier konstant: $H_f = \begin{pmatrix} -8 & -1 \\ -1 & -8 \end{pmatrix}$.</li>
-                    <li><strong>Klassifizieren:</strong> $$ \det(H_f) = (-8)(-8) - (-1)^2 = 64 - 1 = 63 $$ Da $\det(H_f) = 63 > 0$ und $f_{xx} = -8 < 0$, handelt es sich um ein <strong>lokales Maximum</strong>.</li>
-                </ol>
-            </li>
-        </ul>
-        <h4>8.5.2 Beispiel 2: Nichtlineares Gleichungssystem</h4>
+         <div class="info-box tip">
+            <p>Die hinreichende Bedingung für den Lagrange-Ansatz ist komplexer (sie involviert die geränderte Hesse-Matrix) und wird hier nicht behandelt. In praktischen Aufgaben genügt es oft, die gefundenen Kandidaten zu bestimmen.</p>
+        </div>
+
+        <h3>8.5 MathQUEST: Teste dein Verständnis</h3>
+        <div class="info-box key-concept">
+            <h5>Visuelle Fragen zum Funktionsgebirge</h5>
+            <p>Die folgenden Fragen aus dem Skript (`Mathe2-08-Skript-Extremwerte mit mehreren Variablen.pdf`) helfen, die geometrische Bedeutung der Begriffe zu verstehen.</p>
+            <ol>
+                <li><strong>Frage:</strong> Welcher Begriff beschreibt den Ursprung im Konturdiagramm unten am besten?
+                    <div class="image-placeholder">(Hier wäre Bild 2 aus dem PDF: Ein Konturdiagramm eines Sattelpunktes)</div>
+                    A) Ein Gebirgspass, B) Ein trockenes Flussbett, C) Ein Berggipfel, D) Ein Bergrücken<br>
+                    <em>Antwort: A) Ein Gebirgspass. Dies ist die typische Darstellung eines Sattelpunktes.</em>
+                </li>
+                <li><strong>Frage:</strong> Das Bild zeigt die Fläche $z=f(x,y)$. Welches Vorzeichen haben $f_{xx}(A)$ und $f_{yy}(A)$?
+                    <div class="image-placeholder">(Hier wäre Bild 4 aus dem PDF: Ein nach unten geöffnetes Paraboloid, ein Maximum)</div>
+                     A) $f_{xx}(A)>0, f_{yy}(A)<0$, B) $f_{xx}(A)<0, f_{yy}(A)<0$, C) $f_{xx}(A)\approx0, f_{yy}(A)\approx0$, D) $f_{xx}(A)<0, f_{yy}(A)\approx0$<br>
+                     <em>Antwort: B). Die Krümmung in x-Richtung ($f_{xx}$) und in y-Richtung ($f_{yy}$) ist negativ (konkav, "traurig").</em>
+                </li>
+            </ol>
+        </div>
+
+        <h3>8.6 Beispielaufgaben</h3>
+        <h4>8.6.1 Beispiel 1: Ohne Nebenbedingungen (nicht-lineares System)</h4>
         <ul>
             <li><strong>Aufgabe:</strong> Bestimmen Sie die Extremstellen von $f(x,y) = x^3+y^3+3xy$.</li>
             <li><strong>Lösung:</strong>
@@ -156,12 +178,34 @@
             </li>
         </ul>
 
-        <div class="info-box warning">
-            <h5>Achtung: Lokal vs. Global</h5>
-            <p>Das hier beschriebene Verfahren findet ausschließlich <strong>lokale</strong> Extrema. Es garantiert nicht, dass der gefundene Punkt der absolut höchste oder tiefste Punkt der gesamten Funktion ist (globales Extremum), es sei denn, man untersucht auch die Ränder des Definitionsbereichs (siehe Abschnitt 8.4.3).</p>
-        </div>
+        <h4>8.6.2 Beispiel 2: Mit Nebenbedingung (Lagrange-Methode)</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Welche minimale Oberfläche (Materialverbrauch) hat eine zylindrische Dose (Boden und Deckel), die ein Volumen von $V_0 = 1000a \text{ cm}^3$ fasst?</li>
+            <li><strong>Lösung:</strong>
+                <ol>
+                    <li><strong>Problem aufstellen:</strong>
+                        <ul>
+                           <li>Hauptbedingung (zu minimieren): Oberfläche $O(r,h) = 2\pi r^2 + 2\pi rh$.</li>
+                           <li>Nebenbedingung: Volumen $V(r,h) = \pi r^2 h = V_0$. Umgeformt: $g(r,h) = \pi r^2 h - V_0 = 0$.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Lagrange-Funktion:</strong> $L(r,h,\lambda) = (2\pi r^2 + 2\pi rh) + \lambda(\pi r^2 h - V_0)$.</li>
+                    <li><strong>Partiell ableiten und null setzen:</strong>
+                        <ol type="a">
+                            <li>$L_r = 4\pi r + 2\pi h + \lambda(2\pi rh) = 0$</li>
+                            <li>$L_h = 2\pi r + \lambda(\pi r^2) = 0 \implies \lambda = -\frac{2\pi r}{\pi r^2} = -\frac{2}{r}$</li>
+                            <li>$L_\lambda = \pi r^2 h - V_0 = 0 \implies h = \frac{V_0}{\pi r^2}$</li>
+                        </ol>
+                    </li>
+                    <li><strong>System lösen:</strong> Setze (b) in (a) ein: $4\pi r + 2\pi h + (-\frac{2}{r})(2\pi rh) = 4\pi r + 2\pi h - 4\pi h = 4\pi r - 2\pi h = 0 \implies h = 2r$.
+                    <br>Setze dieses Ergebnis in (c) ein: $2r = \frac{V_0}{\pi r^2} \implies 2\pi r^3 = V_0 \implies r = \sqrt[3]{\frac{V_0}{2\pi}}$.
+                    <br>Mit $V_0 = 1000a$ ist der optimale Radius $r = \sqrt[3]{\frac{500a}{\pi}}$. Die optimale Höhe ist $h=2r$.
+                    </li>
+                </ol>
+            </li>
+        </ul>
 
-        <h3>8.6 Übungsaufgaben</h3>
+        <h3>8.7 Übungsaufgaben</h3>
         <ol>
             <li><strong>(Einfach)</strong> Finden Sie die lokalen Extrema von $f(x,y) = x^2+y^2-4x+6y+30$.
                 <details>
@@ -176,7 +220,7 @@
                     3. <strong>Klassifizieren:</strong> $\det(H) > 0$ und $f_{xx} > 0 \implies$ <strong>Lokales Minimum</strong> bei $(2, -3)$.</p>
                 </details>
             </li>
-            <li><strong>(Mittel)</strong> Finden Sie die stationären Punkte von $f(x,y)=y(1-x^{2}-y^{2})$.
+            <li><strong>(Mittel)</strong> Finden und klassifizieren Sie alle stationären Punkte von $f(x,y)=y(1-x^{2}-y^{2})$.
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>$f(x,y) = y-x^2y-y^3$.<br>
@@ -184,40 +228,24 @@
                     $f_y = 1-x^2-3y^2=0$.<br>
                     <strong>Fall 1: $x=0$.</strong> Einsetzen in $f_y$: $1-3y^2=0 \implies y^2=1/3 \implies y=\pm\frac{1}{\sqrt{3}}$. Punkte: $(0, \frac{1}{\sqrt{3}})$ und $(0, -\frac{1}{\sqrt{3}})$.<br>
                     <strong>Fall 2: $y=0$.</strong> Einsetzen in $f_y$: $1-x^2=0 \implies x=\pm 1$. Punkte: $(1,0)$ und $(-1,0)$.<br>
-                    Insgesamt 4 stationäre Punkte.</p>
+                    <strong>Klassifikation:</strong> $f_{xx}=-2y$, $f_{yy}=-6y$, $f_{xy}=-2x$. $\det(H) = 12y^2-4x^2$.<br>
+                    - Punkt $(0, \frac{1}{\sqrt{3}})$: $\det(H) = 4 > 0$. $f_{xx} < 0 \implies$ Lokales Maximum.<br>
+                    - Punkt $(0, -\frac{1}{\sqrt{3}})$: $\det(H) = 4 > 0$. $f_{xx} > 0 \implies$ Lokales Minimum.<br>
+                    - Punkt $(1, 0)$: $\det(H) = -4 < 0 \implies$ Sattelpunkt.<br>
+                    - Punkt $(-1, 0)$: $\det(H) = -4 < 0 \implies$ Sattelpunkt.</p>
                 </details>
             </li>
-            <li><strong>(Mittel)</strong> Klassifizieren Sie alle stationären Punkte der Funktion aus Aufgabe 2.
+            <li><strong>(Schwer, Anwendung)</strong> Bestimmen Sie die Produktionsmengen $x_1, x_2$, bei denen der Gewinn maximal wird.
+                <ul><li>Kosten: $K(x_{1},x_{2})=0,5x_{1}^{2}+x_{1}x_{2}+x_{2}^{2}+500.000$</li>
+                <li>Absatzpreise: $p_{1}(x_{1},x_{2})=1.280-4x_{1}+x_{2}$, $p_{2}(x_{1},x_{2})=2.360+2x_{1}-3x_{2}$</li></ul>
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>$f_{xx}=-2y$, $f_{yy}=-6y$, $f_{xy}=-2x$. $\det(H) = 12y^2-4x^2$.<br>
-                    - Punkt $(0, \frac{1}{\sqrt{3}})$: $\det(H) = 12(\frac{1}{3})-0 = 4 > 0$. $f_{xx}=-2/\sqrt{3} < 0 \implies$ Lokales Maximum.<br>
-                    - Punkt $(0, -\frac{1}{\sqrt{3}})$: $\det(H) = 12(\frac{1}{3})-0 = 4 > 0$. $f_{xx}=2/\sqrt{3} > 0 \implies$ Lokales Minimum.<br>
-                    - Punkt $(1, 0)$: $\det(H) = 0-4(1)^2 = -4 < 0 \implies$ Sattelpunkt.<br>
-                    - Punkt $(-1, 0)$: $\det(H) = 0-4(-1)^2 = -4 < 0 \implies$ Sattelpunkt.</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Bestimmen Sie die Produktionsmengen $x_1, x_2, x_3$, bei denen der Gewinn maximal wird, wenn die Kostenfunktion $K(x_{1},x_{2},x_{3})=x_{1}^{2}+2x_{2}^{2}+3x_{3}^{2}+x_{1}x_{2}+x_{2}x_{3}+100$ und die Stückpreise $p_{1}=40, p_{2}=50, p_{3}=80$ sind. Es genügt, die notwendige Bedingung zu prüfen.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Gewinn $G = E-K = 40x_1+50x_2+80x_3 - (x_1^2+2x_2^2+3x_3^2+x_1x_2+x_2x_3+100)$.<br>
-                    Gradient nullsetzen:<br>
-                    $G_{x_1} = 40-2x_1-x_2=0$<br>
-                    $G_{x_2} = 50-4x_2-x_1-x_3=0$<br>
-                    $G_{x_3} = 80-6x_3-x_2=0$<br>
-                    Lösen des linearen Gleichungssystems führt zu: $x_1=17.5$, $x_2=5$, $x_3=12.5$.</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Welcher Punkt auf der Fläche $z=\frac{1}{xy}$ hat den minimalen Abstand zum Ursprung? (Tipp: Minimieren Sie das Abstandsquadrat $d^2=x^2+y^2+z^2$, um Wurzeln zu vermeiden).
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Minimiere $f(x,y) = d^2 = x^2+y^2+(\frac{1}{xy})^2 = x^2+y^2+x^{-2}y^{-2}$.<br>
-                    $f_x = 2x - 2x^{-3}y^{-2} = 0 \implies x^4y^2=1$.<br>
-                    $f_y = 2y - 2x^{-2}y^{-3} = 0 \implies x^2y^4=1$.<br>
-                    Aus der ersten Gleichung $y^2=1/x^4$. Einsetzen in die zweite: $x^2(1/x^4)^2=1 \implies x^2/x^8=1 \implies x^{-6}=1 \implies x=\pm 1$.<br>
-                    Daraus folgt $y^2=1 \implies y=\pm 1$.<br>
-                    Die vier kritischen Punkte sind $(1,1), (1,-1), (-1,1), (-1,-1)$.<br>
-                    Die zugehörigen Punkte auf der Fläche sind $(1,1,1), (1,-1,-1), (-1,1,-1), (-1,-1,1)$. Alle haben den gleichen minimalen Abstand zum Ursprung.</p>
+                    <p>Gewinn $G = \text{Erlös} - \text{Kosten} = (x_1 p_1 + x_2 p_2) - K$.<br>
+                    $G(x_1,x_2) = x_1(1280-4x_1+x_2) + x_2(2360+2x_1-3x_2) - (0.5x_1^2+x_1x_2+x_2^2+500000)$.<br>
+                    Vereinfachen: $G = 1280x_1 - 4.5x_1^2 + 2x_1x_2 + 2360x_2 - 4x_2^2 - 500000$.<br>
+                    $G_{x_1} = 1280 - 9x_1 + 2x_2 = 0$<br>
+                    $G_{x_2} = 2360 + 2x_1 - 8x_2 = 0$<br>
+                    Lösen des linearen Gleichungssystems führt zu: $x_1=220$, $x_2=350$.</p>
                 </details>
             </li>
         </ol>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Einführung in Fourierreihen zur Darstellung periodischer Funktionen durch Sinus- und Cosinus-Schwingungen, inklusive Berechnung der Fourierkoeffizienten.">
-    <title>13 Fourierreihen - Lernskript Mathe</title>
+    <meta name="description" content="Einführung in Fourierreihen zur Darstellung periodischer Funktionen durch Sinus- und Cosinus-Schwingungen, inklusive Koeffizienten, Orthogonalität und Diskreter Fouriertransformation (DFT).">
+    <title>13 Fourierreihen und Transformation - Lernskript Mathe</title>
 
     <script>
   MathJax = {
@@ -32,131 +32,89 @@
 
     <main class="content-wrapper">
 
-        <h2 id="sec13">13 Fourierreihen: Periodische Signale aus Sinus und Cosinus</h2>
+        <h2 id="sec13">13 Fourierreihen: Periodische Signale analysieren</h2>
         <h3>13.1 Lernziel</h3>
-        <p>Nach dieser Lerneinheit wirst du verstehen, wie periodische Funktionen – selbst solche mit Ecken oder Sprüngen – als unendliche Summe von einfachen Sinus- und Cosinus-Schwingungen dargestellt werden können. Du wirst in der Lage sein, die Fourierkoeffizienten ($a_k, b_k$) für eine gegebene Funktion zu berechnen und zu interpretieren. Du wirst auch die Vereinfachungen für gerade und ungerade Funktionen kennen und verstehen, in welchem Sinne das Fourierpolynom die "beste" Näherung darstellt.</p>
-        <h3>13.2 Motivation und Kontext</h3>
+        <p>Nach dieser Lerneinheit wirst du verstehen, wie periodische Funktionen – selbst solche mit Ecken oder Sprüngen – als unendliche Summe von einfachen Sinus- und Cosinus-Schwingungen dargestellt werden können. Du wirst in der Lage sein, die Fourierkoeffizienten ($a_k, b_k$) für eine gegebene Funktion zu berechnen und die zugrundeliegende Orthogonalität zu verstehen. Du wirst die Bedeutung der Diskreten Fouriertransformation (DFT) für die digitale Signalverarbeitung kennen und wissen, was der FFT-Algorithmus leistet.</p>
+        
+        <h3>13.2 Motivation: Von Taylor zu Fourier</h3>
         <p>Taylorreihen sind exzellent für die lokale Approximation von "glatten" Funktionen. Aber was tun wir bei periodischen Signalen, wie sie in der Elektrotechnik, Akustik oder Bildverarbeitung allgegenwärtig sind? Oder bei Funktionen, die nicht glatt sind, sondern Sprünge haben (wie ein Rechtecksignal)? Hier versagen Taylorreihen.</p>
         <p>Die geniale Idee von Jean-Baptiste Joseph Fourier war, solche Funktionen nicht durch Potenzen, sondern durch eine Überlagerung von harmonischen Schwingungen (Sinus und Cosinus) darzustellen. Dies ist die Grundlage der modernen <strong>Signalanalyse</strong>.</p>
         <ul>
-            <li><strong>Audio- und Bildkompression (MP3, JPEG):</strong> Ein komplexes Audiosignal oder Bild wird in seine Grundfrequenzen zerlegt. Um Speicherplatz zu sparen, werden die für den Menschen unwichtigen Frequenzanteile (kleine Fourierkoeffizienten) einfach weggelassen oder ungenauer gespeichert. Dies ist ein <strong>verlustbehaftetes Kompressionsverfahren</strong>.</li>
-            <li><strong>Elektrotechnik:</strong> Jede periodische Spannung oder jeder periodische Strom kann in seinen Gleichanteil ($a_0/2$) und seine Oberschwingungen zerlegt werden. Dies ist entscheidend für das Design von Filtern (z.B. Tiefpassfilter, die hohe Frequenzen blockieren).</li>
+            <li><strong>Audio- und Bildkompression (MP3, JPEG):</strong> Ein komplexes Audiosignal oder Bild wird in seine Grundfrequenzen zerlegt. Um Speicherplatz zu sparen, werden die für den Menschen unwichtigen Frequenzanteile (kleine Fourierkoeffizienten) einfach weggelassen oder ungenauer gespeichert.</li>
+            <li><strong>Elektrotechnik:</strong> Jede periodische Spannung oder jeder periodische Strom kann in seinen Gleichanteil ($a_0/2$) und seine Oberschwingungen zerlegt werden. Dies ist entscheidend für das Design von Filtern.</li>
             <li><strong>Lösung von Differentialgleichungen:</strong> Viele partielle DGLs, wie die Wärmeleitungs- oder Wellengleichung, werden durch den Ansatz mit Fourierreihen lösbar.</li>
         </ul>
         
-        <div class="info-box key-concept">
-            <h5>Kernaussage: Taylor- vs. Fourierreihen</h5>
-            <p>Wähle das richtige Werkzeug für die richtige Aufgabe:</p>
-            <table style="text-align: left;">
-                <thead>
-                    <tr><th style="width: 50%;">Taylorreihe</th><th style="width: 50%;">Fourierreihe</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Approximation durch <strong>Polynome</strong> ($x^k$)</td><td>Approximation durch <strong>Sinus/Cosinus</strong></td></tr>
-                    <tr><td>Approximation ist <strong>lokal</strong> (gut nahe am Entwicklungspunkt)</td><td>Approximation ist <strong>global</strong> (über die ganze Periode)</td></tr>
-                    <tr><td>Benötigt "glatte" Funktionen (beliebig oft differenzierbar)</td><td>Funktioniert auch für Funktionen mit <strong>Sprüngen und Knicken</strong></td></tr>
-                    <tr><td>Ideal für die Analyse von nicht-periodischen, glatten Funktionen</td><td>Ideal für die Analyse von <strong>periodischen Signalen</strong></td></tr>
-                </tbody>
-            </table>
-            <div class="info-box video-box" style="margin-top: 15px;">
-                <h5>Erklärendes Video: Was ist eine Fourierreihe?</h5>
-                <p>Eine einfache, konzeptuelle Erklärung, wie man periodische Funktionen aus Sinus- und Cosinusschwingungen zusammensetzt.</p>
-                <a href="http://www.youtube.com/watch?v=6piNSfCpuKk" target="_blank">Studyflix: Fourierreihe - einfache Erklärung der Reihenentwicklung!</a>
-            </div>
-        </div>
-
-        <h3>13.3 Definitionen & Begriffe</h3>
+        <h3>13.3 Die Fourierreihe</h3>
+        <h4>13.3.1 Definitionen & Begriffe</h4>
         <dl>
             <dt>Periodische Funktion</dt>
             <dd>Eine Funktion $f(t)$ mit $f(t+T) = f(t)$ für alle $t$. Die kleinste solche positive Zahl $T$ heißt <strong>Periode</strong>.</dd>
-            <dt>Kreisfrequenz (Grundfrequenz)</dt>
+            <dt>Kreisfrequenz</dt>
             <dd>$\omega = \frac{2\pi}{T}$. Sie gibt die Frequenz der Grundschwingung an.</dd>
-            <dt>Fourierpolynom (Trigonometrisches Polynom)</dt>
-            <dd>Eine endliche Summe von Sinus- und Cosinus-Termen, die eine periodische Funktion annähert. Das Fourierpolynom vom Grad $n$ ist: $$ F_n(t) = \frac{a_0}{2} + \sum_{k=1}^{n} \left( a_k \cos(k\omega t) + b_k \sin(k\omega t) \right) $$</dd>
+            <dt>Fourierreihe</dt>
+            <dd>Die Darstellung einer T-periodischen Funktion $f(t)$ als unendliche Summe von Sinus- und Cosinus-Schwingungen:
+            $$ F(t) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left( a_k \cos(k\omega t) + b_k \sin(k\omega t) \right) $$</dd>
             <dt>Fourierkoeffizienten</dt>
-            <dd>Die Koeffizienten $a_k$ und $b_k$, die die Amplitude jeder einzelnen Schwingung bestimmen. Sie werden über Integrale berechnet, die messen, wie stark die jeweilige Sinus- bzw. Cosinus-Schwingung in der Funktion $f(t)$ "enthalten" ist. \begin{align*} a_k &= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \cos(k\omega t) dt \quad (k \ge 0) \\ b_k &= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \sin(k\omega t) dt \quad (k \ge 1) \end{align*}</dd>
+            <dd>Die Amplituden $a_k$ und $b_k$ der einzelnen Schwingungen. Sie werden über Integrale berechnet: 
+            \begin{align*} a_k &= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \cos(k\omega t) dt \quad (k \ge 0) \\ b_k &= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \sin(k\omega t) dt \quad (k \ge 1) \end{align*}</dd>
         </dl>
 
         <div class="info-box tip">
             <h5>Praxis-Tipp: Was bedeuten die Koeffizienten?</h5>
             <ul>
                 <li>$\frac{a_0}{2}$: Dies ist der <strong>Gleichanteil</strong> (engl. DC offset) des Signals. Er entspricht dem Mittelwert der Funktion über eine Periode.</li>
-                <li>$a_1, b_1$: Diese bestimmen die Amplitude und Phase der <strong>Grundschwingung</strong> (1. Harmonische), also der Sinus/Cosinus-Welle mit derselben Frequenz wie das Originalsignal.</li>
-                <li>$a_k, b_k$ ($k>1$): Diese bestimmen die Anteile der <strong>Oberschwingungen</strong> (k-te Harmonische), also Wellen mit der doppelten, dreifachen, ... Frequenz.</li>
+                <li>$a_1, b_1$: Bestimmen Amplitude und Phase der <strong>Grundschwingung</strong> (1. Harmonische).</li>
+                <li>$a_k, b_k$ ($k>1$): Bestimmen die Anteile der <strong>Oberschwingungen</strong> (k-te Harmonische) mit Vielfachen der Grundfrequenz.</li>
             </ul>
-            <p>Die Fourieranalyse zerlegt ein Signal also in seinen "Gleichstromanteil" und seine "Wechselstromanteile" bei verschiedenen Frequenzen.</p>
         </div>
         
+        <h4>13.3.2 Symmetrie-Regeln</h4>
+        <p>Die Berechnung der Koeffizienten vereinfacht sich bei symmetrischen Funktionen erheblich:</p>
+        <ul>
+            <li>Ist $f(t)$ eine <strong>gerade Funktion</strong> ($f(-t) = f(t)$, achsensymmetrisch), sind alle $b_k = 0$.</li>
+            <li>Ist $f(t)$ eine <strong>ungerade Funktion</strong> ($f(-t) = -f(t)$, punktsymmetrisch), sind alle $a_k = 0$ (inkl. $a_0$).</li>
+        </ul>
+
+        <h3>13.4 Die Mathematik dahinter: Orthogonalität</h3>
+        <p>Warum haben die Formeln für die Fourierkoeffizienten genau diese Form? Der Grund liegt in einer fundamentalen Eigenschaft der Sinus- und Kosinusfunktionen: der <strong>Orthogonalität</strong>.</p>
+        <p>Man kann für Funktionen ein Skalarprodukt definieren, z.B. $\langle f,g\rangle=\frac{2}{T}\int_{0}^{T}f(x) g(x)dx$. Bezüglich dieses Skalarprodukts verhalten sich die trigonometrischen Basisfunktionen wie senkrecht aufeinander stehende Einheitsvektoren:</p>
+        <ul>
+            <li>$\langle \cos(k\omega t), \sin(n\omega t) \rangle = 0$ für alle $k, n$.</li>
+            <li>$\langle \cos(k\omega t), \cos(n\omega t) \rangle = 0$ für $k \neq n$, und 1 für $k=n$.</li>
+            <li>$\langle \sin(k\omega t), \sin(n\omega t) \rangle = 0$ für $k \neq n$, und 1 für $k=n$.</li>
+        </ul>
+        <p>Multipliziert man die Fourierreihen-Gleichung mit z.B. $\cos(n\omega t)$ und integriert über eine Periode, "löschen" sich aufgrund dieser Orthogonalität alle Terme bis auf den mit $a_n$ aus. So lässt sich die Formel für $a_n$ direkt herleiten. Die Fourieranalyse ist also im Kern eine Projektion einer Funktion auf orthogonale Basisvektoren.</p>
+
+        <h3>13.5 Für die Informatik: Diskrete Fouriertransformation (DFT)</h3>
+        <p>In der Praxis liegen Signale (Audio, Bild) nicht als kontinuierliche Funktion vor, sondern als eine endliche Folge von $N$ abgetasteten Werten (Samples). Um diese zu analysieren, ersetzt man die Integrale der Fourierkoeffizienten durch Summen. Das Ergebnis ist die <strong>Diskrete Fouriertransformation (DFT)</strong>.</p>
         <dl>
-            <dt>Fourierreihe</dt>
-            <dd>Die unendliche Reihe, die entsteht, wenn man $n \to \infty$ gehen lässt. Für die meisten in der Praxis relevanten Funktionen gilt: $f(t) = F(t)$.</dd>
-            <dt>Beste Approximation</dt>
-            <dd>Das Fourierpolynom $F_n(t)$ minimiert den mittleren quadratischen Fehler $\int_{-T/2}^{T/2} (f(t) - F_n(t))^2 dt$ unter allen trigonometrischen Polynomen vom Grad $n$. Es ist also die bestmögliche Näherung im Sinne der "Energie" der Abweichung.</dd>
+            <dt>DFT</dt>
+            <dd>Transformiert eine Folge von $N$ Zeit- oder Orts-Samples in eine Folge von $N$ komplexen Frequenz-Amplituden. Die Koeffizienten lauten:
+            $$ c_k = \frac{1}{N} \sum_{j=0}^{N-1} y_j \cdot e^{-i \cdot 2\pi k j / N} $$
+            Jeder Koeffizient $c_k$ gibt an, wie stark die Frequenz $k/T$ im Signal vertreten ist.
+            </dd>
+            <dt>Fast Fourier Transform (FFT)</dt>
+            <dd>Die direkte Berechnung der DFT benötigt ca. $O(N^2)$ Rechenoperationen. Der <strong>FFT-Algorithmus</strong> ist ein genialer "Divide and Conquer"-Ansatz, der dasselbe Ergebnis in nur $O(N \log N)$ Operationen berechnet. Dies war ein entscheidender Durchbruch, der die digitale Signalverarbeitung in Echtzeit erst ermöglichte.</dd>
         </dl>
         
-        <h3>13.4 Schritt-für-Schritt-Erklärung zur Berechnung</h3>
-        <ol>
-            <li><strong>Funktionsvorschrift und Periode bestimmen:</strong> Analysiere das gegebene Signal. Gib eine Funktionsvorschrift $f(t)$ für eine Periode an und bestimme die Periodenlänge $T$.</li>
-            <li><strong>Kreisfrequenz berechnen:</strong> Berechne $\omega = \frac{2\pi}{T}$.</li>
-            <li><strong>Symmetrie prüfen (wichtige Abkürzung!):</strong>
-                <ul>
-                    <li>Ist $f(t)$ eine <strong>gerade Funktion</strong> ($f(-t) = f(t)$, achsensymmetrisch zur y-Achse)? Dann sind alle $b_k = 0$.</li>
-                    <li>Ist $f(t)$ eine <strong>ungerade Funktion</strong> ($f(-t) = -f(t)$, punktsymmetrisch zum Ursprung)? Dann sind alle $a_k = 0$ (inkl. $a_0$).</li>
-                </ul>
-            </li>
-            <li><strong>Koeffizienten berechnen:</strong> Setze $f(t)$, $T$ und $\omega$ in die Integralformeln für $a_0$, $a_k$ und $b_k$ ein und löse diese Integrale (oft mittels partieller Integration).</li>
-            <li><strong>Fourierreihe / Fourierpolynom aufstellen:</strong> Setze die berechneten Koeffizienten in die allgemeine Formel für die Fourierreihe oder das gewünschte Fourierpolynom ein.</li>
-        </ol>
+        <h3>13.6 Ausblick: Komplexe Schreibweise und Splines</h3>
+        <dl>
+            <dt>Komplexe Fourierreihe</dt>
+            <dd>Mit der Euler'schen Formel ($e^{i\phi} = \cos\phi + i\sin\phi$) lässt sich die Fourierreihe viel kompakter schreiben:
+            $$ F(t) = \sum_{k=-\infty}^{\infty} c_k e^{ik\omega t} \quad \text{mit} \quad c_k = \frac{1}{T} \int_{-T/2}^{T/2} f(t) e^{-ik\omega t} dt $$
+            Die Koeffizienten $c_k$ sind komplex und enthalten sowohl Amplituden- als auch Phaseninformation.</dd>
+            <dt>Splines</dt>
+            <dd>Wenn man eine Kurve durch gegebene Punkte nicht global (wie mit Fourier oder Taylor), sondern stückweise möglichst "glatt" annähern will, verwendet man Splines. Dabei werden Polynome niedrigen Grades (oft 3. Grades, "kubische Splines") so aneinandergefügt, dass an den Nahtstellen nicht nur die Funktionswerte, sondern auch die ersten und zweiten Ableitungen übereinstimmen. Dies vermeidet unerwünschte Oszillationen und ist ein Standardverfahren in der Computergrafik.</dd>
+        </dl>
 
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: Fourierkoeffizienten berechnen</h5>
-            <p>Dieses Video zeigt die Formeln für die Fourierkoeffizienten und wie man sie anwendet.</p>
-            <a href="http://www.youtube.com/watch?v=-fyxM-mYPkI" target="_blank">Mathe by Daniel Jung: Fourier Koeffizienten berechnen, Formeln</a>
-        </div>
-
-        <h3>13.5 Beispielaufgaben</h3>
-        <h4>13.5.1 Beispiel 1: Rechtecksignal</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Entwickeln Sie die Funktion mit Periode $T=2\pi$, die durch $f(x) = \begin{cases} -g & \text{für } -\pi \le x < 0 \\ +g & \text{für } 0 \le x < \pi \end{cases}$ gegeben ist, in eine Fourierreihe.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Analyse:</strong> $T=2\pi \implies \omega = \frac{2\pi}{2\pi} = 1$. Die Funktion ist ungerade.</li>
-                    <li><strong>Symmetrie:</strong> Da $f(x)$ ungerade ist, wissen wir sofort: $a_k = 0$ für alle $k \ge 0$.</li>
-                    <li><strong>Koeffizienten $b_k$ berechnen:</strong> \begin{align*} b_k &= \frac{2}{2\pi} \int_{-\pi}^{\pi} f(x)\sin(kx)dx = \frac{1}{\pi} \left[ \int_{-\pi}^0 -g\sin(kx)dx + \int_0^\pi g\sin(kx)dx \right] \\ &= \frac{2}{\pi} \int_0^\pi g\sin(kx)dx = \frac{2g}{\pi} \left[ -\frac{\cos(kx)}{k} \right]_0^\pi \\ &= \frac{2g}{k\pi} (-\cos(k\pi) - (-\cos(0))) = \frac{2g}{k\pi} (1 - \cos(k\pi)) \end{align*} Da $\cos(k\pi) = (-1)^k$, ergibt sich $b_k = \frac{2g}{k\pi}(1-(-1)^k)$.</li>
-                    <li><strong>Fallunterscheidung:</strong>
-                        <ul>
-                            <li>Für gerades $k$: $b_k = \frac{2g}{k\pi}(1-1) = 0$.</li>
-                            <li>Für ungerades $k$: $b_k = \frac{2g}{k\pi}(1-(-1)) = \frac{4g}{k\pi}$.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Fourierreihe aufstellen:</strong> Wir summieren nur über die ungeraden Indizes, die wir als $k=2n-1$ schreiben können: $$ F(x) = \sum_{n=1}^\infty \frac{4g}{(2n-1)\pi} \sin((2n-1)x) = \frac{4g}{\pi} \left( \sin(x) + \frac{1}{3}\sin(3x) + \frac{1}{5}\sin(5x) + \dots \right) $$</li>
-                </ol>
-            </li>
-        </ul>
-        
-        <figure class="image-placeholder">
-            <img src="../images/placeholder.svg" alt="Approximation des Rechtecksignals"/>
-            <figcaption>Approximation des Rechtecksignals durch erste Oberschwingungen</figcaption>
-        </figure>
-        <div class="info-box tip">
-            <h5>Interessantes Detail: Das Gibbs-Phänomen</h5>
-            <p>Wenn man eine Fourierreihe zur Annäherung einer Funktion mit einer Sprungstelle (wie dem Rechtecksignal) verwendet, wird man feststellen, dass die Näherung an der Sprungstelle immer leicht "überschießt".</p>
-            <p>Selbst bei unendlich vielen Termen verschwindet dieses Überschwingen nicht, sondern wird zu einer vertikalen Linie. Die Höhe des Überschwingens beträgt immer ca. 9% der Sprunghöhe. Dies ist eine fundamentale Eigenschaft von Fourierreihen und wird als <strong>Gibbs-Phänomen</strong> bezeichnet.</p>
-        </div>
-
-        <h3>13.6 Übungsaufgaben</h3>
+        <h3>13.7 Übungsaufgaben</h3>
         <ol>
             <li><strong>(Einfach)</strong> Gegeben sei die Funktion $f(x)=x^2$ für $0 \le x < 4$ mit Periode $T=4$. Skizzieren Sie die Funktion für $-4 \le x < 12$. Ist die periodisch fortgesetzte Funktion gerade, ungerade oder keines von beiden?
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p><strong>Skizze:</strong> Die Funktion ist eine Parabel von (0,0) bis (4,16). Dieses Muster wiederholt sich. Im Intervall $[-4, 0)$ sieht sie aus wie $(x+4)^2$. Im Intervall $[4,8)$ sieht sie aus wie $(x-4)^2$.<br>
+                    <p><strong>Skizze:</strong> Die Funktion ist eine Parabel von (0,0) bis (4,16). Dieses Muster wiederholt sich. Im Intervall $[-4, 0)$ sieht sie aus wie $(x+4)^2$.<br>
                     <strong>Symmetrie:</strong> Die Funktion ist weder gerade (nicht spiegelsymmetrisch zur y-Achse) noch ungerade (nicht punktsymmetrisch zum Ursprung).</p>
-                </details>
-            </li>
-            <li><strong>(Mittel)</strong> Für die Funktion aus Aufgabe 1, leiten Sie den Fourierkoeffizienten $a_0$ her.
-                 <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>$a_0 = \frac{2}{T}\int_0^T f(x)dx = \frac{2}{4}\int_0^4 x^2 dx = \frac{1}{2}[\frac{x^3}{3}]_0^4 = \frac{1}{2}(\frac{4^3}{3} - 0) = \frac{1}{2}\frac{64}{3} = \frac{32}{3}$.</p>
                 </details>
             </li>
             <li><strong>(Mittel)</strong> Berechnen Sie die Fourierkoeffizienten für die Funktion $f(x) = \begin{cases} e^{-x} & \text{für } -\pi \le x < 0 \\ e^x & \text{für } 0 \le x < \pi \end{cases}$ mit Periode $T=2\pi$. Nutzen Sie die Symmetrie!
@@ -170,27 +128,14 @@
                     $a_k = \frac{2}{\pi} \left[ \frac{e^x(\cos(kx)+k\sin(kx))}{1+k^2} \right]_0^\pi = \frac{2}{\pi(1+k^2)} [e^\pi(\cos(k\pi)+0) - e^0(\cos(0)+0)] = \frac{2(e^\pi(-1)^k - 1)}{\pi(1+k^2)}$.</p>
                 </details>
             </li>
-            <li><strong>(Schwer)</strong> Leiten Sie alle Fourierkoeffizienten $a_n$ für die Funktion aus Aufgabe 1 her.
+            <li><strong>(Mittel)</strong> Entwickeln Sie die Funktion für ein Rechtecksignal mit Periode $T=2\pi$ und Amplitude g, gegeben durch $f(x) = \begin{cases} -g & \text{für } -\pi \le x < 0 \\ +g & \text{für } 0 \le x < \pi \end{cases}$, in eine Fourierreihe.
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>$T=4 \implies \omega=\pi/2$.<br>
-                    $a_n = \frac{2}{4}\int_0^4 x^2 \cos(n\frac{\pi}{2}x)dx = \frac{1}{2}\int_0^4 x^2 \cos(n\frac{\pi}{2}x)dx$.<br>
-                    Dieses Integral erfordert zweimalige partielle Integration. Das Endergebnis nach aufwändiger Rechnung ist:
-                    $a_n = \frac{1}{2} \left[ \frac{2x^2\sin(\dots)}{n\pi} + \frac{8x\cos(\dots)}{(n\pi)^2} - \frac{16\sin(\dots)}{(n\pi)^3} \right]_0^4$.<br>
-                    Da $\sin(2n\pi)=0$ und $\sin(0)=0$ fallen der erste und dritte Term weg.<br>
-                    $a_n = \frac{1}{2} \left[ \frac{8(4)\cos(2n\pi)}{(n\pi)^2} - 0 \right] = \frac{16}{(n\pi)^2}$.</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Gegeben sei das Signal aus Aufgabe 1.4 des Übungsblattes "Gemischte Übungen 8" (siehe Anhang). Stellen Sie eine geeignete Funktionsvorschrift auf und begründen Sie, welche Koeffizienten ($a_n$ oder $b_n$) verschwinden müssen. Leiten Sie die von null verschiedenen Koeffizienten so weit her, bis kein Integral mehr vorkommt.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Da das Originaldokument nicht vorliegt, wird eine plausible Annahme getroffen: Ein Sägezahnsignal, das ungerade ist, z.B. $f(x) = x$ im Intervall $[-\pi, \pi)$ mit $T=2\pi$.<br>
-                    <strong>Symmetrie:</strong> Die Funktion ist ungerade, also sind alle $a_n=0$ (inklusive $a_0$).<br>
-                    <strong>Koeffizienten $b_n$:</strong> $\omega=1$. Da $f(x)\sin(nx)$ gerade ist, gilt:<br>
-                    $b_n = \frac{2}{T}\cdot 2 \int_0^{T/2} f(x)\sin(nx)dx = \frac{2}{\pi}\int_0^\pi x \sin(nx)dx$.<br>
-                    Partielle Integration mit $u=x, v'=\sin(nx)$:<br>
-                    $b_n = \frac{2}{\pi} \left( [-\frac{x\cos(nx)}{n}]_0^\pi - \int_0^\pi -\frac{\cos(nx)}{n}dx \right) = \frac{2}{\pi} \left( -\frac{\pi\cos(n\pi)}{n} - 0 + [\frac{\sin(nx)}{n^2}]_0^\pi \right)$.<br>
-                    $b_n = \frac{2}{\pi}(-\frac{\pi(-1)^n}{n} + 0) = -\frac{2(-1)^n}{n} = \frac{2(-1)^{n+1}}{n}$.</p>
+                    <p>Die Funktion ist ungerade, also sind alle $a_k=0$.
+                    <br>$b_k = \frac{2g}{k\pi} (1 - (-1)^k)$.
+                    <br>Für gerades k ist $b_k=0$, für ungerades k ist $b_k=\frac{4g}{k\pi}$.
+                    <br>Die Reihe ist $ F(x) = \sum_{n=1}^\infty \frac{4g}{(2n-1)\pi} \sin((2n-1)x) = \frac{4g}{\pi} ( \sin(x) + \frac{1}{3}\sin(3x) + \dots )$.
+                    </p>
                 </details>
             </li>
         </ol>

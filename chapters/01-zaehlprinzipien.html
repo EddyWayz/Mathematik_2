@@ -35,7 +35,7 @@
         <h2 id="sec1">1 Grundlegende Zählprinzipien</h2>
 
         <h3>1.1 Lernziel</h3>
-        <p>Am Ende dieser Lerneinheit wirst du in der Lage sein, die grundlegenden Zählprinzipien – die Summenregel, die Produktregel und das Inklusions-Exklusions-Prinzip – sicher auf verschiedene Abzählprobleme anzuwenden. Du wirst verstehen, wann welches Prinzip genutzt wird und wie sie kombiniert werden können, um komplexe Fragestellungen zu lösen.</p>
+        <p>Am Ende dieser Lerneinheit wirst du in der Lage sein, die grundlegenden Zählprinzipien – die Summenregel, die Produktregel und das Inklusions-Exklusions-Prinzip – sicher auf verschiedene Abzählprobleme anzuwenden. Du wirst verstehen, wann welches Prinzip genutzt wird und wie sie kombiniert werden können, um komplexe Fragestellungen zu lösen. Du wirst außerdem das Konzept des Binomialkoeffizienten und dessen Anwendung im Binomischen Lehrsatz kennen.</p>
         
         <h3>1.2 Motivation und Kontext</h3>
         <p>Die Kombinatorik ist ein faszinierendes Gebiet der Mathematik, das man auch als <strong>„Kunst des Zählens“</strong> bezeichnen kann. Sie entstand im 17. Jahrhundert aus der Analyse von Glücksspielen, hat heute aber weitreichende und wichtige Anwendungen in der Informatik:</p>
@@ -48,7 +48,7 @@
         
         <div class="info-box tip">
             <h5>Voraussetzung: Mengenlehre</h5>
-            <p>Dieses Kapitel baut direkt auf deinem Wissen über Mengen und Mengenoperationen auf. Stelle sicher, dass du mit den Konzepten von Durchschnitt ($A \cap B$), Vereinigung ($A \cup B$), Differenz ($A \setminus B$) und Komplement ($\bar{A}$) vertraut bist, da die Zählprinzipien formal über Mengen definiert werden.</p>
+            <p>Dieses Kapitel baut direkt auf deinem Wissen über Mengen und Mengenoperationen auf. Visuelle Hilfsmittel wie Venn-Diagramme sind nützlich, um die Zählprinzipien zu verstehen. Stelle sicher, dass du mit den Konzepten von Durchschnitt ($A \cap B$), Vereinigung ($A \cup B$), Differenz ($A \setminus B$) und Komplement ($\bar{A}$) vertraut bist, da die Zählprinzipien formal über Mengen definiert werden.</p>
         </div>
 
         <div class="info-box tip">
@@ -134,34 +134,36 @@
         </ul>
         <p><strong>Anwendung:</strong> Erwünschte Anzahl = (Alle mit Länge 6) - (Alle ohne Ziffern mit Länge 6) = $36^6 - 26^6$. </p>
         
-        <h3>1.5 Beispielaufgaben</h3>
+        <h3>1.5 Werkzeuge für die Kombinatorik: Fakultät und Binomialkoeffizient</h3>
+        <p>Um komplexere Abzählprobleme wie Permutationen und Kombinationen effizient zu behandeln, benötigen wir zwei grundlegende mathematische Werkzeuge.</p>
+        <dl>
+            <dt>Fakultät</dt>
+            <dd>Die Fakultät einer nicht-negativen ganzen Zahl $n$, geschrieben als $n!$, ist das Produkt aller ganzen Zahlen von 1 bis $n$. Sie gibt die Anzahl der Möglichkeiten an, $n$ verschiedene Objekte anzuordnen.
+            $$ n! = n \cdot (n-1) \cdot \dots \cdot 2 \cdot 1 $$
+            Per Definition ist $0! = 1$.
+            </dd>
+            <dt>Binomialkoeffizient</dt>
+            <dd>Der Binomialkoeffizient, geschrieben als $\binom{n}{k}$ ("n über k"), gibt an, auf wie viele verschiedene Arten man $k$ Objekte aus einer Menge von $n$ verschiedenen Objekten auswählen kann, ohne die Reihenfolge zu beachten.
+            $$ \binom{n}{k} = \frac{n!}{k! (n-k)!} $$
+            </dd>
+            <dt>Binomischer Lehrsatz</dt>
+            <dd>Der Satz beschreibt, wie man eine Potenz eines Binoms $(x+y)^n$ entwickelt. Die Koeffizienten in dieser Entwicklung sind genau die Binomialkoeffizienten.
+            $$ (x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k $$
+            </dd>
+        </dl>
         
-        <h4>1.5.1 Beispiel 1: Produktregel (Autokennzeichen)</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Wie viele mögliche Autokennzeichen gibt es, wenn ein Kennzeichen aus zwei Großbuchstaben gefolgt von vier Ziffern besteht und Wiederholungen erlaubt sind? </li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Problemzerlegung:</strong> Die Erstellung des Kennzeichens kann in 6 sequentielle Teilschritte zerlegt werden. </li>
-                    <li><strong>Möglichkeiten pro Schritt:</strong> Für Buchstaben gibt es 26 Möglichkeiten, für Ziffern 10. </li>
-                    <li><strong>Anwendung der Produktregel:</strong> $$ \text{Anzahl} = 26 \cdot 26 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 26^2 \cdot 10^4 = 6.760.000 $$ </li>
-                    <li><strong>Antwort:</strong> Es gibt 6.760.000 verschiedene mögliche Kennzeichen. </li>
-                </ol>
-            </li>
-        </ul>
-        
-        <h4>1.5.2 Beispiel 2: Kombination aller Regeln (Passwörter)</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Ein Passwort kann aus sechs bis acht Zeichen bestehen (nur Kleinbuchstaben oder Ziffern). Mindestens eines der Zeichen muss eine Ziffer sein. Wie viele mögliche Passwörter gibt es? </li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Problemzerlegung (Summenregel):</strong> Die Gesamtzahl $Z$ ist die Summe der gültigen Passwörter jeder Länge: $Z = Z_6 + Z_7 + Z_8$. </li>
-                    <li><strong>Berechnung für Länge 6 ($Z_6$) (Komplementäransatz):</strong> $Z_6 = (\text{Alle mit Länge 6}) - (\text{Alle ohne Ziffern mit Länge 6}) = 36^6 - 26^6$. </li>
-                    <li><strong>Berechnung für Länge 7 und 8:</strong> Analog gilt: $Z_7 = 36^7 - 26^7$ und $Z_8 = 36^8 - 26^8$. </li>
-                    <li><strong>Gesamtergebnis (Summenregel):</strong> $$ Z = (36^6 - 26^6) + (36^7 - 26^7) + (36^8 - 26^8) = 2.684.483.063.360 $$ </li>
-                    <li><strong>Antwort:</strong> Es gibt 2.684.483.063.360 mögliche Passwörter. </li>
-                </ol>
-            </li>
-        </ul>
+        <div class="info-box tip">
+            <h5>Das Pascalsche Dreieck</h5>
+            <p>Das Pascalsche Dreieck ist eine visuelle Methode, um Binomialkoeffizienten zu finden. Jeder Eintrag ist die Summe der beiden direkt darüber liegenden Einträge, was der rekursiven Formel $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ entspricht.</p>
+            <pre style="text-align: center; font-size: 1.1em; line-height: 1.5;">
+    1
+   1 1
+  1 2 1
+ 1 3 3 1
+1 4 6 4 1
+            </pre>
+            <p>Die 5. Zeile (beginnend mit Zeile 0) enthält zum Beispiel die Koeffizienten für $(x+y)^4$: $1, 4, 6, 4, 1$.</p>
+        </div>
         
         <h3>1.6 Übungsaufgaben</h3>
 
@@ -209,15 +211,6 @@
                 </details>
             </li>
         </ol>
-
-        <h3>1.7 Ausblick: Von Zählprinzipien zu Permutationen und Kombinationen</h3>
-        <p>Die hier besprochenen Grundregeln sind das Werkzeug, um komplexere Abzählprobleme zu lösen. Die nächsten wichtigen Konzepte der Kombinatorik, die darauf aufbauen, sind <strong>Permutationen</strong> (Anordnung von Objekten) und <strong>Kombinationen</strong> (Auswahl von Objekten).  Um deren Anzahl effizient zu berechnen, werden zwei wichtige mathematische Werkzeuge eingeführt:</p>
-        <ul>
-            <li>Die <strong>Fakultät</strong> (z.B. $n!$), um die Anzahl der Anordnungen aller Elemente einer Menge zu beschreiben. </li>
-            <li>Der <strong>Binomialkoeffizient</strong> $\binom{n}{k}$, der angibt, auf wie viele Arten man $k$ Objekte aus einer Menge von $n$ Objekten auswählen kann. </li>
-        </ul>
-        <p>Diese Konzepte werden im nächsten Kapitel detailliert behandelt.</p>
-
     </main>
 
     <footer>

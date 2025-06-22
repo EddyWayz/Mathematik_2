@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lerneinheit über Taylorreihen und Taylorpolynome zur Approximation von Funktionen durch Polynome.">
-    <title>12 Taylorreihen - Lernskript Mathe</title>
+    <meta name="description" content="Lerneinheit über Taylorreihen und Taylorpolynome zur Approximation von Funktionen durch Polynome, inklusive Konvergenzradius und Anwendungen.">
+    <title>12 Taylorreihen und Potenzreihen - Lernskript Mathe</title>
 
     <script>
   MathJax = {
@@ -24,7 +24,7 @@
 
     <header class="page-header" role="banner">
         <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel 12: Taylorreihen</span>
+        <span>Kapitel 12: Taylor- & Potenzreihen</span>
         <div class="header-controls">
             <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
         </div>
@@ -32,14 +32,15 @@
 
     <main class="content-wrapper">
 
-        <h2 id="sec12">12 Taylorreihen: Funktionen durch Polynome annähern</h2>
+        <h2 id="sec12">12 Taylor- und Potenzreihen: Funktionen durch Polynome annähern</h2>
         <h3>12.1 Lernziel</h3>
-        <p>Am Ende dieser Lerneinheit wirst du verstehen, wie man eine Funktion in der Nähe eines Punktes durch ein Polynom (das Taylorpolynom) annähert. Du wirst in der Lage sein, die Koeffizienten eines Taylorpolynoms durch Ableiten zu berechnen und die Taylorreihe als unendliche Fortsetzung dieses Gedankens zu verstehen. Zudem wirst du lernen, wie man aus den bekannten Taylorreihen von Grundfunktionen (wie $e^x, \sin x$) auf effiziente Weise Reihen für komplexere Funktionen herleitet.</p>
+        <p>Am Ende dieser Lerneinheit wirst du verstehen, wie man eine Funktion in der Nähe eines Punktes durch ein Polynom (das Taylorpolynom) annähert. Du wirst in der Lage sein, die Koeffizienten eines Taylorpolynoms durch Ableiten zu berechnen und die Taylorreihe als unendliche Fortsetzung dieses Gedankens zu verstehen. Du wirst die bekannten Reihen von Grundfunktionen nutzen, um neue Reihen herzuleiten, und deren Konvergenzbereich bestimmen. Zudem wirst du Taylorreihen anwenden können, um Grenzwerte und Integrale näherungsweise zu berechnen.</p>
+        
         <h3>12.2 Motivation und Kontext</h3>
-        <p>Viele Funktionen, insbesondere transzendente Funktionen wie Sinus, Cosinus oder die Exponentialfunktion, sind für einen Computer schwer direkt zu berechnen. Polynome hingegen, die nur aus Additionen und Multiplikationen bestehen, sind trivial auszuwerten. Die Idee der Taylorreihe ist es, eine <strong>beliebige (glatte) Funktion lokal durch ein Polynom zu ersetzen</strong>.</p>
+        <p>Viele Funktionen, insbesondere transzendente Funktionen wie Sinus oder die Exponentialfunktion, sind für einen Computer schwer direkt zu berechnen. Polynome hingegen, die nur aus Additionen und Multiplikationen bestehen, sind trivial auszuwerten. Die Idee der Taylorreihe ist es, eine <strong>beliebige (glatte) Funktion lokal durch ein Polynom zu ersetzen</strong>.</p>
         <ul>
             <li><strong>Taschenrechner & Computer:</strong> Wenn dein Taschenrechner $\sin(0.1)$ berechnet, löst er keine Dreiecke. Er setzt $0.1$ in die ersten Glieder der Taylorreihe des Sinus ein: $\sin(x) \approx x - \frac{x^3}{6} + \dots$.</li>
-            <li><strong>Physik & Ingenieurwesen:</strong> In der Relativitätstheorie treten komplexe Terme mit Wurzeln auf. Für kleine Geschwindigkeiten kann man diesen Term durch sein Taylorpolynom ersetzen und erhält so die klassische Newtonsche Physik als Näherung zurück. Dieses Prinzip der <strong>Linearisierung</strong> ist ein universelles Werkzeug.</li>
+            <li><strong>Physik & Ingenieurwesen:</strong> In der Relativitätstheorie treten komplexe Terme auf. Für kleine Geschwindigkeiten kann man diese durch ihr Taylorpolynom ersetzen und erhält so die klassische Newtonsche Physik als Näherung zurück. Dieses Prinzip der <strong>Linearisierung</strong> ist ein universelles Werkzeug.</li>
             <li><strong>Numerische Mathematik:</strong> Wenn Integrale nicht exakt lösbar sind, kann man den Integranden durch sein Taylorpolynom ersetzen und dieses (einfache) <a href="10-integralrechnung.html#sec10">Integral</a> gliedweise lösen, um eine exzellente Näherung zu erhalten.</li>
         </ul>
 
@@ -55,15 +56,6 @@
             <dd>Das Taylorpolynom $T_m(x)$ vom Grad $m$ einer Funktion $f$ um den <strong>Entwicklungspunkt</strong> $x_0$ ist jenes Polynom $m$-ten Grades, das mit der Funktion $f$ an der Stelle $x_0$ im Funktionswert und in allen Ableitungen bis zur $m$-ten Ordnung übereinstimmt. Es ist die <strong>bestmögliche lokale Annäherung</strong> durch ein Polynom dieses Grades.</dd>
             <dt>Taylorkoeffizienten</dt>
             <dd>Die Koeffizienten $a_k$ des Taylorpolynoms. Sie werden über die Ableitungen von $f$ am Entwicklungspunkt $x_0$ berechnet: $$ a_k = \frac{f^{(k)}(x_0)}{k!} $$</dd>
-        </dl>
-
-        <div class="info-box key-concept">
-            <h5>Kernaussage: Warum diese Formel für die Koeffizienten?</h5>
-            <p>Die Formel $a_k = \frac{f^{(k)}(x_0)}{k!}$ wirkt zunächst komplex, ist aber genau so konstruiert, dass die Ableitungen des Polynoms und der Funktion bei $x_0$ übereinstimmen.</p>
-            <p>Betrachte die k-te Ableitung eines Polynoms $T(x)=\sum a_i (x-x_0)^i$. Wenn man sie bei $x=x_0$ auswertet, fallen alle Terme weg, außer dem k-ten Term. Dieser wird zu $T^{(k)}(x_0) = a_k \cdot k!$. Damit nun $T^{(k)}(x_0) = f^{(k)}(x_0)$ gilt, muss man $a_k$ genau als $\frac{f^{(k)}(x_0)}{k!}$ wählen.</p>
-        </div>
-
-        <dl>
             <dt>Formel des Taylorpolynoms</dt>
             <dd> $$ T_m(x) = \sum_{k=0}^{m} \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2 + \dots $$ </dd>
             <dt>Taylorreihe</dt>
@@ -71,9 +63,17 @@
             <dt>Maclaurin-Reihe</dt>
             <dd>Ein Spezialfall der Taylorreihe mit dem besonders einfachen Entwicklungspunkt $x_0=0$.</dd>
         </dl>
-
+        
+         <div class="info-box tip">
+            <h5>Fehlerabschätzung mit dem Lagrange-Restglied</h5>
+            <p>Wie gut ist die Näherung durch ein Taylorpolynom? Die Differenz zwischen der wahren Funktion und dem Polynom, das Restglied $R_m(x) = f(x) - T_m(x)$, lässt sich exakt darstellen:</p>
+            $$ R_m(x) = \frac{f^{(m+1)}(z)}{(m+1)!}(x-x_0)^{m+1} $$
+            <p>Dabei ist $z$ eine (unbekannte) Zwischenstelle zwischen $x$ und $x_0$. Auch wenn man $z$ nicht kennt, kann man oft den Term $|f^{(m+1)}(z)|$ nach oben abschätzen, um eine Obergrenze für den Fehler der Approximation zu erhalten.</p>
+        </div>
+        
+        <h3>12.4 Wichtige Maclaurin-Reihen (Spickzettel)</h3>
         <div class="spickzettel-box">
-            <h5>Spickzettel: Wichtige Maclaurin-Reihen (Entwicklung um $x_0=0$)</h5>
+            <h5>Entwicklung um $x_0=0$</h5>
             <table>
                 <thead>
                     <tr><th>Funktion</th><th>Reihenentwicklung</th><th>Konvergenzbereich</th></tr>
@@ -84,66 +84,44 @@
                     <tr><td>$\cos x$</td><td>$\sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} = 1 - \frac{x^2}{2!} + \dots$</td><td>$x \in \mathbb{R}$</td></tr>
                     <tr><td>$\frac{1}{1-x}$</td><td>$\sum_{k=0}^{\infty} x^k = 1 + x + x^2 + \dots$</td><td>$|x|<1$</td></tr>
                     <tr><td>$\ln(1+x)$</td><td>$\sum_{k=1}^{\infty} (-1)^{k+1} \frac{x^k}{k} = x - \frac{x^2}{2} + \dots$</td><td>$-1<x\le 1$</td></tr>
-                    <tr><td>$(1+x)^\alpha$</td><td>$1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \dots$</td><td>$|x|<1$</td></tr>
+                    <tr><td>$(1+x)^\alpha$</td><td>$1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \dots = \sum_{k=0}^{\infty} \binom{\alpha}{k} x^k$</td><td>$|x|<1$</td></tr>
                 </tbody>
             </table>
         </div>
         
-        <h3>12.4 Schritt-für-Schritt-Erklärung (Methoden)</h3>
-        <h4>12.4.1 Weg 1: Taylorpolynom explizit berechnen</h4>
-        <ol>
-            <li><strong>Funktion und Entwicklungspunkt</strong> $f(x)$ und $x_0$ festlegen.</li>
-            <li><strong>Ableitungen bilden:</strong> Berechne die ersten $m$ Ableitungen von $f$: $f'(x), f''(x), \dots, f^{(m)}(x)$.</li>
-            <li><strong>Ableitungen auswerten:</strong> Setze den Entwicklungspunkt $x_0$ in die Funktion und alle Ableitungen ein, um die Werte $f(x_0), f'(x_0), f''(x_0), \dots$ zu erhalten.</li>
-            <li><strong>Koeffizienten berechnen:</strong> Berechne die Taylorkoeffizienten $a_k = \frac{f^{(k)}(x_0)}{k!}$.</li>
-            <li><strong>Polynom zusammensetzen:</strong> Setze die Koeffizienten in die allgemeine Formel für $T_m(x)$ ein.</li>
-        </ol>
-        <h4>12.4.2 Weg 2: Bekannte Reihen nutzen (der schlaue Weg)</h4>
-        <p>Man muss das Rad nicht neu erfinden! Die Reihen für Grundfunktionen (siehe Spickzettel) sind bekannt.</p>
-        <ul>
-            <li><strong>Substitution:</strong> Um die Reihe für $e^{-x^2}$ zu finden, nimmt man die bekannte Reihe für $e^z = \sum \frac{z^k}{k!}$ und ersetzt jedes $z$ durch $-x^2$.</li>
-            <li><strong>Algebraische Operationen:</strong> Man kann bekannte Reihen addieren, subtrahieren oder mit Potenzen von $x$ multiplizieren, um neue Reihen zu gewinnen. Die Reihe für $x \cos(x)$ erhält man, indem man die Reihe für $\cos(x)$ mit $x$ multipliziert.</li>
-        </ul>
-        <p>Dieser Weg ist meist viel schneller als das explizite Ableiten.</p>
+        <h3>12.5 Methoden und Anwendungen</h3>
+        <h4>12.5.1 Weg 1: Taylorpolynom explizit berechnen</h4>
+        <p>Dieser Weg wird genutzt, wenn keine bekannte Reihe zur Verfügung steht oder explizit verlangt wird. Die Schritte sind: 1. Funktion mehrfach ableiten. 2. Ableitungen am Entwicklungspunkt $x_0$ auswerten. 3. Koeffizienten $a_k = f^{(k)}(x_0)/k!$ berechnen. 4. Polynom zusammensetzen.</p>
+
+        <h4>12.5.2 Weg 2: Bekannte Reihen nutzen (der schlaue Weg)</h4>
+        <p>Man muss das Rad nicht neu erfinden! Durch Substitution, Addition, Multiplikation oder Integration/Differentiation bekannter Reihen lassen sich schnell neue Reihen gewinnen. Dieser Weg ist meist viel schneller als das explizite Ableiten.</p>
 
         <div class="info-box video-box">
             <h5>Erklärendes Video: Taylor- und Maclaurin-Reihen nutzen</h5>
             <p>Dieses Video zeigt, wie man durch Einsetzen in bekannte Reihen (hier am Beispiel Cosinus) schnell zu neuen Taylorreihen kommt.</p>
             <a href="http://www.youtube.com/watch?v=W0n4_EGs3ms" target="_blank">MathemaTrick: TAYLORENTWICKLUNG Cosinus – Taylorreihe, MacLaurin Reihe</a>
         </div>
+        
+        <h4>12.5.3 Anwendung 1: Berechnung von Grenzwerten</h4>
+        <p>Taylorreihen sind eine mächtige Alternative zur Regel von de l'Hospital. Man ersetzt die Funktionen im Grenzwert durch ihre Reihen, kürzt und wertet den Grenzwert dann direkt aus.</p>
+        <p><strong>Beispiel:</strong> Berechne $\lim_{x\to 0}\frac{e^x - 1}{x}$.</p>
+        <p>$\lim_{x\to 0}\frac{(1 + x + \frac{x^2}{2!} + \dots) - 1}{x} = \lim_{x\to 0}\frac{x + \frac{x^2}{2!} + \dots}{x} = \lim_{x\to 0}(1 + \frac{x}{2!} + \dots) = 1$.</p>
 
-        <h3>12.5 Beispielaufgaben</h3>
-        <h4>12.5.1 Beispiel 1: Explizite Berechnung</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Bestimmen Sie das Taylorpolynom 2. Grades von $f(x) = \ln(x)$ um $x_0=1$.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Ableitungen:</strong> $f(x)=\ln x$, $f'(x)=\frac{1}{x}$, $f''(x)=-\frac{1}{x^2}$.</li>
-                    <li><strong>Auswerten bei $x_0=1$:</strong> $f(1)=\ln 1=0$, $f'(1)=\frac{1}{1}=1$, $f''(1)=-\frac{1}{1^2}=-1$.</li>
-                    <li><strong>Koeffizienten:</strong> $a_0 = \frac{0}{0!} = 0$, $a_1 = \frac{1}{1!} = 1$, $a_2 = \frac{-1}{2!} = -\frac{1}{2}$.</li>
-                    <li><strong>Zusammensetzen:</strong> $$ T_2(x) = a_0 + a_1(x-1) + a_2(x-1)^2 = 0 + 1(x-1) - \frac{1}{2}(x-1)^2 $$</li>
-                </ol>
-            </li>
-        </ul>
-        <h4>12.5.2 Beispiel 2: Bekannte Reihe nutzen</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Finden Sie das Taylorpolynom 5. Grades für $f(x) = x \cos(2x)$ um $x_0=0$.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Grundreihe:</strong> Die bekannte Reihe für Kosinus ist $\cos(z) = 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \dots$.</li>
-                    <li><strong>Substitution:</strong> Setze $z=2x$ ein: $$ \cos(2x) = 1 - \frac{(2x)^2}{2!} + \frac{(2x)^4}{4!} - \dots = 1 - \frac{4x^2}{2} + \frac{16x^4}{24} - \dots = 1 - 2x^2 + \frac{2}{3}x^4 - \dots $$</li>
-                    <li><strong>Multiplikation mit x:</strong> Multipliziere die gesamte Reihe mit $x$: $$ f(x) = x \cos(2x) = x(1 - 2x^2 + \frac{2}{3}x^4 - \dots) = x - 2x^3 + \frac{2}{3}x^5 - \dots $$</li>
-                    <li><strong>Ablesen:</strong> Das Taylorpolynom 5. Grades ist $T_5(x) = x - 2x^3 + \frac{2}{3}x^5$.</li>
-                </ol>
-            </li>
-        </ul>
+        <h4>12.5.4 Anwendung 2: Näherungsweise Integration</h4>
+        <p>Funktionen ohne elementare Stammfunktion (wie $e^{-t^2}$) können integriert werden, indem man den Integranden durch sein Taylorpolynom ersetzt und dieses dann gliedweise integriert.</p>
+        <p><strong>Beispiel:</strong> Berechne $\int_0^x e^{-t^2} dt$ näherungsweise.</p>
+        <p>
+        $e^{-t^2} \approx 1 - t^2 + \frac{t^4}{2!}$.<br>
+        $\int_0^x (1 - t^2 + \frac{t^4}{2}) dt = [t - \frac{t^3}{3} + \frac{t^5}{10}]_0^x = x - \frac{x^3}{3} + \frac{x^5}{10}$.
+        </p>
 
-        <div class="info-box tip">
-            <h5>Ausblick: Wie gut ist die Näherung? Das Restglied</h5>
-            <p>Die Differenz zwischen der echten Funktion und dem Taylorpolynom, $R_m(x) = f(x) - T_m(x)$, wird als <strong>Restglied</strong> bezeichnet. Man kann diesen Fehler abschätzen. Das <strong>Lagrange-Restglied</strong> besagt, dass der Fehler von der $(m+1)$-ten Ableitung abhängt. Dies erlaubt es, die Genauigkeit der Taylor-Approximation für ein bestimmtes Intervall zu berechnen.</p>
-        </div>
+        <h3>12.6 Allgemeine Potenzreihen und Konvergenz</h3>
+        <p>Eine Taylorreihe ist ein Spezialfall einer allgemeinen <strong>Potenzreihe</strong>. Dies ist eine Reihe der Form $\sum_{k=0}^{\infty} a_k (x-x_0)^k$, deren Koeffizienten $a_k$ eine beliebige Zahlenfolge sein können.</p>
+        <p>Eine solche Reihe konvergiert nicht notwendigerweise für alle $x$. Der Bereich, in dem sie konvergiert, ist das <strong>Konvergenzintervall</strong>. Dessen "halbe Breite" ist der <strong>Konvergenzradius $R$</strong>, den man oft über das Quotientenkriterium bestimmen kann:</p>
+        $$ R = \lim_{k\to\infty} \left| \frac{a_k}{a_{k+1}} \right| $$
+        Die Reihe konvergiert dann (mindestens) für alle $x$ mit $|x-x_0| < R$. Das Verhalten an den Rändern des Intervalls ($x = x_0 \pm R$) muss separat mit anderen Kriterien geprüft werden.
 
-        <h3>12.6 Übungsaufgaben</h3>
+        <h3>12.7 Übungsaufgaben</h3>
         <ol>
             <li><strong>(Einfach)</strong> Leiten Sie das Taylorpolynom 2. Grades von $f(x) = \frac{1}{\sqrt{x}}$ um den Entwicklungspunkt $x_0=1$ durch explizite Berechnung her.
                 <details>
@@ -165,23 +143,6 @@
                     $e^{-x} = 1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \frac{x^4}{4!} - \dots$<br>
                     2. <strong>Addieren:</strong> $e^x+e^{-x} = 2 + 0 + 2\frac{x^2}{2!} + 0 + 2\frac{x^4}{4!} + \dots$<br>
                     3. <strong>Durch 2 teilen:</strong> $\cosh(x) = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \dots = \sum_{k=0}^{\infty} \frac{x^{2k}}{(2k)!}$.</p>
-                </details>
-            </li>
-            <li><strong>(Mittel)</strong> Geben Sie die Taylorreihe von $f(x) = \frac{\sin(x)}{x}$ um $x_0=0$ an. Welchen Wert hat der Grenzwert $\lim_{x\to 0} \frac{\sin(x)}{x}$?
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>1. <strong>Reihe für Sinus:</strong> $\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots$<br>
-                    2. <strong>Durch x teilen:</strong> $\frac{\sin(x)}{x} = 1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \frac{x^6}{7!} + \dots = \sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{(2k+1)!}$.<br>
-                    3. <strong>Grenzwert:</strong> Um den Grenzwert zu finden, setzt man $x=0$ in die Reihe ein. Alle Terme außer dem ersten werden null. Der Grenzwert ist 1.</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Berechnen Sie näherungsweise das Integral $\int_0^{0.1} \frac{e^{x^2}-1}{x^2} dx$, indem Sie den Integranden durch sein Taylorpolynom 4. Grades um $x_0=0$ ersetzen und dieses dann integrieren.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>1. <strong>Reihe für Integrand:</strong> $e^z = 1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\dots$. Mit $z=x^2$: $e^{x^2}=1+x^2+\frac{x^4}{2}+\frac{x^6}{6}+\dots$.<br>
-                    $\frac{e^{x^2}-1}{x^2} = \frac{(1+x^2+\frac{x^4}{2}+\dots)-1}{x^2} = 1+\frac{x^2}{2}+\frac{x^4}{6}+\dots$. Das ist bereits das T4-Polynom.<br>
-                    2. <strong>Polynom integrieren:</strong> $\int_0^{0.1} (1+\frac{x^2}{2}+\frac{x^4}{6})dx = [x + \frac{x^3}{6} + \frac{x^5}{30}]_0^{0.1}$.<br>
-                    3. <strong>Auswerten:</strong> $0.1 + \frac{0.001}{6} + \frac{0.00001}{30} \approx 0.1 + 0.00016667 + 0.00000033 = 0.100167$.</p>
                 </details>
             </li>
             <li><strong>(Schwer)</strong> Leiten Sie für $f(x) = x\sqrt{1+2x^2}$ das Taylorpolynom 5. Grades um $x_0=0$ her, indem Sie die bekannte Binomische Reihe für $\sqrt{1+z}$ verwenden.

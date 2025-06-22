@@ -34,14 +34,17 @@
         
         <h2 id="sec7">7 Partielle Ableitungen und der Gradient</h2>
         <h3>7.1 Lernziel</h3>
-        <p>Nach dieser Lerneinheit wirst du verstehen, wie das Konzept der Ableitung auf Funktionen mit mehreren Variablen erweitert wird. Du wirst in der Lage sein, partielle Ableitungen erster Ordnung korrekt zu berechnen, sie als Steigung in Richtung der Koordinatenachsen zu interpretieren und sie zum Gradientenvektor zusammenzufassen. Außerdem wirst du das totale Differential als lineare Näherung für Funktionsänderungen kennen.</p>
+        <p>Nach dieser Lerneinheit wirst du verstehen, wie das Konzept der Ableitung auf Funktionen mit mehreren Variablen erweitert wird. Du wirst in der Lage sein, partielle Ableitungen erster und zweiter Ordnung korrekt zu berechnen, sie als Steigung in Richtung der Koordinatenachsen zu interpretieren und sie zum Gradientenvektor zusammenzufassen. Du wirst die Tangentialebene als lineare Näherung einer Funktion verstehen und das totale Differential zur Fehlerabschätzung anwenden können. Außerdem wirst du die Richtungsableitung berechnen können, um die Steigung in eine beliebige Richtung zu bestimmen.</p>
+        
         <h3>7.2 Motivation und Kontext</h3>
         <p>In der realen Welt hängen die meisten Größen von mehr als nur einem Faktor ab. Der Gewinn einer Firma hängt vom Preis, den Werbeausgaben und den Produktionskosten ab. Die Temperatur in einem Raum ist eine Funktion von drei Raumkoordinaten $(x,y,z)$. Um solche Systeme zu analysieren und zu optimieren, müssen wir verstehen, wie sich die Funktion ändert, wenn wir <em>eine</em> der Einflussgrößen verändern, während wir die anderen festhalten. Genau das leistet die partielle Ableitung.</p>
         <p>In der Informatik ist dieses Konzept das Herzstück der Optimierung und des maschinellen Lernens. Ein neuronales Netz hat Millionen von Parametern (Variablen). Um das Netz zu trainieren, muss man wissen, wie sich der Fehler ändert, wenn man jeden einzelnen Parameter leicht anpasst. Der Vektor all dieser partiellen Ableitungen ist der <strong>Gradient</strong>, und die Methode des <strong>Gradientenabstiegs</strong> ist das Standardverfahren, um neuronale Netze zu trainieren.</p>
+        
         <h3>7.3 Definitionen & Begriffe</h3>
         <dl>
             <dt>Funktion mehrerer Veränderlicher</dt>
-            <dd>Eine Funktion, deren Ergebnis von mehreren unabhängigen Variablen abhängt, z.B. $f(x, y)$. Geometrisch beschreibt eine Funktion von zwei Variablen eine Fläche im dreidimensionalen Raum, eine Art "Funktionsgebirge".</dd>
+            <dd>Eine Funktion, deren Ergebnis von mehreren unabhängigen Variablen abhängt, z.B. $f(x, y)$. Geometrisch beschreibt eine Funktion von zwei Variablen eine Fläche im dreidimensionalen Raum, eine Art "Funktionsgebirge". Solche Funktionen nennt man auch <strong>Skalarfelder</strong>.</dd>
+            
             <dt>Partielle Ableitung</dt>
             <dd>Die Ableitung einer Funktion nach <em>einer</em> ihrer Variablen, wobei alle anderen Variablen während des Ableitens als Konstanten behandelt werden. Die partielle Ableitung von $f(x,y)$ nach $x$ wird mit $f_x$ oder $\frac{\partial f}{\partial x}$ bezeichnet.</dd>
             
@@ -57,7 +60,7 @@
             </div>
 
             <dt>Gradient</dt>
-            <dd>Der Vektor, der alle partiellen Ableitungen erster Ordnung einer Funktion zusammenfasst. Für $f(x,y)$ ist der Gradient $\nabla f = \text{grad}(f) = \begin{pmatrix} f_x \\ f_y \end{pmatrix}$.</dd>
+            <dd>Der Vektor, der alle partiellen Ableitungen erster Ordnung einer Funktion zusammenfasst. Für $f(x_1, \dots, x_n)$ ist der Gradient $\nabla f = \text{grad}(f) = \begin{pmatrix} f_{x_1} \\ \vdots \\ f_{x_n} \end{pmatrix}$.</dd>
 
             <div class="info-box key-concept">
                 <h5>Kernaussage: Der Gradient als Kompass</h5>
@@ -74,9 +77,12 @@
             </div>
 
             <dt>Tangentialebene</dt>
-            <dd>Die beste lineare Annäherung an das "Funktionsgebirge" an einem Punkt $P(x_0, y_0)$. Ihre Steigung in x- und y-Richtung wird durch die jeweiligen partiellen Ableitungen an diesem Punkt bestimmt.</dd>
+            <dd>Die beste lineare Annäherung an das "Funktionsgebirge" an einem Punkt $p=(x_0, y_0)$. Ihre Gleichung lautet:
+            $$ z(x,y) = f(p) + \nabla f(p) \cdot (x-p) $$
+            Ausgeschrieben für zwei Variablen ist das: $z - f(x_0, y_0) = f_x(x_0, y_0)(x-x_0) + f_y(x_0, y_0)(y-y_0)$.</dd>
+            
             <dt>Totales Differential</dt>
-            <dd>Die lineare Näherung der Gesamtänderung $\Delta f$ des Funktionswertes, wenn sich alle Variablen um kleine Beträge ($dx, dy, \dots$) ändern. Es ist die Summe der partiellen Differentiale. $$ df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy $$</dd>
+            <dd>Die lineare Näherung der Gesamtänderung $\Delta f$ des Funktionswertes, wenn sich alle Variablen um kleine Beträge ($dx, dy, \dots$) ändern. Es ist die Summe der partiellen Differentiale und misst die exakte Änderung auf der Tangentialebene. $$ df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \dots $$</dd>
             
             <div class="info-box tip">
                 <h5>Anwendung: Fehlerfortpflanzung</h5>
@@ -88,10 +94,16 @@
                     <a href="http://www.youtube.com/watch?v=T8Qy5czGWgo" target="_blank">MathemaTrick: Totales Differential berechnen</a>
                 </div>
             </div>
+
+            <dt>Richtungsableitung</dt>
+            <dd>Gibt die Steigung der Funktion an einem Punkt $p$ in Richtung eines beliebigen, normierten Vektors $\vec{u}$ an. Man berechnet sie über das Skalarprodukt aus dem Gradienten an der Stelle $p$ und dem Richtungsvektor $\vec{u}$.
+            $$ D_{\vec{u}}f(p) = \frac{\partial f}{\partial \vec{u}}(p) = \nabla f(p) \cdot \vec{u} $$
+            Die Richtungsableitung ist maximal, wenn $\vec{u}$ in die gleiche Richtung wie der Gradient zeigt, und minimal, wenn er in die entgegengesetzte Richtung zeigt. Steht $\vec{u}$ senkrecht zum Gradienten, ist die Richtungsableitung (die Steigung) null; man bewegt sich entlang einer Höhenlinie.
+            </dd>
         </dl>
         
-        <h3>7.5 Beispielaufgaben</h3>
-        <h4>7.5.1 Beispiel 1: Partielle Ableitungen berechnen</h4>
+        <h3>7.4 Beispielaufgaben</h3>
+        <h4>7.4.1 Beispiel 1: Partielle Ableitungen berechnen</h4>
         <ul>
             <li><strong>Aufgabe:</strong> Berechnen Sie alle partiellen Ableitungen erster Ordnung für die Funktion $f(x_{1},x_{2},x_{3})=x_{1}^{2}x_{2}+5x_{2}x_{3}-x_{3}+10$.</li>
             <li><strong>Lösung:</strong>
@@ -102,7 +114,7 @@
                 </ol>
             </li>
         </ul>
-        <h4>7.5.2 Beispiel 2: Gradient und totales Differential</h4>
+        <h4>7.4.2 Beispiel 2: Gradient und totales Differential</h4>
         <ul>
             <li><strong>Aufgabe:</strong> Gegeben sei $f(x,y) = x^2y - 3y$. Bestimmen Sie den Gradienten und das totale Differential.</li>
             <li><strong>Lösung:</strong>
@@ -113,7 +125,7 @@
                 </ol>
             </li>
         </ul>
-        <h3>7.6 Übungsaufgaben</h3>
+        <h3>7.5 Übungsaufgaben</h3>
         <div class="task-hint">
             <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder 1 ist, wähle stattdessen 5 bzw. 6.</p>
         </div>
@@ -135,7 +147,7 @@
                         $\frac{\partial T}{\partial x} = e^{\frac{ay}{x^2}} + x \cdot e^{\frac{ay}{x^2}} \cdot (-\frac{2ay}{x^3}) + \frac{1}{2\sqrt{x-y}} = e^{\frac{ay}{x^2}}(1 - \frac{2ay}{x^2}) + \frac{1}{2\sqrt{x-y}}$<br>
                         $\frac{\partial T}{\partial y} = x \cdot e^{\frac{ay}{x^2}} \cdot \frac{a}{x^2} - \frac{1}{2\sqrt{x-y}} = \frac{a}{x}e^{\frac{ay}{x^2}} - \frac{1}{2\sqrt{x-y}}$<br>
                         $\frac{\partial T}{\partial r} = \frac{1(r^2+1) - (r-t)(2r)}{(r^2+1)^2} + \frac{1}{r} = \frac{-r^2+2rt+1}{(r^2+1)^2} + \frac{1}{r}$<br>
-                        $\frac{\partial T}{\partial s} = \frac{1}{s \cdot 2\sqrt{s}} \cdot \sqrt{s} = \frac{1}{2s}$ (nach Vereinfachung des Logarithmus $\ln(\dots) = \dots + \frac{1}{2}\ln s + \dots$)<br>
+                        $\frac{\partial T}{\partial s} = \frac{1}{2s}$ (nach Vereinfachung des Logarithmus $\ln(\dots) = \dots + \frac{1}{2}\ln s + \dots$)<br>
                         $\frac{\partial T}{\partial t} = \frac{-1}{r^2+1} + \frac{2}{t}$ (nach Vereinfachung des Logarithmus $\ln(\dots) = \dots + 2\ln t$)<br>
                         Der Gradient $\nabla T$ ist der Vektor dieser fünf Ableitungen.
                     </p>

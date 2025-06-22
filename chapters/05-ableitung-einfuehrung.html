@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Konzeptuelle Einführung in die Ableitung als Grenzwert des Differenzenquotienten und als Steigung der Tangente.">
-    <title>5 Die Ableitung: Einführung - Lernskript Mathe</title>
+    <meta name="description" content="Einführung in die Ableitung: Konzept, Definition als Grenzwert und die wichtigsten Ableitungsregeln (Produkt-, Quotienten-, Kettenregel).">
+    <title>5 Die Ableitung: Grundlagen und Rechenregeln - Lernskript Mathe</title>
     
     <script>
   MathJax = {
@@ -32,156 +32,149 @@
 
     <main class="content-wrapper">
         
-        <h2 id="sec5">5 Die Ableitung: Von der Sekanten- zur Tangentensteigung</h2>
+        <h2 id="sec5">5 Die Ableitung: Grundlagen und Rechenregeln</h2>
         <h3>5.1 Lernziel</h3>
-        <p>Am Ende dieser Lerneinheit wirst du das grundlegende Konzept der Ableitung verstehen. Du wirst die Ableitung als lokale Änderungsrate einer Funktion und als Steigung der Tangente an einem Punkt interpretieren können. Du wirst die formale Definition der Ableitung als Grenzwert des Differenzenquotienten kennen und anwenden können, um die Ableitung einfacher Funktionen zu bestimmen und den Begriff der Differenzierbarkeit zu verstehen.</p>
+        <p>Am Ende dieser Lerneinheit wirst du das Konzept der Ableitung als lokale Änderungsrate verstehen und die Ableitungsregeln sicher anwenden können. Du wirst in der Lage sein, die Ableitung auch von komplex zusammengesetzten Funktionen mittels Faktor-, Summen-, Produkt-, Quotienten- und Kettenregel zu bestimmen.</p>
+        
         <h3>5.2 Motivation und Kontext</h3>
         <p>Die Differentialrechnung ist ein Eckpfeiler der modernen Wissenschaft und Technik. Sie gibt uns ein Werkzeug, um die <strong>momentane Änderungsrate</strong> von Prozessen zu analysieren.</p>
         <ul>
-            <li><strong>Physik und Technik:</strong> Die Geschwindigkeit ist die Ableitung des Weges nach der Zeit. Die Beschleunigung ist die Ableitung der Geschwindigkeit. Ohne Ableitungen gäbe es keine moderne Physik.</li>
-            <li><strong>Optimierung und KI:</strong> In der Informatik ist die Ableitung entscheidend für Optimierungsverfahren. Beim Training von neuronalen Netzen zum Beispiel wird der Fehler einer Vorhersage als Funktion der Netzparameter (Gewichte) beschrieben. Um diesen Fehler zu minimieren, berechnet man den Gradienten (der aus Ableitungen besteht) und passt die Gewichte in die entgegengesetzte Richtung an (Gradientenabstieg).</li>
-            <li><strong>Wirtschaftswissenschaften:</strong> Konzepte wie Grenzkosten oder Grenzerlös beschreiben die Änderungsrate der Kosten oder des Erlöses bei Produktion einer zusätzlichen Einheit und sind direkte Anwendungen der Ableitung.</li>
+            <li><strong>Physik und Technik:</strong> Die Geschwindigkeit ist die Ableitung des Weges nach der Zeit. Die Beschleunigung ist die Ableitung der Geschwindigkeit.</li>
+            <li><strong>Optimierung und KI:</strong> Beim Training von neuronalen Netzen wird der Fehler einer Vorhersage als Funktion der Netzparameter beschrieben. Um diesen Fehler zu minimieren, berechnet man den Gradienten (der aus Ableitungen besteht) und passt die Gewichte an (Gradientenabstieg).</li>
             <li><strong>Approximation:</strong> Die Ableitung erlaubt es, komplizierte Funktionen in der Nähe eines Punktes durch einfache Geraden (die Tangente) anzunähern – ein Prozess, der Linearisierung genannt wird.</li>
         </ul>
-        <h3>5.3 Definitionen & Begriffe</h3>
+
+        <h3>5.3 Von der Sekante zur Tangente: Das Konzept der Ableitung</h3>
         <dl>
-            <dt>Sekante</dt>
-            <dd>Eine Gerade, die den Graphen einer Funktion in mindestens zwei verschiedenen Punkten schneidet. Ihre Steigung repräsentiert die <strong>durchschnittliche Änderungsrate</strong> der Funktion zwischen diesen beiden Punkten.</dd>
             <dt>Differenzenquotient</dt>
-            <dd>Die Formel für die Steigung der Sekante durch die Punkte $(x_0, f(x_0))$ und $(x, f(x))$. Er gibt die durchschnittliche Steigung im Intervall $[x_0, x]$ an. $$ m_{\text{Sekante}} = \frac{\Delta y}{\Delta x} = \frac{f(x) - f(x_0)}{x - x_0} $$</dd>
-            <dt>Tangente</dt>
-            <dd>Eine Gerade, die einen Funktionsgraphen an einem Punkt $x_0$ "gerade so berührt". Ihre Steigung entspricht der <strong>momentanen Änderungsrate</strong> der Funktion genau an diesem Punkt.</dd>
-            
-            <div class="info-box tip">
-                <h5>Gedankenexperiment: Der unendliche Zoom</h5>
-                <p>Stell dir vor, du zoomst mit einer Lupe unendlich stark auf einen Punkt einer "glatten" Kurve. Egal wie kurvig die Funktion global ist, bei extremer Vergrößerung wird der kleine Ausschnitt, den du siehst, immer mehr wie eine gerade Linie aussehen. Die Steigung dieser Linie ist die Steigung der Tangente – und damit die Ableitung an diesem Punkt.</p>
-                <p>Wenn eine Funktion einen "Knick" hat (wie die Betragsfunktion bei x=0), kannst du so stark zoomen, wie du willst – der Knick bleibt immer ein Knick. Es gibt keine eindeutige Gerade. Daher ist die Funktion dort nicht differenzierbar.</p>
-            </div>
-            
+            <dd>Die Formel für die Steigung der Sekante durch die Punkte $(x_0, f(x_0))$ und $(x, f(x))$. Er gibt die <strong>durchschnittliche Änderungsrate</strong> im Intervall $[x_0, x]$ an. $$ m_{\text{Sekante}} = \frac{\Delta y}{\Delta x} = \frac{f(x) - f(x_0)}{x - x_0} $$</dd>
             <dt>Differentialquotient</dt>
-            <dd>Der Grenzwert des Differenzenquotienten, wenn sich der zweite Punkt dem ersten annähert ($x \to x_0$). Dieser Grenzwert ist die Steigung der Tangente.</dd>
+            <dd>Der Grenzwert des Differenzenquotienten, wenn sich der zweite Punkt dem ersten annähert ($x \to x_0$). Dieser Grenzwert ist die Steigung der Tangente und damit die <strong>momentane Änderungsrate</strong> am Punkt $x_0$.</dd>
             <dt>Ableitung</dt>
             <dd>Der Wert des Differentialquotienten an einer Stelle $x_0$ wird als Ableitung von $f$ an der Stelle $x_0$ bezeichnet. Gängige Schreibweisen sind $f'(x_0)$ oder $\frac{df}{dx}(x_0)$. $$ f'(x_0) = \lim_{x\to x_0} \frac{f(x) - f(x_0)}{x-x_0} $$</dd>
-            
-            <div class="info-box tip">
-                <h5>Alternative Definition: Die h-Methode</h5>
-                <p>Eine äquivalente und sehr gebräuchliche Definition der Ableitung verwendet den Abstand $h = x - x_0$. Wenn $x \to x_0$, dann geht $h \to 0$. Damit lautet die Definition:</p>
-                $$ f'(x_0) = \lim_{h\to 0} \frac{f(x_0+h) - f(x_0)}{h} $$
-                <p>Diese Form ist oft praktisch für Herleitungen.</p>
-                 <div class="info-box video-box" style="margin-top: 15px;">
-                    <h5>Erklärendes Video: Die h-Methode</h5>
-                    <p>Dieses Video zeigt, wie man mit der h-Methode die Ableitung einer Funktion herleitet.</p>
-                    <a href="http://www.youtube.com/watch?v=FO3MZrCR97g" target="_blank">MathemaTrick: ABLEITUNG mit h-METHODE berechnen</a>
-                </div>
-            </div>
-
             <dt>Differenzierbarkeit</dt>
-            <dd>Eine Funktion $f$ heißt an der Stelle $x_0$ differenzierbar, wenn dieser Grenzwert existiert. Anschaulich bedeutet das, dass der Funktionsgraph an dieser Stelle keine "Knicke" oder Sprünge hat und eine eindeutige Tangente gezeichnet werden kann.</dd>
+            <dd>Eine Funktion $f$ heißt an der Stelle $x_0$ differenzierbar, wenn dieser Grenzwert existiert. Anschaulich bedeutet das, dass der Funktionsgraph an dieser Stelle eine eindeutig bestimmte Tangente mit endlicher Steigung besitzt, also keine "Knicke" oder Sprünge hat. Jede differenzierbare Funktion ist auch stetig, aber nicht jede stetige Funktion ist differenzierbar (Beispiel: $f(x)=|x|$ bei $x=0$).</dd>
         </dl>
         
-        <div class="info-box key-concept">
-            <h5>Kernaussage: Differenzierbarkeit und Stetigkeit</h5>
-            <p>Diese beiden Konzepte hängen eng zusammen, dürfen aber nicht verwechselt werden:</p>
-            <p><strong>Wenn eine Funktion $f$ an einer Stelle $x_0$ differenzierbar ist, dann ist sie dort auch stetig.</strong></p>
-            <p>Die Umkehrung gilt jedoch <strong>nicht</strong>! Eine Funktion kann stetig sein, aber nicht differenzierbar. Das klassische Beispiel ist $f(x)=|x|$ an der Stelle $x_0=0$. Man kann den Graphen ohne Absetzen zeichnen (stetig), aber er hat einen Knick (nicht differenzierbar).</p>
+         <div class="info-box tip">
+            <h5>Linearisierung und Tangentengleichung</h5>
+            <p>Die Tangente ist die beste lineare Annäherung an eine Funktion $f$ im Punkt $P(x_0, f(x_0))$. Ihre Gleichung lässt sich direkt aus der Punkt-Steigungs-Form herleiten:</p>
+            $$ t(x) = f(x_0) + f'(x_0)(x-x_0) $$
+            <p>Diese Formel ist fundamental für Näherungsrechnungen. Für $x$ nahe bei $x_0$ gilt $f(x) \approx t(x)$.</p>
         </div>
-
-        <h3>5.4 Schritt-für-Schritt-Erklärung (Konzept)</h3>
-        <h4>5.4.1 Das Problem: Steigung einer Kurve</h4>
-        <p>Eine Gerade hat überall die gleiche, konstante Steigung. Aber wie misst man die Steigung einer Kurve, die sich an jedem Punkt ändert? Die Idee ist, sich von einer durchschnittlichen Steigung zu einer momentanen Steigung vorzuarbeiten.</p>
-        <h4>5.4.2 Die Annäherung mit der Sekante</h4>
-        <p>Wir können die Steigung an einem Punkt $P(x_0, f(x_0))$ annähern, indem wir einen zweiten Punkt $Q(x, f(x))$ in der Nähe wählen und eine Gerade (die Sekante) durch beide Punkte legen. Die Steigung dieser Sekante, der Differenzenquotient, ist eine durchschnittliche Steigung.</p>
-        <h4>5.4.3 Der Grenzwertprozess zur Tangente</h4>
-        <p>Um die exakte Steigung <em>am</em> Punkt $P$ zu finden, machen wir die Annäherung immer besser. Wir lassen den Punkt $Q$ auf dem Graphen in Richtung $P$ wandern, also $x \to x_0$. Dabei dreht sich die Sekante und nähert sich einer einzigen, finalen Geraden an: der Tangente.</p>
-        <h4>5.4.4 Die Definition der Ableitung</h4>
-        <p>Die Steigung dieser Tangente ist der Grenzwert, dem sich die Sekantensteigungen annähern. Dieser Grenzwert ist per Definition die Ableitung der Funktion $f$ an der Stelle $x_0$. Wenn dieser Grenzwert existiert, ist die Funktion an dieser Stelle differenzierbar.</p>
         
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: Grundlagen der Ableitung</h5>
-            <p>Dieses Video erklärt anschaulich den Übergang von der Sekantensteigung zur Tangentensteigung und die grundlegende Idee der Ableitung.</p>
-            <a href="http://www.youtube.com/watch?v=4L9s2GHZCq0" target="_blank">Mathe - simpleclub: Ableitung Grundlagen</a>
-        </div>
+        <h3>5.4 Die Technik des Differenzierens: Ableitungsregeln</h3>
+        <p>In der Praxis wird die Ableitung nur selten über den Grenzwert berechnet. Stattdessen verwendet man Standardregeln und bekannte Grundableitungen.</p>
 
-        <h3>5.5 Beispielaufgaben</h3>
-        <h4>5.5.1 Beispiel 1: Ableitung einer Potenzfunktion berechnen</h4>
+        <h4>5.4.1 Grundableitungen</h4>
+        <p>Diese Ableitungen elementarer Funktionen sollten auswendig gekonnt werden.</p>
+        <table style="width:100%; border-collapse: collapse;">
+            <thead><tr style="background-color:#f2f2f2;"><th>Funktion $f(x)$</th><th>Ableitung $f'(x)$</th><th>Funktion $f(x)$</th><th>Ableitung $f'(x)$</th></tr></thead>
+            <tbody>
+                <tr><td>$c$ (Konstante)</td><td>$0$</td><td>$\sin(x)$</td><td>$\cos(x)$</td></tr>
+                <tr><td>$x^n$</td><td>$n \cdot x^{n-1}$</td><td>$\cos(x)$</td><td>$-\sin(x)$</td></tr>
+                <tr><td>$e^x$</td><td>$e^x$</td><td>$\tan(x)$</td><td>$\frac{1}{\cos^2(x)}$</td></tr>
+                <tr><td>$a^x$</td><td>$\ln(a) \cdot a^x$</td><td>$\arctan(x)$</td><td>$\frac{1}{1+x^2}$</td></tr>
+                <tr><td>$\ln(x)$</td><td>$\frac{1}{x}$</td><td>$\sqrt{x}$</td><td>$\frac{1}{2\sqrt{x}}$</td></tr>
+            </tbody>
+        </table>
+
+        <h4>5.4.2 Die Ableitungsregeln</h4>
+        <dl>
+            <dt>Faktor- und Summenregel</dt>
+            <dd>Konstante Faktoren bleiben erhalten, und Summen werden gliedweise abgeleitet.
+                <ul>
+                    <li>$(c \cdot u(x))' = c \cdot u'(x)$</li>
+                    <li>$(u(x) \pm v(x))' = u'(x) \pm v'(x)$</li>
+                </ul>
+            </dd>
+            <dt>Produktregel</dt>
+            <dd>Wird für Produkte von Funktionen verwendet. Formel: $(u \cdot v)' = u'v + uv'$.</dd>
+            <dt>Quotientenregel</dt>
+            <dd>Wird für Brüche von Funktionen verwendet. Formel: $(\frac{u}{v})' = \frac{u'v - uv'}{v^2}$.</dd>
+            <dt>Kettenregel</dt>
+            <dd>Wird für verkettete (ineinander geschachtelte) Funktionen verwendet. Formel: $(v(u(x)))' = v'(u(x)) \cdot u'(x)$, oft als "äußere Ableitung mal innere Ableitung" bezeichnet.</dd>
+        </dl>
+        
+        <h3>5.5 Beispielaufgabe (Kombinierte Anwendung)</h3>
         <ul>
-            <li><strong>Aufgabe:</strong> Bestimmen Sie die Ableitung der Funktion $f(x)=x^2$ an der Stelle $x_0=2$ mit Hilfe des Differentialquotienten.</li>
+            <li><strong>Aufgabe:</strong> Leiten Sie die Funktion $k(x)=\sin(ax)\cdot \cos(\frac{x}{a})$ ab.</li>
             <li><strong>Lösung:</strong>
                 <ol>
-                    <li><strong>Ansatz:</strong> Wir setzen die Funktion und die Stelle in die Definition des Differentialquotienten ein. $$ f'(2) = \lim_{x\to 2} \frac{f(x) - f(2)}{x-2} = \lim_{x\to 2} \frac{x^2 - 2^2}{x-2} $$</li>
-                    <li><strong>Umformung:</strong> Der Zähler ist eine 3. Binomische Formel. $$ \lim_{x\to 2} \frac{(x-2)(x+2)}{x-2} $$</li>
-                    <li><strong>Kürzen und Grenzwert bilden:</strong> Für den Grenzwert ist $x \neq 2$, also dürfen wir $(x-2)$ kürzen. $$ \lim_{x\to 2} (x+2) = 2+2 = 4 $$</li>
-                    <li><strong>Antwort:</strong> Die Ableitung von $f(x)=x^2$ an der Stelle $x_0=2$ ist 4. Die Tangente an diesem Punkt hat die Steigung 4.</li>
+                    <li><strong>Analyse:</strong> Die Funktion ist ein Produkt. Wir benötigen die <strong>Produktregel</strong>. Die beiden Faktoren sind jeweils verkettete Funktionen (mit linearer innerer Funktion), also benötigen wir auch die <strong>Kettenregel</strong>.</li>
+                    <li><strong>Struktur (Produktregel):</strong> $k'(x) = (\sin(ax))' \cdot \cos(\frac{x}{a}) + \sin(ax) \cdot (\cos(\frac{x}{a}))'$.</li>
+                    <li><strong>Teilableitungen (Kettenregel):</strong>
+                        <ul>
+                            <li>$(\sin(ax))' = \cos(ax) \cdot a$ (äußere Ableitung $\cos$, innere Ableitung $a$).</li>
+                            <li>$(\cos(\frac{x}{a}))' = -\sin(\frac{x}{a}) \cdot \frac{1}{a}$ (äußere Ableitung $-\sin$, innere Ableitung $\frac{1}{a}$).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Zusammensetzen:</strong>
+                        $$ k'(x) = a \cdot \cos(ax) \cdot \cos(\frac{x}{a}) + \sin(ax) \cdot \left(-\frac{1}{a} \sin(\frac{x}{a})\right) $$
+                    </li>
+                    <li><strong>Antwort:</strong> $ k'(x) = a \cos(ax)\cos(\frac{x}{a}) - \frac{1}{a} \sin(ax)\sin(\frac{x}{a}) $</li>
                 </ol>
             </li>
         </ul>
-        <h4>5.5.2 Beispiel 2: Nicht-Differenzierbarkeit am "Knick"</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Zeigen Sie, dass $f(x)=|x|$ an der Stelle $x_0=0$ nicht differenzierbar ist.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Analyse:</strong> Wir müssen zeigen, dass der Grenzwert des Differentialquotienten nicht existiert. Dazu untersuchen wir den links- und rechtsseitigen Grenzwert.</li>
-                    <li><strong>Rechtsseitiger Grenzwert ($x \to 0^+$):</strong> Hier nähern wir uns von positiven Werten, also ist $|x|=x$. $$ \lim_{x\to 0^+} \frac{|x| - |0|}{x-0} = \lim_{x\to 0^+} \frac{x}{x} = \lim_{x\to 0^+} 1 = 1 $$</li>
-                    <li><strong>Linksseitiger Grenzwert ($x \to 0^-$):</strong> Hier nähern wir uns von negativen Werten, also ist $|x|=-x$. $$ \lim_{x\to 0^-} \frac{|x| - |0|}{x-0} = \lim_{x\to 0^-} \frac{-x}{x} = \lim_{x\to 0^-} -1 = -1 $$</li>
-                    <li><strong>Schlussfolgerung:</strong> Da der linksseitige Grenzwert (-1) und der rechtsseitige Grenzwert (+1) nicht übereinstimmen, existiert der beidseitige Grenzwert nicht. Die Funktion ist an der Stelle $x_0=0$ nicht differenzierbar.</li>
-                </ol>
-            </li>
-        </ul>
-        <h3>5.6 Übungsaufgaben</h3>
+
+        <h3>5.6 Übungsaufgaben (aus PA-05)</h3>
+        <div class="task-hint">
+            <p><strong>Hinweis:</strong> Ersetzen Sie in den Aufgaben die Variable $a$ durch die letzte Stelle Ihrer Matrikelnummer (0→5, 1→6). Vereinfachen Sie das Ergebnis so weit wie möglich.</p>
+        </div>
         <ol>
-            <li><strong>(Einfach)</strong> Die Position eines Objekts wird durch $s(t) = 9.81 t^2$ beschrieben. Was repräsentiert der Differenzenquotient $\frac{s(2)-s(1)}{2-1}$ physikalisch? Berechnen Sie seinen Wert.
+            <li><strong>(Aufgabe 2a)</strong> Leiten Sie ab: $f(x)=5a^{x}+\frac{1}{ax}-\sqrt[a]{x^{2}}+e^{ax}+(ax)^{3}$.
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p><strong>Bedeutung:</strong> Der Differenzenquotient stellt die <strong>mittlere Geschwindigkeit</strong> des Objekts im Zeitintervall von $t=1$s bis $t=2$s dar.<br>
-                    <strong>Berechnung:</strong> $s(2) = 9.81 \cdot 2^2 = 39.24$. $s(1) = 9.81 \cdot 1^2 = 9.81$.<br>
-                    Mittlere Geschwindigkeit = $\frac{39.24 - 9.81}{2 - 1} = 29.43$ (Einheit wäre z.B. m/s).</p>
+                    <p>1. <strong>Terme umschreiben:</strong> $f(x) = 5a^x + (ax)^{-1} - x^{\frac{2}{a}} + e^{ax} + a^3x^3$.<br>
+                    2. <strong>Ableiten (Summen-, Faktor-, Potenz-, Kettenregel):</strong><br>
+                    $f'(x) = 5 \cdot \ln(a)a^x + (-1)(ax)^{-2} \cdot a - \frac{2}{a}x^{\frac{2}{a}-1} + e^{ax} \cdot a + a^3 \cdot 3x^2$<br>
+                    3. <strong>Vereinfachen und zurückformen:</strong><br>
+                    $f'(x) = 5\ln(a)a^x - \frac{a}{(ax)^2} - \frac{2}{a}x^{\frac{2-a}{a}} + ae^{ax} + 3a^3x^2$<br>
+                    $f'(x) = 5\ln(a)a^x - \frac{1}{ax^2} - \frac{2}{a\sqrt[a]{x^{a-2}}} + ae^{ax} + 3a^3x^2$</p>
                 </details>
             </li>
-            <li><strong>(Einfach)</strong> Bestimmen Sie die Gleichung der Sekante an den Graphen von $f(x) = x^3$ durch die Punkte bei $x_0=1$ und $x_1=2$.
+            <li><strong>(Aufgabe 2b)</strong> Leiten Sie ab: $h(x)=\frac{a}{(1-x)^{2}}-\frac{1}{a^{2}x^{2}+1}+\frac{1}{\sqrt{x-1}}$.
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>1. <strong>Punkte finden:</strong> $P_0(1, 1^3) = (1, 1)$. $P_1(2, 2^3) = (2, 8)$.<br>
-                    2. <strong>Steigung berechnen:</strong> $m = \frac{8-1}{2-1} = 7$.<br>
-                    3. <strong>Geradengleichung aufstellen (Punkt-Steigungs-Form):</strong> $y - y_0 = m(x - x_0) \implies y - 1 = 7(x - 1) \implies y = 7x - 7 + 1$.<br>
-                    <strong>Ergebnis:</strong> $y = 7x - 6$.</p>
+                    <p>1. <strong>Terme umschreiben:</strong> $h(x) = a(1-x)^{-2} - (a^2x^2+1)^{-1} + (x-1)^{-\frac{1}{2}}$.<br>
+                    2. <strong>Ableiten (Kettenregel):</strong><br>
+                    $h'(x) = a(-2)(1-x)^{-3}\cdot(-1) - (-1)(a^2x^2+1)^{-2}\cdot(2a^2x) + (-\frac{1}{2})(x-1)^{-\frac{3}{2}}\cdot(1)$<br>
+                    3. <strong>Vereinfachen und zurückformen:</strong><br>
+                    $h'(x) = \frac{2a}{(1-x)^3} + \frac{2a^2x}{(a^2x^2+1)^2} - \frac{1}{2\sqrt{(x-1)^3}}$</p>
                 </details>
             </li>
-            <li><strong>(Mittel)</strong> Berechnen Sie die Ableitung der Funktion $f(x)=x^3$ an einer beliebigen Stelle $x_0$ mit Hilfe der Definition (Differentialquotient).
+            <li><strong>(Aufgabe 2e)</strong> Leiten Sie ab: $y(t)=\frac{S}{b+e^{(\frac{a}{1-t})}}$.
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>Ansatz: $f'(x_0) = \lim_{x\to x_0} \frac{x^3 - x_0^3}{x-x_0}$.<br>
-                    Zähler mit der Formel $a^3-b^3=(a-b)(a^2+ab+b^2)$ faktorisieren:
-                    $f'(x_0) = \lim_{x\to x_0} \frac{(x-x_0)(x^2 + x x_0 + x_0^2)}{x-x_0}$.<br>
-                    Kürzen: $\lim_{x\to x_0} (x^2 + x x_0 + x_0^2)$.<br>
-                    Grenzwert einsetzen: $x_0^2 + x_0 \cdot x_0 + x_0^2 = 3x_0^2$.</p>
-                </details>
-            </li>
-            <li><strong>(Mittel)</strong> Leiten Sie die Gleichung der Tangente an den Graphen der Funktion $f(x)=x^2+1$ an der Stelle $x_0=1$ her.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>1. <strong>Punkt finden:</strong> $P(1, 1^2+1) = (1, 2)$.<br>
-                    2. <strong>Steigung finden (Ableitung):</strong> $f'(x) = 2x$. Die Steigung am Punkt $x_0=1$ ist $m = f'(1) = 2 \cdot 1 = 2$.<br>
-                    3. <strong>Geradengleichung aufstellen:</strong> $y - 2 = 2(x-1) \implies y = 2x - 2 + 2$.<br>
-                    <strong>Ergebnis:</strong> $y=2x$.</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Untersuchen Sie die Funktion $f(x) = \sqrt{x}$ auf Differenzierbarkeit an der Stelle $x_0=0$. Existiert die Tangente dort?
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Wir müssen den rechtsseitigen Grenzwert des Differentialquotienten untersuchen (da die Funktion für $x<0$ nicht definiert ist):<br>
-                    $f'(0) = \lim_{x\to 0^+} \frac{\sqrt{x} - \sqrt{0}}{x-0} = \lim_{x\to 0^+} \frac{\sqrt{x}}{x} = \lim_{x\to 0^+} \frac{1}{\sqrt{x}}$.<br>
-                    Dieser Grenzwert geht gegen $+\infty$. Da der Grenzwert keine endliche Zahl ist, ist die Funktion an der Stelle $x_0=0$ <strong>nicht differenzierbar</strong>.<br>
-                    Anschaulich bedeutet das, dass die Tangente an diesem Punkt vertikal verläuft (unendliche Steigung). Sie existiert also als geometrisches Objekt (die y-Achse), aber nicht im Sinne einer Ableitung.</p>
+                    <p>1. <strong>Analyse:</strong> Quotientenregel und mehrfache Kettenregel.<br>
+                    $u(t)=S \implies u'(t)=0$.<br>
+                    $v(t)=b+e^{(a(1-t)^{-1})} \implies v'(t) = e^{(a(1-t)^{-1})} \cdot (a(-1)(1-t)^{-2}\cdot(-1)) = e^{(\frac{a}{1-t})} \cdot \frac{a}{(1-t)^2}$.<br>
+                    2. <strong>Quotientenregel anwenden:</strong><br>
+                    $y'(t) = \frac{0 \cdot v(t) - S \cdot v'(t)}{(v(t))^2} = \frac{-S \cdot e^{(\frac{a}{1-t})} \cdot \frac{a}{(1-t)^2}}{(b+e^{(\frac{a}{1-t})})^2}$<br>
+                    3. <strong>Vereinfachen:</strong><br>
+                    $y'(t) = -\frac{aS \cdot e^{\frac{a}{1-t}}}{(1-t)^2(b+e^{\frac{a}{1-t}})^2}$</p>
                 </details>
             </li>
         </ol>
+
+        <div class="info-box key-concept">
+            <h5>Überblick der Ableitungsregeln </h5>
+            <table style="width:100%; text-align: left; line-height: 1.5;">
+                <tr><th style="width: 25%;">Regel</th><th>Funktion $f(x)$</th><th>Ableitung $f'(x)$</th></tr>
+                <tr><td>Faktorregel</td><td>$c \cdot u(x)$</td><td>$c \cdot u'(x)$</td></tr>
+                <tr><td>Summenregel</td><td>$u(x) \pm v(x)$</td><td>$u'(x) \pm v'(x)$</td></tr>
+                <tr><td>Produktregel</td><td>$u(x) \cdot v(x)$</td><td>$u'(x)v(x) + u(x)v'(x)$</td></tr>
+                <tr><td>Quotientenregel</td><td>$\frac{u(x)}{v(x)}$</td><td>$\frac{u'(x)v(x) - u(x)v'(x)}{[v(x)]^2}$</td></tr>
+                <tr><td>Kettenregel</td><td>$v(u(x))$</td><td>$v'(u(x)) \cdot u'(x)$</td></tr>
+            </table>
+        </div>
 
     </main>
 
     <footer>
         <nav class="page-nav" aria-label="Seitennavigation">
             <a href="04-grenzwerte.html">← Vorheriges Kapitel</a>
-            <a href="06-ableitungsregeln.html">Nächstes Kapitel →</a>
+            <a href="06-anwendungen-ableitung.html">Nächstes Kapitel →</a>
         </nav>
     </footer>
 

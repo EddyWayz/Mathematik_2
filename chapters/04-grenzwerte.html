@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lerneinheit über Grenzwerte und Konvergenz von Folgen, inklusive Rechenregeln und der Analyse gebrochen-rationaler Funktionen.">
-    <title>4 Grenzwerte und Konvergenz - Lernskript Mathe</title>
+    <meta name="description" content="Lerneinheit über Grenzwerte von Funktionen, Stetigkeit und die Klassifizierung von Unstetigkeitsstellen (Pol, Sprung, hebbare Lücke).">
+    <title>4 Grenzwerte von Funktionen und Stetigkeit - Lernskript Mathe</title>
     
     <script>
   MathJax = {
@@ -24,7 +24,7 @@
 
     <header class="page-header" role="banner">
         <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel 4: Grenzwerte</span>
+        <span>Kapitel 4: Grenzwerte & Stetigkeit</span>
         <div class="header-controls">
             <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
         </div>
@@ -32,157 +32,137 @@
 
     <main class="content-wrapper">
         
-        <h2 id="sec4">4 Grenzwerte und Konvergenz von Folgen</h2>
+        <h2 id="sec4">4 Grenzwerte von Funktionen und Stetigkeit</h2>
         <h3>4.1 Lernziel</h3>
-        <p>Am Ende dieser Lerneinheit wirst du das Konzept des Grenzwertes einer Folge verstehen. Du wirst in der Lage sein, Konvergenz von Divergenz zu unterscheiden, die wichtigen Rechenregeln für Grenzwerte anzuwenden und das Langzeitverhalten von Folgen, insbesondere von gebrochen-rationalen Ausdrücken, systematisch zu berechnen.</p>
-        <h3>4.2 Motivation und Kontext</h3>
-        <p>Der Grenzwert ist eines der mächtigsten Werkzeuge der gesamten Mathematik und das Fundament der Analysis. Er beschreibt das ultimative Verhalten eines Prozesses:</p>
-        <ul>
-            <li><strong>Stabilität von Systemen:</strong> Nähert sich ein iterativer Algorithmus einer Lösung an? Stabilisiert sich das Klima in einem Simulationsmodell? Das sind alles Fragen nach der Konvergenz und dem Grenzwert der zugrundeliegenden Folgen.</li>
-            <li><strong>Asymptotisches Verhalten:</strong> Wie verhält sich die Laufzeit eines Algorithmus für sehr, sehr große Datenmengen ($n \to \infty$)? Die Grenzwertbetrachtung hilft, die Effizienz von Algorithmen zu klassifizieren.</li>
-            <li><strong>Grundlage der Differential- und Integralrechnung:</strong> Die Ableitung einer Funktion ist definiert als der Grenzwert von Sekantensteigungen, und das Integral als der Grenzwert einer Summe. Ohne ein solides Verständnis von Grenzwerten ist höhere Mathematik nicht denkbar.</li>
-        </ul>
-        <h3>4.3 Definitionen & Begriffe</h3>
-        <dl>
-            <dt>Grenzwert (Limit)</dt>
-            <dd>Eine Zahl $a \in \mathbb{R}$, der sich die Glieder einer Folge $(a_n)$ für unendlich groß werdendes $n$ beliebig genau annähern.</dd>
-            <dt>Konvergenz</dt>
-            <dd>Eine Folge heißt konvergent, wenn sie einen <strong>endlichen</strong> Grenzwert besitzt. Wir schreiben $ \lim_{n\to\infty} a_n = a $ oder $ a_n \to a $.</dd>
-            <dt>Divergenz</dt>
-            <dd>Eine Folge, die nicht konvergiert, heißt divergent. Man unterscheidet zwei Fälle:
-                <ul>
-                    <li><strong>Bestimmte Divergenz:</strong> Die Folgenglieder wachsen über alle Grenzen hinaus gegen $+\infty$ oder fallen gegen $-\infty$. Man schreibt dann symbolisch $\lim_{n\to\infty} a_n = \infty$ (oder $-\infty$).</li>
-                    <li><strong>Unbestimmte Divergenz:</strong> Die Folge hat keinen Grenzwert, oszilliert aber (z.B. $a_n = (-1)^n$).</li>
-                </ul>
-            </dd>
-            <dt>Unbestimmte Ausdrücke</dt>
-            <dd>Bei der Grenzwertrechnung können Ausdrücke wie $ \frac{\infty}{\infty}, \infty - \infty, 0 \cdot \infty, 1^\infty, \infty^0 $ oder $ \frac{0}{0} $ auftreten. Ihr Wert kann nicht direkt bestimmt werden und erfordert spezielle Umformungen oder Verfahren.</dd>
-        </dl>
-
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: Grenzwerte von Folgen</h5>
-            <p>Dieses Video führt in das Konzept der Grenzwerte ein und zeigt an vielen Beispielen, wie man sie berechnet.</p>
-            <a href="http://www.youtube.com/watch?v=oQK8-u1zjdQ" target="_blank">MathemaTrick: GRENZWERTE von FOLGEN berechnen – viele Beispiele</a>
-        </div>
-
-        <h3>4.4 Schritt-für-Schritt-Erklärung</h3>
-        <h4>4.4.1 Die Rechenregeln für Grenzwerte</h4>
-        <p>Die praktische Berechnung von Grenzwerten stützt sich auf einige einfache Regeln. Wenn $(a_n)$ und $(b_n)$ konvergente Folgen sind, dann gilt:</p>
-        <ol>
-            <li><strong>Summenregel:</strong> $\lim_{n\to\infty} (a_n \pm b_n) = \lim_{n\to\infty} a_n \pm \lim_{n\to\infty} b_n$</li>
-            <li><strong>Produktregel:</strong> $\lim_{n\to\infty} (a_n \cdot b_n) = (\lim_{n\to\infty} a_n) \cdot (\lim_{n\to\infty} b_n)$</li>
-            <li><strong>Quotientenregel:</strong> $\lim_{n\to\infty} \frac{a_n}{b_n} = \frac{\lim_{n\to\infty} a_n}{\lim_{n\to\infty} b_n}$, falls $\lim_{n\to\infty} b_n \neq 0$.</li>
-            <li><strong>Verkettungsregel:</strong> Ist $f$ eine stetige Funktion, so gilt $\lim_{n\to\infty} f(a_n) = f(\lim_{n\to\infty} a_n)$. Man darf den Limes „in die Funktion hineinziehen“.</li>
-        </ol>
+        <p>Am Ende dieser Lerneinheit wirst du das Verhalten von Funktionen an kritischen Stellen analysieren können.  Du wirst in der Lage sein, links- und rechtsseitige Grenzwerte zu berechnen, um die Existenz eines Grenzwertes zu beurteilen.  Darauf aufbauend wirst du die Stetigkeit einer Funktion an einer Stelle definieren und prüfen können, verschiedene Arten von Unstetigkeitsstellen (Sprünge, Pole, hebbare Lücken) klassifizieren sowie wichtige Sätze für stetige Funktionen (Zwischenwertsatz, Satz von Weierstraß) anwenden können.</p>
         
-        <div class="info-box warning">
-            <h5>Häufiger Fehler: Regeln auf unbestimmte Ausdrücke anwenden</h5>
-            <p>Die oben genannten Regeln gelten nur, wenn die einzelnen Grenzwerte <strong>existieren und endlich</strong> sind. Es ist streng verboten, mit Unendlich zu rechnen, als wäre es eine Zahl.
-            Zum Beispiel ist $\lim (n^2 - n) = \infty$, aber $\lim(n^2) - \lim(n) = \infty - \infty$ ist ein undefinierter Ausdruck und <strong>nicht</strong> null!</p>
-            <p>Bei unbestimmten Ausdrücken muss der Term immer zuerst algebraisch umgeformt werden, bevor man den Grenzwert bildet.</p>
-        </div>
-
-        <h4>4.4.2 Technik: Grenzwerte von gebrochen-rationalen Funktionen</h4>
-        <p>Für den Grenzwert $n \to \infty$ einer Funktion der Form $\frac{\text{Polynom}}{\text{Polynom}}$ ist nur die <strong>höchste Potenz von n</strong> in Zähler und Nenner entscheidend.
-        Der Trick besteht darin, die höchste Potenz des Nenners im Zähler und Nenner auszuklammern und zu kürzen. Daraus ergeben sich drei Fälle für den Zählergrad (ZG) und Nennergrad (NG):</p>
+        <h3>4.2 Motivation und Kontext</h3>
+        <p>Während Grenzwerte von Folgen das Verhalten im Unendlichen beschreiben, erlauben uns Grenzwerte von Funktionen, das Verhalten an ganz bestimmten Stellen "unter die Lupe zu nehmen". Dies ist entscheidend, um zu verstehen, ob eine Funktion "gutartig" ist oder "problematisches" Verhalten wie Sprünge oder unendliche Werte aufweist.</p>
         <ul>
-            <li><strong>ZG < NG:</strong> Der Grenzwert ist immer 0.</li>
-            <li><strong>ZG = NG:</strong> Der Grenzwert ist das Verhältnis der Koeffizienten der höchsten Potenzen.</li>
-            <li><strong>ZG > NG:</strong> Die Folge divergiert bestimmt gegen $+\infty$ oder $-\infty$.</li>
+            <li><strong>Physikalische Modelle:</strong> Die Geschwindigkeit eines Autos ändert sich kontinuierlich.  Das Volumen in einem tropfenden Wasserhahn hingegen springt bei jedem Tropfen.  Das Konzept der Stetigkeit erlaubt uns, diese beiden Prozesse mathematisch exakt zu unterscheiden.</li>
+            <li><strong>Numerische Stabilität:</strong> Algorithmen, die auf stetigen Funktionen basieren, sind oft robuster. Kleine Änderungen in der Eingabe führen nur zu kleinen Änderungen in der Ausgabe.  Unstetigkeitsstellen können zu unerwarteten und instabilen Ergebnissen führen.</li>
+            <li><strong>Lösbarkeit von Gleichungen:</strong> Der Zwischenwertsatz für stetige Funktionen garantiert uns, dass eine Gleichung wie $f(x)=0$ eine Lösung haben muss, wenn die Funktion auf einem Intervall die Vorzeichen wechselt.  Dies ist die Grundlage für viele numerische Lösungsverfahren wie die Bisektion. </li>
         </ul>
 
-        <div class="info-box tip">
-            <h5>Praxis-Tipp: Hierarchie des Wachstums</h5>
-            <p>Für Grenzwerte gegen $\infty$ ist es extrem nützlich zu wissen, welche Funktionstypen "schneller" wachsen als andere. Eine Faustregel lautet:</p>
-            <p>$ \ln(n) \ll n^p \ll a^n \ll n! \ll n^n $</p>
-            <p>(Logarithmus wächst langsamer als jede Potenz, die langsamer wächst als jede Exponentialfunktion, die langsamer wächst als die Fakultät, etc.)</p>
-            <p>Damit siehst du sofort, dass z.B. $\lim_{n\to\infty} \frac{\ln(n)}{n^2} = 0$ oder $\lim_{n\to\infty} \frac{n^{100}}{1.01^n} = 0$ sein muss.</p>
+        <h3>4.3 Grenzwerte von Funktionen</h3>
+        <h4>4.3.1 Grenzwerte im Unendlichen ($x \to \pm\infty$)</h4>
+        <p>Das Verhalten einer Funktion für $x \to \pm\infty$ wird als asymptotisches Verhalten bezeichnet.  Für gebrochen-rationale Funktionen gilt weiterhin die Regel vom Gradvergleich: Das Verhalten wird durch die Terme mit den höchsten Potenzen in Zähler und Nenner bestimmt. </p>
+
+        <h4>4.3.2 Grenzwerte an einer Stelle $x_0$</h4>
+        <p>Um das Verhalten einer Funktion in der Nähe eines Punktes $x_0$ zu untersuchen, betrachten wir die Annäherung von beiden Seiten. </p>
+        <dl>
+            <dt>Linksseitiger Grenzwert ($x \to x_0^-$)</dt>
+            <dd>Beschreibt das Verhalten, wenn sich $x$ dem Wert $x_0$ von links (also von kleineren Werten) nähert.  Man schreibt $ \lim_{x \to x_0^-} f(x) $. </dd>
+            <dt>Rechtsseitiger Grenzwert ($x \to x_0^+$)</dt>
+            <dd>Beschreibt das Verhalten, wenn sich $x$ dem Wert $x_0$ von rechts (also von größeren Werten) nähert.  Man schreibt $ \lim_{x \to x_0^+} f(x) $. </dd>
+        </dl>
+        <div class="info-box key-concept">
+            <h5>Existenz des Grenzwertes</h5>
+            <p>Der (beidseitige) Grenzwert $\lim_{x \to x_0} f(x)$ existiert genau dann, wenn der linksseitige und der rechtsseitige Grenzwert existieren und übereinstimmen. </p>
         </div>
 
-        <h3>4.5 Beispielaufgaben</h3>
-        <h4>4.5.1 Beispiel 1: Einfache Rechenregeln</h4>
+        <h3>4.4 Stetigkeit</h3>
+        <h4>4.4.1 Definition der Stetigkeit</h4>
+        <p>Eine Funktion $f$ heißt <strong>stetig an der Stelle $x_0$</strong>, wenn drei Bedingungen erfüllt sind: </p>
+        <ol>
+            <li>Der Funktionswert $f(x_0)$ ist definiert.</li>
+            <li>Der Grenzwert $\lim_{x \to x_0} f(x)$ existiert (d.h. links- und rechtsseitiger Grenzwert sind gleich). </li>
+            <li>Der Grenzwert ist gleich dem Funktionswert: $\lim_{x \to x_0} f(x) = f(x_0)$. </li>
+        </ol>
+        <p>Anschaulich bedeutet Stetigkeit, dass der Graph der Funktion an dieser Stelle keine Sprünge oder Lücken hat und "in einem Zug" durchgezeichnet werden kann. </p>
+        
+        <h4>4.4.2 Arten von Unstetigkeitsstellen</h4>
+        <p>Wenn eine Funktion an einer Stelle $x_0$ nicht stetig ist, können wir die Art der Unstetigkeit klassifizieren:</p>
         <ul>
-            <li><strong>Aufgabe:</strong> Berechnen Sie den Grenzwert der Folge $a_n = 3 - (\frac{1}{2})^n$.</li>
+            <li><strong>Hebbare Unstetigkeit (Lücke):</strong> Der Grenzwert $\lim_{x \to x_0} f(x)$ existiert, ist aber ungleich $f(x_0)$ oder $f(x_0)$ ist nicht definiert.  Man könnte die Lücke "stopfen", indem man den Funktionswert passend definiert.</li>
+            <li><strong>Sprungstelle:</strong> Links- und rechtsseitiger Grenzwert existieren, sind aber unterschiedlich. </li>
+            <li><strong>Polstelle (wesentliche Unstetigkeit):</strong> Mindestens einer der einseitigen Grenzwerte ist $\pm\infty$. </li>
+            <li><strong>Oszillationsstelle:</strong> Der Grenzwert existiert nicht, da die Funktion in jeder noch so kleinen Umgebung des Punktes unendlich oft oszilliert (z.B. $f(x) = \sin(1/x)$ bei $x_0=0$).</li>
+        </ul>
+
+        <h3>4.5 Fundamentale Sätze für stetige Funktionen</h3>
+        <p>Stetige Funktionen haben auf abgeschlossenen Intervallen sehr "gutartige" Eigenschaften, die in zwei zentralen Sätzen festgehalten sind.</p>
+        <dl>
+            <dt>Satz vom Maximum und Minimum (Satz von Weierstraß)</dt>
+            <dd>Jede auf einem <strong>abgeschlossenen Intervall</strong> $[a, b]$ stetige Funktion ist auf diesem Intervall beschränkt und nimmt dort ihr globales Maximum und Minimum an.
+            <br><em>Achtung:</em> Dies gilt nicht für offene Intervalle. Die Funktion $f(x)=1/x$ ist auf $(0,1)$ stetig, aber unbeschränkt und nimmt kein Maximum an.
+            </dd>
+
+            <dt>Zwischenwertsatz</dt>
+            <dd>Ist eine Funktion auf einem Intervall $[a, b]$ stetig, so nimmt sie jeden Wert zwischen $f(a)$ und $f(b)$ mindestens einmal an.
+            <br><strong>Wichtige Folgerung (Nullstellensatz von Bolzano):</strong> Wenn $f(a)$ und $f(b)$ unterschiedliche Vorzeichen haben, muss es mindestens eine Nullstelle im Intervall $(a,b)$ geben.
+            </dd>
+        </dl>
+        
+        <div class="info-box tip">
+            <h5>Anwendung des Zwischenwertsatzes</h5>
+            <p><strong>Aufgabe:</strong> Zeigen Sie, dass die Gleichung $e^{x^2-1} = x+2$ eine Lösung im Intervall $[1,3]$ hat.</p>
+            <p><strong>Lösung:</strong> Wir formen die Gleichung zu $f(x)=0$ um: $f(x) = e^{x^2-1} - x - 2$.
+            <br>Die Funktion $f(x)$ ist als Komposition stetiger Funktionen stetig. Wir prüfen die Funktionswerte an den Rändern:
+            <ul>
+                <li>$f(1) = e^{1-1} - 1 - 2 = e^0 - 3 = 1 - 3 = -2$.</li>
+                <li>$f(3) = e^{9-1} - 3 - 2 = e^8 - 5$. Da $e \approx 2.7$, ist $e^8$ eine sehr große positive Zahl, also ist $f(3) > 0$.</li>
+            </ul>
+            Da die stetige Funktion $f(x)$ auf dem Intervall $[1,3]$ das Vorzeichen wechselt (von negativ zu positiv), muss sie nach dem Zwischenwertsatz mindestens eine Nullstelle in diesem Intervall haben.
+            </p>
+        </div>
+
+        <h3>4.6 Beispielaufgaben</h3>
+        <h4>4.6.1 Analyse einer abschnittsweise definierten Funktion</h4>
+        <ul>
+            <li><strong>Aufgabe:</strong> Untersuchen Sie die Funktion $f(x) = \begin{cases} a(e^x+1) & \text{für } x < 0 \\ \frac{a}{1-x} & \text{für } 0 \le x < a \\ \ln(x+a) & \text{für } x \ge a \end{cases}$ auf Stetigkeit an den Nahtstellen $x_0=0$ und $x_1=a$. </li>
             <li><strong>Lösung:</strong>
                 <ol>
-                    <li><strong>Analyse:</strong> Die Folge ist eine Differenz. Wir können die Summenregel anwenden.</li>
-                    <li><strong>Anwendung der Regeln:</strong> $$ \lim_{n\to\infty} \left(3 - \left(\frac{1}{2}\right)^n\right) = \lim_{n\to\infty} 3 - \lim_{n\to\infty} \left(\frac{1}{2}\right)^n $$</li>
-                    <li><strong>Berechnung der Teil-Grenzwerte:</strong>
+                    <li><strong>Untersuchung an $x_0=0$:</strong>
                         <ul>
-                            <li>$\lim_{n\to\infty} 3 = 3$ (Grenzwert einer konstanten Folge).</li>
-                            <li>$\lim_{n\to\infty} (\frac{1}{2})^n = 0$, da dies eine geometrische Folge $q^n$ mit $|q|<1$ ist.</li>
+                            <li><strong>Linksseitiger Grenzwert:</strong> Wir benutzen den ersten Funktionsteil: $\lim_{x \to 0^-} a(e^x+1) = a(e^0+1) = a(1+1) = 2a$.</li>
+                            <li><strong>Rechtsseitiger Grenzwert & Funktionswert:</strong> Wir benutzen den zweiten Funktionsteil: $f(0) = \frac{a}{1-0} = a$. Der rechtsseitige Grenzwert ist ebenfalls $\lim_{x \to 0^+} \frac{a}{1-x} = a$.</li>
+                            <li><strong>Vergleich:</strong> Der Grenzwert existiert nur, wenn $2a = a$, also nur für $a=0$. Für $a\ne0$ existiert der Grenzwert nicht; es liegt eine <strong>Sprungstelle</strong> vor. Wenn $a=0$ ist, existiert der Grenzwert und ist gleich 0. Da auch $f(0)=0$ ist, ist die Funktion für $a=0$ an der Stelle $x_0=0$ stetig.</li>
                         </ul>
                     </li>
-                    <li><strong>Ergebnis:</strong> $3 - 0 = 3$. Die Folge konvergiert gegen 3.</li>
-                </ol>
-            </li>
-        </ul>
-        <h4>4.5.2 Beispiel 2: Gebrochen-rationale Funktion</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Bestimmen Sie den Grenzwert von $f(x) = \frac{2-3x-4x^3}{6x^3-5x^2+1}$ für $x \to \infty$.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Analyse:</strong> Es handelt sich um eine gebrochen-rationale Funktion. Wir vergleichen die höchsten Potenzen.</li>
-                    <li><strong>Gradvergleich:</strong> Höchste Potenz im Zähler ist $x^3$ (Grad 3). Höchste Potenz im Nenner ist $x^3$ (Grad 3). Der Zählergrad ist gleich dem Nennergrad.</li>
-                    <li><strong>Anwendung der Regel:</strong> Der Grenzwert ist das Verhältnis der Koeffizienten dieser Potenzen. $$ \lim_{x\to\infty} \frac{2-3x-4x^3}{6x^3-5x^2+1} = \lim_{x\to\infty} \frac{-4x^3}{6x^3} = \frac{-4}{6} = -\frac{2}{3} $$</li>
-                    <li><strong>Formale Begründung (optional):</strong> $$ \lim_{x\to\infty} \frac{x^3(\frac{2}{x^3}-\frac{3x}{x^3}-4)}{x^3(6-\frac{5x^2}{x^3}+\frac{1}{x^3})} = \lim_{x\to\infty} \frac{\frac{2}{x^3}-\frac{3}{x^2}-4}{6-\frac{5}{x}+\frac{1}{x^3}} = \frac{0-0-4}{6-0+0} = -\frac{4}{6} $$</li>
+                    <li><strong>Untersuchung an $x_1=a$:</strong>
+                        <ul>
+                            <li><strong>Linksseitiger Grenzwert:</strong> Wir benutzen den zweiten Funktionsteil: $\lim_{x \to a^-} \frac{a}{1-x} = \frac{a}{1-a}$.</li>
+                            <li><strong>Rechtsseitiger Grenzwert & Funktionswert:</strong> Wir benutzen den dritten Funktionsteil: $f(a) = \ln(a+a) = \ln(2a)$. Der rechtsseitige Grenzwert ist ebenfalls $\lim_{x \to a^+} \ln(x+a) = \ln(2a)$.</li>
+                            <li><strong>Vergleich:</strong> Die Funktion ist an der Stelle $a$ stetig, wenn $\frac{a}{1-a} = \ln(2a)$. Dies ist eine Gleichung, die nur für bestimmte Werte von $a$ erfüllt ist. Für alle anderen Werte von $a$ liegt eine <strong>Sprungstelle</strong> vor.</li>
+                        </ul>
+                    </li>
                 </ol>
             </li>
         </ul>
         
-        <div class="info-box key-concept">
-            <h5>Ausblick: Die Regel von de l'Hospital</h5>
-            <p>Für unbestimmte Ausdrücke der Form $\frac{0}{0}$ oder $\frac{\infty}{\infty}$ gibt es ein extrem mächtiges Werkzeug, das wir nach der Einführung der Ableitung kennenlernen werden.</p>
-            <p>Die <strong>Regel von de l'Hospital</strong> besagt, dass der Grenzwert des Quotienten zweier Funktionen gleich dem Grenzwert des Quotienten ihrer Ableitungen ist: $\lim \frac{f(x)}{g(x)} = \lim \frac{f'(x)}{g'(x)}$. Dies vereinfacht viele komplizierte Grenzwerte enorm.</p>
-            <div class="info-box video-box" style="margin-top: 15px;">
-                <h5>Erklärendes Video: Regel von de l'Hospital</h5>
-                <p>Eine einfache Erklärung dieser mächtigen Regel für die Grenzwertberechnung.</p>
-                <a href="http://www.youtube.com/watch?v=LQ0u-V2jmwU" target="_blank">Mathe - simpleclub: Regel von L'Hospital einfach erklärt</a>
-            </div>
-        </div>
-
-        <h3>4.6 Übungsaufgaben</h3>
+        <h3>4.7 Übungsaufgaben</h3>
         <div class="task-hint">
-            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder 1 ist, wähle stattdessen 5 bzw. 6.</p>
+            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer (0→5, 1→6). </p>
         </div>
         <ol>
-            <li><strong>(Einfach)</strong> Berechnen Sie den Grenzwert der Folge $a_n = \frac{4^{n+1}}{5^n}$.
+            <li><strong>(Einfach)</strong> Bestimmen Sie die Grenzwerte für $x \to \pm\infty$ der Funktion $g(x)=\frac{4x^{3}-2x^{2}+x}{-3x^{3}-x^{2}+100x}$. 
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>Umschreiben: $a_n = \frac{4 \cdot 4^n}{5^n} = 4 \cdot \left(\frac{4}{5}\right)^n$.<br>
-                    Dies ist eine geometrische Folge mit $q = 4/5$. Da $|q| < 1$, ist der Grenzwert von $q^n$ gleich 0.<br>
-                    Also: $\lim_{n\to\infty} a_n = 4 \cdot 0 = 0$.</p>
+                    <p>Zählergrad (3) = Nennergrad (3). Der Grenzwert ist das Verhältnis der Koeffizienten der höchsten Potenzen: $\frac{4}{-3} = -\frac{4}{3}$. Dies gilt für $x \to \infty$ und $x \to -\infty$.</p>
                 </details>
             </li>
-            <li><strong>(Einfach)</strong> Bestimmen Sie das Verhalten von $f(x) = \frac{4x^3-2x^2+x}{x^2-7}$ für $x \to \infty$ und $x \to -\infty$.
+            <li><strong>(Mittel)</strong> Bestimmen Sie für die Funktion $f_2(x)=\frac{x+a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$. 
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>Zählergrad (3) > Nennergrad (2). Die Funktion divergiert. Das Verhalten wird durch den Term mit den höchsten Potenzen bestimmt: $\frac{4x^3}{x^2} = 4x$.<br>
-                    Für $x \to \infty$ geht $4x \to \infty$.<br>
-                    Für $x \to -\infty$ geht $4x \to -\infty$.</p>
+                    <p>Zuerst den Nenner faktorisieren: $f_2(x) = \frac{x+a}{(x-a)(x+a)x}$.<br>
+                    <strong>Definitionsbereich:</strong> $D = \mathbb{R} \setminus \{-a, 0, a\}$.<br>
+                    <strong>Analyse an $x_0=a$:</strong> Der Term $(x-a)$ ist im Nenner, aber nicht im Zähler. Es liegt eine <strong>Polstelle</strong> vor. Wir prüfen die einseitigen Grenzwerte:
+                    <ul>
+                        <li>$\lim_{x \to a^+} \frac{x+a}{(x-a)(x+a)x} = \lim_{x \to a^+} \frac{1}{(x-a)x}$. Der Nenner wird $0^+ \cdot a$. Wenn $a>0$, ist das Ergebnis $+\infty$. Wenn $a<0$, ist das Ergebnis $-\infty$.</li>
+                        <li>$\lim_{x \to a^-} \frac{1}{(x-a)x}$. Der Nenner wird $0^- \cdot a$. Wenn $a>0$, ist das Ergebnis $-\infty$. Wenn $a<0$, ist das Ergebnis $+\infty$.</li>
+                    </ul>
+                    Es liegt eine Polstelle mit Vorzeichenwechsel vor.</p>
                 </details>
             </li>
-            <li><strong>(Mittel)</strong> Bestimmen Sie den Grenzwert von $h(x) = \frac{4x^3-2x^2+x}{x^5+x^2-3x^8-19}$ für $x \to \pm\infty$.
+             <li><strong>(Schwer)</strong> Bestimmen Sie für die Funktion $f_3(x)=\frac{x-a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$. 
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>Zählergrad (3) < Nennergrad (8). Der Nenner wächst viel schneller als der Zähler.<br>
-                    Daher ist der Grenzwert für $x \to \infty$ und $x \to -\infty$ jeweils 0.</p>
-                </details>
-            </li>
-            <li><strong>(Mittel)</strong> Ist die Folge $a_n = \frac{(-1)^n n}{n^2+1}$ konvergent oder divergent? Begründen Sie und geben Sie ggf. den Grenzwert an.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Die Folge ist konvergent. Wir betrachten den Betrag: $|a_n| = \frac{n}{n^2+1}$. Der Grenzwert von $|a_n|$ für $n\to\infty$ ist 0, da der Nennergrad (2) größer als der Zählergrad (1) ist.<br>
-                    Wenn die Folge der Beträge gegen 0 konvergiert, konvergiert auch die ursprüngliche Folge gegen 0. Der Grenzwert ist 0.</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Die logistische Wachstumsfunktion ist gegeben durch $y(t) = \frac{S}{1+Ae^{-bt}}$ mit positiven Konstanten $S,A,b$. Bestimmen Sie durch Grenzwertrechnung das Verhalten für $t \to \infty$ (Sättigung). Welchen unbestimmten Ausdruck müssten Sie für $t \to \infty$ betrachten, wenn Sie die Funktion als $\frac{Se^{bt}}{e^{bt}+A}$ schreiben?
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p><strong>Verhalten für $t \to \infty$:</strong><br>
-                    In der Form $y(t) = \frac{S}{1+Ae^{-bt}}$: Für $t \to \infty$ geht $e^{-bt} \to 0$ (da $b>0$). Der Nenner geht gegen $1+A\cdot 0 = 1$. Der Grenzwert ist also $\frac{S}{1} = S$.<br>
-                    <strong>Unbestimmter Ausdruck:</strong><br>
-                    In der umgeschriebenen Form $y(t) = \frac{Se^{bt}}{e^{bt}+A}$: Für $t \to \infty$ geht $e^{bt} \to \infty$. Der Zähler geht gegen $\infty$ und der Nenner geht gegen $\infty$. Das ergibt den unbestimmten Ausdruck der Form $\frac{\infty}{\infty}$.</p>
+                    <p>Zuerst den Nenner faktorisieren und kürzen: $f_3(x) = \frac{x-a}{(x-a)(x+a)x} = \frac{1}{(x+a)x}$ für $x \neq a$.<br>
+                    <strong>Definitionsbereich:</strong> $D = \mathbb{R} \setminus \{-a, 0, a\}$.<br>
+                    <strong>Analyse an $x_0=a$:</strong> Da wir den Term $(x-a)$ kürzen konnten, liegt eine <strong>hebbare Unstetigkeit</strong> vor. Der Grenzwert existiert:
+                    $$ \lim_{x \to a} f_3(x) = \lim_{x \to a} \frac{1}{(x+a)x} = \frac{1}{(a+a)a} = \frac{1}{2a^2} $$
+                    Da die Funktion an der Stelle $a$ nicht definiert ist, ist sie dort nicht stetig. Man könnte sie aber stetig machen, indem man $f(a) = \frac{1}{2a^2}$ definiert.</p>
                 </details>
             </li>
         </ol>
