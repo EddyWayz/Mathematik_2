@@ -250,17 +250,18 @@ tbody tr:hover {
 }
 
 details {
-    margin: 20px 0;
+    margin: 25px 0;
     background-color: var(--bg-color-subtle);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
+    overflow: hidden;
     transition: background-color var(--transition-speed);
 }
 details[open] {
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-details > :last-child {
-    padding: 5px 20px 20px 20px;
+details > :not(summary) {
+    padding: 10px 20px 20px 20px;
 }
 summary {
     font-weight: 600;
@@ -270,12 +271,21 @@ summary {
     list-style: none; /* remove default marker */
     display: flex;
     align-items: center;
+    background-color: var(--bg-color-subtle);
+    border-radius: var(--border-radius);
     transition: background-color var(--transition-speed);
 }
 summary:hover {
     background-color: var(--bg-color-main);
 }
-summary::-webkit-details-marker { display: none; }
+details[open] summary {
+    background-color: var(--bg-color-main);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+summary::-webkit-details-marker {
+    display: none;
+}
 summary::before {
     content: '▶';
     font-size: 0.8em;
