@@ -206,6 +206,14 @@ pre {
     margin: 40px 0;
     border-radius: var(--border-radius);
 }
+.toc input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
 .toc h2 {
     margin-top: 0;
     border-bottom: none;
@@ -322,6 +330,16 @@ footer {
     transition: opacity 0.3s, transform 0.3s;
     z-index: 999;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--primary-color);
+    z-index: 1001;
 }
 #back-to-top.show {
     display: flex;

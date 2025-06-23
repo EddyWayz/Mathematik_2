@@ -17,21 +17,24 @@ Dieses Repository enthält ein webbasiertes Lernskript. Die Kapitel liegen im Or
 * `templates/head-fragment.html` – gemeinsamer HTML-Head
 
 ## Buildskript
-Der Befehl `node scripts/build.js` aktualisiert alle Seiten. Dabei werden
-der gemeinsame `<head>`-Abschnitt eingefügt und das Inhaltsverzeichnis der
-Startseite automatisch aus den vorhandenen Kapiteln erzeugt.
+Das Repository enthält ein Build-Skript, das die Kopfbereiche vereinheitlicht
+und das Inhaltsverzeichnis generiert. Führe es bequem über `npm run build` aus.
 
 ### Voraussetzungen
 * [Node.js](https://nodejs.org) ab Version 14
 
 ### Ablauf
 1. Repository klonen
-2. `node scripts/build.js` ausführen
-3. `index.html` im Browser öffnen
+2. `npm install` (einmalig)
+3. `npm run build` ausführen
+4. `index.html` im Browser öffnen
+
+Optional kannst du mit `npm run check-pdfs` prüfen, ob alle PDF-Dateien aus dem
+Ordner `material/` korrekt verlinkt sind.
 
 ## Verwendung
 
-`index.html` im Browser öffnen. Auf der Startseite wird automatisch das aktuelle Datum angezeigt. In jedem Kapitel gibt es Vor/Zurück-Navigation und einen Button nach oben. Ein Klick auf das Mondsymbol aktiviert den Dark Mode.
+`index.html` im Browser öffnen. Auf der Startseite wird automatisch das aktuelle Datum angezeigt. Ein Suchfeld über dem Inhaltsverzeichnis filtert die Kapitel nach Stichworten. Beim Scrollen zeigt eine kleine Fortschrittsleiste am oberen Rand, wie weit du im Dokument bist. In jedem Kapitel gibt es Vor/Zurück-Navigation und einen Button nach oben. Ein Klick auf das Mondsymbol aktiviert den Dark Mode.
 
 ## Mitmachen
-Neue Kapitel liegen im Ordner `chapters/`. Pull Requests mit Verbesserungen oder zusätzlichen Aufgaben sind willkommen. Nach Änderungen sollte `node scripts/build.js` ausgeführt werden, damit Kopf und Inhaltsverzeichnis aktuell bleiben.
+Neue Kapitel liegen im Ordner `chapters/`. Einen kurzen Leitfaden findest du in `chapters/README.md`. Pull Requests mit Verbesserungen oder zusätzlichen Aufgaben sind willkommen. Nach Änderungen sollte `npm run build` ausgeführt werden, damit Kopf und Inhaltsverzeichnis aktuell bleiben.
