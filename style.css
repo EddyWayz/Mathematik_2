@@ -10,7 +10,7 @@
     --font-sans: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
     --font-serif: 'Georgia', 'Times New Roman', Times, serif;
     --font-mono: 'SF Mono', 'Consolas', 'Menlo', 'Courier New', Courier, monospace;
-    
+
     /* Helles Design (Light Mode) */
     --text-color: #2c3e50; /* Dunkles Blau-Grau statt reinem Schwarz */
     --text-color-muted: #596e81;
@@ -23,16 +23,16 @@
 
     --info-tip-bg: #eaf7f0;
     --info-tip-border: #2ecc71;
-    
+
     --info-warning-bg: #fbeee9;
     --info-warning-border: #e74c3c;
-    
+
     --info-key-bg: #fdf5e7;
     --info-key-border: #f39c12;
 
     --task-hint-bg: #e6f3fa;
     --task-hint-border: #3498db;
-    
+
     --header-height: 60px;
     --border-radius: 8px;
     --transition-speed: 0.2s;
@@ -397,13 +397,13 @@ body.dark-mode {
     --bg-color-main: #0d1117;
     --bg-color-subtle: #161b22;
     --bg-code: #20262e;
-    
+
     --info-tip-bg: #11281e;
     --info-tip-border: #3fb950;
-    
+
     --info-warning-bg: #351a1d;
     --info-warning-border: #f85149;
-    
+
     --info-key-bg: #332917;
     --info-key-border: #e3b341;
 

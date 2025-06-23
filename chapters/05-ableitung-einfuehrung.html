@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Konzeptuelle Einführung in die Ableitung als Grenzwert des Differenzenquotienten und als Steigung der Tangente.">
     <title>5 Die Ableitung: Einführung - Lernskript Mathe</title>
-    
+
     <script>
   MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
 </script>
@@ -28,7 +28,7 @@
     </header>
 
     <main class="content-wrapper">
-        
+
         <h2 id="sec5">5 Die Ableitung: Von der Sekanten- zur Tangentensteigung</h2>
         <h3>5.1 Lernziel</h3>
         <p>Am Ende dieser Lerneinheit wirst du das grundlegende Konzept der Ableitung verstehen. Du wirst die Ableitung als lokale Änderungsrate einer Funktion und als Steigung der Tangente an einem Punkt interpretieren können. Du wirst die formale Definition der Ableitung als Grenzwert des Differenzenquotienten kennen und anwenden können, um die Ableitung einfacher Funktionen zu bestimmen und den Begriff der Differenzierbarkeit zu verstehen.</p>
@@ -48,18 +48,18 @@
             <dd>Die Formel für die Steigung der Sekante durch die Punkte $(x_0, f(x_0))$ und $(x, f(x))$. Er gibt die durchschnittliche Steigung im Intervall $[x_0, x]$ an. $$ m_{\text{Sekante}} = \frac{\Delta y}{\Delta x} = \frac{f(x) - f(x_0)}{x - x_0} $$</dd>
             <dt>Tangente</dt>
             <dd>Eine Gerade, die einen Funktionsgraphen an einem Punkt $x_0$ "gerade so berührt". Ihre Steigung entspricht der <strong>momentanen Änderungsrate</strong> der Funktion genau an diesem Punkt.</dd>
-            
+
             <div class="info-box tip">
                 <h5>Gedankenexperiment: Der unendliche Zoom</h5>
                 <p>Stell dir vor, du zoomst mit einer Lupe unendlich stark auf einen Punkt einer "glatten" Kurve. Egal wie kurvig die Funktion global ist, bei extremer Vergrößerung wird der kleine Ausschnitt, den du siehst, immer mehr wie eine gerade Linie aussehen. Die Steigung dieser Linie ist die Steigung der Tangente – und damit die Ableitung an diesem Punkt.</p>
                 <p>Wenn eine Funktion einen "Knick" hat (wie die Betragsfunktion bei x=0), kannst du so stark zoomen, wie du willst – der Knick bleibt immer ein Knick. Es gibt keine eindeutige Gerade. Daher ist die Funktion dort nicht differenzierbar.</p>
             </div>
-            
+
             <dt>Differentialquotient</dt>
             <dd>Der Grenzwert des Differenzenquotienten, wenn sich der zweite Punkt dem ersten annähert ($x \to x_0$). Dieser Grenzwert ist die Steigung der Tangente.</dd>
             <dt>Ableitung</dt>
             <dd>Der Wert des Differentialquotienten an einer Stelle $x_0$ wird als Ableitung von $f$ an der Stelle $x_0$ bezeichnet. Gängige Schreibweisen sind $f'(x_0)$ oder $\frac{df}{dx}(x_0)$. $$ f'(x_0) = \lim_{x\to x_0} \frac{f(x) - f(x_0)}{x-x_0} $$</dd>
-            
+
             <div class="info-box tip">
                 <h5>Alternative Definition: Die h-Methode</h5>
                 <p>Eine äquivalente und sehr gebräuchliche Definition der Ableitung verwendet den Abstand $h = x - x_0$. Wenn $x \to x_0$, dann geht $h \to 0$. Damit lautet die Definition:</p>
@@ -75,7 +75,7 @@
             <dt>Differenzierbarkeit</dt>
             <dd>Eine Funktion $f$ heißt an der Stelle $x_0$ differenzierbar, wenn dieser Grenzwert existiert. Anschaulich bedeutet das, dass der Funktionsgraph an dieser Stelle keine "Knicke" oder Sprünge hat und eine eindeutige Tangente gezeichnet werden kann.</dd>
         </dl>
-        
+
         <div class="info-box key-concept">
             <h5>Kernaussage: Differenzierbarkeit und Stetigkeit</h5>
             <p>Diese beiden Konzepte hängen eng zusammen, dürfen aber nicht verwechselt werden:</p>
@@ -92,7 +92,7 @@
         <p>Um die exakte Steigung <em>am</em> Punkt $P$ zu finden, machen wir die Annäherung immer besser. Wir lassen den Punkt $Q$ auf dem Graphen in Richtung $P$ wandern, also $x \to x_0$. Dabei dreht sich die Sekante und nähert sich einer einzigen, finalen Geraden an: der Tangente.</p>
         <h4>5.4.4 Die Definition der Ableitung</h4>
         <p>Die Steigung dieser Tangente ist der Grenzwert, dem sich die Sekantensteigungen annähern. Dieser Grenzwert ist per Definition die Ableitung der Funktion $f$ an der Stelle $x_0$. Wenn dieser Grenzwert existiert, ist die Funktion an dieser Stelle differenzierbar.</p>
-        
+
         <div class="info-box video-box">
             <h5>Erklärendes Video: Grundlagen der Ableitung</h5>
             <p>Dieses Video erklärt anschaulich den Übergang von der Sekantensteigung zur Tangentensteigung und die grundlegende Idee der Ableitung.</p>
@@ -182,8 +182,9 @@
         </nav>
     </footer>
 
+
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
-    
+   
     <script src="../main.js"></script>
 </body>
 </html>

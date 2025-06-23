@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('dark-mode-toggle');
     if (toggleButton) {
         const body = document.body;
-        
+
         const applyTheme = (theme) => {
             if (theme === 'dark') {
                 body.classList.add('dark-mode');
