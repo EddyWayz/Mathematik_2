@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den gemischten Übungen aus dem PDF 'Mathe2-07-Üb-Mehrdimensionale Differentialrechnung.pdf'.">
+    <title>Übungen 07: Mehrdimensionale Differentialrechnung - Lösungen</title>
+    
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="training">
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 7: Partielle Ableitungen</span>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb07">Übungen 07: Mehrdimensionale Differentialrechnung - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-07-Üb-Mehrdimensionale Differentialrechnung.pdf</code>.</p>
+
+        <details>
+            <summary><h4>1. Partielle Ableitungen berechnen</h4></summary>
+            <ol>
+                <li>
+                    <strong>1.1: $f(x_{1},x_{2},x_{3})=x_{1}^{2}x_{2}+5x_{2}x_{3}-x_{3}+10$</strong> 
+                    <p>
+                        $\frac{\partial f}{\partial x_{1}} = 2x_{1}x_{2}$ <br>
+                        $\frac{\partial f}{\partial x_{2}} = x_{1}^{2} + 5x_{3}$ <br>
+                        $\frac{\partial f}{\partial x_{3}} = 5x_{2} - 1$
+                    </p>
+                </li>
+                <li>
+                    <strong>1.2: $f(x,y,z)=e^{yz^{2}}\cos(2x+z)+\ln(\frac{xy}{z})+\frac{1}{xy}$</strong>
+                    <p>
+                        $\frac{\partial f}{\partial x} = -2e^{yz^{2}}\sin(2x+z) + \frac{1}{x} - \frac{1}{x^2y}$ <br>
+                        $\frac{\partial f}{\partial y} = z^2e^{yz^{2}}\cos(2x+z) + \frac{1}{y} - \frac{1}{xy^2}$ <br>
+                        $\frac{\partial f}{\partial z} = e^{yz^{2}}(2yz\cos(2x+z) - \sin(2x+z)) - \frac{1}{z}$
+                    </p>
+                </li>
+            </ol>
+        </details>
+        
+        <details>
+            <summary><h4>2. Partielle Ableitungen 2. Ordnung (Hesse-Matrix)</h4></summary>
+            <ol>
+                <li>
+                    <strong>2.1: $f(x,y)=\frac{x}{x+y}$</strong>
+                    <p>Hesse-Matrix: 
+                    $$H_f(x,y) = \begin{pmatrix} \frac{-2y}{(x+y)^3} & \frac{x-y}{(x+y)^3} \\ \frac{x-y}{(x+y)^3} & \frac{2x}{(x+y)^3} \end{pmatrix}$$
+                    </p>
+                </li>
+                <li>
+                    <strong>2.2: $f(x,y,z)=ze^{\frac{x}{y}}$</strong>
+                    <p>Hesse-Matrix:
+                    $$H_f(x,y,z) = e^{\frac{x}{y}} \begin{pmatrix} \frac{z}{y^2} & -\frac{z(y+x)}{y^3} & \frac{1}{y} \\ -\frac{z(y+x)}{y^3} & \frac{zx(2y+x)}{y^4} & -\frac{x}{y^2} \\ \frac{1}{y} & -\frac{x}{y^2} & 0 \end{pmatrix}$$
+                    </p>
+                </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>3. Steigungen, Tangentialebene, Differential</h4></summary>
+            <ol>
+                <li>
+                    <strong>3.1: Tangentialebene für $f(x,y)=\sin(x)\cos(y)$ im Punkt $P(\pi,0,?)$</strong>
+                    <p>Der Punkt ist $P(\pi,0,0)$. Die partiellen Ableitungen sind $f_x(\pi,0)=-1$ und $f_y(\pi,0)=0$.
+                    <ul>
+                        <li><strong>Gleichungsform:</strong> $z = -1(x-\pi) \implies z = -x+\pi$</li>
+                        <li><strong>Punkt-Richtungsform:</strong> $\vec{x} = \begin{pmatrix}\pi\\0\\0\end{pmatrix} + s\begin{pmatrix}1\\0\\-1\end{pmatrix} + t\begin{pmatrix}0\\1\\0\end{pmatrix}$</li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <strong>3.2: Für $f(x,y)=x\cdot e^{-\frac{y}{x}}$ an der Stelle $p=(1,0)$</strong>
+                    <p>
+                    Der Gradient ist $\nabla f(1,0) = \binom{1}{-1}$.
+                    <ul>
+                        <li><strong>Steigung in Richtung $\vec{r}=\binom{3}{4}$</strong>: $D_{\vec{r}}f(1,0) = \binom{1}{-1} \cdot \frac{1}{5}\binom{3}{4} = -\frac{1}{5}$.</li>
+                        <li><strong>Richtung des stärksten Anstiegs</strong>: $\binom{1}{-1}$.</li>
+                        <li><strong>Größe des stärksten Anstiegs</strong>: $\| \binom{1}{-1} \| = \sqrt{2}$.</li>
+                    </ul>
+                    </p>
+                </li>
+                 <li>
+                    <strong>3.7: Fehlerrechnung für $R(R_1, R_2) = \frac{R_1R_2}{R_1+R_2}$</strong>
+                    <p>
+                    Gegeben: $R_1=100\Omega, \Delta R_1=2\Omega$ und $R_2=200\Omega, \Delta R_2=2\Omega$.
+                    <ul>
+                        <li><strong>Maximaler absoluter Fehler:</strong> $|\Delta R| \approx |\frac{\partial R}{\partial R_1}|\Delta R_1| + |\frac{\partial R}{\partial R_2}||\Delta R_2| = \frac{4}{9}(2) + \frac{1}{9}(2) = \frac{10}{9} \approx 1.11 \Omega$.</li>
+                        <li><strong>Maximaler relativer Fehler:</strong> $|\frac{\Delta R}{R}| = \frac{10/9}{200/3} = \frac{1}{60} \approx 1.67\%$.</li>
+                    </ul>
+                    </p>
+                </li>
+            </ol>
+        </details>
+    </main>
+</body>
+</html>
