@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den gemischten Übungen aus dem PDF 'Mathe2-09-Üb-Integralrechnung.pdf'.">
+    <title>Übungen 09: Integralrechnung - Lösungen</title>
+    
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="training">
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 9: Integralrechnung</span>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb09">Übungen 09: Integralrechnung - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-09-Üb-Integralrechnung.pdf</code>.</p>
+
+        <details>
+            <summary><h4>1. Anwendung einfacher Integrationstechniken</h4></summary>
+            <ol>
+                <li><strong>1.1: $\int_{0}^{1}(e^{t}-3t^{2})dt$</strong>
+                    <p><strong>Lösung:</strong> $[\left. e^t - t^3 \right]_0^1 = (e-1) - (1-0) = e-2$.</p>
+                </li>
+                <li><strong>1.2: $\int_{1}^{2}\frac{1}{x^{2}}dx$</strong>
+                    <p><strong>Lösung:</strong> $[\left. -\frac{1}{x} \right]_1^2 = (-\frac{1}{2}) - (-1) = \frac{1}{2}$.</p>
+                </li>
+                <li><strong>1.3: $\int_{1}^{2}\sqrt{4x-3}dx$</strong>
+                    <p><strong>Lösung:</strong> $[\left. \frac{1}{6}(4x-3)^{3/2} \right]_1^2 = \frac{1}{6}(5\sqrt{5}-1) \approx 1.6967$.</p>
+                </li>
+                <li><strong>1.4: $\int_{-2}^{1}\text{sign}(x)dx$</strong>
+                    <p><strong>Lösung:</strong> $\int_{-2}^{0}(-1)dx + \int_{0}^{1}(1)dx = -2+1 = -1$.</p>
+                </li>
+            </ol>
+        </details>
+        
+        <details>
+            <summary><h4>2. Stammfunktionen ermitteln</h4></summary>
+            <ol>
+                <li><strong>2.1: $\int e^{2x}(1-2x)dx$</strong> <p> $\to (1-x)e^{2x}+C$ (Partielle Integration)</p> </li>
+                <li><strong>2.2: $\int \cos^{3}(x)\sin(x)dx$</strong> <p> $\to -\frac{1}{4}\cos^{4}(x)+C$ (Substitution)</p> </li>
+                <li><strong>2.4: $\int x \cos(n\omega x)dx$</strong> <p> $\to \frac{x\sin(n\omega x)}{n\omega}+\frac{\cos(n\omega x)}{n^{2}\omega^{2}}+C$ (Partielle Integration)</p> </li>
+                 <li><strong>2.8: $\int x^{2}\cos(x)dx$</strong> <p> $\to x^{2}\sin(x)+2x\cos(x)-2\sin(x)+C$ (Zweifache partielle Integration)</p> </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>3. Bestimmte Integrale</h4></summary>
+             <ol>
+                <li>
+                    <strong>3.1: Fläche zwischen $f(x)=x^{2}-3$, x-Achse von $x=0$ bis $x=3$</strong>
+                    <p><strong>Lösung:</strong> Die Kurve schneidet die x-Achse bei $\sqrt{3}$. Das Integral muss aufgeteilt werden:
+                    $A = \int_0^{\sqrt{3}} (3-x^2) dx + \int_{\sqrt{3}}^3 (x^2-3) dx = 2\sqrt{3} + 2\sqrt{3} = 4\sqrt{3}$.
+                    </p>
+                </li>
+             </ol>
+        </details>
+    </main>
+</body>
+</html>

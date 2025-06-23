@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den Aufgaben aus dem PDF 'Mathe2-12-Üb-Fourierreihen.pdf'.">
+    <title>Übungen 12: Fourierreihen - Lösungen</title>
+    
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="training">
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 12: Fourierreihen</span>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb12">Übungen 12: Fourierreihen - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-12-Üb-Fourierreihen.pdf</code>.</p>
+
+        <details>
+            <summary><h4>1. Berechnung von Fourierreihen</h4></summary>
+            <ol>
+                <li>
+                    <strong>1.1: Fourierpolynom 2. Grades für $f(x)=x^2$ mit $T=4$</strong> 
+                    <p><strong>Lösung:</strong> Die Kreisfrequenz ist $\omega = 2\pi/T = \pi/2$. Die Koeffizienten sind:
+                    $\frac{a_0}{2} = \frac{16}{3}$, $a_n=\frac{16}{n^2\pi^2}$, $b_n=-\frac{16}{n\pi}$. Das Fourierpolynom 2. Grades lautet:
+                    $$ F_2(x) = \frac{a_0}{2} + a_1\cos(\omega x) + a_2\cos(2\omega x) + b_1\sin(\omega x) + b_2\sin(2\omega x) $$
+                    $$ F_2(x) = \frac{16}{3} + \frac{16}{\pi^2}\cos(\tfrac{\pi}{2}x) + \frac{4}{\pi^2}\cos(\pi x) - \frac{16}{\pi}\sin(\tfrac{\pi}{2}x) - \frac{8}{\pi}\sin(\pi x) $$
+                    </p>
+                </li>
+                <li>
+                    <strong>1.2: Fourierkoeffizienten für $f(x)=e^{|x|}$ auf $[-\pi, \pi)$</strong>
+                    <p><strong>Lösung:</strong> Die Funktion ist gerade ($f(-x)=f(x)$), daher sind alle $b_n=0$. Die $a_n$-Koeffizienten berechnen sich zu:
+                    $$ \frac{a_0}{2} = \frac{e^\pi - 1}{\pi} $$
+                    $$ a_n = \frac{2}{\pi}\frac{(-1)^n e^\pi - 1}{1+n^2} \quad (n \ge 1) $$
+                    </p>
+                </li>
+                 <li>
+                    <strong>1.5: Fourierreihe für das Rechtecksignal (Amplitude $\hat{y}$, Periode T)</strong>
+                    <p><strong>Lösung:</strong> Für ein ungerades Rechtecksignal mit Amplitude $\hat{y}$ sind alle $a_n=0$. Die $b_n$ Koeffizienten sind nur für ungerade $n$ von Null verschieden. Die Fourierreihe ist
+                    $$ F(x) = \frac{4\hat{y}}{\pi} \sum_{k=1}^{\infty} \frac{1}{2k-1} \sin((2k-1)\omega x) $$
+                    wobei $\omega=2\pi/T$. Das Fourierpolynom 5. Grades besteht aus den Termen für $k=1,2,3$ (also $n=1,3,5$).
+                    </p>
+                </li>
+            </ol>
+        </details>
+    </main>
+</body>
+</html>

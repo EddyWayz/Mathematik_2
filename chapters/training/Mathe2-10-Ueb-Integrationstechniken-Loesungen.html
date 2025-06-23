@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den Aufgaben aus dem PDF 'Mathe2-10-Üb-Integrationstechniken.pdf'.">
+    <title>Übungen 10: Integrationstechniken - Lösungen</title>
+    
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="training">
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 10: Integrationstechniken</span>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb10">Übungen 10: Integrationstechniken - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-10-Üb-Integrationstechniken.pdf</code>.</p>
+
+        <details>
+            <summary><h4>4. Integration per Substitution</h4></summary>
+            <ol>
+                <li>
+                    <strong>4.1: $\int x\sqrt{x-1}dx$</strong> 
+                    <p><strong>Lösung:</strong> Mit der Substitution $z=x-1$, also $x=z+1$ und $dx=dz$ ergibt sich:
+                    $$ \int (z+1)\sqrt{z} dz = \int (z^{3/2} + z^{1/2}) dz = \frac{2}{5}z^{5/2} + \frac{2}{3}z^{3/2} + C $$
+                    Rücksubstitution führt zu: $\frac{2}{5}(x-1)^{5/2} + \frac{2}{3}(x-1)^{3/2} + C$.</p>
+                </li>
+                <li>
+                    <strong>4.2: $\int\frac{t^{3}}{(1+t^{2})^{3}}dt$</strong>
+                    <p><strong>Lösung:</strong> Mit der Substitution $z=1+t^2$, also $t^2=z-1$ und $tdt=\frac{1}{2}dz$ ergibt sich:
+                     $$ \int \frac{t^2 \cdot t}{(1+t^2)^3} dt = \int \frac{z-1}{z^3} \frac{1}{2} dz = \frac{1}{2} \int (z^{-2} - z^{-3}) dz = -\frac{1}{2z} + \frac{1}{4z^2} + C $$
+                     Rücksubstitution führt zu: $-\frac{1}{2(1+t^2)} + \frac{1}{4(1+t^2)^2} + C$.</p>
+                </li>
+                <li>
+                    <strong>4.3: $\int\frac{\ln y}{\sqrt{y}}dy$</strong>
+                    <p><strong>Lösung:</strong> Mit der Substitution $z=\sqrt{y}$, also $y=z^2$ und $dy=2zdz$ wird das Integral zu $4\int \ln z dz$. Partielle Integration liefert $4(z\ln z - z) + C$.
+                    Rücksubstitution führt zu: $2\sqrt{y}\ln y - 4\sqrt{y} + C$.</p>
+                </li>
+            </ol>
+        </details>
+        
+        <details>
+            <summary><h4>5. Partielle Integration</h4></summary>
+            <ol>
+                <li>
+                    <strong>5.1: $\int \ln x dx$</strong>
+                    <p><strong>Lösung:</strong> Mit $u=\ln x$ und $v'=1$ erhält man: $x\ln x - \int x \cdot \frac{1}{x} dx = x\ln x - x + C$.</p>
+                </li>
+                 <li>
+                    <strong>5.3: $\int_{0}^{1}\ln x dx$</strong>
+                    <p><strong>Lösung:</strong> Dies ist ein uneigentliches Integral. Mit der Stammfunktion aus 5.1:
+                    $$ \lim_{a\to 0^+} [\left. x\ln x - x \right]_a^1 = (1\ln 1 - 1) - \lim_{a\to 0^+} (a\ln a - a) = -1 - 0 = -1 $$
+                    </p>
+                </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>7. Uneigentliche Integrale</h4></summary>
+            <ol>
+                <li>
+                    <strong>7.1: $\int_{0}^{\infty}xe^{-\lambda\cdot x^{2}}dx \quad (\lambda>0)$</strong>
+                    <p><strong>Lösung:</strong> Die Stammfunktion ist $-\frac{1}{2\lambda}e^{-\lambda x^2}$.
+                    $$ [\left. -\frac{1}{2\lambda}e^{-\lambda x^2} \right]_0^\infty = 0 - \left(-\frac{1}{2\lambda}\right) = \frac{1}{2\lambda} $$</p>
+                </li>
+                 <li>
+                    <strong>7.2: $\int_{-\infty}^{\infty}xe^{-\lambda\cdot x^{2}}dx \quad (\lambda>0)$</strong>
+                    <p><strong>Lösung:</strong> Der Integrand ist eine ungerade Funktion ($f(-x)=-f(x)$). Das Integral über ein symmetrisches Intervall von $-\infty$ bis $\infty$ ist daher 0.</p>
+                </li>
+                 <li>
+                    <strong>7.4: $\int_{-2}^{3}\frac{1}{\sqrt{x+2}}+\frac{1}{\sqrt{3-x}}dx$</strong>
+                    <p><strong>Lösung:</strong> Das Integral wird an den Polstellen aufgeteilt.
+                    $$ [\left. 2\sqrt{x+2} \right]_{-2}^3 + [\left. -2\sqrt{3-x} \right]_{-2}^3 = (2\sqrt{5}-0) + (0 - (-2\sqrt{5})) = 4\sqrt{5} $$</p>
+                </li>
+            </ol>
+        </details>
+    </main>
+</body>
+</html>
