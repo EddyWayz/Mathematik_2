@@ -34,7 +34,7 @@ Ordner `material/` korrekt verlinkt sind.
 
 ## Verwendung
 
-`index.html` im Browser öffnen. Auf der Startseite wird automatisch das aktuelle Datum angezeigt. In jedem Kapitel gibt es Vor/Zurück-Navigation und einen Button nach oben. Ein Klick auf das Mondsymbol aktiviert den Dark Mode.
+`index.html` im Browser öffnen. Auf der Startseite wird automatisch das aktuelle Datum angezeigt. Ein Suchfeld über dem Inhaltsverzeichnis filtert die Kapitel nach Stichworten. Beim Scrollen zeigt eine kleine Fortschrittsleiste am oberen Rand, wie weit du im Dokument bist. In jedem Kapitel gibt es Vor/Zurück-Navigation und einen Button nach oben. Ein Klick auf das Mondsymbol aktiviert den Dark Mode.
 
 ## Mitmachen
 Neue Kapitel liegen im Ordner `chapters/`. Einen kurzen Leitfaden findest du in `chapters/README.md`. Pull Requests mit Verbesserungen oder zusätzlichen Aufgaben sind willkommen. Nach Änderungen sollte `npm run build` ausgeführt werden, damit Kopf und Inhaltsverzeichnis aktuell bleiben.
