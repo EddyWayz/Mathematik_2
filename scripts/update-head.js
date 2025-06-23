@@ -16,6 +16,13 @@ function updateHtml(html, frag, stylePath) {
   return html.slice(0, start) + frag + html.slice(after);
 }
 
+function setOgTitle(html) {
+  const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+  if (!titleMatch) return html;
+  const title = titleMatch[1];
+  return html.replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`);
+}
+
 function updateAll() {
   const fragment = fs.readFileSync(fragmentPath, 'utf8').trim();
 
@@ -23,7 +30,8 @@ function updateAll() {
     if (!file.endsWith('.html')) continue;
     const filePath = path.join(chaptersDir, file);
     const html = fs.readFileSync(filePath, 'utf8');
-    const updated = updateHtml(html, fragment, '../style.css');
+    let updated = updateHtml(html, fragment, '../style.css');
+    updated = setOgTitle(updated);
     fs.writeFileSync(filePath, updated);
   }
 
@@ -32,7 +40,8 @@ function updateAll() {
   const rootFragment = fragment
     .replace('../style.css', 'style.css')
     .replace(/\.\.\/images\//g, 'images/');
-  const updatedIndex = updateHtml(indexHtml, rootFragment, 'style.css');
+  let updatedIndex = updateHtml(indexHtml, rootFragment, 'style.css');
+  updatedIndex = setOgTitle(updatedIndex);
   fs.writeFileSync(indexPath, updatedIndex);
 }
 
