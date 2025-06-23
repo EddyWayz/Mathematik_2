@@ -7,7 +7,10 @@
     <title>7 Partielle Ableitungen und der Gradient - Lernskript Mathe</title>
 
     <script>
-  MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+    svg: { fontCache: 'global' }
+  };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
@@ -19,7 +22,7 @@
 </head>
 <body>
 
-    <header class="page-header">
+    <header class="page-header" role="banner">
         <a href="../index.html">Inhaltsverzeichnis</a>
         <span>Kapitel 7: Partielle Ableitungen</span>
         <div class="header-controls">
@@ -176,7 +179,7 @@
     </main>
 
     <footer>
-        <nav class="page-nav">
+        <nav class="page-nav" aria-label="Seitennavigation">
             <a href="06-ableitungsregeln.html">← Vorheriges Kapitel</a>
             <a href="08-extremwerte-mehrere-var.html">Nächstes Kapitel →</a>
         </nav>
@@ -184,6 +187,6 @@
 
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
     
-    <script src="../main.js"></script>
+    <script type="module" src="../main.js"></script>
 </body>
 </html>

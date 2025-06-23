@@ -7,7 +7,10 @@
     <title>Lerneinheiten Mathematik</title>
     
     <script>
-  MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } };
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+    svg: { fontCache: 'global' }
+  };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -20,7 +23,7 @@
 </head>
 <body>
 
-    <header class="page-header">
+    <header class="page-header" role="banner">
         <span>Lerneinheiten Mathematik</span>
         <div class="header-controls">
             <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
@@ -34,7 +37,7 @@
             <time id="current-date" class="date" data-dynamic="true"></time>
         </div>
 
-        <nav class="toc">
+        <nav class="toc" aria-label="Inhaltsverzeichnis">
             <h2>Inhaltsverzeichnis</h2>
             <ul>
                 <li><a href="chapters/01-zaehlprinzipien.html">1 Grundlegende Zählprinzipien</a></li>
@@ -60,6 +63,6 @@
     </main>
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

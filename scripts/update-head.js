@@ -1,9 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const fragment = fs
-  .readFileSync(path.join(__dirname, '..', 'templates', 'head-fragment.html'), 'utf8')
-  .trim();
+const fragmentPath = path.join(__dirname, '..', 'templates', 'head-fragment.html');
 const chaptersDir = path.join(__dirname, '..', 'chapters');
 
 
@@ -18,19 +16,28 @@ function updateHtml(html, frag, stylePath) {
   return html.slice(0, start) + frag + html.slice(after);
 }
 
-for (const file of fs.readdirSync(chaptersDir)) {
-  if (!file.endsWith('.html')) continue;
-  const filePath = path.join(chaptersDir, file);
-  const html = fs.readFileSync(filePath, 'utf8');
-  const updated = updateHtml(html, fragment, '../style.css');
-  fs.writeFileSync(filePath, updated);
+function updateAll() {
+  const fragment = fs.readFileSync(fragmentPath, 'utf8').trim();
+
+  for (const file of fs.readdirSync(chaptersDir)) {
+    if (!file.endsWith('.html')) continue;
+    const filePath = path.join(chaptersDir, file);
+    const html = fs.readFileSync(filePath, 'utf8');
+    const updated = updateHtml(html, fragment, '../style.css');
+    fs.writeFileSync(filePath, updated);
+  }
+
+  const indexPath = path.join(__dirname, '..', 'index.html');
+  let indexHtml = fs.readFileSync(indexPath, 'utf8');
+  const rootFragment = fragment
+    .replace('../style.css', 'style.css')
+    .replace(/\.\.\/images\//g, 'images/');
+  const updatedIndex = updateHtml(indexHtml, rootFragment, 'style.css');
+  fs.writeFileSync(indexPath, updatedIndex);
 }
 
-// also update index.html
-const indexPath = path.join(__dirname, '..', 'index.html');
-let indexHtml = fs.readFileSync(indexPath, 'utf8');
-const rootFragment = fragment
-  .replace('../style.css', 'style.css')
-  .replace(/\.\.\/images\//g, 'images/');
-const updatedIndex = updateHtml(indexHtml, rootFragment, 'style.css');
-fs.writeFileSync(indexPath, updatedIndex);
+if (require.main === module) {
+  updateAll();
+}
+
+module.exports = updateAll;

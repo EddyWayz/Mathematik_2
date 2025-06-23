@@ -3,6 +3,7 @@
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+@import url("css/dark-mode.css"); /* Dark-Mode-Styles */
 /* 1. Globale Einstellungen und Farbvariablen
    -------------------------------------------------------------------------- */
 :root {
@@ -386,36 +387,6 @@ figure.image-placeholder {
 }
 
 
-/* 4. Dark Mode
-   -------------------------------------------------------------------------- */
-body.dark-mode {
-    --text-color: #c9d1d9;
-    --text-color-muted: #8b949e;
-    --primary-color: #58a6ff;
-    --primary-color-dark: #80bfff;
-    --border-color: #30363d;
-    --bg-color-main: #0d1117;
-    --bg-color-subtle: #161b22;
-    --bg-code: #20262e;
-    
-    --info-tip-bg: #11281e;
-    --info-tip-border: #3fb950;
-    
-    --info-warning-bg: #351a1d;
-    --info-warning-border: #f85149;
-    
-    --info-key-bg: #332917;
-    --info-key-border: #e3b341;
-
-    --task-hint-bg: #142438;
-    --task-hint-border: #58a6ff;
-}
-body.dark-mode code { color: #d1d5db; }
-body.dark-mode .page-header { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-body.dark-mode th { background-color: #20262e; }
-body.dark-mode tbody tr:nth-of-type(even) { background-color: #11151c; }
-body.dark-mode tbody tr:hover { background-color: var(--task-hint-bg); }
-body.dark-mode summary:hover { background-color: var(--bg-color-main); }
 
 #dark-mode-toggle {
     background: none;
