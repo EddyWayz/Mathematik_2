@@ -12,7 +12,7 @@ Dieses Repository enthält ein webbasiertes Lernskript. Die Kapitel liegen im Or
 * `templates/head-fragment.html` – gemeinsamer HTML-Head
 
 ## Buildskript
-Mit `node scripts/update-head.js` wird der gemeinsame Teil des `<head>`-Bereichs aller Kapitel anhand von `templates/head-fragment.html` aktualisiert.
+Mit `node scripts/update-head.js` wird der gemeinsame Teil des `<head>`-Bereichs der Startseite und aller Kapitel anhand von `templates/head-fragment.html` aktualisiert.
 
 ## Verwendung
 `index.html` im Browser öffnen. Auf der Startseite wird automatisch das aktuelle Datum angezeigt. In jedem Kapitel gibt es Vor/Zurück-Navigation und einen Button nach oben. Ein Klick auf das Mondsymbol aktiviert den Dark Mode.
