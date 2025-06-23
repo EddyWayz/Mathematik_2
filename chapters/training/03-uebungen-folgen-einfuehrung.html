@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den Übungsaufgaben aus dem PDF 'Mathe2-03-Üb-Folgen.pdf' zu Zahlenfolgen, Bildungsvorschriften und Grenzwerten.">
+    <title>Übungen 03: Folgen und Grenzwerte - Lösungen</title>
+
+    <script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Übungen 03: Folgen und Grenzwerte - Lösungen">
+<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+<meta property="og:image" content="../../images/placeholder.svg">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 3: Folgen</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb03">Übungen 03: Folgen und Grenzwerte - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-03-Üb-Folgen.pdf</code>.</p>
+
+        <details>
+            <summary><h4>1. Eigenschaften von Folgen </h4></summary>
+            <ol>
+                <li>
+                    <strong>a) Skizzieren Sie eine unbeschränkte Folge, die nicht monoton steigend ist.</strong>
+                    <p><strong>Lösung:</strong> Eine Folge wie $a_n = (-1)^n \cdot n = (0, -1, 2, -3, 4, \dots)$ ist unbeschränkt, da die Beträge der Glieder gegen unendlich wachsen. Sie ist jedoch nicht monoton steigend, da sie ständig zwischen positiven und negativen Werten wechselt. </p>
+                </li>
+                <li>
+                    <strong>b) Skizzieren Sie eine unbeschränkte Folge, die eine konstante (beschränkte) Teilfolge hat.</strong>
+                    <p><strong>Lösung:</strong> Eine Folge wie $a_n = \begin{cases} n & \text{für gerades } n \\ 1 & \text{für ungerades } n \end{cases} = (1, 2, 1, 4, 1, 6, \dots)$ ist unbeschränkt, da die Teilfolge der geraden Glieder $(2, 4, 6, \dots)$ gegen unendlich strebt. Gleichzeitig ist die Teilfolge der ungeraden Glieder $(1, 1, 1, \dots)$ konstant und somit beschränkt. </p>
+                </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>2. Beispiele für Folgen, explizite und rekursive Bildungsvorschriften </h4></summary>
+            <ol>
+                <li>
+                    <strong>2.1: Folge $a_n$ ist das Produkt von $1, 2, \dots, n$.</strong>
+                    <p>Diese Folge ist die Fakultät. </p>
+                    <ul>
+                        <li><strong>a) Explizite Bildungsvorschrift:</strong> $a_n = n!$ </li>
+                        <li><strong>b) Rekursive Bildungsvorschrift:</strong> $a_n = n \cdot a_{n-1}$ mit dem Startwert $a_1 = 1$. </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>2.2: Folge $a_n$ ist die Summe von $1, 2, \dots, n$.</strong>
+                    <p>Diese Folge ist die Gaußsche Summenformel. </p>
+                     <ul>
+                        <li><strong>a) Explizite Bildungsvorschrift (Summenzeichen):</strong> $a_n = \sum_{k=1}^{n} k$.  Die bekannte Formel hierfür ist $a_n = \frac{n(n+1)}{2}$. </li>
+                        <li><strong>c) Rekursive Bildungsvorschrift:</strong> $a_n = a_{n-1} + n$ mit dem Startwert $a_1 = 1$. </li>
+                    </ul>
+                </li>
+                 <li>
+                    <strong>2.3: Lineare Rekursion $a_{n}=3\cdot a_{n-1}+2$.</strong> 
+                    <p><strong>a) Herleitung der expliziten Vorschrift:</strong> Man kann die Rekursion "ausrollen", um ein Muster zu erkennen: <br>
+                    $a_n = 3 \cdot a_{n-1} + 2$ <br>
+                    $a_n = 3 \cdot (3 a_{n-2} + 2) + 2 = 3^2 a_{n-2} + 2 \cdot 3 + 2$ <br>
+                    $a_n = 3^2 \cdot (3 a_{n-3} + 2) + 2 \cdot 3 + 2 = 3^3 a_{n-3} + 2 \cdot 3^2 + 2 \cdot 3 + 2$ <br>
+                    Das allgemeine Muster ist $a_n = 3^n a_0 + 2 \sum_{k=0}^{n-1} 3^k$. <br>
+                    Die Summe ist eine geometrische Reihe: $\sum_{k=0}^{n-1} 3^k = \frac{3^n-1}{3-1} = \frac{3^n-1}{2}$. <br>
+                    Eingesetzt ergibt sich: $a_n = 3^n a_0 + 2 \cdot \frac{3^n-1}{2} = 3^n a_0 + 3^n - 1 = (a_0+1)3^n - 1$. 
+                    </p>
+                </li>
+            </ol>
+        </details>
+        
+        <details>
+            <summary><h4>3. Grenzwerte mittels Rechenregeln berechnen </h4></summary>
+            <ul>
+                <li><strong>3.1:</strong> $ \lim_{n\to\infty}\frac{4-3\sqrt{n}-2n^{4}}{1+n(1-n)^{2}} $ 
+                    <p><strong>Lösung:</strong> Der Nenner lautet ausmultipliziert $1+n(1-2n+n^2) = 1+n-2n^2+n^3$. Der dominante Term im Zähler ist $-2n^4$, im Nenner $n^3$. Der Grenzwert ist somit $\lim_{n\to\infty} \frac{-2n^4}{n^3} = \lim_{n\to\infty} -2n = -\infty$. Die Folge ist bestimmt divergent.</p>
+                </li>
+                 <li><strong>3.2:</strong> $ \lim_{n\to\infty}(3-(\frac{1}{2})^{n}) $ 
+                    <p><strong>Lösung:</strong> Da $|\frac{1}{2}| < 1$, gilt $\lim_{n\to\infty} (\frac{1}{2})^n = 0$. Der Grenzwert der Folge ist also $3 - 0 = 3$.</p>
+                </li>
+                 <li><strong>3.3:</strong> $ \lim_{n\to\infty}\frac{4^{n+1}}{5^{n}} $ 
+                    <p><strong>Lösung:</strong> Man formt um zu $\lim_{n\to\infty} \frac{4 \cdot 4^n}{5^n} = \lim_{n\to\infty} 4 \cdot (\frac{4}{5})^n$. Da $|\frac{4}{5}| < 1$, gilt $\lim_{n\to\infty} (\frac{4}{5})^n = 0$. Der Grenzwert ist $4 \cdot 0 = 0$.</p>
+                </li>
+                <li><strong>3.4:</strong> $ \lim_{n\to\infty}\frac{1.05^{n+1}-1}{1.05-1} $ 
+                    <p><strong>Lösung:</strong> Der Nenner ist eine Konstante (0.05). Da der Betrag der Basis im Zähler $1.05 > 1$ ist, wächst der Term $1.05^{n+1}$ über alle Grenzen. Der Grenzwert ist $+\infty$. Die Folge ist bestimmt divergent.</p>
+                </li>
+                <li><strong>3.5:</strong> $ \lim_{n\to\infty}\frac{0.05^{n+1}-1}{0.05-1} $ 
+                    <p><strong>Lösung:</strong> Da der Betrag der Basis $0.05 < 1$ ist, gilt $\lim_{n\to\infty} 0.05^{n+1} = 0$. Der Grenzwert ist somit $\frac{0-1}{0.05-1} = \frac{-1}{-0.95} = \frac{100}{95} = \frac{20}{19}$.</p>
+                </li>
+            </ul>
+        </details>
+        
+        <details>
+            <summary><h4>4. Grenzwerte durch Umformung oder Kriterien argumentieren </h4></summary>
+             <ul>
+                <li><strong>4.1: $a_{n}=\frac{(-1)^{n}}{\log n}$</strong> 
+                    <p><strong>Lösung:</strong> Konvergiert gegen 0. Der Betrag der Folge, $|\frac{1}{\log n}|$, ist eine Nullfolge, da $\log n \to \infty$.</p>
+                </li>
+                 <li><strong>4.2: $a_{n}=(-1)^{n}\frac{2n+512}{n^{2}}$</strong> 
+                    <p><strong>Lösung:</strong> Konvergiert gegen 0. Der Betrag des Bruchs $\frac{2n+512}{n^2}$ verhält sich wie $\frac{2n}{n^2} = \frac{2}{n}$, was eine Nullfolge ist.</p>
+                </li>
+                 <li><strong>4.3: $a_{n}=\frac{(-1)^{n}4^{n+1}}{5^{n}}$</strong> 
+                    <p><strong>Lösung:</strong> Konvergiert gegen 0. Der Term lässt sich als $(-1)^n \cdot 4 \cdot (\frac{4}{5})^n$ schreiben. Da $(\frac{4}{5})^n$ eine Nullfolge ist, konvergiert die gesamte Folge gegen 0.</p>
+                </li>
+                <li><strong>4.4: $a_{n}=\frac{1}{\sqrt{n}}\cos(n)$</strong> 
+                    <p><strong>Lösung:</strong> Konvergiert gegen 0. Dies ist ein Anwendungsfall des Sandwich-Theorems (Einschließungssatz). Da $-1 \le \cos(n) \le 1$, gilt $-\frac{1}{\sqrt{n}} \le \frac{\cos(n)}{\sqrt{n}} \le \frac{1}{\sqrt{n}}$. Da sowohl die untere als auch die obere Schranke gegen 0 konvergieren, muss auch die Folge dazwischen gegen 0 konvergieren.</p>
+                </li>
+            </ul>
+        </details>
+        
+    </main>
+    
+    <footer>
+        <nav class="page-nav" aria-label="Seitennavigation">
+            <a href="../02-kombinationen.html">← Vorheriges Kapitel</a>
+            <a href="../04-grenzwerte.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
+    
+    <script type="module" src="../../main.js"></script>
+</body>
+</html>

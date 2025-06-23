@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den Übungsaufgaben aus dem PDF 'Mathe2-06-Üb-Anwendung Differentialrechnung.pdf' zu Kurvendiskussion, Optimierung und Grenzwerten.">
+    <title>Übungen 06: Anwendungen der Differentialrechnung - Lösungen</title>
+    
+    <script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Übungen 06: Anwendungen der Differentialrechnung - Lösungen">
+<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+<meta property="og:image" content="../../images/placeholder.svg">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 6: Anwendungen der Ableitung</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb06">Übungen 06: Anwendungen der Differentialrechnung - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-06-Üb-Anwendung Differentialrechnung.pdf</code>.</p>
+
+        <details>
+            <summary><h4>4. Regel von de l'Hospital</h4></summary>
+            <ol>
+                <li>
+                    <strong>4.1: $ \lim_{x\to\infty}\frac{\ln x}{2x^{3}-1} $</strong>
+                    <p><strong>Lösung:</strong> Der Grenzwert ist vom Typ $\frac{\infty}{\infty}$. 
+                    L'Hospital anwenden: $\lim_{x\to\infty}\frac{(\ln x)'}{(2x^3-1)'} = \lim_{x\to\infty}\frac{1/x}{6x^2} = \lim_{x\to\infty}\frac{1}{6x^3} = 0$. </p>
+                </li>
+                <li>
+                    <strong>4.2: $ \lim_{x\to 0}\frac{1-\cos x}{\ln(1+x^{2})} $</strong>
+                    <p><strong>Lösung:</strong> Der Grenzwert ist vom Typ $\frac{0}{0}$. 
+                    L'Hospital: $\lim_{x\to 0}\frac{\sin x}{2x / (1+x^2)} = \lim_{x\to 0}\frac{(1+x^2)\sin x}{2x}$. Immer noch $\frac{0}{0}$.<br>
+                    Erneut L'Hospital: $\lim_{x\to 0}\frac{2x\sin x + (1+x^2)\cos x}{2} = \frac{0 + 1\cdot 1}{2} = \frac{1}{2}$. </p>
+                </li>
+                 <li>
+                    <strong>4.5: $ \lim_{x\to 0}\sqrt{x}\ln(2x+1) $</strong>
+                    <p><strong>Lösung:</strong> Typ $0 \cdot (-\infty)$, unbestimmt. Umschreiben zu $\frac{\ln(2x+1)}{x^{-1/2}}$ (Typ $\frac{\infty}{\infty}$).<br>
+                    L'Hospital: $\lim_{x\to 0^+} \frac{2/(2x+1)}{-\frac{1}{2}x^{-3/2}} = \lim_{x\to 0^+} \frac{-4x^{3/2}}{2x+1} = \frac{0}{1} = 0$. </p>
+                </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>7. Monotonie und Krümmung</h4></summary>
+            <ol>
+                <li>
+                    <strong>7.3: $f(x)=xe^{-x}$</strong>
+                    <p><strong>1. Ableitung (Monotonie):</strong> $f'(x) = 1 \cdot e^{-x} + x(-e^{-x}) = e^{-x}(1-x)$.<br>
+                    $f'(x)=0 \implies x=1$.
+                    <ul>
+                        <li>Für $x < 1$ ist $f'(x) > 0 \implies$ streng monoton wachsend.</li>
+                        <li>Für $x > 1$ ist $f'(x) < 0 \implies$ streng monoton fallend.</li>
+                    </ul>
+                    <strong>2. Ableitung (Krümmung):</strong> $f''(x) = -e^{-x}(1-x) + e^{-x}(-1) = e^{-x}(-1+x-1) = e^{-x}(x-2)$.<br>
+                    $f''(x)=0 \implies x=2$.
+                    <ul>
+                        <li>Für $x < 2$ ist $f''(x) < 0 \implies$ konkav (rechtsgekrümmt).</li>
+                        <li>Für $x > 2$ ist $f''(x) > 0 \implies$ konvex (linksgekrümmt).</li>
+                    </ul>
+                    </p>
+                </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>9. Kosten-Optimierung</h4></summary>
+            <ol>
+                <li>
+                    <strong>9.1: Gewinnmaximierung</strong>
+                    <p><strong>Gewinnfunktion:</strong> $G(x) = \text{Erlös} - \text{Kosten} = p \cdot x - K(x)$.<br>
+                    $G(x) = 60x - (x^3 - 12x^2 + 60x + 98) = -x^3 + 12x^2 - 98$.<br>
+                    <strong>Ableiten und Nullsetzen:</strong> $G'(x) = -3x^2 + 24x = -3x(x-8) = 0$.<br>
+                    Mögliche Extrema bei $x=0$ und $x=8$.<br>
+                    <strong>Zweite Ableitung:</strong> $G''(x) = -6x+24$.
+                    <ul>
+                        <li>$G''(0)=24>0 \implies$ Lokales Minimum.</li>
+                        <li>$G''(8)=-24<0 \implies$ Lokales Maximum.</li>
+                    </ul>
+                    Der maximale Gewinn wird bei einer Produktion von $x=8$ (Tsd. Stück) erzielt. </p>
+                </li>
+            </ol>
+        </details>
+    </main>
+
+    <footer>
+        <nav class="page-nav" aria-label="Seitennavigation">
+            <a href="../08-extremwerte-mehrere-var.html">← Zurück zum Kapitel</a>
+            <a href="../10-integralrechnung.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
+    
+    <script type="module" src="../../main.js"></script>
+</body>
+</html>

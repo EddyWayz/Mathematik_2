@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lösungen zu den gemischten Übungen aus dem PDF 'Mathe2-04-Üb-Grenzwerte Stetigkeit.pdf' zu Grenzwerten, Stetigkeit und Polynomen.">
+    <title>Übungen 04: Grenzwerte und Stetigkeit - Lösungen</title>
+    
+    <script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Übungen 04: Grenzwerte und Stetigkeit - Lösungen">
+<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+<meta property="og:image" content="../../images/placeholder.svg">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <header class="page-header" role="banner">
+        <a href="../../index.html">Inhaltsverzeichnis</a>
+        <span>Übungen Kapitel 4: Grenzwerte & Stetigkeit</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <h2 id="ueb04">Übungen 04: Grenzwerte und Stetigkeit - Lösungen</h2>
+        
+        <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-04-Üb-Grenzwerte Stetigkeit.pdf</code>.</p>
+
+        <details>
+            <summary><h4>1. Grenzwerte am Rand des Definitionsbereichs</h4></summary>
+            <ol>
+                <li>
+                    <strong>1.1: Gauß-Funktion $y(x)=a\cdot e^{-b(x-x_{0})^{2}}$</strong> 
+                    <p><strong>Lösung:</strong> Für $x \to \pm\infty$ geht der Exponent $(x-x_0)^2 \to \infty$. Damit geht $-b(x-x_0)^2 \to -\infty$. Da $e^z \to 0$ für $z \to -\infty$, ist der Grenzwert der gesamten Funktion für $x \to \pm\infty$ gleich $a \cdot 0 = 0$.</p>
+                </li>
+                <li>
+                    <strong>1.4: $y(x)=x \cdot \ln x$</strong> 
+                    <p><strong>Lösung:</strong> Definitionsbereich ist $x>0$.
+                    <ul>
+                        <li>Rand bei $\infty$: $\lim_{x\to\infty} x \ln x = \infty \cdot \infty = \infty$.</li>
+                        <li>Rand bei $0^+$: $\lim_{x\to 0^+} x \ln x$. Dies ist der unbestimmte Ausdruck $0 \cdot (-\infty)$. Umformung für L'Hospital: $\lim_{x\to 0^+} \frac{\ln x}{1/x} = \lim_{x\to 0^+} \frac{1/x}{-1/x^2} = \lim_{x\to 0^+} (-x) = 0$.</li>
+                    </ul>
+                    </p>
+                </li>
+            </ol>
+        </details>
+        
+        <details>
+            <summary><h4>2. Grenzwerte von gebrochen-rationalen Funktionen</h4></summary>
+            <ol>
+                <li>
+                    <strong>2.1: $y(x)=2x-5x^{3}+7x^{2}$</strong>
+                    <p><strong>Lösung:</strong> Das Verhalten wird vom Term mit der höchsten Potenz, $-5x^3$, bestimmt. 
+                    <ul>
+                        <li>$\lim_{x\to\infty} (-5x^3) = -\infty$.</li>
+                        <li>$\lim_{x\to-\infty} (-5x^3) = +\infty$.</li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <strong>2.2: $y(x)=\frac{2-3x-4x^{3}}{6x^{3}-5x^{2}+1}$</strong>
+                    <p><strong>Lösung:</strong> Der Grad des Zählers (3) ist gleich dem Grad des Nenners (3). Der Grenzwert für $x \to \pm\infty$ ist das Verhältnis der Leitkoeffizienten: $\frac{-4}{6} = -\frac{2}{3}$.</p>
+                </li>
+            </ol>
+        </details>
+
+        <details>
+            <summary><h4>3. Stetigkeit und Arten von Unstetigkeitsstellen</h4></summary>
+            <ol>
+                <li>
+                    <strong>3.3: $f(x)=\begin{cases}\frac{4x+8}{(x+1)(x+2)}&x\ne-2,-1\\ 0&x=-1\\ -4&x=-2\end{cases}$</strong>
+                    <p><strong>Analyse:</strong> Die Funktion ist als gebrochen-rationale Funktion überall stetig, außer an den Nullstellen des Nenners $x=-1$ und $x=-2$. Diese Stellen müssen wir untersuchen.<br>
+                    <strong>Stelle $x=-1$:</strong>
+                    <ul>
+                        <li>$\lim_{x\to -1} f(x) = \lim_{x\to -1} \frac{4(x+2)}{(x+1)(x+2)} = \lim_{x\to -1} \frac{4}{x+1}$. Dieser Grenzwert existiert nicht (Polstelle). Linksseitig: $-\infty$, Rechtsseitig: $+\infty$.</li>
+                        <li>Die Funktion ist bei $x=-1$ unstetig (<strong>Polstelle</strong>).</li>
+                    </ul>
+                    <strong>Stelle $x=-2$:</strong>
+                    <ul>
+                         <li>$\lim_{x\to -2} f(x) = \lim_{x\to -2} \frac{4(x+2)}{(x+1)(x+2)} = \lim_{x\to -2} \frac{4}{x+1} = \frac{4}{-2+1} = -4$.</li>
+                         <li>Der Grenzwert existiert und ist -4. Der Funktionswert ist ebenfalls $f(-2)=-4$.</li>
+                         <li>Da Grenzwert = Funktionswert, ist die Funktion an der Stelle $x=-2$ <strong>stetig</strong>. (Die Definitionslücke wurde durch den Funktionswert "gehoben").</li>
+                    </ul>
+                    </p>
+                </li>
+            </ol>
+        </details>
+    </main>
+
+    <footer>
+        <nav class="page-nav" aria-label="Seitennavigation">
+            <a href="../03-folgen-einfuehrung.html">← Vorheriges Kapitel</a>
+            <a href="../05-ableitung-einfuehrung.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
+    
+    <script type="module" src="../../main.js"></script>
+</body>
+</html>
