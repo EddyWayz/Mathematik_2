@@ -4,6 +4,7 @@ import initTopNavigation from './modules/top-navigation.js';
 import initBackToTop from './modules/back-to-top.js';
 import initSearch from './modules/search.js';
 import initScrollProgress from './modules/scroll-progress.js';
+import initTasks from './modules/tasks.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initDarkMode();
@@ -12,4 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initSearch();
   initScrollProgress();
+  initTasks();
 });

@@ -7,9 +7,11 @@ export default function initDarkMode() {
     if (theme === 'dark') {
       body.classList.add('dark-mode');
       toggleButton.textContent = '☀️';
+      toggleButton.setAttribute('aria-pressed', 'true');
     } else {
       body.classList.remove('dark-mode');
       toggleButton.textContent = '🌙';
+      toggleButton.setAttribute('aria-pressed', 'false');
     }
   };
 
