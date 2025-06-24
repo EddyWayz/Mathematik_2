@@ -449,6 +449,49 @@ figure.image-placeholder {
     h2 { font-size: 1.9em; }
     h3 { font-size: 1.5em; }
 }
+@media (max-width: 480px) {
+    .page-header {
+        position: static;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 0.5rem 1rem;
+    }
+    .page-header a,
+    .page-header span {
+        flex: 1 1 100%;
+        text-align: center;
+        margin: 0.25rem 0;
+    }
+    .header-controls {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.25rem;
+    }
+    .content-wrapper {
+        margin-top: 0;
+        padding: 1rem;
+    }
+    .toc {
+        padding: 1rem;
+        margin: 20px 0;
+    }
+    .toc input[type="text"] {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+    }
+    .page-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    #back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}
 
 /* 6. Print Stylesheet
    -------------------------------------------------------------------------- */
