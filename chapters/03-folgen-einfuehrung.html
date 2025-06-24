@@ -35,7 +35,7 @@
         <h2 id="sec3">3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte</h2>
 
         <h3>3.1 Lernziel</h3>
-        <p>Nach dieser Lerneinheit wirst du die Konzepte von Zahlenfolgen, ihren Eigenschaften und ihrem Langzeitverhalten beherrschen. Du wirst explizite und rekursive Bildungsvorschriften herleiten , Folgen auf Monotonie und Beschränktheit prüfen  und Grenzwerte mit Hilfe der Rechenregeln und der Wachstumshierarchie sicher berechnen können.</p>
+        <p>Nach dieser Lerneinheit wirst du die Konzepte von Zahlenfolgen, ihren Eigenschaften und ihrem Langzeitverhalten beherrschen. Du wirst explizite und rekursive Bildungsvorschriften herleiten, Folgen auf Monotonie und Beschränktheit prüfen und Grenzwerte mit Hilfe der Rechenregeln und der Wachstumshierarchie sicher berechnen können.</p>
 
         <h3>3.2 Motivation und Kontext</h3>
         <p>Folgen sind ein fundamentales Konzept der Analysis und haben direkte Anwendungen in der Informatik. Sie sind die Brücke zwischen der diskreten Welt der ganzen Zahlen und der kontinuierlichen Welt der reellen Funktionen.</p>
@@ -98,17 +98,32 @@
             <p>Dies ist ein zentraler Satz, der die Existenz eines Grenzwertes garantiert, auch wenn man seinen genauen Wert nicht kennt.</p>
         </div>
 
+        <div class="info-box tip">
+            <h5>Strategie: Divergenz bei alternierenden Folgen nachweisen</h5>
+            <p>Um zu beweisen, dass eine alternierende Folge (mit einem Faktor wie $(-1)^n$) divergiert, ist die Analyse von Teilfolgen die beste Methode.</p>
+            <ol>
+                <li>Betrachte die Teilfolge für alle geraden Indizes (z.B. $a_{2k}$), wo $(-1)^{2k}=1$ ist.</li>
+                <li>Betrachte die Teilfolge für alle ungeraden Indizes (z.B. $a_{2k+1}$), wo $(-1)^{2k+1}=-1$ ist.</li>
+                <li>Berechne die Grenzwerte dieser beiden Teilfolgen.</li>
+                <li><strong>Schlussfolgerung:</strong> Wenn die beiden Teilfolgen unterschiedliche Grenzwerte haben (oder eine davon divergiert), dann kann die ursprüngliche Folge keinen eindeutigen Grenzwert haben und ist somit divergent. Dies folgt direkt aus dem Satz, dass bei einer konvergenten Folge *alle* Teilfolgen gegen denselben Grenzwert konvergieren müssen.</li>
+            </ol>
+             <p><strong>Beispiel (Klausurtyp):</strong> Untersuche $a_{n}=\frac{(-1)^{n}(-6n^{3})}{ -n^{2}} = (-1)^n \cdot 6n$.<br>
+             - Teilfolge für gerade n ($a_{2k}$): $a_{2k} = (-1)^{2k} \cdot 6(2k) = 12k \to +\infty$.<br>
+             - Teilfolge für ungerade n ($a_{2k+1}$): $a_{2k+1} = (-1)^{2k+1} \cdot 6(2k+1) = -6(2k+1) \to -\infty$.<br>
+             Da die Teilfolgen unterschiedliche (uneigentliche) Grenzwerte haben, ist die Folge $(a_n)$ unbestimmt divergent.</p>
+        </div>
+
         <h3>3.5 Rechenregeln für Grenzwerte</h3>
         <p>Für konvergente Folgen $ \lim a_n = A $ und $ \lim b_n = B $ gelten folgende Regeln, solange die Ergebnisse definiert sind:</p>
         <ul>
-            <li><strong>Summe/Differenz:</strong> $ \lim (a_n \pm b_n) = A \pm B $ </li>
-            <li><strong>Produkt:</strong> $ \lim (a_n \cdot b_n) = A \cdot B $ </li>
-            <li><strong>Quotient:</strong> $ \lim \frac{a_n}{b_n} = \frac{A}{B} $ (falls $B \ne 0$) </li>
-            <li><strong>Stetige Funktion anwenden:</strong> $ \lim f(a_n) = f(A) $ </li>
+            <li><strong>Summe/Differenz:</strong> $ \lim (a_n \pm b_n) = A \pm B $</li>
+            <li><strong>Produkt:</strong> $ \lim (a_n \cdot b_n) = A \cdot B $</li>
+            <li><strong>Quotient:</strong> $ \lim \frac{a_n}{b_n} = \frac{A}{B} $ (falls $B \ne 0$)</li>
+            <li><strong>Stetige Funktion anwenden:</strong> $ \lim f(a_n) = f(A) $</li>
         </ul>
 
         <div class="info-box warning">
-            <h5>Unbestimmte Ausdrücke </h5>
+            <h5>Unbestimmte Ausdrücke</h5>
             <p>Die Rechenregeln sind nicht direkt anwendbar, wenn folgende Formen auftreten. Hier sind Umformungen oder spezielle Verfahren nötig.</p>
             <p style="text-align:center; font-size: 1.2em; letter-spacing: 5px;">
                 $ \frac{0}{0} \quad \frac{\infty}{\infty} \quad  \quad \infty - \infty \quad  \quad 0 \cdot \infty \quad  \quad 1^\infty \quad  \quad \infty^0 \quad  $
@@ -127,7 +142,7 @@
         </div>
 
         <h3>3.7 Beispielaufgaben</h3>
-        <h4>3.7.1 Bildungsvorschriften finden </h4>
+        <h4>3.7.1 Bildungsvorschriften finden</h4>
         <ul>
             <li><strong>Aufgabe:</strong> Gegeben sei die Folge $2, 4a, 8a^2, 16a^3, \dots$ mit Startglied $a_0=2$. Geben Sie eine explizite und eine rekursive Bildungsvorschrift an.</li>
             <li><strong>Lösung:</strong>

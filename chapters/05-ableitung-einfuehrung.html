@@ -96,6 +96,22 @@
             <dd>Wird für verkettete (ineinander geschachtelte) Funktionen verwendet. Formel: $(v(u(x)))' = v'(u(x)) \cdot u'(x)$, oft als "äußere Ableitung mal innere Ableitung" bezeichnet.</dd>
         </dl>
         
+        <h4>5.4.3 Sonderfall: Logarithmisches Differenzieren</h4>
+        <div class="info-box key-concept">
+           <h5>Logarithmisches Differenzieren</h5>
+           <p>Diese Technik ist besonders nützlich für Funktionen, die schwer direkt abzuleiten sind, z.B. Funktionen der Form $f(x)=u(x)^{v(x)}$ oder komplexe Produkte und Brüche. Das Vorgehen vereinfacht die Ableitung erheblich:</p>
+            <ol>
+                <li><strong>Logarithmieren:</strong> Wende den natürlichen Logarithmus auf beide Seiten der Gleichung an: $\ln(f(x)) = \ln(\dots)$.</li>
+                <li><strong>Logarithmusgesetze anwenden:</strong> Vereinfache die rechte Seite so weit wie möglich. Aus Potenzen werden Produkte, aus Produkten werden Summen und aus Brüchen werden Differenzen.</li>
+                <li><strong>Implizit ableiten:</strong> Leite beide Seiten der Gleichung nach $x$ ab. Die linke Seite wird nach der Kettenregel zu $\frac{f'(x)}{f(x)}$.</li>
+                <li><strong>Nach $f'(x)$ auflösen:</strong> Multipliziere die gesamte Gleichung mit $f(x)$, um die gesuchte Ableitung $f'(x)$ zu erhalten.</li>
+           </ol>
+           <p><strong>Beispiel:</strong> Leite $f(x)=x^x$ ab.<br>
+           1. $\ln(f(x)) = \ln(x^x) = x \ln(x)$.<br>
+           2. Ableiten: $\frac{f'(x)}{f(x)} = (x)'\ln(x) + x(\ln(x))' = 1 \cdot \ln(x) + x \cdot \frac{1}{x} = \ln(x) + 1$.<br>
+           3. Auflösen: $f'(x) = f(x) \cdot (\ln(x)+1) = x^x(\ln(x)+1)$.</p>
+        </div>
+
         <h3>5.5 Beispielaufgabe (Kombinierte Anwendung)</h3>
         <ul>
             <li><strong>Aufgabe:</strong> Leiten Sie die Funktion $k(x)=\sin(ax)\cdot \cos(\frac{x}{a})$ ab.</li>
@@ -119,7 +135,7 @@
 
         <h3>5.6 Übungsaufgaben (aus PA-05)</h3>
         <div class="task-hint">
-            <p><strong>Hinweis:</strong> Ersetzen Sie in den Aufgaben die Variable $a$ durch die letzte Stelle Ihrer Matrikelnummer (0→5, 1→6). Vereinfachen Sie das Ergebnis so weit wie möglich.</p>
+            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer (0→5, 1→6). Vereinfachen Sie das Ergebnis so weit wie möglich.</p>
         </div>
         <ol>
             <li><strong>(Aufgabe 2a)</strong> Leiten Sie ab: $f(x)=5a^{x}+\frac{1}{ax}-\sqrt[a]{x^{2}}+e^{ax}+(ax)^{3}$.
