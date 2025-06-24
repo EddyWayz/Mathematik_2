@@ -26,7 +26,7 @@
     <header class="page-header" role="banner">
         <span>Lerneinheiten Mathematik</span>
         <div class="header-controls">
-            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
+            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten" aria-pressed="false">🌙</button>
         </div>
     </header>
 
@@ -65,5 +65,10 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
     <script type="module" src="main.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+      }
+    </script>
 </body>
 </html>
