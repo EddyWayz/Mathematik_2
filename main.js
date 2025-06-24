@@ -1,9 +1,9 @@
-import initDarkMode from './modules/darkMode.js';
-import initDynamicDate from './modules/dynamicDate.js';
-import initTopNavigation from './modules/topNavigation.js';
-import initBackToTop from './modules/backToTop.js';
+import initDarkMode from './modules/dark-mode.js';
+import initDynamicDate from './modules/dynamic-date.js';
+import initTopNavigation from './modules/top-navigation.js';
+import initBackToTop from './modules/back-to-top.js';
 import initSearch from './modules/search.js';
-import initScrollProgress from './modules/scrollProgress.js';
+import initScrollProgress from './modules/scroll-progress.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initDarkMode();
