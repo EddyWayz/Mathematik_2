@@ -39,9 +39,9 @@
         <h3>10.2 Motivation und Kontext</h3>
         <p>Die Integralrechnung ist die Umkehrung der Differentialrechnung.  Während die Ableitung eine momentane Änderungsrate misst (z.B. Geschwindigkeit), kann das Integral aus der Rate die Gesamtänderung über einen Zeitraum rekonstruieren (z.B. den zurückgelegten Weg).  Die Integralrechnung ist unverzichtbar in vielen Bereichen:</p>
         <ul>
-            <li><strong>Flächen- und Volumenberechnung:</strong> Die Berechnung der Querschnittsfläche einer Rampe oder des Volumens eines Rotationskörpers sind klassische Anwendungen. </li>
+            <li><strong>Flächen- und Volumenberechnung:</strong> Die Berechnung der Querschnittsfläche einer Rampe oder des Volumens eines Rotationskörpers sind klassische Anwendungen.</li>
             <li><strong>Physik:</strong> Berechnung von Arbeit (Integral von Kraft über den Weg), Ladung (Integral des Stroms über die Zeit) oder Schwerpunkten.</li>
-            <li><strong>Statistik und Wahrscheinlichkeit:</strong> Die Wahrscheinlichkeit, dass eine Zufallsvariable in einem bestimmten Intervall liegt, wird durch das Integral über die Wahrscheinlichkeitsdichtefunktion berechnet. Ein Beispiel ist die Ausfallwahrscheinlichkeit von Bauteilen. </li>
+            <li><strong>Statistik und Wahrscheinlichkeit:</strong> Die Wahrscheinlichkeit, dass eine Zufallsvariable in einem bestimmten Intervall liegt, wird durch das Integral über die Wahrscheinlichkeitsdichtefunktion berechnet. Ein Beispiel ist die Ausfallwahrscheinlichkeit von Bauteilen.</li>
             <li><strong>Signalverarbeitung:</strong> Techniken wie die Fourier-Transformation, die Signale in ihre Frequenzanteile zerlegt, basieren auf der Berechnung von Integralen.</li>
         </ul>
 
@@ -56,8 +56,7 @@
             <dt>Das bestimmte Integral</dt>
             <dd>Lässt man die Anzahl der Rechtecke $n$ gegen unendlich gehen (und damit die Breite jedes Rechtecks $\Delta x_k$ gegen null), so konvergiert die Summe der Rechteckflächen gegen einen exakten Wert.  Dieser Grenzwert wird als <strong>bestimmtes Integral</strong> von $f$ über $[a,b]$ bezeichnet. 
             $$ \int_{a}^{b} f(x)dx = \lim_{n\to\infty}\sum_{k=1}^{n}f(x_{k})\Delta x_{k} $$
-            Der Wert des Integrals ist die <strong>vorzeichenbehaftete Fläche</strong>: Flächenanteile oberhalb der x-Achse zählen positiv, Anteile unterhalb der x-Achse zählen negativ.  Daher muss das Integral einer Funktion, die auf dem gesamten Intervall negativ ist, auch negativ sein. 
-            </dd>
+            Der Wert des Integrals ist die <strong>vorzeichenbehaftete Fläche</strong>: Flächenanteile oberhalb der x-Achse zählen positiv, Anteile unterhalb der x-Achse zählen negativ. Daher muss das Integral einer Funktion, die auf dem gesamten Intervall negativ ist, auch negativ sein.</dd>
         </dl>
 
         <div class="info-box video-box">
@@ -72,10 +71,10 @@
             <dt>Die Integralfunktion</dt>
             <dd>Man definiert eine Funktion $A(t)$, die den Flächeninhalt unter $f(x)$ von einer festen unteren Grenze $a$ bis zu einer variablen oberen Grenze $t$ misst. 
             $$ A(t) = \int_{a}^{t} f(x)dx $$
-            Diese Funktion wird als Integralfunktion bezeichnet.  Sie hat die Eigenschaft, dass $A(a) = 0$. </dd>
+            Diese Funktion wird als Integralfunktion bezeichnet.  Sie hat die Eigenschaft, dass $A(a) = 0$.</dd>
             
             <dt>Stammfunktion (unbestimmtes Integral)</dt>
-            <dd>Eine Funktion $F(x)$ heißt Stammfunktion von $f(x)$, wenn ihre Ableitung wieder $f(x)$ ergibt, also $F'(x)=f(x)$.  Da die Ableitung einer Konstante null ist, gibt es unendlich viele Stammfunktionen, die sich durch eine Konstante $C$ unterscheiden.  Man schreibt: $\int f(x)dx = F(x)+C$. </dd>
+            <dd>Eine Funktion $F(x)$ heißt Stammfunktion von $f(x)$, wenn ihre Ableitung wieder $f(x)$ ergibt, also $F'(x)=f(x)$.  Da die Ableitung einer Konstante null ist, gibt es unendlich viele Stammfunktionen, die sich durch eine Konstante $C$ unterscheiden.  Man schreibt: $\int f(x)dx = F(x)+C$.</dd>
             
             <dt>Der Hauptsatz</dt>
             <dd>Dieser Satz besteht aus zwei Teilen, die Differenzieren und Integrieren als Umkehroperationen entlarven: 
@@ -103,7 +102,7 @@
         </div>
 
         <h3>10.5 Integrationstechniken</h3>
-        <p>Während das Ableiten ein rein schematischer Prozess ist, ist das Finden einer Stammfunktion oft eine "Kunst", die Erfahrung und die richtige Strategie erfordert.  Es gibt sogar einfache Funktionen wie $e^{-x^2}$, deren Stammfunktion sich nicht durch elementare Funktionen ausdrücken lässt. </p>
+        <p>Während das Ableiten ein rein schematischer Prozess ist, ist das Finden einer Stammfunktion oft eine "Kunst", die Erfahrung und die richtige Strategie erfordert.  Es gibt sogar einfache Funktionen wie $e^{-x^2}$, deren Stammfunktion sich nicht durch elementare Funktionen ausdrücken lässt.</p>
         
         <h4>10.5.1 Partielle Integration ("Produktintegration")</h4>
         <p>Diese Regel wird aus der Produktregel der Ableitung hergeleitet und eignet sich für Integranden, die ein Produkt sind.  Die Formel lautet:
@@ -111,46 +110,51 @@
         <div class="info-box tip">
             <h5>Tipps zur Partiellen Integration</h5>
             <ul>
-                <li><strong>Wahl von u und v':</strong> Wähle den Teil als $u(x)$, der beim Ableiten einfacher wird (z.B. Polynome, Logarithmen). Wähle $v'(x)$ so, dass seine Stammfunktion $v(x)$ leicht zu finden ist (z.B. $e^x, \sin x, \cos x$). </li>
-                <li><strong>Trick für Logarithmen:</strong> Um $\int \ln x \, dx$ zu lösen, schreibe den Integranden als $1 \cdot \ln x$ und wähle $u=\ln x$ und $v'=1$. </li>
-                <li><strong>Trick "Kreisschluss":</strong> Manchmal führt mehrfache partielle Integration wieder zum Ausgangsintegral. Man erhält dann eine Gleichung der Form $I = \text{Term} - I$, die man einfach nach dem Integral $I$ auflösen kann. </li>
+                <li><strong>Wahl von u und v':</strong> Wähle den Teil als $u(x)$, der beim Ableiten einfacher wird (z.B. Polynome, Logarithmen). Wähle $v'(x)$ so, dass seine Stammfunktion $v(x)$ leicht zu finden ist (z.B. $e^x, \sin x, \cos x$).</li>
+                <li><strong>Trick für Logarithmen:</strong> Um $\int \ln x \, dx$ zu lösen, schreibe den Integranden als $1 \cdot \ln x$ und wähle $u=\ln x$ und $v'=1$.</li>
+                <li><strong>Trick "Kreisschluss":</strong> Manchmal führt mehrfache partielle Integration wieder zum Ausgangsintegral. Man erhält dann eine algebraische Gleichung der Form $I = \text{Term} - I$, die man einfach nach dem Integral $I$ auflösen kann.</li>
             </ul>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/S5MopJe3iuk" title="Video: Partielle Integration (Herleitung & Beispiel)" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <h4>10.5.2 Integration durch Substitution ("Kettenregel rückwärts")</h4>
-        <p>Dies ist das schlagkräftigste Verfahren und wird bei verketteten Funktionen angewendet.  Es basiert auf der Umkehrung der Kettenregel. </p>
+        <p>Dies ist das schlagkräftigste Verfahren und wird bei verketteten Funktionen angewendet.  Es basiert auf der Umkehrung der Kettenregel.</p>
         <ol>
             <li><strong>Analyse:</strong> Der Integrand enthält eine "innere Funktion" $u=g(x)$, deren Ableitung $g'(x)$ (oder ein Vielfaches davon) ebenfalls als Faktor im Integranden vorkommt.</li>
             <li><strong>Substitution:</strong> Setze $u = g(x)$.</li>
             <li><strong>Differential ersetzen:</strong> Berechne $\frac{du}{dx} = g'(x)$ und stelle nach $dx$ um: $dx = \frac{du}{g'(x)}$.</li>
             <li><strong>Einsetzen und Kürzen:</strong> Setze $u$ und $dx$ in das Integral ein. Im Idealfall kürzt sich der $g'(x)$-Term weg.</li>
-            <li><strong>Integrieren und Rücksubstitution:</strong> Löse das Integral nach $u$ und ersetze am Ende $u$ wieder durch $g(x)$.  Bei <strong>bestimmten Integralen</strong> müssen auch die Grenzen in die neue Variable umgerechnet werden, oder man substituiert zurück und verwendet die alten Grenzen. </li>
+            <li><strong>Integrieren und Rücksubstitution:</strong> Löse das Integral nach $u$ und ersetze am Ende $u$ wieder durch $g(x)$. Bei <strong>bestimmten Integralen</strong> müssen auch die Grenzen in die neue Variable umgerechnet werden, oder man substituiert zurück und verwendet die alten Grenzen.</li>
         </ol>
         <div class="info-box video-box">
              <iframe width="560" height="315" src="https://www.youtube.com/embed/cLaIbPmqOx8" title="Video: Integration durch SUBSTITUTION" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <h3>10.6 Weitere Regeln und Anwendungen</h3>
-        <h4>10.6.1 Vereinfachungen für gerade und ungerade Funktionen</h4>
+        <h4>10.6.1 Linearität des Integrals</h4>
+        <p>Wie beim Ableiten dürfen konstante Faktoren vor das Integral gezogen und Summen gliedweise integriert werden.
+        $$ \int (c_1 f(x) + c_2 g(x))dx = c_1\int f(x)dx + c_2\int g(x)dx $$
+        </p>
+
+        <h4>10.6.2 Vereinfachungen für gerade und ungerade Funktionen</h4>
         <p>Für Integrale über ein zum Ursprung symmetrisches Intervall $[-a, a]$ gelten nützliche Vereinfachungen:</p>
         <ul>
-            <li>Ist $f(x)$ eine <strong>ungerade Funktion</strong> (punktsymmetrisch, $f(-x)=-f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 0$. </li>
-            <li>Ist $f(x)$ eine <strong>gerade Funktion</strong> (achsensymmetrisch, $f(-x)=f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 2 \int_{0}^{a} f(x)dx$. </li>
+            <li>Ist $f(x)$ eine <strong>ungerade Funktion</strong> (punktsymmetrisch, $f(-x)=-f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 0$.</li>
+            <li>Ist $f(x)$ eine <strong>gerade Funktion</strong> (achsensymmetrisch, $f(-x)=f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 2 \int_{0}^{a} f(x)dx$.</li>
         </ul>
 
-        <h4>10.6.2 Flächenberechnung</h4>
+        <h4>10.6.3 Flächenberechnung</h4>
         <p>Um die physikalische Fläche zwischen einer Kurve und der x-Achse zu berechnen, muss man die Beträge der Flächenstücke addieren. Wenn die Funktion $f(x)$ im Intervall $[a,b]$ Nullstellen hat, muss das Integral aufgeteilt und die Beträge der Teilergebnisse addiert werden. Für eine Nullstelle bei $c \in (a,b)$ gilt:
         $$ A = \left| \int_a^c f(x)dx \right| + \left| \int_c^b f(x)dx \right| $$
         </p>
         
-        <h4>10.6.3 Volumen von Rotationskörpern</h4>
+        <h4>10.6.4 Volumen von Rotationskörpern</h4>
         <p>Rotiert der Graph der Funktion $f(x)$ im Intervall $[a,b]$ um die x-Achse, so kann das Volumen des entstehenden Körpers mit der "Scheibchenmethode" berechnet werden. Das Volumen ist das Integral über die Flächen der infinitesimal dünnen Kreisscheiben $A(x) = \pi [f(x)]^2$.
         $$ V = \pi \int_a^b [f(x)]^2 dx $$
         </p>
 
-        <h4>10.6.4 Uneigentliche Integrale</h4>
-        <p>Integrale, bei denen mindestens eine der Integrationsgrenzen unendlich ist oder die Funktion innerhalb des Intervalls eine Polstelle hat, werden über einen Grenzwertprozess gelöst.  Beispiel für eine unendliche Grenze:
+        <h4>10.6.5 Uneigentliche Integrale</h4>
+        <p>Integrale, bei denen mindestens eine der Integrationsgrenzen unendlich ist oder die Funktion innerhalb des Intervalls eine Polstelle hat, werden über einen Grenzwertprozess gelöst. Beispiel für eine unendliche Grenze:
         $$ \int_a^\infty f(x)dx = \lim_{b \to \infty} \int_a^b f(x)dx $$
         Wenn dieser Grenzwert existiert, konvergiert das Integral.
         </p>
@@ -161,7 +165,7 @@
         <div class="info-box warning">
             <h5>Häufige Fehler bei der Integration</h5>
             <ul>
-                <li><strong>Konstante vergessen:</strong> Bei <strong>unbestimmten</strong> Integralen immer die Integrationskonstante `+ C` am Ende hinzufügen! </li>
+                <li><strong>Konstante vergessen:</strong> Bei <strong>unbestimmten</strong> Integralen immer die Integrationskonstante `+ C` am Ende hinzufügen!</li>
                 <li><strong>Grenzen nicht transformiert:</strong> Bei der Substitution von <strong>bestimmten</strong> Integralen müssen auch die Integrationsgrenzen in die neue Variable umgerechnet werden.  Vergisst man dies, ist das Ergebnis falsch.</li>
                 <li><strong>Produkt/Quotient falsch integriert:</strong> Das Integral eines Produkts ist NICHT das Produkt der Integrale. Hierfür muss die partielle Integration verwendet werden. </li>
             </ul>
@@ -178,7 +182,7 @@
                     <p>Der Integrand ist das Produkt aus einer ungeraden Funktion ($x^3$) und geraden Funktionen ($\cos(x)$, $\sin^2(x)$). Das Gesamtprodukt ist eine ungerade Funktion. Das Integral einer ungeraden Funktion über ein symmetrisches Intervall ist immer 0. </p>
                 </details>
             </li>
-            <li><strong>(Partielle Integration)</strong> Berechnen Sie das unbestimmte Integral $\int x^2 \cos(x) dx$. 
+            <li><strong>(Partielle Integration)</strong> Berechnen Sie das unbestimmte Integral $\int x^2 \cos(x) dx$.
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>Zweifache partielle Integration. 1. Wahl: $u=x^2, v'=\cos x$. Ergibt: $x^2\sin x - \int 2x \sin x dx$.<br>
@@ -186,7 +190,7 @@
                     Zusammensetzen: $x^2\sin x - (-2x\cos x + 2\sin x) + C = x^2\sin x + 2x\cos x - 2\sin x + C$.</p>
                 </details>
             </li>
-            <li><strong>(Substitution)</strong> Berechnen Sie das unbestimmte Integral $\int \frac{2^x}{2^x+1} dx$. 
+            <li><strong>(Substitution)</strong> Berechnen Sie das unbestimmte Integral $\int \frac{2^x}{2^x+1} dx$.
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>Substitution: $u = 2^x+1 \implies \frac{du}{dx} = \ln(2) \cdot 2^x \implies dx = \frac{du}{\ln(2)2^x}$.<br>
@@ -212,7 +216,7 @@
                     $F(\sqrt{3}) = \frac{3\sqrt{3}}{3}-3\sqrt{3} = -2\sqrt{3}$.<br>
                     $F(0) = 0$.<br>
                     $F(3) = \frac{27}{3}-9 = 0$.<br>
-                    $A = |F(\sqrt{3})-F(0)| + |F(3)-F(\sqrt{3})| = |-2\sqrt{3}| + |0 - (-2\sqrt{3})| = 2\sqrt{3} + 2\sqrt{3} = 4\sqrt{3} \approx 6.9282$. </p>
+                    $A = |F(\sqrt{3})-F(0)| + |F(3)-F(\sqrt{3})| = |-2\sqrt{3}| + |0 - (-2\sqrt{3})| = 2\sqrt{3} + 2\sqrt{3} = 4\sqrt{3} \approx 6.9282$.</p>
                 </details>
             </li>
         </ol>

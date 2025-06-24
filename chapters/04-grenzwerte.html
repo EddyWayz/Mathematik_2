@@ -39,27 +39,49 @@
         <h3>4.2 Motivation und Kontext</h3>
         <p>Während Grenzwerte von Folgen das Verhalten im Unendlichen beschreiben, erlauben uns Grenzwerte von Funktionen, das Verhalten an ganz bestimmten Stellen "unter die Lupe zu nehmen". Dies ist entscheidend, um zu verstehen, ob eine Funktion "gutartig" ist oder "problematisches" Verhalten wie Sprünge oder unendliche Werte aufweist.</p>
         <ul>
-            <li><strong>Physikalische Modelle:</strong> Die Geschwindigkeit eines Autos ändert sich kontinuierlich.  Das Volumen in einem tropfenden Wasserhahn hingegen springt bei jedem Tropfen.  Das Konzept der Stetigkeit erlaubt uns, diese beiden Prozesse mathematisch exakt zu unterscheiden.</li>
+            <li><strong>Physikalische Modelle:</strong> Die Geschwindigkeit eines Autos ändert sich kontinuierlich.  Das Volumen in einem tropfenden Wasserhahn hingegen springt bei jedem Tropfen. Das Konzept der Stetigkeit erlaubt uns, diese beiden Prozesse mathematisch exakt zu unterscheiden.</li>
             <li><strong>Numerische Stabilität:</strong> Algorithmen, die auf stetigen Funktionen basieren, sind oft robuster. Kleine Änderungen in der Eingabe führen nur zu kleinen Änderungen in der Ausgabe.  Unstetigkeitsstellen können zu unerwarteten und instabilen Ergebnissen führen.</li>
-            <li><strong>Lösbarkeit von Gleichungen:</strong> Der Zwischenwertsatz für stetige Funktionen garantiert uns, dass eine Gleichung wie $f(x)=0$ eine Lösung haben muss, wenn die Funktion auf einem Intervall die Vorzeichen wechselt.  Dies ist die Grundlage für viele numerische Lösungsverfahren wie die Bisektion. </li>
+            <li><strong>Lösbarkeit von Gleichungen:</strong> Der Zwischenwertsatz für stetige Funktionen garantiert uns, dass eine Gleichung wie $f(x)=0$ eine Lösung haben muss, wenn die Funktion auf einem Intervall die Vorzeichen wechselt. Dies ist die Grundlage für viele numerische Lösungsverfahren wie die Bisektion.</li>
         </ul>
 
         <h3>4.3 Grenzwerte von Funktionen</h3>
         <h4>4.3.1 Grenzwerte im Unendlichen ($x \to \pm\infty$)</h4>
-        <p>Das Verhalten einer Funktion für $x \to \pm\infty$ wird als asymptotisches Verhalten bezeichnet.  Für gebrochen-rationale Funktionen gilt weiterhin die Regel vom Gradvergleich: Das Verhalten wird durch die Terme mit den höchsten Potenzen in Zähler und Nenner bestimmt. </p>
+        <p>Das Verhalten einer Funktion für $x \to \pm\infty$ wird als asymptotisches Verhalten bezeichnet.  Für gebrochen-rationale Funktionen gilt weiterhin die Regel vom Gradvergleich: Das Verhalten wird durch die Terme mit den höchsten Potenzen in Zähler und Nenner bestimmt.</p>
 
         <h4>4.3.2 Grenzwerte an einer Stelle $x_0$</h4>
         <p>Um das Verhalten einer Funktion in der Nähe eines Punktes $x_0$ zu untersuchen, betrachten wir die Annäherung von beiden Seiten. </p>
         <dl>
             <dt>Linksseitiger Grenzwert ($x \to x_0^-$)</dt>
-            <dd>Beschreibt das Verhalten, wenn sich $x$ dem Wert $x_0$ von links (also von kleineren Werten) nähert.  Man schreibt $ \lim_{x \to x_0^-} f(x) $. </dd>
+            <dd>Beschreibt das Verhalten, wenn sich $x$ dem Wert $x_0$ von links (also von kleineren Werten) nähert.  Man schreibt $ \lim_{x \to x_0^-} f(x) $.</dd>
             <dt>Rechtsseitiger Grenzwert ($x \to x_0^+$)</dt>
-            <dd>Beschreibt das Verhalten, wenn sich $x$ dem Wert $x_0$ von rechts (also von größeren Werten) nähert.  Man schreibt $ \lim_{x \to x_0^+} f(x) $. </dd>
+            <dd>Beschreibt das Verhalten, wenn sich $x$ dem Wert $x_0$ von rechts (also von größeren Werten) nähert.  Man schreibt $ \lim_{x \to x_0^+} f(x) $.</dd>
         </dl>
         <div class="info-box key-concept">
             <h5>Existenz des Grenzwertes</h5>
-            <p>Der (beidseitige) Grenzwert $\lim_{x \to x_0} f(x)$ existiert genau dann, wenn der linksseitige und der rechtsseitige Grenzwert existieren und übereinstimmen. </p>
+            <p>Der (beidseitige) Grenzwert $\lim_{x \to x_0} f(x)$ existiert genau dann, wenn der linksseitige und der rechtsseitige Grenzwert existieren und übereinstimmen.</p>
         </div>
+        
+        <h4>4.3.3 Rechenregeln und unbestimmte Ausdrücke</h4>
+        <p>Für Grenzwerte von Funktionen gelten dieselben Rechenregeln wie für Folgen (Summen-, Produkt-, Quotientenregel). Problematisch wird es, wenn beim Einsetzen "unbestimmte Ausdrücke" entstehen, für die keine allgemeine Rechenregel existiert.</p>
+        <div class="info-box warning">
+            <h5>Unbestimmte Ausdrücke</h5>
+            <p>Die folgenden Formen sind unbestimmt und erfordern eine spezielle Behandlung:</p>
+             <p style="text-align:center; font-size: 1.2em; letter-spacing: 5px;">
+                $ \frac{0}{0} \quad \frac{\infty}{\infty} \quad \infty - \infty \quad  0 \cdot \infty \quad 1^\infty \quad \infty^0 \quad 0^0$
+            </p>
+        </div>
+        
+        <h5>Regel von de l'Hospital</h5>
+        <p>Führt ein Grenzwert auf einen der Ausdrücke $\frac{0}{0}$ oder $\frac{\infty}{\infty}$, darf man Zähler und Nenner separat ableiten und den Grenzwert des neuen Bruchs betrachten:
+        $$ \lim_{x\to x_0}\frac{f(x)}{g(x)} = \lim_{x\to x_0}\frac{f'(x)}{g'(x)} $$
+        Dies kann bei Bedarf mehrfach angewendet werden.</p>
+        <h5>Behandlung anderer unbestimmter Ausdrücke</h5>
+        <p>Andere unbestimmte Ausdrücke müssen zuerst auf die Form $\frac{0}{0}$ oder $\frac{\infty}{\infty}$ umgeformt werden, bevor de l'Hospital angewendet werden kann.</p>
+        <ul>
+            <li><strong>Fall $0 \cdot \infty$:</strong> Umformen zu $\frac{0}{1/\infty} \to \frac{0}{0}$ oder $\frac{\infty}{1/0} \to \frac{\infty}{\infty}$. Beispiel: $u \cdot v = \frac{u}{1/v}$.</li>
+            <li><strong>Fall $\infty - \infty$:</strong> Oft durch Hauptnennerbildung auf einen einzigen Bruch bringen.</li>
+            <li><strong>Fälle $1^\infty, \infty^0, 0^0$:</strong> Mit der Formel $u^v = e^{\ln(u^v)} = e^{v \ln(u)}$ umformen und den Grenzwert des Exponenten betrachten.</li>
+        </ul>
 
         <h3>4.4 Stetigkeit</h3>
         <h4>4.4.1 Definition der Stetigkeit</h4>
@@ -67,7 +89,7 @@
         <ol>
             <li>Der Funktionswert $f(x_0)$ ist definiert.</li>
             <li>Der Grenzwert $\lim_{x \to x_0} f(x)$ existiert (d.h. links- und rechtsseitiger Grenzwert sind gleich). </li>
-            <li>Der Grenzwert ist gleich dem Funktionswert: $\lim_{x \to x_0} f(x) = f(x_0)$. </li>
+            <li>Der Grenzwert ist gleich dem Funktionswert: $\lim_{x \to x_0} f(x) = f(x_0)$.</li>
         </ol>
         <p>Anschaulich bedeutet Stetigkeit, dass der Graph der Funktion an dieser Stelle keine Sprünge oder Lücken hat und "in einem Zug" durchgezeichnet werden kann. </p>
         
@@ -75,8 +97,8 @@
         <p>Wenn eine Funktion an einer Stelle $x_0$ nicht stetig ist, können wir die Art der Unstetigkeit klassifizieren:</p>
         <ul>
             <li><strong>Hebbare Unstetigkeit (Lücke):</strong> Der Grenzwert $\lim_{x \to x_0} f(x)$ existiert, ist aber ungleich $f(x_0)$ oder $f(x_0)$ ist nicht definiert.  Man könnte die Lücke "stopfen", indem man den Funktionswert passend definiert.</li>
-            <li><strong>Sprungstelle:</strong> Links- und rechtsseitiger Grenzwert existieren, sind aber unterschiedlich. </li>
-            <li><strong>Polstelle (wesentliche Unstetigkeit):</strong> Mindestens einer der einseitigen Grenzwerte ist $\pm\infty$. </li>
+            <li><strong>Sprungstelle:</strong> Links- und rechtsseitiger Grenzwert existieren, sind aber unterschiedlich.</li>
+            <li><strong>Polstelle (wesentliche Unstetigkeit):</strong> Mindestens einer der einseitigen Grenzwerte ist $\pm\infty$.</li>
             <li><strong>Oszillationsstelle:</strong> Der Grenzwert existiert nicht, da die Funktion in jeder noch so kleinen Umgebung des Punktes unendlich oft oszilliert (z.B. $f(x) = \sin(1/x)$ bei $x_0=0$).</li>
         </ul>
 
@@ -110,7 +132,7 @@
         <h3>4.6 Beispielaufgaben</h3>
         <h4>4.6.1 Analyse einer abschnittsweise definierten Funktion</h4>
         <ul>
-            <li><strong>Aufgabe:</strong> Untersuchen Sie die Funktion $f(x) = \begin{cases} a(e^x+1) & \text{für } x < 0 \\ \frac{a}{1-x} & \text{für } 0 \le x < a \\ \ln(x+a) & \text{für } x \ge a \end{cases}$ auf Stetigkeit an den Nahtstellen $x_0=0$ und $x_1=a$. </li>
+            <li><strong>Aufgabe:</strong> Untersuchen Sie die Funktion $f(x) = \begin{cases} a(e^x+1) & \text{für } x < 0 \\ \frac{a}{1-x} & \text{für } 0 \le x < a \\ \ln(x+a) & \text{für } x \ge a \end{cases}$ auf Stetigkeit an den Nahtstellen $x_0=0$ und $x_1=a$.</li>
             <li><strong>Lösung:</strong>
                 <ol>
                     <li><strong>Untersuchung an $x_0=0$:</strong>
@@ -136,13 +158,13 @@
             <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer (0→5, 1→6). </p>
         </div>
         <ol>
-            <li><strong>(Einfach)</strong> Bestimmen Sie die Grenzwerte für $x \to \pm\infty$ der Funktion $g(x)=\frac{4x^{3}-2x^{2}+x}{-3x^{3}-x^{2}+100x}$. 
+            <li><strong>(Einfach)</strong> Bestimmen Sie die Grenzwerte für $x \to \pm\infty$ der Funktion $g(x)=\frac{4x^{3}-2x^{2}+x}{-3x^{3}-x^{2}+100x}$.
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>Zählergrad (3) = Nennergrad (3). Der Grenzwert ist das Verhältnis der Koeffizienten der höchsten Potenzen: $\frac{4}{-3} = -\frac{4}{3}$. Dies gilt für $x \to \infty$ und $x \to -\infty$.</p>
                 </details>
             </li>
-            <li><strong>(Mittel)</strong> Bestimmen Sie für die Funktion $f_2(x)=\frac{x+a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$. 
+            <li><strong>(Mittel)</strong> Bestimmen Sie für die Funktion $f_2(x)=\frac{x+a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$.
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>Zuerst den Nenner faktorisieren: $f_2(x) = \frac{x+a}{(x-a)(x+a)x}$.<br>
@@ -155,7 +177,7 @@
                     Es liegt eine Polstelle mit Vorzeichenwechsel vor.</p>
                 </details>
             </li>
-             <li><strong>(Schwer)</strong> Bestimmen Sie für die Funktion $f_3(x)=\frac{x-a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$. 
+             <li><strong>(Schwer)</strong> Bestimmen Sie für die Funktion $f_3(x)=\frac{x-a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$.
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>Zuerst den Nenner faktorisieren und kürzen: $f_3(x) = \frac{x-a}{(x-a)(x+a)x} = \frac{1}{(x+a)x}$ für $x \neq a$.<br>
