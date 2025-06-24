@@ -32,17 +32,27 @@
             <ol>
                 <li>
                     <strong>4.1: $f(x,y)=-4x^{2}-4y^{2}+16x+12y-xy-10$</strong> 
-                    <p>Stationärer Punkt bei $P(\frac{116}{63}, \frac{80}{63})$. Die Hesse-Matrix $H_f = \begin{pmatrix} -8 & -1 \\ -1 & -8 \end{pmatrix}$ hat $\det(H_f)=63>0$ und $f_{xx}=-8<0$, daher liegt ein <strong>lokales Maximum</strong> vor.</p>
+                    <p>$f_x = -8x+16-y=0$ <br> $f_y = -8y+12-x=0$ <br>
+                    Das lineare Gleichungssystem liefert den stationären Punkt bei $P(\frac{116}{63}, \frac{80}{63})$. Die Hesse-Matrix $H_f = \begin{pmatrix} -8 & -1 \\ -1 & -8 \end{pmatrix}$ hat $\det(H_f)=63>0$ und $f_{xx}=-8<0$, daher liegt ein <strong>lokales Maximum</strong> vor.</p>
                 </li>
                 <li>
                     <strong>4.2: $f(x,y)=y(1-x^{2}-y^{2})$</strong> 
                      <p>Analyse der stationären Punkte mit der Hesse-Matrix $H_f(x,y) = \begin{pmatrix} -2y & -2x \\ -2x & -6y \end{pmatrix}$:
                      <ul>
-                        <li>$(0, \frac{1}{\sqrt{3}})$: <strong>Maximum</strong>.</li>
-                        <li>$(0, -\frac{1}{\sqrt{3}})$: <strong>Minimum</strong>.</li>
-                        <li>$(\pm 1, 0)$: <strong>Sattelpunkte</strong>.</li>
+                        <li>$(0, \frac{1}{\sqrt{3}})$: $\det(H_f) = 12(\frac{1}{3}) > 0$, $f_{xx} < 0 \implies$ <strong>Lokales Maximum</strong>.</li>
+                        <li>$(0, -\frac{1}{\sqrt{3}})$: $\det(H_f) = 12(\frac{1}{3}) > 0$, $f_{xx} > 0 \implies$ <strong>Lokales Minimum</strong>.</li>
+                        <li>$(\pm 1, 0)$: $\det(H_f) = -4 < 0 \implies$ <strong>Sattelpunkte</strong>.</li>
                      </ul>
                      </p>
+                </li>
+                <li>
+                    <strong>4.3: $f(x_1, x_2) = \frac{1}{4}x_2^5 + 5\frac{x_1^2}{x_2} - 5x_1$</strong>
+                    <p>
+                    $f_{x_1} = 10\frac{x_1}{x_2} - 5 = 0 \implies x_2 = 2x_1$.<br>
+                    $f_{x_2} = \frac{5}{4}x_2^4 - 5\frac{x_1^2}{x_2^2} = 0$.<br>
+                    Einsetzen von $x_2=2x_1$ in die zweite Gleichung liefert die stationären Punkte $(\frac{1}{2},1)$ und $(-\frac{1}{2},-1)$.
+                    Die Analyse mit der Hesse-Matrix zeigt: <strong>Minimum</strong> bei $(\frac{1}{2},1)$ und <strong>Maximum</strong> bei $(-\frac{1}{2},-1)$.
+                    </p>
                 </li>
             </ol>
         </details>
@@ -52,23 +62,37 @@
             <ol>
                 <li>
                     <strong>5.2: Leistungsanpassung</strong>
-                    <p>Die maximale Leistung wird bei $\bf{R_a = R_i}$ und $\bf{X_a = -X_i}$ erreicht. Die maximale Leistung beträgt $\bf{P_{max} = \frac{U^2}{4R_i}}$.</p>
+                    <p>Gesucht ist das Maximum von $P(R_{a},X_{a})=\frac{R_{a}\cdot U^{2}}{(R_{a}+R_{i})^{2}+(X_{a}+X_{i})^{2}}$. <br>
+                    $\frac{\partial P}{\partial X_a} = \frac{-R_a U^2 \cdot 2(X_a+X_i)}{((R_a+R_i)^2+(X_a+X_i)^2)^2} = 0 \implies X_a=-X_i$. <br>
+                    $\frac{\partial P}{\partial R_a} = \dots = 0$ führt mit $X_a=-X_i$ auf $R_a=R_i$.
+                    Die maximale Leistung wird bei $\bf{R_a = R_i}$ und $\bf{X_a = -X_i}$ erreicht. Die maximale Leistung beträgt $\bf{P_{max} = \frac{U^2}{4R_i}}$.</p>
                 </li>
                 <li>
                     <strong>5.3: Gewinnmaximierung</strong>
-                    <p>Der Gewinn ist maximal bei den Produktionsmengen $\bf{x_1=17.5}$, $\bf{x_2=5}$, $\bf{x_3=12.5}$.</p>
+                    <p>Gewinn $G(x_1,x_2,x_3) = (40x_1+50x_2+80x_3) - K(x_1,x_2,x_3)$.<br>
+                    Gradient von G nullsetzen: <br>
+                    $G_{x_1}=40-2x_1-x_2=0$ <br>
+                    $G_{x_2}=50-4x_2-x_1-x_3=0$ <br>
+                    $G_{x_3}=80-6x_3-x_2=0$ <br>
+                    Lösen des LGS ergibt: $\bf{x_1=17.5}$, $\bf{x_2=5}$, $\bf{x_3=12.5}$.</p>
                 </li>
                 <li>
                     <strong>6.1: Minimale Kosten (Substitution)</strong>
-                    <p>Minimale Kosten werden bei einem Einsatz von $\bf{(r_1, r_2) = (20, 4)}$ erreicht.</p>
+                    <p>HB: $K=8r_1+20r_2 \to \min$. NB: $2r_1\sqrt{r_2}=80 \implies r_1 = \frac{40}{\sqrt{r_2}}$.<br>
+                    Zielfunktion: $K(r_2) = 8\frac{40}{\sqrt{r_2}} + 20r_2 = 320r_2^{-1/2} + 20r_2$.<br>
+                    $K'(r_2) = -160r_2^{-3/2} + 20 = 0 \implies r_2^{3/2}=8 \implies r_2=4$.<br>
+                    Daraus folgt $r_1=20$. Minimale Kosten werden bei einem Einsatz von $\bf{(r_1, r_2) = (20, 4)}$ erreicht.</p>
                 </li>
                 <li>
                     <strong>6.2: Extrema mit Lagrange</strong>
-                    <p>Funktion $f=\sum x_i^4$ unter NB $\sum x_i=8$. Die Lagrange-Methode führt auf $x_1=x_2=x_3=x_4$. Eingesetzt in die NB ergibt sich der Punkt $\bf{(2,2,2,2)}$.</p>
+                    <p>Funktion $f=\sum x_i^4$ unter NB $g = \sum x_i - 8 = 0$.
+                    $L=f+\lambda g$. $\frac{\partial L}{\partial x_i} = 4x_i^3+\lambda=0$.
+                    Daraus folgt $4x_1^3=4x_2^3=4x_3^3=4x_4^3=-\lambda$, was $x_1=x_2=x_3=x_4$ bedeutet. Eingesetzt in die NB ergibt sich $4x_i=8 \implies x_i=2$. Der Punkt ist $\bf{(2,2,2,2)}$.</p>
                 </li>
                  <li>
                     <strong>6.3: Minimum mit Lagrange</strong>
-                    <p>Funktion $f=x^2+xy+yz$ unter NB $x-y^3+z=4$. Die Lagrange-Methode liefert den Punkt $\bf{(0, -1, 3)}$.</p>
+                    <p>Funktion $f=x^2+xy+yz$ unter NB $g=x-y^3+z-4=0$.
+                    $L=f+\lambda g$. Die partiellen Ableitungen ergeben ein Gleichungssystem, dessen Lösung der Punkt $\bf{(0, -1, 3)}$ ist.</p>
                 </li>
             </ol>
         </details>

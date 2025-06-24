@@ -35,60 +35,151 @@
         
         <p>Hier finden Sie die Lösungen zu den Aufgaben aus dem PDF <code>Mathe2-04-Üb-Grenzwerte Stetigkeit.pdf</code>.</p>
 
-        <details>
+        <details open>
             <summary><h4>1. Grenzwerte am Rand des Definitionsbereichs</h4></summary>
             <ol>
                 <li>
                     <strong>1.1: Gauß-Funktion $y(x)=a\cdot e^{-b(x-x_{0})^{2}}$</strong> 
-                    <p><strong>Lösung:</strong> Für $x \to \pm\infty$ geht der Exponent $(x-x_0)^2 \to \infty$. Damit geht $-b(x-x_0)^2 \to -\infty$. Da $e^z \to 0$ für $z \to -\infty$, ist der Grenzwert der gesamten Funktion für $x \to \pm\infty$ gleich $a \cdot 0 = 0$.</p>
+                    <p><strong>Lösung:</strong> Der Definitionsbereich ist $\mathbb{R}$. Wir untersuchen das Verhalten für $x \to \pm\infty$.
+                    <ul>
+                        <li>Für $x \to \pm\infty$ geht der Term im Exponenten $(x-x_0)^2 \to \infty$.</li>
+                        <li>Da $b>0$ ist, geht der gesamte Exponent $-b(x-x_0)^2 \to -\infty$.</li>
+                        <li>Da $e^z \to 0$ für $z \to -\infty$, konvergiert die Funktion gegen 0.</li>
+                        <li>$\lim_{x\to\pm\infty} a \cdot e^{-b(x-x_0)^2} = a \cdot 0 = 0$.</li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <strong>1.2: Aperiodische Schwingungen $y(t)=10\cdot e^{-2t}-5\cdot e^{-3t}$</strong> 
+                    <p><strong>Lösung:</strong> Der Definitionsbereich ist $\mathbb{R}$. Wir untersuchen das Verhalten für $t \to \pm\infty$.
+                    <ul>
+                        <li>Rand bei $\infty$: Für $t\to\infty$ gehen beide Terme gegen 0. $\lim_{t\to\infty} (10\cdot e^{-2t}-5\cdot e^{-3t}) = 10 \cdot 0 - 5 \cdot 0 = 0$.</li>
+                        <li>Rand bei $-\infty$: Für $t\to-\infty$ gehen beide Terme gegen $\infty$. Dies ist ein unbestimmter Ausdruck "$\infty - \infty$". Wir klammern den dominanten Term $e^{-3t}$ aus (da $-3t$ für negative $t$ schneller wächst als $-2t$).
+                        <br> $\lim_{t\to-\infty} e^{-3t}(10e^t - 5)$. Da $e^t \to 0$ für $t \to -\infty$, geht der Klammerausdruck gegen $(10 \cdot 0 - 5) = -5$. Der Faktor $e^{-3t}$ geht gegen $+\infty$.
+                        <br>Der Grenzwert ist daher $\lim_{t\to-\infty} y(t) = \infty \cdot (-5) = -\infty$.</li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <strong>1.3: Polynom * Exp $y(t)=(2-10t)\cdot e^{-3t}$</strong>
+                    <p><strong>Lösung:</strong> Der Definitionsbereich ist $\mathbb{R}$. Wir untersuchen das Verhalten für $t \to \pm\infty$.
+                    <ul>
+                        <li>Rand bei $\infty$: Wir haben den unbestimmten Ausdruck "$-\infty \cdot 0$". Wir formen für die Regel von L'Hospital um: <br>
+                        $\lim_{t\to\infty} \frac{2-10t}{e^{3t}}$. Dies ist vom Typ "$\frac{-\infty}{\infty}$".<br>
+                        Nach L'Hospital: $\lim_{t\to\infty} \frac{-10}{3e^{3t}} = \frac{-10}{\infty} = 0$.</li>
+                        <li>Rand bei $-\infty$: Für $t\to-\infty$ geht $(2-10t) \to \infty$ und $e^{-3t} \to \infty$.<br>
+                        Der Grenzwert ist somit $\lim_{t\to-\infty} y(t) = \infty \cdot \infty = \infty$.</li>
+                    </ul>
+                    </p>
                 </li>
                 <li>
                     <strong>1.4: $y(x)=x \cdot \ln x$</strong> 
-                    <p><strong>Lösung:</strong> Definitionsbereich ist $x>0$.
+                    <p><strong>Lösung:</strong> Der Definitionsbereich ist $x>0$. Die Ränder sind $0^+$ und $\infty$.
                     <ul>
                         <li>Rand bei $\infty$: $\lim_{x\to\infty} x \ln x = \infty \cdot \infty = \infty$.</li>
-                        <li>Rand bei $0^+$: $\lim_{x\to 0^+} x \ln x$. Dies ist der unbestimmte Ausdruck $0 \cdot (-\infty)$. Umformung für L'Hospital: $\lim_{x\to 0^+} \frac{\ln x}{1/x} = \lim_{x\to 0^+} \frac{1/x}{-1/x^2} = \lim_{x\to 0^+} (-x) = 0$.</li>
+                        <li>Rand bei $0^+$: Dies ist der unbestimmte Ausdruck $0 \cdot (-\infty)$. Wir formen für die Regel von L'Hospital um: <br>
+                        $\lim_{x\to 0^+} \frac{\ln x}{1/x}$. Dies ist vom Typ "$\frac{-\infty}{\infty}$".<br>
+                        Nach L'Hospital: $\lim_{x\to 0^+} \frac{1/x}{-1/x^2} = \lim_{x\to 0^+} (-x) = 0$.</li>
+                    </ul>
+                    </p>
+                </li>
+                 <li>
+                    <strong>1.5: $y(x)=\frac{\ln x}{x}$</strong>
+                    <p><strong>Lösung:</strong> Der Definitionsbereich ist $x>0$. Die Ränder sind $0^+$ und $\infty$.
+                    <ul>
+                        <li>Rand bei $\infty$: Dies ist der unbestimmte Ausdruck "$\frac{\infty}{\infty}$". Wir verwenden die Regel von L'Hospital:<br>
+                        $\lim_{x\to\infty} \frac{\ln x}{x} = \lim_{x\to\infty} \frac{1/x}{1} = 0$.</li>
+                        <li>Rand bei $0^+$: $\lim_{x\to 0^+} \frac{\ln x}{x}$. Der Zähler geht gegen $-\infty$, der Nenner gegen $0^+$.<br>
+                        Der Grenzwert ist daher $\frac{-\infty}{0^+} = -\infty$.</li>
                     </ul>
                     </p>
                 </li>
             </ol>
         </details>
         
-        <details>
-            <summary><h4>2. Grenzwerte von gebrochen-rationalen Funktionen</h4></summary>
+        <details open>
+            <summary><h4>2. Grenzwerte von Polynomen und gebrochen-rationalen Funktionen</h4></summary>
             <ol>
                 <li>
                     <strong>2.1: $y(x)=2x-5x^{3}+7x^{2}$</strong>
-                    <p><strong>Lösung:</strong> Das Verhalten wird vom Term mit der höchsten Potenz, $-5x^3$, bestimmt. 
+                    <p><strong>Lösung:</strong> Für das Verhalten im Unendlichen ist nur der Term mit der höchsten Potenz, hier $-5x^3$, entscheidend.
                     <ul>
-                        <li>$\lim_{x\to\infty} (-5x^3) = -\infty$.</li>
-                        <li>$\lim_{x\to-\infty} (-5x^3) = +\infty$.</li>
+                        <li>$\lim_{x\to\infty} (2x-5x^{3}+7x^{2}) = \lim_{x\to\infty} (-5x^3) = -\infty$.</li>
+                        <li>$\lim_{x\to-\infty} (2x-5x^{3}+7x^{2}) = \lim_{x\to-\infty} (-5x^3) = -5 \cdot (-\infty) = +\infty$.</li>
                     </ul>
                     </p>
                 </li>
                 <li>
                     <strong>2.2: $y(x)=\frac{2-3x-4x^{3}}{6x^{3}-5x^{2}+1}$</strong>
-                    <p><strong>Lösung:</strong> Der Grad des Zählers (3) ist gleich dem Grad des Nenners (3). Der Grenzwert für $x \to \pm\infty$ ist das Verhältnis der Leitkoeffizienten: $\frac{-4}{6} = -\frac{2}{3}$.</p>
+                    <p><strong>Lösung:</strong> Der Grad des Zählerpolynoms (3) ist gleich dem Grad des Nennerpolynoms (3). Der Grenzwert für $x \to \pm\infty$ ist daher das Verhältnis der Leitkoeffizienten (die Koeffizienten der höchsten Potenz).<br>
+                    $\lim_{x\to\pm\infty} \frac{2-3x-4x^{3}}{6x^{3}-5x^{2}+1} = \frac{-4}{6} = -\frac{2}{3}$.</p>
                 </li>
             </ol>
         </details>
 
-        <details>
+        <details open>
             <summary><h4>3. Stetigkeit und Arten von Unstetigkeitsstellen</h4></summary>
             <ol>
+                 <li>
+                     <strong>3.1: $f(x) = \sqrt{1 + x e^x + \cos x}$</strong>
+                     <p>
+                        <strong>a) Definitionsbereich $D$:</strong><br>
+                        Der Ausdruck unter der Wurzel, $g(x) = 1 + x e^x + \cos x$, muss nicht-negativ sein. Die exakte analytische Bestimmung der Nullstellen von $g(x)$ ist komplex. Der Definitionsbereich ist daher die Menge $D = \{x \in \mathbb{R} \,|\, 1 + x e^x + \cos x \ge 0\}$.
+                        Für $x \ge 0$ gilt $x e^x \ge 0$ und $\cos x \ge -1$, somit ist $g(x) = 1 + x e^x + \cos x \ge 1+0-1 = 0$. Also ist das Intervall $[0, \infty)$ Teil des Definitionsbereichs.
+                     </p>
+                     <p>
+                        <strong>b) Stetigkeit:</strong><br>
+                        Die Funktion $g(x) = 1 + x e^x + \cos x$ ist als Komposition stetiger Funktionen überall stetig. Die Wurzelfunktion $\sqrt{y}$ ist für $y \ge 0$ stetig. Daher ist $f(x)$ auf ihrem gesamten Definitionsbereich $D$ stetig. Es gibt keine Unstetigkeitsstellen innerhalb des Definitionsbereichs.
+                     </p>
+                     <p>
+                        <strong>c) Asymptotisches Verhalten:</strong><br>
+                        <ul>
+                           <li>Für $x \to \infty$: Der Term $xe^x$ dominiert das Wachstum. $\lim_{x\to\infty} (1 + xe^x + \cos x) = \infty$. Daher ist $\lim_{x\to\infty} f(x) = \infty$.</li>
+                           <li>Für $x \to -\infty$: Es gilt der Grenzwert $\lim_{x\to-\infty} xe^x = 0$. Der Ausdruck $1 + xe^x + \cos x$ nähert sich somit $1 + \cos x$. Da $\cos x$ zwischen -1 und 1 oszilliert, oszilliert der Wert von $f(x)$ zwischen $\sqrt{1-1}=0$ und $\sqrt{1+1}=\sqrt{2}$. Ein Grenzwert für $x \to -\infty$ existiert daher nicht.</li>
+                        </ul>
+                     </p>
+                </li>
+                <li>
+                    <strong>3.2: $f(x)=\begin{cases} \frac{1}{e^x-1} - \frac{1}{x} & \text{für } x \ne 0 \\ 0 & \text{für } x = 0 \end{cases}$</strong>
+                    <p>
+                       <strong>a) Definitionsbereich $D$:</strong> Die Funktion ist für $x \ne 0$ durch den Term definiert und für $x=0$ explizit mit dem Wert 0. Der Definitionsbereich ist daher $D = \mathbb{R}$.
+                    </p>
+                    <p>
+                       <strong>b) Stetigkeit:</strong> Außerhalb von $x=0$ ist die Funktion als Komposition stetiger Funktionen stetig. Wir müssen die Stelle $x=0$ untersuchen.
+                       <ul>
+                           <li>Funktionswert: $f(0) = 0$.</li>
+                           <li>Grenzwert: $\lim_{x\to 0} \left( \frac{1}{e^x-1} - \frac{1}{x} \right) = \lim_{x\to 0} \frac{x - (e^x-1)}{x(e^x-1)} = \lim_{x\to 0} \frac{x - e^x + 1}{xe^x - x}$.<br>
+                           Dies ist ein "0/0"-Ausdruck. Wir wenden die Regel von L'Hospital an:<br>
+                           $\lim_{x\to 0} \frac{1 - e^x}{e^x(1+x) - 1}$. Dies ist wieder "0/0". Erneutes Anwenden von L'Hospital:<br>
+                           $\lim_{x\to 0} \frac{-e^x}{e^x(1+x) + e^x} = \lim_{x\to 0} \frac{-e^x}{e^x(x+2)} = \frac{-1}{1(0+2)} = -\frac{1}{2}$.</li>
+                       </ul>
+                       Da der Grenzwert $\lim_{x\to 0} f(x) = -1/2$ nicht mit dem Funktionswert $f(0) = 0$ übereinstimmt, ist die Funktion an der Stelle $x=0$ <strong>unstetig</strong>. Da der Grenzwert existiert, handelt es sich um eine <strong>hebbare Unstetigkeitsstelle</strong>.
+                    </p>
+                    <p>
+                        <strong>c) Asymptotisches Verhalten:</strong>
+                        <ul>
+                           <li>Für $x \to \infty$: $\lim_{x\to\infty} \left( \frac{1}{e^x-1} - \frac{1}{x} \right) = 0 - 0 = 0$.</li>
+                           <li>Für $x \to -\infty$: Da $e^x \to 0$, geht der erste Term gegen $\frac{1}{0-1}=-1$. Der zweite Term $\frac{1}{x}$ geht gegen 0. Der Grenzwert ist somit $\lim_{x\to-\infty} f(x) = -1 - 0 = -1$.</li>
+                        </ul>
+                    </p>
+                </li>
                 <li>
                     <strong>3.3: $f(x)=\begin{cases}\frac{4x+8}{(x+1)(x+2)}&x\ne-2,-1\\ 0&x=-1\\ -4&x=-2\end{cases}$</strong>
-                    <p><strong>Analyse:</strong> Die Funktion ist als gebrochen-rationale Funktion überall stetig, außer an den Nullstellen des Nenners $x=-1$ und $x=-2$. Diese Stellen müssen wir untersuchen.<br>
+                    <p><strong>Analyse:</strong> Die Funktion ist als gebrochen-rationale Funktion überall stetig, außer an den Nullstellen des Nenners $x=-1$ und $x=-2$. Diese Stellen sind gesondert definiert und müssen untersucht werden.<br>
+                    Für $x \ne -2$ können wir den Bruchterm kürzen: $f(x) = \frac{4(x+2)}{(x+1)(x+2)} = \frac{4}{x+1}$.<br>
                     <strong>Stelle $x=-1$:</strong>
                     <ul>
-                        <li>$\lim_{x\to -1} f(x) = \lim_{x\to -1} \frac{4(x+2)}{(x+1)(x+2)} = \lim_{x\to -1} \frac{4}{x+1}$. Dieser Grenzwert existiert nicht (Polstelle). Linksseitig: $-\infty$, Rechtsseitig: $+\infty$.</li>
-                        <li>Die Funktion ist bei $x=-1$ unstetig (<strong>Polstelle</strong>).</li>
+                        <li>Grenzwert: $\lim_{x\to -1} f(x) = \lim_{x\to -1} \frac{4}{x+1}$. Dieser Grenzwert existiert nicht.<br>
+                        Linksseitiger Grenzwert: $\lim_{x\to -1^-} \frac{4}{x+1} = \frac{4}{0^-} = -\infty$.<br>
+                        Rechtsseitiger Grenzwert: $\lim_{x\to -1^+} \frac{4}{x+1} = \frac{4}{0^+} = +\infty$.</li>
+                        <li>Der Funktionswert ist $f(-1)=0$.</li>
+                        <li>Da der Grenzwert nicht existiert (verschiedene uneigentliche links- und rechtsseitige Grenzwerte), liegt eine <strong>Unstetigkeit 2. Art (Polstelle)</strong> vor.</li>
                     </ul>
                     <strong>Stelle $x=-2$:</strong>
                     <ul>
-                         <li>$\lim_{x\to -2} f(x) = \lim_{x\to -2} \frac{4(x+2)}{(x+1)(x+2)} = \lim_{x\to -2} \frac{4}{x+1} = \frac{4}{-2+1} = -4$.</li>
-                         <li>Der Grenzwert existiert und ist -4. Der Funktionswert ist ebenfalls $f(-2)=-4$.</li>
-                         <li>Da Grenzwert = Funktionswert, ist die Funktion an der Stelle $x=-2$ <strong>stetig</strong>. (Die Definitionslücke wurde durch den Funktionswert "gehoben").</li>
+                         <li>Grenzwert: $\lim_{x\to -2} f(x) = \lim_{x\to -2} \frac{4}{x+1} = \frac{4}{-2+1} = -4$.</li>
+                         <li>Der Funktionswert ist per Definition $f(-2)=-4$.</li>
+                         <li>Da der Grenzwert mit dem Funktionswert übereinstimmt, ist die Funktion an der Stelle $x=-2$ <strong>stetig</strong>. Die hebbare Definitionslücke des ursprünglichen Bruchterms wurde durch die Definition von $f(-2)$ geschlossen.</li>
                     </ul>
                     </p>
                 </li>
