@@ -5,6 +5,7 @@ export default function initTasks() {
     const button = task.querySelector('button');
     const feedback = task.querySelector('.feedback');
     if (!input || !button || !feedback) return;
+    feedback.setAttribute('aria-live', 'polite');
     button.addEventListener('click', () => {
       if (input.value.trim() === task.dataset.answer) {
         feedback.textContent = '✅';
