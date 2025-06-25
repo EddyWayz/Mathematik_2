@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildergalerie</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <style>
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            justify-content: center;
+        }
+        .gallery-item {
+            width: 200px; /* Adjust as needed */
+            height: 150px; /* Adjust as needed */
+            border: 1px solid #ccc;
+            overflow: hidden; /* To ensure images fit */
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crop images to fit */
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header" role="banner">
+        <a href="../index.html">Inhaltsverzeichnis</a>
+        <span>Bildergalerie</span>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <h1>Bildergalerie</h1>
+        <p>Eine Sammlung zufälliger Bilder.</p>
+        <div class="gallery-container">
+            <div class="gallery-item"><img src="https://picsum.photos/seed/picsum1/200/150" alt="Zufallsbild 1"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/picsum2/200/150" alt="Zufallsbild 2"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/picsum3/200/150" alt="Zufallsbild 3"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/picsum4/200/150" alt="Zufallsbild 4"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/picsum5/200/150" alt="Zufallsbild 5"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/seed/picsum6/200/150" alt="Zufallsbild 6"></div>
+        </div>
+    </main>
+
+    <footer>
+        <nav class="page-nav" aria-label="Seitennavigation">
+            <a href="../index.html" class="disabled">← Vorheriges Kapitel</a>
+            <a href="../index.html">Nächstes Kapitel →</a>
+        </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
+
+    <script type="module" src="../main.js"></script>
+</body>
+</html>
