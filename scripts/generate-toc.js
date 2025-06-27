@@ -47,46 +47,7 @@ function processChapterFile(filePath) {
   return headings;
 }
 
-/**
- * Builds the hierarchical Table of Contents (TOC) HTML.
- * @param {Array<Object>} headings - An array of heading objects.
- * @param {string} chapterPathPrefix - The prefix for chapter file paths in the TOC.
- * @returns {string} The HTML string for the TOC.
- */
-function buildTocHtml(headings, chapterPathPrefix) {
-  let html = '';
-  let currentLevel = 0;
-  const stack = []; // To keep track of open <ul> tags
 
-  headings.forEach((heading) => {
-    const { level, text, id, filePath } = heading;
-    const relativePath = path.relative(chaptersDir, filePath);
-    const link = `${chapterPathPrefix}${relativePath}#${id}`;
-
-    if (level > currentLevel) {
-      // Deeper level, open new <ul>
-      for (let i = 0; i < level - currentLevel; i++) {
-        html += '<ul>';
-        stack.push('</ul>');
-      }
-    } else if (level < currentLevel) {
-      // Higher level, close previous <ul> tags
-      for (let i = 0; i < currentLevel - level; i++) {
-        html += stack.pop();
-      }
-    }
-    currentLevel = level;
-
-    html += `<li><a href="${link}">${text}</a></li>`;
-  });
-
-  // Close any remaining open <ul> tags
-  while (stack.length > 0) {
-    html += stack.pop();
-  }
-
-  return html;
-}
 
 /**
  * Main function to build the Table of Contents.
@@ -137,7 +98,7 @@ function buildToc() {
 
   let indexHtml = fs.readFileSync(indexPath, 'utf8');
   indexHtml = indexHtml.replace(
-    /<nav class="toc">\s*<h2>Inhaltsverzeichnis<\/h2>[\s\S]*?<\/nav>/m,
+    /<nav class="toc">[\s\S]*?<\/nav>/,
     (match) => {
       return match.replace(
         /<ul>[\s\S]*?<\/ul>/m,

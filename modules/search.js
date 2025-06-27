@@ -10,29 +10,68 @@ export default function initSearch() {
   const tocList = document.querySelector('nav.toc ul');
   if (!tocList) return;
 
+  const originalItems = Array.from(tocList.children);
   let searchIndex = [];
+
+  // Create a "not found" message element
+  const notFoundMessage = document.createElement('li');
+  notFoundMessage.textContent = 'Keine Ergebnisse gefunden.';
+  notFoundMessage.style.display = 'none';
+  tocList.appendChild(notFoundMessage);
 
   // Fetch the pre-built search index
   fetch('/search-index.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
       searchIndex = data;
-      // Map the search index to include the corresponding list item (li)
-      // This assumes the order of items in search-index.json matches the order in the TOC
-      const listItems = Array.from(tocList.children);
-      searchIndex = searchIndex.map((item, index) => ({
-        ...item,
-        li: listItems[index] // Attach the actual DOM element
-      }));
+      // Create a map of URLs to list items for efficient lookup
+      const urlToLiMap = new Map();
+      originalItems.forEach(li => {
+        const a = li.querySelector('a');
+        if (a) {
+          // Normalize the href to match the search index URL format
+          const key = a.getAttribute('href').replace(/^\.\//, '');
+          urlToLiMap.set(key, li);
+        }
+      });
+
+      // Attach the correct DOM element to each search item
+      searchIndex.forEach(item => {
+        item.li = urlToLiMap.get(item.url);
+      });
     })
-    .catch(error => console.error('Error loading search index:', error));
+    .catch(error => console.error('Error loading or processing search index:', error));
 
   input.addEventListener('input', () => {
-    const q = input.value.toLowerCase();
+    const q = input.value.toLowerCase().trim();
+    let hasResults = false;
+
+    // If the input is empty, show all original items
+    if (q === '') {
+      originalItems.forEach(li => {
+        li.style.display = '';
+      });
+      notFoundMessage.style.display = 'none';
+      return;
+    }
+
     searchIndex.forEach(({ li, title, content }) => {
-      if (li) { // Ensure li exists before trying to access its style
-        li.style.display = title.includes(q) || content.includes(q) ? '' : 'none';
+      if (li) {
+        const isMatch =
+          title.toLowerCase().includes(q) || content.toLowerCase().includes(q);
+        li.style.display = isMatch ? '' : 'none';
+        if (isMatch) {
+          hasResults = true;
+        }
       }
     });
+
+    // Show or hide the "not found" message
+    notFoundMessage.style.display = hasResults ? 'none' : '';
   });
 }
