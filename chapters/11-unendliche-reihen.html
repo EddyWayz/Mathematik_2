@@ -208,69 +208,870 @@
         </p>
       </div>
 
-      <h3 id="115-konvergenzkriterien-im-berblick">11.5 Konvergenzkriterien im Überblick</h3>
-      <p>
-        Um zu entscheiden, ob eine Reihe konvergiert, ohne ihren Wert zu kennen,
-        verwendet man Konvergenzkriterien.
-      </p>
+      <h3 id="konvergenzkriterien-im-berblick">11.5 Konvergenzkriterien im Überblick</h3>
+      <style>
+    .snippet-container {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+    .criterion-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .snippet-container h1 {
+        color: #004a99;
+        border-bottom: 3px solid #004a99;
+        padding-bottom: 10px;
+    }
+    .criterion-card h2 {
+        color: #0056b3;
+        border-bottom: 2px solid #0056b3;
+        padding-bottom: 5px;
+    }
+    .criterion-card h3 {
+        color: #444;
+    }
+    .definition {
+        background-color: #e7f3fe;
+        border-left: 5px solid #2196F3;
+        padding: 15px;
+        margin: 20px 0;
+        font-style: italic;
+    }
+    .criterion-card strong {
+        color: #d9534f;
+    }
+    .criterion-card code {
+        background-color: #eee;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", Courier, monospace;
+    }
+    .criterion-card a {
+        color: #337ab7;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .criterion-card a:hover {
+        text-decoration: underline;
+    }
+    .criterion-card ol, .criterion-card ul {
+        padding-left: 20px;
+    }
+</style>
+
+<div class="snippet-container">
+    <h1 id="konvergenzkriterien-fr-reihen-eine-detaillierte-bersicht">Konvergenzkriterien für Reihen – Eine detaillierte Übersicht</h1>
+    <p>Hier finden Sie eine ausführliche Erklärung zu jedem Konvergenzkriterium, inklusive der Kernidee, Anwendungsschritten und typischen Fallstricken. Um die LaTeX-Formeln korrekt darzustellen, muss auf der Seite eine Bibliothek wie MathJax oder KaTeX eingebunden sein.</p>
+
+    <hr>
+
+    <div class="criterion-card">
+        <h2 id="1-notwendige-bedingung-nullfolgenkriterium-">1. Notwendige Bedingung (Nullfolgenkriterium) </h2>
+        
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dies ist der <strong>allererste und einfachste Test</strong> und sollte immer zuerst im Kopf durchgeführt werden. Es ist ein reines <strong>Divergenzkriterium</strong>. Die Logik lautet: Wenn man unendlich viele Zahlen addiert und die Summe endlich sein soll, müssen die addierten Zahlen zwangsläufig gegen Null gehen. Wenn die Glieder also nicht gegen Null streben, kann die Summe nicht endlich sein und die Reihe divergiert.</p>
+
+        <div class="definition">
+            <p>Wenn eine Reihe $\sum_{n=1}^\infty a_n$ konvergiert, <strong>dann muss</strong> die Folge ihrer Glieder $(a_n)$ eine Nullfolge sein, d.h. $\lim_{n\to\infty} a_n = 0$.</p>
+            <p>Im Umkehrschluss (und das ist die eigentliche Anwendung): Wenn $\lim_{n\to\infty} a_n \neq 0$ (oder der Grenzwert gar nicht existiert), <strong>dann divergiert</strong> die Reihe $\sum a_n$.</p>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Betrachte das Reihenglied $a_n$.</li>
+            <li>Bilde den Grenzwert $\lim_{n\to\infty} a_n$.</li>
+            <li><strong>Fall 1:</strong> Der Grenzwert ist <strong>nicht 0</strong>. -&gt; Super! Du bist fertig. Die Reihe divergiert.</li>
+            <li><strong>Fall 2:</strong> Der Grenzwert ist <strong>0</strong>. -&gt; Pech! Das Kriterium liefert <strong>keine Aussage</strong> über Konvergenz. Du musst ein anderes Kriterium verwenden.</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Als schneller Check für jede Reihe. Besonders offensichtlich bei Reihen wie $\sum \frac{n}{n+1}$, da der Grenzwert der Glieder 1 ist.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Die Umkehrung gilt nicht! Nur weil die Glieder eine Nullfolge bilden, heißt das noch lange nicht, dass die Reihe konvergiert. Das klassische Gegenbeispiel ist die <strong>harmonische Reihe</strong> $\sum_{n=1}^\infty \frac{1}{n}$. Hier ist $\lim_{n\to\infty} \frac{1}{n} = 0$, aber die Reihe selbst divergiert.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=mzg5N2aY4eY" target="_blank"> Nullfolgenkriterium Beispiel | Mathe by Daniel Jung</a></p>
+    </div>
+
+    <hr>
+
+    <div class="criterion-card">
+        <h2 id="2-leibniz-kriterium-fr-alternierende-reihen-">2. Leibniz-Kriterium (für alternierende Reihen) ⚖️</h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium ist maßgeschneidert für Reihen, bei denen sich das Vorzeichen permanent abwechselt (z.B. $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots$). Man kann es sich wie ein Pendel vorstellen, das hin und her schwingt, aber bei jeder Schwingung einen kürzeren Weg zurücklegt. Irgendwann kommt es in der Mitte zur Ruhe. Die Reihe "pendelt" sich also auf einen Grenzwert ein.</p>
+
+        <div class="definition">
+            <p>Eine alternierende Reihe der Form $\sum_{n=1}^\infty (-1)^{n-1} b_n$ oder $\sum_{n=1}^\infty (-1)^n b_n$ mit $b_n \ge 0$ konvergiert, wenn die Folge $(b_n)$ der Beträge <strong>zwei Bedingungen</strong> erfüllt:</p>
+            <ol>
+                <li>Sie ist eine <strong>Nullfolge</strong>: $\lim_{n\to\infty} b_n = 0$.</li>
+                <li>Sie ist <strong>monoton fallend</strong>: $b_{n+1} \le b_n$ für alle (oder fast alle) $n$.</li>
+            </ol>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Stelle sicher, dass die Reihe alterniert (Faktor $(-1)^n$ oder Ähnliches).</li>
+            <li>Isoliere den positiven Anteil der Glieder, $b_n$.</li>
+            <li>Prüfe, ob $b_n$ eine Nullfolge ist. (Wenn nicht, divergiert die Reihe schon nach dem Nullfolgenkriterium).</li>
+            <li>Prüfe, ob die Folge $b_n$ monoton fällt. Dies kann man oft durch Betrachten der Funktion $f(x)=b_x$ und ihrer Ableitung ($f'(x) &lt; 0$) oder durch den direkten Vergleich $b_{n+1} \le b_n$ zeigen.</li>
+            <li>Wenn <strong>beide Bedingungen</strong> erfüllt sind, konvergiert die Reihe.</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Ausschließlich für Reihen mit strikt alternierenden Vorzeichen, wie die alternierende harmonische Reihe $\sum \frac{(-1)^n}{n}$.</p>
+
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Beide Bedingungen sind essenziell. Wenn die Folge der Beträge nicht monoton fällt, ist das Leibniz-Kriterium nicht anwendbar, selbst wenn die Glieder eine Nullfolge bilden. Die Konvergenz könnte dann trotzdem gegeben sein, muss aber anders gezeigt werden.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=GtDjTZCpsX0" target="_blank"> Reihen auf Konvergenz untersuchen, Leibniz-Kriterium | Mathe by Daniel Jung</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="3-majoranten-und-minorantenkriterium-vergleichskriterium-">3. Majoranten- und Minorantenkriterium (Vergleichskriterium) </h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Die Idee ist, eine komplizierte Reihe mit einer einfacheren, bekannten Reihe (oft eine p-Reihe oder eine geometrische Reihe) zu vergleichen. Man sucht quasi einen "Vergleichspartner".</p>
+        <ul>
+            <li><strong>Majorante (Abschätzung nach oben):</strong> Wenn du eine Reihe findest, die bekanntermaßen <strong>konvergiert</strong> und deren Glieder immer größer sind als die deiner Reihe, dann muss deine kleinere Reihe auch konvergieren. Sie wird quasi von der größeren "im Zaum gehalten".</li>
+            <li><strong>Minorante (Abschätzung nach unten):</strong> Wenn du eine Reihe findest, die bekanntermaßen <strong>divergiert</strong> und deren Glieder immer kleiner sind als die deiner Reihe, dann muss deine größere Reihe erst recht divergieren. Sie wird von der kleineren "ins Unendliche mitgerissen".</li>
+        </ul>
+
+        <div class="definition">
+            <p>Sei $\sum a_n$ die zu untersuchende Reihe.</p>
+            <ul>
+                <li><strong>Majorantenkriterium:</strong> Existiert eine konvergente Reihe $\sum c_n$ mit $|a_n| \le c_n$ für fast alle $n$, so konvergiert $\sum a_n$ (sogar absolut).</li>
+                <li><strong>Minorantenkriterium:</strong> Existiert eine divergente Reihe $\sum d_n$ mit $0 \le d_n \le a_n$ für fast alle $n$, so divergiert auch $\sum a_n$.</li>
+            </ul>
+        </div>
+        
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Analysiere deine Reihe $\sum a_n$ und identifiziere den "störenden" Teil.</li>
+            <li>Vereinfache die Reihe, um eine Vergleichsreihe $\sum b_n$ zu finden. (z.B. $\frac{n}{n^3+1}$ verhält sich wie $\frac{n}{n^3} = \frac{1}{n^2}$).</li>
+            <li><strong>Für Konvergenz (Majorante):</strong> Schätze deine Reihe nach oben ab, indem du z.B. Terme im Nenner weglässt oder Terme im Zähler vergrößerst. Zeige, dass $a_n \le c_n$ gilt und dass $\sum c_n$ konvergiert.</li>
+            <li><strong>Für Divergenz (Minorante):</strong> Schätze deine Reihe nach unten ab. Zeige, dass $a_n \ge d_n$ gilt und dass $\sum d_n$ divergiert.</li>
+        </ol>
+        
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Sehr gut für Reihen, die fast so aussehen wie bekannte Reihen (z.B. p-Reihen $\sum \frac{1}{n^p}$), aber durch Additionen oder Subtraktionen leicht verändert sind.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Die Kunst besteht darin, eine passende Vergleichsreihe zu finden und die Ungleichung korrekt zu beweisen. Eine falsche Abschätzung (z.B. eine Majorante, die selbst divergiert) bringt keine Aussage.</p>
+        
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=wKm4qGm2IRw" target="_blank"> Majorantenkriterium &amp; Minorantenkriterium Einfach Erklärt! | MathePeter</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="4-quotientenkriterium-">4. Quotientenkriterium </h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium prüft, ob eine Reihe sich im Wesentlichen wie eine <strong>geometrische Reihe</strong> verhält. Man berechnet das Verhältnis (den Quotienten) zweier aufeinanderfolgender Glieder. Wenn dieses Verhältnis für große $n$ konstant kleiner als 1 ist, schrumpfen die Glieder exponentiell schnell, was zur Konvergenz führt. Ist es größer als 1, wachsen sie exponentiell, was zur Divergenz führt.</p>
+        
+        <div class="definition">
+            <p>Man berechnet den Grenzwert $L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|$.</p>
+            <ul>
+                <li>Wenn $L &lt; 1$: Die Reihe <strong>konvergiert absolut</strong>.</li>
+                <li>Wenn $L &gt; 1$: Die Reihe <strong>divergiert</strong>.</li>
+                <li>Wenn $L = 1$: Das Kriterium trifft <strong>keine Aussage</strong>.</li>
+            </ul>
+        </div>
+        
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Bilde den Term $a_{n+1}$, indem du in $a_n$ jedes $n$ durch $(n+1)$ ersetzt.</li>
+            <li>Stelle den Bruch $\left| \frac{a_{n+1}}{a_n} \right|$ auf. Das ist oft ein Doppelbruch.</li>
+            <li>Vereinfache den Bruch so weit wie möglich. Fakultäten und Potenzen kürzen sich hier oft sehr schön weg.</li>
+            <li>Berechne den Grenzwert $L$ für $n \to \infty$.</li>
+            <li>Interpretiere das Ergebnis basierend auf den drei Fällen ($L&lt;1, L&gt;1, L=1$).</li>
+        </ol>
+        
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Die absolute "Killerapplikation" für Reihen, die <strong>Fakultäten</strong> (z.B. $n!$) oder <strong>Potenzen mit $n$ im Exponenten</strong> (z.B. $3^n$) enthalten. Die Terme kürzen sich bei der Bildung des Quotienten meistens hervorragend.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Der Fall $L=1$ ist der häufigste Grund, warum das Kriterium versagt. Es ist insbesondere bei Reihen, die nur aus rationalen Funktionen von $n$ bestehen (z.B. $\sum \frac{n^2+1}{n^4+5}$), fast immer unbrauchbar, da der Grenzwert 1 sein wird. Dann muss man auf ein anderes Kriterium ausweichen.</p>
+        
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=p3BPRuk0Wwk" target="_blank"> KONVERGENZ von REIHEN beweisen – Quotientenkriterium Beispiele | MathemaTrick</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="5-grenzwertkriterium-vergleich-mit-grenzwert-">5. Grenzwertkriterium (Vergleich mit Grenzwert) ↔️</h2>
+        
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium ist eine elegante Alternative zum oft mühsamen Majoranten-/Minorantenkriterium. Statt eine Ungleichung zu beweisen, prüft man, ob sich zwei Reihen "im Unendlichen" <strong>gleich schnell entwickeln</strong>. Man teilt die Glieder der zu prüfenden Reihe $a_n$ durch die Glieder einer bekannten Vergleichsreihe $b_n$. Wenn das Verhältnis gegen eine positive, endliche Zahl geht, dann ist ihr Langzeitverhalten identisch: Sie teilen dasselbe Schicksal.</p>
+
+        <div class="definition">
+            <p>Seien $\sum a_n$ und $\sum b_n$ zwei Reihen mit positiven Gliedern. Man berechnet den Grenzwert $L = \lim_{n\to\infty} \frac{a_n}{b_n}$.</p>
+            <p>Wenn $L$ eine <strong>endliche Zahl und größer als 0</strong> ist ($0 &lt; L &lt; \infty$), dann haben beide Reihen dasselbe Konvergenzverhalten: $\sum a_n$ konvergiert genau dann, wenn $\sum b_n$ konvergiert.</p>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Analysiere $a_n$ und bestimme das dominante Verhalten für große $n$. (Beispiel: bei $a_n = \frac{2n^2+5n}{n^4+3}$ dominieren $2n^2$ im Zähler und $n^4$ im Nenner).</li>
+            <li>Wähle eine einfache Vergleichsreihe $b_n$, die dieses dominante Verhalten abbildet (im Beispiel wäre $b_n = \frac{n^2}{n^4} = \frac{1}{n^2}$). Von dieser Reihe solltest du wissen, ob sie konvergiert oder divergiert.</li>
+            <li>Bilde den Bruch $\frac{a_n}{b_n}$ und berechne den Grenzwert $L$.</li>
+            <li><strong>Fall 1:</strong> $0 &lt; L &lt; \infty$. Deine Reihe $\sum a_n$ verhält sich genauso wie deine Vergleichsreihe $\sum b_n$.</li>
+            <li><strong>Fall 2:</strong> $L=0$ oder $L=\infty$. Das Standardkriterium liefert keine Aussage, aber manchmal kann man eine Schlussfolgerung ziehen (z.B. wenn $L=0$ und $\sum b_n$ konvergiert, dann konvergiert auch $\sum a_n$).</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Perfekt für komplizierte Brüche (rationale Funktionen in $n$), bei denen das Majorantenkriterium zu umständlichen Abschätzungen führen würde. Es ist oft viel schneller und direkter.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Der Erfolg hängt vollständig von der richtigen Wahl der Vergleichsreihe $b_n$ ab. Wählt man eine unpassende Reihe, ist der Grenzwert oft 0 oder $\infty$ und man erhält keine einfache Aussage.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=xnOagtJjhFc" target="_blank"> Grenzwertkriterium anwenden (Teil I) | Mathe am LG</a></p>
+    </div>
+</div>
+
+      <h3 id="116-beispielaufgaben">11.6 Beispielaufgaben</h3>
+      <h4 id="1161-beispiel-1-wert-einer-geometrischen-reihe">11.6.1 Beispiel 1: Wert einer geometrischen Reihe</h4>
+      <ul>
+        <li>
+          <strong>Aufgabe:</strong> Berechnen Sie den Wert der Reihe
+          $\sum_{k=0}^{\infty} \frac{(-3)^k}{4^k}$.
+        </li>
+        <li>
+          <strong>Lösung:</strong>
+          <ol>
+            <li>
+              <strong>Analyse:</strong> Wir formen den Ausdruck um:
+              $\sum_{k=0}^{\infty} \left(\frac{-3}{4}\right)^k$. Dies ist eine
+              geometrische Reihe mit $q = -3/4$.
+            </li>
+            <li>
+              <strong>Konvergenz prüfen:</strong> Da $|q| = |-3/4| = 3/4 &lt; 1$,
+              konvergiert die Reihe.
+            </li>
+            <li>
+              <strong>Formel anwenden:</strong> Der Wert der Reihe ist $S =
+              \frac{1}{1-q} = \frac{1}{1 - (-3/4)} = \frac{1}{1 + 3/4} =
+              \frac{1}{7/4} = \frac{4}{7}$.
+            </li>
+          </ol>
+        </li>
+      </ul>
+      <h4 id="1162-beispiel-2-quotientenkriterium-anwenden">11.6.2 Beispiel 2: Quotientenkriterium anwenden</h4>
+      <ul>
+        <li>
+          <strong>Aufgabe:</strong> Untersuchen Sie die Konvergenz der Reihe
+          $\sum_{k=1}^\infty \frac{100^k}{k!}$.
+        </li>
+        <li>
+          <strong>Lösung:</strong>
+          <ol>
+            <li>
+              <strong>Analyse:</strong> Das Vorkommen von $k!$ und einer Potenz
+              legt das Quotientenkriterium nahe.
+            </li>
+            <li>
+              <strong>Quotienten bilden:</strong> $a_k = \frac{100^k}{k!}$, also
+              ist $a_{k+1} = \frac{100^{k+1}}{(k+1)!}$. $ \left|
+              \frac{a_{k+1}}{a_k} \right| = \frac{100^{k+1}}{(k+1)!} \cdot
+              \frac{k!}{100^k} = \frac{100^{k} \cdot 100}{(k+1) \cdot k!} \cdot
+              \frac{k!}{100^k} = \frac{100}{k+1} $
+            </li>
+            <li>
+              <strong>Grenzwert berechnen:</strong> $ L = \lim_{k\to\infty}
+              \frac{100}{k+1} = 0 $
+            </li>
+            <li>
+              <strong>Schlussfolgerung:</strong> Da $L=0 &lt; 1$, konvergiert die
+              Reihe absolut.
+            </li>
+          </ol>
+        </li>
+      </ul>
+      <h3 id="117-bungsaufgaben">11.7 Übungsaufgaben</h3>
       <ol>
         <li>
-          <strong>Notwendige Bedingung (Nullfolgenkriterium):</strong> Wenn eine
-          Reihe $\sum a_n$ konvergiert, dann müssen die Glieder $a_n$ eine
-          Nullfolge bilden ($\lim_{n\to\infty} a_n = 0$).<br>
-          <strong>Anwendung:</strong> Wenn $\lim a_n \neq 0$, ist die Reihe
-          <strong>sofort als divergent entlarvt</strong>.
+          <strong>(Einfach)</strong> Berechnen Sie den Wert der Reihe
+          $\sum_{i=2}^\infty 12 \cdot \left(\frac{1}{4}\right)^{i-1}$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              1.
+              <strong>Konstante herausziehen und Index verschieben:</strong> $12
+              \sum_{i=2}^\infty (\frac{1}{4})^{i-1}$. Setze $k=i-1$. Wenn
+              $i=2$, ist $k=1$. Die Reihe ist $12 \sum_{k=1}^\infty
+              (\frac{1}{4})^k$.<br>
+              2. <strong>Wert der geometrischen Reihe berechnen:</strong> Die
+              Summenformel für Start bei $k=1$ ist $\frac{q}{1-q}$. Hier:
+              $\frac{1/4}{1-1/4} = \frac{1/4}{3/4} = \frac{1}{3}$.<br>
+              3. <strong>Endergebnis:</strong> $12 \cdot \frac{1}{3} = 4$.
+            </p>
+          </details>
         </li>
-
         <li>
-          <strong>Leibniz-Kriterium (für alternierende Reihen):</strong> Eine
-          alternierende Reihe $\sum (-1)^n b_n$ mit $b_n \ge 0$ konvergiert,
-          wenn $(b_n)$ eine <strong>monoton fallende Nullfolge</strong> ist.
+          <strong>(Einfach)</strong> Entscheiden Sie mit dem
+          Nullfolgenkriterium, ob die Reihe $\sum_{n=1}^\infty
+          \frac{n^3}{n^3+1}$ konvergiert oder divergiert.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Wir prüfen den Grenzwert der Glieder: $\lim_{n\to\infty} a_n =
+              \lim_{n\to\infty} \frac{n^3}{n^3+1} = 1$.<br>
+              Da der Grenzwert nicht 0 ist, ist das Nullfolgenkriterium nicht
+              erfüllt. Die Reihe <strong>divergiert</strong>.
+            </p>
+          </details>
         </li>
-
         <li>
-          <strong>Majoranten- und Minorantenkriterium (Vergleich):</strong>
-          <ul>
-            <li>
-              <strong>Majorante:</strong> Findet man eine konvergente Reihe
-              $\sum c_n$ (die "Majorante"), deren Glieder immer größer sind als
-              die Beträge der eigenen Reihenglieder ($|a_n| \le c_n$), dann
-              konvergiert auch die eigene Reihe $\sum a_n$ (sogar absolut).
-            </li>
-            <li>
-              <strong>Minorante:</strong> Findet man eine divergente Reihe $\sum
-              d_n$ mit $d_n \ge 0$ (die "Minorante"), deren Glieder immer
-              kleiner sind als die der eigenen Reihe ($a_n \ge d_n$), dann
-              divergiert auch die eigene Reihe $\sum a_n$.
-            </li>
-          </ul>
+          <strong>(Mittel)</strong> Untersuchen Sie mit dem Majorantenkriterium,
+          ob die Reihe $\sum_{n=1}^\infty \frac{n}{(n+1)^3}$ konvergiert.
+          (Tipp: Vergleichen Sie mit $\sum \frac{1}{n^2}$)
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Wir suchen eine Majorante $c_n$. Es gilt $n &lt; n+1$. Daher ist
+              $\frac{n}{(n+1)^3} &lt; \frac{n+1}{(n+1)^3} = \frac{1}{(n+1)^2}$.<br>
+              Die Reihe $\sum_{n=1}^\infty \frac{1}{(n+1)^2}$ ist eine
+              verschobene p-Reihe mit $p=2 &gt; 1$, sie konvergiert. (Sie ist
+              kleiner als die konvergente Reihe $\sum \frac{1}{n^2}$).<br>
+              Da unsere Reihe durch eine konvergente Majorante nach oben
+              beschränkt ist, <strong>konvergiert</strong> sie nach dem
+              Majorantenkriterium.
+            </p>
+          </details>
         </li>
-
         <li>
-          <strong>Quotientenkriterium:</strong> Berechne den Grenzwert $L =
-          \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|$.
-          <ul>
-            <li>Wenn $L &lt; 1$: Die Reihe konvergiert absolut.</li>
-            <li>Wenn $L &gt; 1$: Die Reihe divergiert.</li>
-            <li>Wenn $L = 1$: Keine Aussage möglich.</li>
-          </ul>
-          (Besonders nützlich bei Fakultäten oder Potenzen.)
+          <strong>(Mittel)</strong> Prüfen Sie die Reihe $\sum_{n=1}^\infty
+          \frac{(-1)^n}{\sqrt{n}}$ auf Konvergenz.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Es ist eine alternierende Reihe. Wir nutzen das Leibniz-Kriterium.
+              Die Folge der Beträge ist $b_n = \frac{1}{\sqrt{n}}$. <br>1.
+              $b_n$ ist eine Nullfolge, da $\lim \frac{1}{\sqrt{n}} = 0$.
+              <br>2. $b_n$ ist monoton fallend, da $\sqrt{n+1} &gt; \sqrt{n}$,
+              also $\frac{1}{\sqrt{n+1}} &lt; \frac{1}{\sqrt{n}}$. <br>Beide
+              Bedingungen sind erfüllt, die Reihe <strong>konvergiert</strong>.
+              Da aber die Reihe der Beträge $\sum \frac{1}{n^{0.5}}$ (eine
+              p-Reihe mit $p=0.5 \le 1$) divergiert, liegt nur eine bedingte
+              Konvergenz vor.
+            </p>
+          </details>
         </li>
-
         <li>
-          <strong>Grenzwertkriterium:</strong> Seien $\sum a_n$ und $\sum b_n$
-          zwei Reihen mit positiven Gliedern. Wenn der Grenzwert $L =
-          \lim_{n\to\infty} \frac{a_n}{b_n}$ existiert und $0 &lt; L &lt; \infty$ ist,
-          dann haben beide Reihen das gleiche Konvergenzverhalten. Man
-          vergleicht eine komplizierte Reihe oft mit einer bekannten p-Reihe.
+          <strong>(Schwer)</strong> Untersuchen Sie die Reihe
+          $\sum_{k=1}^\infty \frac{(k!)^2}{(2k)!}$ auf Konvergenz.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Wir verwenden das Quotientenkriterium. $a_k =
+              \frac{(k!)^2}{(2k)!}$ und $a_{k+1} = \frac{((k+1)!)^2}{(2(k+1))!}
+              = \frac{(k+1)^2(k!)^2}{(2k+2)(2k+1)(2k)!}$. <br>Der Quotient ist
+              $|\frac{a_{k+1}}{a_k}| = \frac{(k+1)^2(k!)^2}{(2k+2)(2k+1)(2k)!}
+              \cdot \frac{(2k)!}{(k!)^2} = \frac{(k+1)^2}{(2k+2)(2k+1)} =
+              \frac{k^2+2k+1}{4k^2+6k+2}$. <br>Der Grenzwert für $k\to\infty$
+              ist das Verhältnis der höchsten Potenzen: $L = \frac{k^2}{4k^2} =
+              \frac{1}{4}$. <br>Da $L = 1/4 &lt; 1$,
+              <strong>konvergiert</strong> die Reihe.
+            </p>
+          </details>
         </li>
       </ol>
+    </main>
 
-      <div class="info-box video-box">
-        <h5 id="erklrendes-video-bersicht-der-konvergenzkriterien">Erklärendes Video: Übersicht der Konvergenzkriterien</h5>
-        <p>Eine Übersicht, welches Kriterium man wann am besten anwendet.</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/9Hjs_Te7TWM" title="MathePeter: Konvergenz von Reihen Übersicht" frameborder="0" allowfullscreen=""></iframe>
-      </div>
+    <footer>
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a href="10-integralrechnung.html">← Vorheriges Kapitel</a>
+        <a href="training/10-uebungen-integrationstechniken-loesungen.html">Zu den Übungen</a>
+        <a href="12-taylorreihen.html">Nächstes Kapitel →</a>
+      </nav>
+    </footer>
+
+    <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
+
+    <script type="module" src="../main.js"></script>
+  
+
+
+<style>
+    .snippet-container {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+    .criterion-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .snippet-container h1 {
+        color: #004a99;
+        border-bottom: 3px solid #004a99;
+        padding-bottom: 10px;
+    }
+    .criterion-card h2 {
+        color: #0056b3;
+        border-bottom: 2px solid #0056b3;
+        padding-bottom: 5px;
+    }
+    .criterion-card h3 {
+        color: #444;
+    }
+    .definition {
+        background-color: #e7f3fe;
+        border-left: 5px solid #2196F3;
+        padding: 15px;
+        margin: 20px 0;
+        font-style: italic;
+    }
+    .criterion-card strong {
+        color: #d9534f;
+    }
+    .criterion-card code {
+        background-color: #eee;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", Courier, monospace;
+    }
+    .criterion-card a {
+        color: #337ab7;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .criterion-card a:hover {
+        text-decoration: underline;
+    }
+    .criterion-card ol, .criterion-card ul {
+        padding-left: 20px;
+    }
+</style>
+
+<div class="snippet-container">
+    <h1 id="konvergenzkriterien-fr-reihen-eine-detaillierte-bersicht">Konvergenzkriterien für Reihen – Eine detaillierte Übersicht</h1>
+    <p>Hier finden Sie eine ausführliche Erklärung zu jedem Konvergenzkriterium, inklusive der Kernidee, Anwendungsschritten und typischen Fallstricken. Um die LaTeX-Formeln korrekt darzustellen, muss auf der Seite eine Bibliothek wie MathJax oder KaTeX eingebunden sein.</p>
+
+    <hr>
+
+    <div class="criterion-card">
+        <h2 id="1-notwendige-bedingung-nullfolgenkriterium-">1. Notwendige Bedingung (Nullfolgenkriterium) </h2>
+        
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dies ist der <strong>allererste und einfachste Test</strong> und sollte immer zuerst im Kopf durchgeführt werden. Es ist ein reines <strong>Divergenzkriterium</strong>. Die Logik lautet: Wenn man unendlich viele Zahlen addiert und die Summe endlich sein soll, müssen die addierten Zahlen zwangsläufig gegen Null gehen. Wenn die Glieder also nicht gegen Null streben, kann die Summe nicht endlich sein und die Reihe divergiert.</p>
+
+        <div class="definition">
+            <p>Wenn eine Reihe $\sum_{n=1}^\infty a_n$ konvergiert, <strong>dann muss</strong> die Folge ihrer Glieder $(a_n)$ eine Nullfolge sein, d.h. $\lim_{n\to\infty} a_n = 0$.</p>
+            <p>Im Umkehrschluss (und das ist die eigentliche Anwendung): Wenn $\lim_{n\to\infty} a_n \neq 0$ (oder der Grenzwert gar nicht existiert), <strong>dann divergiert</strong> die Reihe $\sum a_n$.</p>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Betrachte das Reihenglied $a_n$.</li>
+            <li>Bilde den Grenzwert $\lim_{n\to\infty} a_n$.</li>
+            <li><strong>Fall 1:</strong> Der Grenzwert ist <strong>nicht 0</strong>. -&gt; Super! Du bist fertig. Die Reihe divergiert.</li>
+            <li><strong>Fall 2:</strong> Der Grenzwert ist <strong>0</strong>. -&gt; Pech! Das Kriterium liefert <strong>keine Aussage</strong> über Konvergenz. Du musst ein anderes Kriterium verwenden.</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Als schneller Check für jede Reihe. Besonders offensichtlich bei Reihen wie $\sum \frac{n}{n+1}$, da der Grenzwert der Glieder 1 ist.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Die Umkehrung gilt nicht! Nur weil die Glieder eine Nullfolge bilden, heißt das noch lange nicht, dass die Reihe konvergiert. Das klassische Gegenbeispiel ist die <strong>harmonische Reihe</strong> $\sum_{n=1}^\infty \frac{1}{n}$. Hier ist $\lim_{n\to\infty} \frac{1}{n} = 0$, aber die Reihe selbst divergiert.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=mzg5N2aY4eY" target="_blank"> Nullfolgenkriterium Beispiel | Mathe by Daniel Jung</a></p>
+    </div>
+
+    <hr>
+
+    <div class="criterion-card">
+        <h2 id="2-leibniz-kriterium-fr-alternierende-reihen-">2. Leibniz-Kriterium (für alternierende Reihen) ⚖️</h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium ist maßgeschneidert für Reihen, bei denen sich das Vorzeichen permanent abwechselt (z.B. $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots$). Man kann es sich wie ein Pendel vorstellen, das hin und her schwingt, aber bei jeder Schwingung einen kürzeren Weg zurücklegt. Irgendwann kommt es in der Mitte zur Ruhe. Die Reihe "pendelt" sich also auf einen Grenzwert ein.</p>
+
+        <div class="definition">
+            <p>Eine alternierende Reihe der Form $\sum_{n=1}^\infty (-1)^{n-1} b_n$ oder $\sum_{n=1}^\infty (-1)^n b_n$ mit $b_n \ge 0$ konvergiert, wenn die Folge $(b_n)$ der Beträge <strong>zwei Bedingungen</strong> erfüllt:</p>
+            <ol>
+                <li>Sie ist eine <strong>Nullfolge</strong>: $\lim_{n\to\infty} b_n = 0$.</li>
+                <li>She is <strong>monotonically decreasing</strong>: $b_{n+1} \le b_n$ for all (or almost all) $n$.</li>
+            </ol>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Stelle sicher, dass die Reihe alterniert (Faktor $(-1)^n$ oder Ähnliches).</li>
+            <li>Isoliere den positiven Anteil der Glieder, $b_n$.</li>
+            <li>Prüfe, ob $b_n$ eine Nullfolge ist. (Wenn nicht, divergiert die Reihe schon nach dem Nullfolgenkriterium).</li>
+            <li>Prüfe, ob die Folge $b_n$ monoton fällt. Dies kann man oft durch Betrachten der Funktion $f(x)=b_x$ und ihrer Ableitung ($f'(x) &lt; 0$) oder durch den direkten Vergleich $b_{n+1} \le b_n$ zeigen.</li>
+            <li>Wenn <strong>beide Bedingungen</strong> erfüllt sind, konvergiert die Reihe.</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Ausschließlich für Reihen mit strikt alternierenden Vorzeichen, wie die alternierende harmonische Reihe $\sum \frac{(-1)^n}{n}$.</p>
+
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Beide Bedingungen sind essenziell. Wenn die Folge der Beträge nicht monoton fällt, ist das Leibniz-Kriterium nicht anwendbar, selbst wenn die Glieder eine Nullfolge bilden. Die Konvergenz könnte dann trotzdem gegeben sein, muss aber anders gezeigt werden.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=GtDjTZCpsX0" target="_blank"> Reihen auf Konvergenz untersuchen, Leibniz-Kriterium | Mathe by Daniel Jung</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="3-majoranten-und-minorantenkriterium-vergleichskriterium-">3. Majoranten- und Minorantenkriterium (Vergleichskriterium) </h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Die Idee ist, eine komplizierte Reihe mit einer einfacheren, bekannten Reihe (oft eine p-Reihe oder eine geometrische Reihe) zu vergleichen. Man sucht quasi einen "Vergleichspartner".</p>
+        <ul>
+            <li><strong>Majorante (Abschätzung nach oben):</strong> Wenn du eine Reihe findest, die bekanntermaßen <strong>konvergiert</strong> und deren Glieder immer größer sind als die deiner Reihe, dann muss deine kleinere Reihe auch konvergieren. Sie wird quasi von der größeren "im Zaum gehalten".</li>
+            <li><strong>Minorante (Abschätzung nach unten):</strong> Wenn du eine Reihe findest, die bekanntermaßen <strong>divergiert</strong> und deren Glieder immer kleiner sind als die deiner Reihe, dann muss deine größere Reihe erst recht divergieren. Sie wird von der kleineren "ins Unendliche mitgerissen".</li>
+        </ul>
+
+        <div class="definition">
+            <p>Sei $\sum a_n$ die zu untersuchende Reihe.</p>
+            <ul>
+                <li><strong>Majorantenkriterium:</strong> Existiert eine konvergente Reihe $\sum c_n$ mit $|a_n| \le c_n$ für fast alle $n$, so konvergiert $\sum a_n$ (sogar absolut).</li>
+                <li><strong>Minorantenkriterium:</strong> Existiert eine divergente Reihe $\sum d_n$ mit $0 \le d_n \le a_n$ für fast alle $n$, so divergiert auch $\sum a_n$.</li>
+            </ul>
+        </div>
+        
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Analysiere deine Reihe $\sum a_n$ und identifiziere den "störenden" Teil.</li>
+            <li>Vereinfache die Reihe, um eine Vergleichsreihe $\sum b_n$ zu finden. (z.B. $\frac{n}{n^3+1}$ verhält sich wie $\frac{n}{n^3} = \frac{1}{n^2}$).</li>
+            <li><strong>Für Konvergenz (Majorante):</strong> Schätze deine Reihe nach oben ab, indem du z.B. Terme im Nenner weglässt oder Terme im Zähler vergrößerst. Zeige, dass $a_n \le c_n$ gilt und dass $\sum c_n$ konvergiert.</li>
+            <li><strong>Für Divergenz (Minorante):</strong> Schätze deine Reihe nach unten ab. Zeige, dass $a_n \ge d_n$ gilt und dass $\sum d_n$ divergiert.</li>
+        </ol>
+        
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Sehr gut für Reihen, die fast so aussehen wie bekannte Reihen (z.B. p-Reihen $\sum \frac{1}{n^p}$), aber durch Additionen oder Subtraktionen leicht verändert sind.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Die Kunst besteht darin, eine passende Vergleichsreihe zu finden und die Ungleichung korrekt zu beweisen. Eine falsche Abschätzung (z.B. eine Majorante, die selbst divergiert) bringt keine Aussage.</p>
+        
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=wKm4qGm2IRw" target="_blank"> Majorantenkriterium &amp; Minorantenkriterium Einfach Erklärt! | MathePeter</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="4-quotientenkriterium-">4. Quotientenkriterium </h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium prüft, ob eine Reihe sich im Wesentlichen wie eine <strong>geometrische Reihe</strong> verhält. Man berechnet das Verhältnis (den Quotienten) zweier aufeinanderfolgender Glieder. Wenn dieses Verhältnis für große $n$ konstant kleiner als 1 ist, schrumpfen die Glieder exponentiell schnell, was zur Konvergenz führt. Ist es größer als 1, wachsen sie exponentiell, was zur Divergenz führt.</p>
+        
+        <div class="definition">
+            <p>Man berechnet den Grenzwert $L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|$.</p>
+            <ul>
+                <li>Wenn $L &lt; 1$: Die Reihe <strong>konvergiert absolut</strong>.</li>
+                <li>Wenn $L &gt; 1$: Die Reihe <strong>divergiert</strong>.</li>
+                <li>Wenn $L = 1$: Das Kriterium trifft <strong>keine Aussage</strong>.</li>
+            </ul>
+        </div>
+        
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Bilde den Term $a_{n+1}$, indem du in $a_n$ jedes $n$ durch $(n+1)$ ersetzt.</li>
+            <li>Stelle den Bruch $\left| \frac{a_{n+1}}{a_n} \right|$ auf. Das ist oft ein Doppelbruch.</li>
+            <li>Vereinfache den Bruch so weit wie möglich. Fakultäten und Potenzen kürzen sich hier oft sehr schön weg.</li>
+            <li>Berechne den Grenzwert $L$ für $n \to \infty$.</li>
+            <li>Interpretiere das Ergebnis basierend auf den drei Fällen ($L&lt;1, L&gt;1, L=1$).</li>
+        </ol>
+        
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Die absolute "Killerapplikation" für Reihen, die <strong>Fakultäten</strong> (z.B. $n!$) oder <strong>Potenzen mit $n$ im Exponenten</strong> (z.B. $3^n$) enthalten. Die Terme kürzen sich bei der Bildung des Quotienten meistens hervorragend.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Der Fall $L=1$ ist der häufigste Grund, warum das Kriterium versagt. Es ist insbesondere bei Reihen, die nur aus rationalen Funktionen von $n$ bestehen (z.B. $\sum \frac{n^2+1}{n^4+5}$), fast immer unbrauchbar, da der Grenzwert 1 sein wird. Dann muss man auf ein anderes Kriterium ausweichen.</p>
+        
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=p3BPRuk0Wwk" target="_blank"> KONVERGENZ von REIHEN beweisen – Quotientenkriterium Beispiele | MathemaTrick</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="5-grenzwertkriterium-vergleich-mit-grenzwert-">5. Grenzwertkriterium (Vergleich mit Grenzwert) ↔️</h2>
+        
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium ist eine elegante Alternative zum oft mühsamen Majoranten-/Minorantenkriterium. Statt eine Ungleichung zu beweisen, prüft man, ob sich zwei Reihen "im Unendlichen" <strong>gleich schnell entwickeln</strong>. Man teilt die Glieder der zu prüfenden Reihe $a_n$ durch die Glieder einer bekannten Vergleichsreihe $b_n$. Wenn das Verhältnis gegen eine positive, endliche Zahl geht, dann ist ihr Langzeitverhalten identisch: Sie teilen dasselbe Schicksal.</p>
+
+        <div class="definition">
+            <p>Seien $\sum a_n$ und $\sum b_n$ zwei Reihen mit positiven Gliedern. Man berechnet den Grenzwert $L = \lim_{n\to\infty} \frac{a_n}{b_n}$.</p>
+            <p>Wenn $L$ eine <strong>endliche Zahl und größer als 0</strong> ist ($0 &lt; L &lt; \infty$), dann haben beide Reihen dasselbe Konvergenzverhalten: $\sum a_n$ konvergiert genau dann, wenn $\sum b_n$ konvergiert.</p>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Analysiere $a_n$ und bestimme das dominante Verhalten für große $n$. (Beispiel: bei $a_n = \frac{2n^2+5n}{n^4+3}$ dominieren $2n^2$ im Zähler und $n^4$ im Nenner).</li>
+            <li>Wähle eine einfache Vergleichsreihe $b_n$, die dieses dominante Verhalten abbildet (im Beispiel wäre $b_n = \frac{n^2}{n^4} = \frac{1}{n^2}$). Von dieser Reihe solltest du wissen, ob sie konvergiert oder divergiert.</li>
+            <li>Bilde den Bruch $\frac{a_n}{b_n}$ und berechne den Grenzwert $L$.</li>
+            <li><strong>Fall 1:</strong> $0 &lt; L &lt; \infty$. Deine Reihe $\sum a_n$ verhält sich genauso wie deine Vergleichsreihe $\sum b_n$.</li>
+            <li><strong>Fall 2:</strong> $L=0$ oder $L=\infty$. Das Standardkriterium liefert keine Aussage, aber manchmal kann man eine Schlussfolgerung ziehen (z.B. wenn $L=0$ und $\sum b_n$ konvergiert, dann konvergiert auch $\sum a_n$).</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Perfekt für komplizierte Brüche (rationale Funktionen in $n$), bei denen das Majorantenkriterium zu umständlichen Abschätzungen führen würde. Es ist oft viel schneller und direkter.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Der Erfolg hängt vollständig von der richtigen Wahl der Vergleichsreihe $b_n$ ab. Wählt man eine unpassende Reihe, ist der Grenzwert oft 0 oder $\infty$ und man erhält keine einfache Aussage.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=xnOagtJjhFc" target="_blank"> Grenzwertkriterium anwenden (Teil I) | Mathe am LG</a></p>
+    </div>
+</div>
+<style>
+    .snippet-container {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+    .criterion-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .snippet-container h1 {
+        color: #004a99;
+        border-bottom: 3px solid #004a99;
+        padding-bottom: 10px;
+    }
+    .criterion-card h2 {
+        color: #0056b3;
+        border-bottom: 2px solid #0056b3;
+        padding-bottom: 5px;
+    }
+    .criterion-card h3 {
+        color: #444;
+    }
+    .definition {
+        background-color: #e7f3fe;
+        border-left: 5px solid #2196F3;
+        padding: 15px;
+        margin: 20px 0;
+        font-style: italic;
+    }
+    .criterion-card strong {
+        color: #d9534f;
+    }
+    .criterion-card code {
+        background-color: #eee;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", Courier, monospace;
+    }
+    .criterion-card a {
+        color: #337ab7;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .criterion-card a:hover {
+        text-decoration: underline;
+    }
+    .criterion-card ol, .criterion-card ul {
+        padding-left: 20px;
+    }
+</style>
+
+<div class="snippet-container">
+    <h1 id="konvergenzkriterien-fr-reihen-eine-detaillierte-bersicht">Konvergenzkriterien für Reihen – Eine detaillierte Übersicht</h1>
+    <p>Hier finden Sie eine ausführliche Erklärung zu jedem Konvergenzkriterium, inklusive der Kernidee, Anwendungsschritten und typischen Fallstricken. Um die LaTeX-Formeln korrekt darzustellen, muss auf der Seite eine Bibliothek wie MathJax oder KaTeX eingebunden sein.</p>
+
+    <hr>
+
+    <div class="criterion-card">
+        <h2 id="1-notwendige-bedingung-nullfolgenkriterium-">1. Notwendige Bedingung (Nullfolgenkriterium) </h2>
+        
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dies ist der <strong>allererste und einfachste Test</strong> und sollte immer zuerst im Kopf durchgeführt werden. Es ist ein reines <strong>Divergenzkriterium</strong>. Die Logik lautet: Wenn man unendlich viele Zahlen addiert und die Summe endlich sein soll, müssen die addierten Zahlen zwangsläufig gegen Null gehen. Wenn die Glieder also nicht gegen Null streben, kann die Summe nicht endlich sein und die Reihe divergiert.</p>
+
+        <div class="definition">
+            <p>Wenn eine Reihe $\sum_{n=1}^\infty a_n$ konvergiert, <strong>dann muss</strong> die Folge ihrer Glieder $(a_n)$ eine Nullfolge sein, d.h. $\lim_{n\to\infty} a_n = 0$.</p>
+            <p>Im Umkehrschluss (und das ist die eigentliche Anwendung): Wenn $\lim_{n\to\infty} a_n \neq 0$ (oder der Grenzwert gar nicht existiert), <strong>dann divergiert</strong> die Reihe $\sum a_n$.</p>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Betrachte das Reihenglied $a_n$.</li>
+            <li>Bilde den Grenzwert $\lim_{n\to\infty} a_n$.</li>
+            <li><strong>Fall 1:</strong> Der Grenzwert ist <strong>nicht 0</strong>. -&gt; Super! Du bist fertig. Die Reihe divergiert.</li>
+            <li><strong>Fall 2:</strong> Der Grenzwert ist <strong>0</strong>. -&gt; Pech! Das Kriterium liefert <strong>keine Aussage</strong> über Konvergenz. Du musst ein anderes Kriterium verwenden.</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Als schneller Check für jede Reihe. Besonders offensichtlich bei Reihen wie $\sum \frac{n}{n+1}$, da der Grenzwert der Glieder 1 ist.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Die Umkehrung gilt nicht! Nur weil die Glieder eine Nullfolge bilden, heißt das noch lange nicht, dass die Reihe konvergiert. Das klassische Gegenbeispiel ist die <strong>harmonische Reihe</strong> $\sum_{n=1}^\infty \frac{1}{n}$. Hier ist $\lim_{n\to\infty} \frac{1}{n} = 0$, aber die Reihe selbst divergiert.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=mzg5N2aY4eY" target="_blank"> Nullfolgenkriterium Beispiel | Mathe by Daniel Jung</a></p>
+    </div>
+
+    <hr>
+
+    <div class="criterion-card">
+        <h2 id="2-leibniz-kriterium-fr-alternierende-reihen-">2. Leibniz-Kriterium (für alternierende Reihen) ⚖️</h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium ist maßgeschneidert für Reihen, bei denen sich das Vorzeichen permanent abwechselt (z.B. $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots$). Man kann es sich wie ein Pendel vorstellen, das hin und her schwingt, aber bei jeder Schwingung einen kürzeren Weg zurücklegt. Irgendwann kommt es in der Mitte zur Ruhe. Die Reihe "pendelt" sich also auf einen Grenzwert ein.</p>
+
+        <div class="definition">
+            <p>Eine alternierende Reihe der Form $\sum_{n=1}^\infty (-1)^{n-1} b_n$ oder $\sum_{n=1}^\infty (-1)^n b_n$ mit $b_n \ge 0$ konvergiert, wenn die Folge $(b_n)$ der Beträge <strong>zwei Bedingungen</strong> erfüllt:</p>
+            <ol>
+                <li>Sie ist eine <strong>Nullfolge</strong>: $\lim_{n\to\infty} b_n = 0$.</li>
+                <li>Sie ist <strong>monoton fallend</strong>: $b_{n+1} \le b_n$ für alle (oder fast alle) $n$.</li>
+            </ol>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Stelle sicher, dass die Reihe alterniert (Faktor $(-1)^n$ oder Ähnliches).</li>
+            <li>Isoliere den positiven Anteil der Glieder, $b_n$.</li>
+            <li>Prüfe, ob $b_n$ eine Nullfolge ist. (Wenn nicht, divergiert die Reihe schon nach dem Nullfolgenkriterium).</li>
+            <li>Prüfe, ob die Folge $b_n$ monoton fällt. Dies kann man oft durch Betrachten der Funktion $f(x)=b_x$ und ihrer Ableitung ($f'(x) &lt; 0$) oder durch den direkten Vergleich $b_{n+1} \le b_n$ zeigen.</li>
+            <li>Wenn <strong>beide Bedingungen</strong> erfüllt sind, konvergiert die Reihe.</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Ausschließlich für Reihen mit strikt alternierenden Vorzeichen, wie die alternierende harmonische Reihe $\sum \frac{(-1)^n}{n}$.</p>
+
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Beide Bedingungen sind essenziell. Wenn die Folge der Beträge nicht monoton fällt, ist das Leibniz-Kriterium nicht anwendbar, selbst wenn die Glieder eine Nullfolge bilden. Die Konvergenz könnte dann trotzdem gegeben sein, muss aber anders gezeigt werden.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=GtDjTZCpsX0" target="_blank"> Reihen auf Konvergenz untersuchen, Leibniz-Kriterium | Mathe by Daniel Jung</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="3-majoranten-und-minorantenkriterium-vergleichskriterium-">3. Majoranten- und Minorantenkriterium (Vergleichskriterium) </h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Die Idee ist, eine komplizierte Reihe mit einer einfacheren, bekannten Reihe (oft eine p-Reihe oder eine geometrische Reihe) zu vergleichen. Man sucht quasi einen "Vergleichspartner".</p>
+        <ul>
+            <li><strong>Majorante (Abschätzung nach oben):</strong> Wenn du eine Reihe findest, die bekanntermaßen <strong>konvergiert</strong> und deren Glieder immer größer sind als die deiner Reihe, dann muss deine kleinere Reihe auch konvergieren. Sie wird quasi von der größeren "im Zaum gehalten".</li>
+            <li><strong>Minorante (Abschätzung nach unten):</strong> Wenn du eine Reihe findest, die bekanntermaßen <strong>divergiert</strong> und deren Glieder immer kleiner sind als die deiner Reihe, dann muss deine größere Reihe erst recht divergieren. Sie wird von der kleineren "ins Unendliche mitgerissen".</li>
+        </ul>
+
+        <div class="definition">
+            <p>Sei $\sum a_n$ die zu untersuchende Reihe.</p>
+            <ul>
+                <li><strong>Majorantenkriterium:</strong> Existiert eine konvergente Reihe $\sum c_n$ mit $|a_n| \le c_n$ für fast alle $n$, so konvergiert $\sum a_n$ (sogar absolut).</li>
+                <li><strong>Minorantenkriterium:</strong> Existiert eine divergente Reihe $\sum d_n$ mit $0 \le d_n \le a_n$ für fast alle $n$, so divergiert auch $\sum a_n$.</li>
+            </ul>
+        </div>
+        
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Analysiere deine Reihe $\sum a_n$ und identifiziere den "störenden" Teil.</li>
+            <li>Vereinfache die Reihe, um eine Vergleichsreihe $\sum b_n$ zu finden. (z.B. $\frac{n}{n^3+1}$ verhält sich wie $\frac{n}{n^3} = \frac{1}{n^2}$).</li>
+            <li><strong>Für Konvergenz (Majorante):</strong> Schätze deine Reihe nach oben ab, indem du z.B. Terme im Nenner weglässt oder Terme im Zähler vergrößerst. Zeige, dass $a_n \le c_n$ gilt und dass $\sum c_n$ konvergiert.</li>
+            <li><strong>Für Divergenz (Minorante):</strong> Schätze deine Reihe nach unten ab. Zeige, dass $a_n \ge d_n$ gilt und dass $\sum d_n$ divergiert.</li>
+        </ol>
+        
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Sehr gut für Reihen, die fast so aussehen wie bekannte Reihen (z.B. p-Reihen $\sum \frac{1}{n^p}$), aber durch Additionen oder Subtraktionen leicht verändert sind.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Die Kunst besteht darin, eine passende Vergleichsreihe zu finden und die Ungleichung korrekt zu beweisen. Eine falsche Abschätzung (z.B. eine Majorante, die selbst divergiert) bringt keine Aussage.</p>
+        
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=wKm4qGm2IRw" target="_blank"> Majorantenkriterium &amp; Minorantenkriterium Einfach Erklärt! | MathePeter</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="4-quotientenkriterium-">4. Quotientenkriterium </h2>
+
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium prüft, ob eine Reihe sich im Wesentlichen wie eine <strong>geometrische Reihe</strong> verhält. Man berechnet das Verhältnis (den Quotienten) zweier aufeinanderfolgender Glieder. Wenn dieses Verhältnis für große $n$ konstant kleiner als 1 ist, schrumpfen die Glieder exponentiell schnell, was zur Konvergenz führt. Ist es größer als 1, wachsen sie exponentiell, was zur Divergenz führt.</p>
+        
+        <div class="definition">
+            <p>Man berechnet den Grenzwert $L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|$.</p>
+            <ul>
+                <li>Wenn $L &lt; 1$: Die Reihe <strong>konvergiert absolut</strong>.</li>
+                <li>Wenn $L &gt; 1$: Die Reihe <strong>divergiert</strong>.</li>
+                <li>Wenn $L = 1$: Das Kriterium trifft <strong>keine Aussage</strong>.</li>
+            </ul>
+        </div>
+        
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Bilde den Term $a_{n+1}$, indem du in $a_n$ jedes $n$ durch $(n+1)$ ersetzt.</li>
+            <li>Stelle den Bruch $\left| \frac{a_{n+1}}{a_n} \right|$ auf. Das ist oft ein Doppelbruch.</li>
+            <li>Vereinfache den Bruch so weit wie möglich. Fakultäten und Potenzen kürzen sich hier oft sehr schön weg.</li>
+            <li>Berechne den Grenzwert $L$ für $n \to \infty$.</li>
+            <li>Interpretiere das Ergebnis basierend auf den drei Fällen ($L&lt;1, L&gt;1, L=1$).</li>
+        </ol>
+        
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Die absolute "Killerapplikation" für Reihen, die <strong>Fakultäten</strong> (z.B. $n!$) oder <strong>Potenzen mit $n$ im Exponenten</strong> (z.B. $3^n$) enthalten. Die Terme kürzen sich bei der Bildung des Quotienten meistens hervorragend.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Der Fall $L=1$ ist der häufigste Grund, warum das Kriterium versagt. Es ist insbesondere bei Reihen, die nur aus rationalen Funktionen von $n$ bestehen (z.B. $\sum \frac{n^2+1}{n^4+5}$), fast immer unbrauchbar, da der Grenzwert 1 sein wird. Dann muss man auf ein anderes Kriterium ausweichen.</p>
+        
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=p3BPRuk0Wwk" target="_blank"> KONVERGENZ von REIHEN beweisen – Quotientenkriterium Beispiele | MathemaTrick</a></p>
+    </div>
+    
+    <hr>
+    
+    <div class="criterion-card">
+        <h2 id="5-grenzwertkriterium-vergleich-mit-grenzwert-">5. Grenzwertkriterium (Vergleich mit Grenzwert) ↔️</h2>
+        
+        <h3 id="die-kernidee">Die Kernidee</h3>
+        <p>Dieses Kriterium ist eine elegante Alternative zum oft mühsamen Majoranten-/Minorantenkriterium. Statt eine Ungleichung zu beweisen, prüft man, ob sich zwei Reihen "im Unendlichen" <strong>gleich schnell entwickeln</strong>. Man teilt die Glieder der zu prüfenden Reihe $a_n$ durch die Glieder einer bekannten Vergleichsreihe $b_n$. Wenn das Verhältnis gegen eine positive, endliche Zahl geht, dann ist ihr Langzeitverhalten identisch: Sie teilen dasselbe Schicksal.</p>
+
+        <div class="definition">
+            <p>Seien $\sum a_n$ und $\sum b_n$ zwei Reihen mit positiven Gliedern. Man berechnet den Grenzwert $L = \lim_{n\to\infty} \frac{a_n}{b_n}$.</p>
+            <p>Wenn $L$ eine <strong>endliche Zahl und größer als 0</strong> ist ($0 &lt; L &lt; \infty$), dann haben beide Reihen dasselbe Konvergenzverhalten: $\sum a_n$ konvergiert genau dann, wenn $\sum b_n$ konvergiert.</p>
+        </div>
+
+        <h3 id="anwendungsschritte">Anwendungsschritte</h3>
+        <ol>
+            <li>Analysiere $a_n$ und bestimme das dominante Verhalten für große $n$. (Beispiel: bei $a_n = \frac{2n^2+5n}{n^4+3}$ dominieren $2n^2$ im Zähler und $n^4$ im Nenner).</li>
+            <li>Wähle eine einfache Vergleichsreihe $b_n$, die dieses dominante Verhalten abbildet (im Beispiel wäre $b_n = \frac{n^2}{n^4} = \frac{1}{n^2}$). Von dieser Reihe solltest du wissen, ob sie konvergiert oder divergiert.</li>
+            <li>Bilde den Bruch $\frac{a_n}{b_n}$ und berechne den Grenzwert $L$.</li>
+            <li><strong>Fall 1:</strong> $0 &lt; L &lt; \infty$. Deine Reihe $\sum a_n$ verhält sich genauso wie deine Vergleichsreihe $\sum b_n$.</li>
+            <li><strong>Fall 2:</strong> $L=0$ oder $L=\infty$. Das Standardkriterium liefert keine Aussage, aber manchmal kann man eine Schlussfolgerung ziehen (z.B. wenn $L=0$ und $\sum b_n$ konvergiert, dann konvergiert auch $\sum a_n$).</li>
+        </ol>
+
+        <h3 id="wann-ist-es-ntzlich">Wann ist es nützlich?</h3>
+        <p>Perfekt für komplizierte Brüche (rationale Funktionen in $n$), bei denen das Majorantenkriterium zu umständlichen Abschätzungen führen würde. Es ist oft viel schneller und direkter.</p>
+        
+        <h3 id="wichtiger-fallstrick">Wichtiger Fallstrick</h3>
+        <p>Der Erfolg hängt vollständig von der richtigen Wahl der Vergleichsreihe $b_n$ ab. Wählt man eine unpassende Reihe, ist der Grenzwert oft 0 oder $\infty$ und man erhält keine einfache Aussage.</p>
+
+        <h3 id="video-erklrung">Video-Erklärung</h3>
+        <p><a href="http://www.youtube.com/watch?v=xnOagtJjhFc" target="_blank"> Grenzwertkriterium anwenden (Teil I) | Mathe am LG</a></p>
+    </div>
+</div>
 
       <h3 id="116-beispielaufgaben">11.6 Beispielaufgaben</h3>
       <h4 id="1161-beispiel-1-wert-einer-geometrischen-reihe">11.6.1 Beispiel 1: Wert einer geometrischen Reihe</h4>
@@ -419,7 +1220,7 @@
           </details>
         </li>
       </ol>
-    </main>
+    
 
     <footer>
       <nav class="page-nav" aria-label="Seitennavigation">
