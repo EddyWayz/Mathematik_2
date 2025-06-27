@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Lernskript Mathematik 2",
   "scripts": {
-    "build": "node scripts/build.js && node scripts/generate-service-worker.js",
+    "build": "node scripts/build.js && node scripts/generate-service-worker.js && node scripts/generate-search-index.js",
     "check-pdfs": "node scripts/check-pdfs.js",
     "watch": "node scripts/watch.js",
     "lint": "eslint .",
