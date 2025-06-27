@@ -1,17 +1,13 @@
-const CACHE_NAME = 'mathe-cache-v2';
+
+const CACHE_NAME = 'mathe-cache-v1751020000894';
 const ASSETS = [
   '/',
   '/index.html',
   '/style.css',
   '/main.js',
   '/css/dark-mode.css',
-  '/modules/back-to-top.js',
-  '/modules/dark-mode.js',
-  '/modules/dynamic-date.js',
-  '/modules/scroll-progress.js',
-  '/modules/search.js',
-  '/modules/tasks.js',
-  '/modules/top-navigation.js',
+  '/images/favicon.svg',
+  '/images/placeholder.svg',
   '/chapters/01-zaehlprinzipien.html',
   '/chapters/02-kombinationen.html',
   '/chapters/03-folgen-einfuehrung.html',
@@ -27,11 +23,38 @@ const ASSETS = [
   '/chapters/13-fourierreihen.html',
   '/chapters/14-dgl.html',
   '/chapters/15-klausurvorbereitung.html',
+  '/chapters/gallery.html',
+  '/chapters/test.html',
+  '/chapters/training/02-uebungen-kombinationen-loesungen.html',
+  '/chapters/training/03-uebungen-folgen-einfuehrung-loesungen.html',
+  '/chapters/training/04-uebungen-grenzwerte-loesungen.html',
+  '/chapters/training/05-uebungen-ableitung-einfuehrung-loesungen.html',
+  '/chapters/training/06-uebungen-ableitungsregeln-loesungen.html',
+  '/chapters/training/07-uebungen-mehrdimensionale-differentialrechnung-loesungen.html',
+  '/chapters/training/08-uebungen-extremwerte-loesungen.html',
+  '/chapters/training/09-uebungen-integralrechnung-loesungen.html',
+  '/chapters/training/10-uebungen-integrationstechniken-loesungen.html',
+  '/chapters/training/11-uebungen-taylorreihe-loesungen.html',
+  '/chapters/training/12-uebungen-fourierreihen-loesungen.html',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
 
