@@ -1,18 +1,23 @@
+/**
+ * Initializes the search functionality for table of contents items.
+ * It filters the displayed items based on user input, searching within
+ * both the item's title and the content of the linked chapter.
+ */
 export default function initSearch() {
   const input = document.getElementById('search-input');
   if (!input) return;
   const items = document.querySelectorAll('nav.toc li');
-  const data = Array.from(items).map(li => {
+  const data = Array.from(items).map((li) => {
     const link = li.querySelector('a');
     return { li, link, title: li.textContent.toLowerCase(), content: '' };
   });
 
   // Kapiteltexte laden
-  data.forEach(item => {
+  data.forEach((item) => {
     if (!item.link) return;
     fetch(item.link.getAttribute('href'))
-      .then(r => r.text())
-      .then(html => {
+      .then((r) => r.text())
+      .then((html) => {
         const doc = new DOMParser().parseFromString(html, 'text/html');
         item.content = doc.body.textContent.toLowerCase();
       })

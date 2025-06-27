@@ -5,39 +5,41 @@ Die HTML-Dateien in diesem Ordner stellen die einzelnen Lerneinheiten dar. Um ei
 ```html
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kurze Beschreibung des Kapitels">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kurze Beschreibung des Kapitels" />
     <title>NUMMER Titel - Lernskript Mathe</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="page-header" role="banner">
-        <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel NUMMER: Titel</span>
-        <div class="header-controls">
-            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
-        </div>
+      <a href="../index.html">Inhaltsverzeichnis</a>
+      <span>Kapitel NUMMER: Titel</span>
+      <div class="header-controls">
+        <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          🌙
+        </button>
+      </div>
     </header>
 
     <main class="content-wrapper">
-        <h2 id="secNUM">NUMMER Titel</h2>
-        <!-- Inhalt -->
+      <h2 id="secNUM">NUMMER Titel</h2>
+      <!-- Inhalt -->
     </main>
-</body>
+  </body>
 </html>
 ```
 
-* Nutze `<h3>`, `<h4>` usw. für Unterüberschriften.
-* Für Hinweise oder Definitionen kannst du `div`-Elemente mit den Klassen `info-box`, `tip` oder `warning` verwenden.
-* Ergänze bei Bedarf ein Vor- und Zurück-Menü am Ende des Kapitels:
+- Nutze `<h3>`, `<h4>` usw. für Unterüberschriften.
+- Für Hinweise oder Definitionen kannst du `div`-Elemente mit den Klassen `info-box`, `tip` oder `warning` verwenden.
+- Ergänze bei Bedarf ein Vor- und Zurück-Menü am Ende des Kapitels:
 
 ```html
 <footer>
-    <nav class="page-nav">
-        <a href="vorgaenger.html">&laquo; Zurück</a>
-        <a href="naechstes.html">Weiter &raquo;</a>
-    </nav>
+  <nav class="page-nav">
+    <a href="vorgaenger.html">&laquo; Zurück</a>
+    <a href="naechstes.html">Weiter &raquo;</a>
+  </nav>
 </footer>
 ```
 

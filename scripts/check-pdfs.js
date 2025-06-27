@@ -2,10 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 const materialDir = path.join(__dirname, '..', 'material');
-const searchDirs = [path.join(__dirname, '..', 'chapters'), path.join(__dirname, '..')];
+const searchDirs = [
+  path.join(__dirname, '..', 'chapters'),
+  path.join(__dirname, '..'),
+];
 
 function getPdfFiles() {
-  return fs.readdirSync(materialDir).filter(f => f.toLowerCase().endsWith('.pdf'));
+  return fs
+    .readdirSync(materialDir)
+    .filter((f) => f.toLowerCase().endsWith('.pdf'));
 }
 
 function fileContains(file, text) {
@@ -24,7 +29,9 @@ function check() {
   let ok = true;
   for (const pdf of pdfs) {
     const link = encodeURIComponent(pdf);
-    const found = htmlFiles.some(f => fileContains(f, pdf) || fileContains(f, link));
+    const found = htmlFiles.some(
+      (f) => fileContains(f, pdf) || fileContains(f, link)
+    );
     if (!found) {
       console.log(`Fehlender Link: ${pdf}`);
       ok = false;

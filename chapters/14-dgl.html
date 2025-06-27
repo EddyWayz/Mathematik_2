@@ -1,194 +1,412 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Einführung in gewöhnliche Differentialgleichungen (DGLs), Anfangswertprobleme und die Lösungsmethode der Trennung der Variablen.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Einführung in gewöhnliche Differentialgleichungen (DGLs), Anfangswertprobleme und die Lösungsmethode der Trennung der Variablen."
+    />
     <title>14 Gewöhnliche Differentialgleichungen - Lernskript Mathe</title>
 
     <script>
-  MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
-    svg: { fontCache: 'global' }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="14 Gewöhnliche Differentialgleichungen - Lernskript Mathe">
-<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
-<meta property="og:image" content="../images/placeholder.svg">
-<meta property="og:type" content="website">
-<link rel="stylesheet" href="../style.css">
-</head>
-<body>
-
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+        },
+        svg: { fontCache: 'global' },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+    <meta
+      property="og:title"
+      content="14 Gewöhnliche Differentialgleichungen - Lernskript Mathe"
+    />
+    <meta
+      property="og:description"
+      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
+    />
+    <meta property="og:image" content="../images/placeholder.svg" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
     <header class="page-header" role="banner">
-        <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel 14: DGLs</span>
-        <div class="header-controls">
-            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
-        </div>
+      <a href="../index.html">Inhaltsverzeichnis</a>
+      <span>Kapitel 14: DGLs</span>
+      <div class="header-controls">
+        <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          🌙
+        </button>
+      </div>
     </header>
 
     <main class="content-wrapper">
+      <h2 id="sec14">14 Gewöhnliche Differentialgleichungen (DGLs)</h2>
+      <h3>14.1 Lernziel</h3>
+      <p>
+        Nach dieser Lerneinheit wirst du verstehen, was eine gewöhnliche
+        Differentialgleichung (DGL) ist und was es bedeutet, sie zu lösen. Du
+        wirst in der Lage sein, die Ordnung einer DGL zu bestimmen, zwischen
+        allgemeiner, partikulärer und spezieller Lösung zu unterscheiden und
+        einfache DGLs erster Ordnung durch Trennung der Variablen oder durch
+        Raten zu lösen. Außerdem wirst du wissen, wie man Anfangswertprobleme
+        (AWPs) und Randwertprobleme (RWPs) löst, um eine eindeutige Lösung zu
+        erhalten.
+      </p>
 
-        <h2 id="sec14">14 Gewöhnliche Differentialgleichungen (DGLs)</h2>
-        <h3>14.1 Lernziel</h3>
-        <p>Nach dieser Lerneinheit wirst du verstehen, was eine gewöhnliche Differentialgleichung (DGL) ist und was es bedeutet, sie zu lösen. Du wirst in der Lage sein, die Ordnung einer DGL zu bestimmen, zwischen allgemeiner, partikulärer und spezieller Lösung zu unterscheiden und einfache DGLs erster Ordnung durch Trennung der Variablen oder durch Raten zu lösen. Außerdem wirst du wissen, wie man Anfangswertprobleme (AWPs) und Randwertprobleme (RWPs) löst, um eine eindeutige Lösung zu erhalten.</p>
-        
-        <div class="info-box key-concept">
-            <h5>Die wichtigste Kernaussage: Die Lösung ist eine Funktion!</h5>
-            <p>Der größte Unterschied zwischen algebraischen Gleichungen (z.B. $x^2-4=0$) und Differentialgleichungen ist die Art der Lösung.</p>
-            <ul>
-                <li>Die Lösung einer algebraischen Gleichung ist eine <strong>Zahl</strong> (hier $x=2$ oder $x=-2$).</li>
-                <li>Die Lösung einer Differentialgleichung ist eine <strong>Funktion</strong> oder eine ganze <strong>Schar von Funktionen</strong> (z.B. $y(x) = C \cdot e^{-x^2}$).</li>
-            </ul>
-            <p>Wir suchen nicht nach einem Wert, sondern nach dem kompletten Verlauf eines Prozesses, der durch die DGL beschrieben wird.</p>
-        </div>
-
-        <h3>14.2 Motivation und Kontext</h3>
-        <p>Viele fundamentale Gesetze in Naturwissenschaft und Technik beschreiben nicht einen Zustand, sondern eine <strong>Änderung</strong>. Newtons zweites Gesetz ($F=ma$) beschreibt nicht die Position, sondern die Beschleunigung (die zweite Ableitung der Position). Die Gesetze des radioaktiven Zerfalls beschreiben nicht die Anzahl der Teilchen, sondern die Zerfalls<em>rate</em>. Eine Gleichung, die eine Funktion und ihre Ableitungen in Beziehung setzt, ist eine <strong>Differentialgleichung</strong>. Sie ist das mächtigste Werkzeug zur Modellierung dynamischer Systeme.</p>
+      <div class="info-box key-concept">
+        <h5>Die wichtigste Kernaussage: Die Lösung ist eine Funktion!</h5>
+        <p>
+          Der größte Unterschied zwischen algebraischen Gleichungen (z.B.
+          $x^2-4=0$) und Differentialgleichungen ist die Art der Lösung.
+        </p>
         <ul>
-            <li><strong>Physik:</strong> Schwingungen, Planetenbahnen (Raketengleichung), Wärmeleitung, Strömungsmechanik – alles wird durch DGLs beschrieben.</li>
-            <li><strong>Biologie & Chemie:</strong> Populationsdynamik (Räuber-Beute-Modelle), Ausbreitung von Krankheiten (SIR-Modell) und chemische Reaktionsgeschwindigkeiten werden mit DGLs modelliert.</li>
-            <li><strong>Wirtschaft:</strong> Modelle für Wirtschaftswachstum oder die Entwicklung von Aktienkursen können DGLs beinhalten.</li>
-            <li><strong>Elektrotechnik:</strong> Das Verhalten von elektrischen Schwingkreisen (RLC-Kreise) wird durch eine DGL zweiter Ordnung beschrieben.</li>
+          <li>
+            Die Lösung einer algebraischen Gleichung ist eine
+            <strong>Zahl</strong> (hier $x=2$ oder $x=-2$).
+          </li>
+          <li>
+            Die Lösung einer Differentialgleichung ist eine
+            <strong>Funktion</strong> oder eine ganze
+            <strong>Schar von Funktionen</strong> (z.B. $y(x) = C \cdot
+            e^{-x^2}$).
+          </li>
         </ul>
-        
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: Was ist eine DGL?</h5>
-            <p>Dieses Video gibt eine grundlegende Einführung in das Konzept der Differentialgleichungen.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/2qQYxam2QGg" title="Mathe - simpleclub: Was ist eine Differentialgleichung? - Einführung" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <p>
+          Wir suchen nicht nach einem Wert, sondern nach dem kompletten Verlauf
+          eines Prozesses, der durch die DGL beschrieben wird.
+        </p>
+      </div>
 
-        <h3>14.3 Definitionen & Begriffe</h3>
-        <dl>
-            <dt>Differentialgleichung (DGL)</dt>
-            <dd>Eine Gleichung, die eine unbekannte Funktion $y(x)$ und mindestens eine ihrer Ableitungen ($y', y'', \dots$) enthält. "Gewöhnlich" bedeutet, dass die gesuchte Funktion nur von einer Variablen abhängt. Ist die höchste Ableitung explizit dargestellt ($y^{(n)} = \dots$), spricht man von einer expliziten DGL, andernfalls von einer impliziten.</dd>
-            <dt>Ordnung einer DGL</dt>
-            <dd>Die Ordnung der höchsten in der Gleichung vorkommenden Ableitung. $y' + 2y = x$ ist 1. Ordnung, $y'' + 9y = 0$ ist 2. Ordnung.</dd>
-            <dt>Lösung einer DGL</dt>
-            <dd>Eine Funktion $y(x)$, die die DGL für alle $x$ in ihrem Definitionsbereich identisch erfüllt, wenn man sie und ihre Ableitungen in die Gleichung einsetzt.</dd>
-            <dt>Allgemeine Lösung</dt>
-            <dd>Die Menge aller möglichen Lösungsfunktionen. Sie enthält in der Regel unbestimmte Konstanten ($C_1, C_2, \dots$). Die Anzahl der Konstanten entspricht der Ordnung der DGL.</dd>
-            <dt>Partikuläre/Spezielle Lösung</dt>
-            <dd>Eine einzige, konkrete Lösung, die man aus der allgemeinen Lösung erhält, indem man die Konstanten durch zusätzliche Bedingungen festlegt.</dd>
-            <dt>Anfangswertproblem (AWP)</dt>
-            <dd>Eine DGL n-ter Ordnung zusammen mit $n$ <strong>Anfangsbedingungen</strong>, die den Wert der Funktion und ihrer ersten $n-1$ Ableitungen an <strong>einer einzigen Stelle</strong> $x_0$ vorgeben (z.B. $y(0)=y_0, y'(0)=v_0$). Ein AWP hat in der Regel eine eindeutige Lösung.</dd>
-            <dt>Randwertproblem (RWP)</dt>
-            <dd>Eine DGL n-ter Ordnung zusammen mit $n$ <strong>Randbedingungen</strong>, die an <strong>mindestens zwei verschiedenen Stellen</strong> vorgegeben sind (z.B. $y(0)=y_0, y(L)=y_L$).</dd>
-        </dl>
-        
-        <h3>14.4 Die einfachste Lösungsmethode: Trennung der Variablen</h3>
-        <p>Dies ist eine der wichtigsten Methoden für DGLs erster Ordnung, die sich auf die Form $y' = f(x) \cdot g(y)$ bringen lassen.</p>
-        <ol>
-            <li><strong>DGL vorbereiten:</strong> Schreibe $y'$ als $\frac{dy}{dx}$ und bringe alle Terme, die $y$ enthalten, auf die eine Seite der Gleichung und alle Terme, die $x$ enthalten, auf die andere. $$ \frac{1}{g(y)} dy = f(x) dx $$</li>
-            <li><strong>Beide Seiten integrieren:</strong> Integriere die linke Seite nach $y$ und die rechte Seite nach $x$. $$ \int \frac{1}{g(y)} dy = \int f(x) dx + C $$ Vergiss die Integrationskonstante $+C$ nicht (sie wird üblicherweise auf der $x$-Seite hinzugefügt).</li>
-            <li><strong>Nach y auflösen:</strong> Löse die resultierende Gleichung nach $y$ auf, um die explizite Lösungsfunktion $y(x)$ zu erhalten. Dies ist die allgemeine Lösung.</li>
-        </ol>
-        
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: DGL lösen durch Trennung der Variablen</h5>
-            <p>Dieses Video zeigt das schrittweise Vorgehen, um eine DGL durch Trennung der Variablen zu lösen und ein Anfangswertproblem zu bestimmen.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Sm0Go9IioJ4" title="MathemaTrick: Differentialgleichung lösen – DGL 1. Ordnung, Anfangswertproblem" frameborder="0" allowfullscreen></iframe>
-        </div>
-        
-        <h3>14.5 Beispielaufgaben</h3>
-        <h4>14.5.1 Beispiel 1: Radioaktiver Zerfall (Trennung der Variablen)</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Die Zerfallsrate einer Substanz ist proportional zur vorhandenen Menge $N(t)$. Dies führt zur DGL $\frac{dN}{dt} = -\lambda N$. Finden Sie die spezielle Lösung für den Anfangsbestand $N(0)=N_0$.</li>
-            <li><strong>Lösung:</strong>
-                <ol>
-                    <li><strong>Variablen trennen:</strong> $\frac{dN}{N} = -\lambda dt$.</li>
-                    <li><strong>Integrieren:</strong> $\int \frac{1}{N} dN = \int -\lambda dt \implies \ln|N| = -\lambda t + C_1$.</li>
-                    <li><strong>Nach N auflösen (Allgemeine Lösung):</strong> $|N| = e^{-\lambda t + C_1} = e^{C_1}e^{-\lambda t} \implies N(t) = C e^{-\lambda t}$.</li>
-                    <li><strong>Anfangswert einsetzen:</strong> $N_0 = C e^{-\lambda \cdot 0} = C$.</li>
-                    <li><strong>Spezielle Lösung:</strong> $N(t) = N_0 e^{-\lambda t}$.</li>
-                </ol>
-            </li>
-        </ul>
+      <h3>14.2 Motivation und Kontext</h3>
+      <p>
+        Viele fundamentale Gesetze in Naturwissenschaft und Technik beschreiben
+        nicht einen Zustand, sondern eine <strong>Änderung</strong>. Newtons
+        zweites Gesetz ($F=ma$) beschreibt nicht die Position, sondern die
+        Beschleunigung (die zweite Ableitung der Position). Die Gesetze des
+        radioaktiven Zerfalls beschreiben nicht die Anzahl der Teilchen, sondern
+        die Zerfalls<em>rate</em>. Eine Gleichung, die eine Funktion und ihre
+        Ableitungen in Beziehung setzt, ist eine
+        <strong>Differentialgleichung</strong>. Sie ist das mächtigste Werkzeug
+        zur Modellierung dynamischer Systeme.
+      </p>
+      <ul>
+        <li>
+          <strong>Physik:</strong> Schwingungen, Planetenbahnen
+          (Raketengleichung), Wärmeleitung, Strömungsmechanik – alles wird durch
+          DGLs beschrieben.
+        </li>
+        <li>
+          <strong>Biologie & Chemie:</strong> Populationsdynamik
+          (Räuber-Beute-Modelle), Ausbreitung von Krankheiten (SIR-Modell) und
+          chemische Reaktionsgeschwindigkeiten werden mit DGLs modelliert.
+        </li>
+        <li>
+          <strong>Wirtschaft:</strong> Modelle für Wirtschaftswachstum oder die
+          Entwicklung von Aktienkursen können DGLs beinhalten.
+        </li>
+        <li>
+          <strong>Elektrotechnik:</strong> Das Verhalten von elektrischen
+          Schwingkreisen (RLC-Kreise) wird durch eine DGL zweiter Ordnung
+          beschrieben.
+        </li>
+      </ul>
 
-        <h4>14.5.2 Beispiel 2: Newtonsches Abkühlungsgesetz</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Ein Körper mit Anfangstemperatur $T_0=100^\circ$C befindet sich in einem Raum mit konstanter Temperatur $T^*=20^\circ$C. Die Abkühlung wird durch die DGL $\frac{dT}{dt} = -k(T-T^*)$ mit $k=0.1$ beschrieben. Finden Sie $T(t)$.</li>
-            <li><strong>Lösung:</strong>
-                 <ol>
-                    <li><strong>Variablen trennen:</strong> $\frac{dT}{T-T^*} = -k dt$.</li>
-                    <li><strong>Integrieren:</strong> $\int \frac{dT}{T-T^*} = \int -k dt \implies \ln|T-T^*| = -kt + C_1$.</li>
-                    <li><strong>Nach T auflösen (Allgemeine Lösung):</strong> $T(t)-T^* = e^{-kt+C_1} \implies T(t) = T^* + C e^{-kt}$.</li>
-                    <li><strong>Anfangswert einsetzen ($T(0)=100, T^*=20, k=0.1$):</strong> $100 = 20 + C e^0 \implies C=80$.</li>
-                    <li><strong>Spezielle Lösung:</strong> $T(t) = 20 + 80e^{-0.1t}$.</li>
-                </ol>
-            </li>
-        </ul>
-        
-        <h4>14.5.3 Beispiel 3: Raketengleichung (Anwendung der Integralrechnung)</h4>
-        <ul>
-            <li><strong>Aufgabe:</strong> Die Geschwindigkeit einer Rakete ist durch $v(t)=u \ln(\frac{m_{0}}{m_{0}-qt})-gt$ gegeben. Berechnen Sie den zurückgelegten Weg $s(t_1)$ bis zum Zeitpunkt $t_1$. (Hinweis: $s(t) = \int v(t) dt$ und $\int \ln(x) dx = x\ln x - x + C$)</li>
-            <li><strong>Lösung:</strong> Wir müssen das Integral von $v(t)$ lösen.
-                $$ s(t_1) = \int_0^{t_1} \left( u \ln\left(\frac{m_0}{m_0-qt}\right) - gt \right) dt $$
-                Wir teilen das Integral auf:
-                $$ s(t_1) = u \int_0^{t_1} (\ln(m_0) - \ln(m_0-qt)) dt - g \int_0^{t_1} t dt $$
-                Der zweite Teil ist einfach: $-g[\frac{t^2}{2}]_0^{t_1} = -\frac{1}{2}gt_1^2$.
-                <br>Der erste Teil erfordert die Stammfunktion von $\ln(m_0-qt)$. Mit der Substitution $z=m_0-qt$ (und $dz = -q dt$) und der Formel für $\int \ln z$ ergibt sich:
-                $$ \int \ln(m_0-qt) dt = -\frac{1}{q}((m_0-qt)\ln(m_0-qt) - (m_0-qt)) $$
-                Setzt man alles zusammen und wertet die Grenzen aus, erhält man nach Vereinfachung:
-                $$ s(t_1) = u \left( t_1 + \frac{m_0-qt_1}{q} \ln\left(\frac{m_0-qt_1}{m_0}\right) \right) - \frac{1}{2}gt_1^2 $$
-            </li>
-        </ul>
+      <div class="info-box video-box">
+        <h5>Erklärendes Video: Was ist eine DGL?</h5>
+        <p>
+          Dieses Video gibt eine grundlegende Einführung in das Konzept der
+          Differentialgleichungen.
+        </p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/2qQYxam2QGg"
+          title="Mathe - simpleclub: Was ist eine Differentialgleichung? - Einführung"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
 
-        <h3>14.6 Übungsaufgaben</h3>
-        <ol>
-            <li><strong>(Einfach)</strong> Bestimmen Sie Lösungen der DGL $\dot{x} = -2x$ durch Raten.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Die Funktion muss proportional zu ihrer eigenen Ableitung sein. Das ist ein Merkmal der e-Funktion. Ansatz: $x(t) = C e^{kt}$.<br>
-                    Ableiten: $\dot{x}(t) = C k e^{kt}$.<br>
-                    Einsetzen: $C k e^{kt} = -2 C e^{kt}$. Kürzen von $C e^{kt}$ ergibt $k=-2$.<br>
-                    Die allgemeine Lösung ist $x(t) = C e^{-2t}$.</p>
-                </details>
-            </li>
-            <li><strong>(Einfach)</strong> Finden Sie die allgemeine Lösung der DGL $y' = x^2 y$.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Trennung der Variablen: $\frac{dy}{y} = x^2 dx$.<br>
-                    Integrieren: $\int \frac{1}{y}dy = \int x^2 dx \implies \ln|y| = \frac{x^3}{3} + C_1$.<br>
-                    Auflösen nach y: $|y| = e^{\frac{x^3}{3}+C_1} = e^{C_1}e^{\frac{x^3}{3}}$.<br>
-                    Allgemeine Lösung: $y(x) = C e^{\frac{x^3}{3}}$.</p>
-                </details>
-            </li>
-            <li><strong>(Mittel)</strong> Lösen Sie das AWP $y' = \frac{x^2}{y}$ mit dem Anfangswert $y(0)=2$.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Trennung der Variablen: $y dy = x^2 dx$.<br>
-                    Integrieren: $\int y dy = \int x^2 dx \implies \frac{y^2}{2} = \frac{x^3}{3} + C_1 \implies y^2 = \frac{2}{3}x^3 + C$.<br>
-                    Anfangswert einsetzen: $2^2 = \frac{2}{3}(0)^3 + C \implies C=4$.<br>
-                    Spezielle Lösung: $y^2 = \frac{2}{3}x^3+4 \implies y(x) = \sqrt{\frac{2}{3}x^3+4}$ (positive Wurzel, da $y(0)=2>0$).</p>
-                </details>
-            </li>
-            <li><strong>(Schwer)</strong> Finden Sie die spezielle Lösung der DGL $y^2 y' + x^2 = 1$ mit der Anfangsbedingung $y(2)=1$.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Umstellen: $y^2 \frac{dy}{dx} = 1 - x^2$.<br>
-                    Trennung der Variablen: $y^2 dy = (1-x^2)dx$.<br>
-                    Integrieren: $\int y^2 dy = \int (1-x^2)dx \implies \frac{y^3}{3} = x - \frac{x^3}{3} + C_1 \implies y^3 = 3x-x^3+C$.<br>
-                    Anfangswert $y(2)=1$ einsetzen: $1^3 = 3(2)-2^3+C \implies 1 = 6-8+C \implies 1 = -2+C \implies C=3$.<br>
-                    Spezielle Lösung (implizit): $y^3 = 3x-x^3+3$.</p>
-                </details>
-            </li>
-        </ol>
+      <h3>14.3 Definitionen & Begriffe</h3>
+      <dl>
+        <dt>Differentialgleichung (DGL)</dt>
+        <dd>
+          Eine Gleichung, die eine unbekannte Funktion $y(x)$ und mindestens
+          eine ihrer Ableitungen ($y', y'', \dots$) enthält. "Gewöhnlich"
+          bedeutet, dass die gesuchte Funktion nur von einer Variablen abhängt.
+          Ist die höchste Ableitung explizit dargestellt ($y^{(n)} = \dots$),
+          spricht man von einer expliziten DGL, andernfalls von einer
+          impliziten.
+        </dd>
+        <dt>Ordnung einer DGL</dt>
+        <dd>
+          Die Ordnung der höchsten in der Gleichung vorkommenden Ableitung. $y'
+          + 2y = x$ ist 1. Ordnung, $y'' + 9y = 0$ ist 2. Ordnung.
+        </dd>
+        <dt>Lösung einer DGL</dt>
+        <dd>
+          Eine Funktion $y(x)$, die die DGL für alle $x$ in ihrem
+          Definitionsbereich identisch erfüllt, wenn man sie und ihre
+          Ableitungen in die Gleichung einsetzt.
+        </dd>
+        <dt>Allgemeine Lösung</dt>
+        <dd>
+          Die Menge aller möglichen Lösungsfunktionen. Sie enthält in der Regel
+          unbestimmte Konstanten ($C_1, C_2, \dots$). Die Anzahl der Konstanten
+          entspricht der Ordnung der DGL.
+        </dd>
+        <dt>Partikuläre/Spezielle Lösung</dt>
+        <dd>
+          Eine einzige, konkrete Lösung, die man aus der allgemeinen Lösung
+          erhält, indem man die Konstanten durch zusätzliche Bedingungen
+          festlegt.
+        </dd>
+        <dt>Anfangswertproblem (AWP)</dt>
+        <dd>
+          Eine DGL n-ter Ordnung zusammen mit $n$
+          <strong>Anfangsbedingungen</strong>, die den Wert der Funktion und
+          ihrer ersten $n-1$ Ableitungen an
+          <strong>einer einzigen Stelle</strong> $x_0$ vorgeben (z.B. $y(0)=y_0,
+          y'(0)=v_0$). Ein AWP hat in der Regel eine eindeutige Lösung.
+        </dd>
+        <dt>Randwertproblem (RWP)</dt>
+        <dd>
+          Eine DGL n-ter Ordnung zusammen mit $n$
+          <strong>Randbedingungen</strong>, die an
+          <strong>mindestens zwei verschiedenen Stellen</strong> vorgegeben sind
+          (z.B. $y(0)=y_0, y(L)=y_L$).
+        </dd>
+      </dl>
 
+      <h3>14.4 Die einfachste Lösungsmethode: Trennung der Variablen</h3>
+      <p>
+        Dies ist eine der wichtigsten Methoden für DGLs erster Ordnung, die sich
+        auf die Form $y' = f(x) \cdot g(y)$ bringen lassen.
+      </p>
+      <ol>
+        <li>
+          <strong>DGL vorbereiten:</strong> Schreibe $y'$ als $\frac{dy}{dx}$
+          und bringe alle Terme, die $y$ enthalten, auf die eine Seite der
+          Gleichung und alle Terme, die $x$ enthalten, auf die andere. $$
+          \frac{1}{g(y)} dy = f(x) dx $$
+        </li>
+        <li>
+          <strong>Beide Seiten integrieren:</strong> Integriere die linke Seite
+          nach $y$ und die rechte Seite nach $x$. $$ \int \frac{1}{g(y)} dy =
+          \int f(x) dx + C $$ Vergiss die Integrationskonstante $+C$ nicht (sie
+          wird üblicherweise auf der $x$-Seite hinzugefügt).
+        </li>
+        <li>
+          <strong>Nach y auflösen:</strong> Löse die resultierende Gleichung
+          nach $y$ auf, um die explizite Lösungsfunktion $y(x)$ zu erhalten.
+          Dies ist die allgemeine Lösung.
+        </li>
+      </ol>
+
+      <div class="info-box video-box">
+        <h5>Erklärendes Video: DGL lösen durch Trennung der Variablen</h5>
+        <p>
+          Dieses Video zeigt das schrittweise Vorgehen, um eine DGL durch
+          Trennung der Variablen zu lösen und ein Anfangswertproblem zu
+          bestimmen.
+        </p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Sm0Go9IioJ4"
+          title="MathemaTrick: Differentialgleichung lösen – DGL 1. Ordnung, Anfangswertproblem"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <h3>14.5 Beispielaufgaben</h3>
+      <h4>14.5.1 Beispiel 1: Radioaktiver Zerfall (Trennung der Variablen)</h4>
+      <ul>
+        <li>
+          <strong>Aufgabe:</strong> Die Zerfallsrate einer Substanz ist
+          proportional zur vorhandenen Menge $N(t)$. Dies führt zur DGL
+          $\frac{dN}{dt} = -\lambda N$. Finden Sie die spezielle Lösung für den
+          Anfangsbestand $N(0)=N_0$.
+        </li>
+        <li>
+          <strong>Lösung:</strong>
+          <ol>
+            <li>
+              <strong>Variablen trennen:</strong> $\frac{dN}{N} = -\lambda dt$.
+            </li>
+            <li>
+              <strong>Integrieren:</strong> $\int \frac{1}{N} dN = \int -\lambda
+              dt \implies \ln|N| = -\lambda t + C_1$.
+            </li>
+            <li>
+              <strong>Nach N auflösen (Allgemeine Lösung):</strong> $|N| =
+              e^{-\lambda t + C_1} = e^{C_1}e^{-\lambda t} \implies N(t) = C
+              e^{-\lambda t}$.
+            </li>
+            <li>
+              <strong>Anfangswert einsetzen:</strong> $N_0 = C e^{-\lambda \cdot
+              0} = C$.
+            </li>
+            <li>
+              <strong>Spezielle Lösung:</strong> $N(t) = N_0 e^{-\lambda t}$.
+            </li>
+          </ol>
+        </li>
+      </ul>
+
+      <h4>14.5.2 Beispiel 2: Newtonsches Abkühlungsgesetz</h4>
+      <ul>
+        <li>
+          <strong>Aufgabe:</strong> Ein Körper mit Anfangstemperatur
+          $T_0=100^\circ$C befindet sich in einem Raum mit konstanter Temperatur
+          $T^*=20^\circ$C. Die Abkühlung wird durch die DGL $\frac{dT}{dt} =
+          -k(T-T^*)$ mit $k=0.1$ beschrieben. Finden Sie $T(t)$.
+        </li>
+        <li>
+          <strong>Lösung:</strong>
+          <ol>
+            <li>
+              <strong>Variablen trennen:</strong> $\frac{dT}{T-T^*} = -k dt$.
+            </li>
+            <li>
+              <strong>Integrieren:</strong> $\int \frac{dT}{T-T^*} = \int -k dt
+              \implies \ln|T-T^*| = -kt + C_1$.
+            </li>
+            <li>
+              <strong>Nach T auflösen (Allgemeine Lösung):</strong> $T(t)-T^* =
+              e^{-kt+C_1} \implies T(t) = T^* + C e^{-kt}$.
+            </li>
+            <li>
+              <strong
+                >Anfangswert einsetzen ($T(0)=100, T^*=20, k=0.1$):</strong
+              >
+              $100 = 20 + C e^0 \implies C=80$.
+            </li>
+            <li>
+              <strong>Spezielle Lösung:</strong> $T(t) = 20 + 80e^{-0.1t}$.
+            </li>
+          </ol>
+        </li>
+      </ul>
+
+      <h4>
+        14.5.3 Beispiel 3: Raketengleichung (Anwendung der Integralrechnung)
+      </h4>
+      <ul>
+        <li>
+          <strong>Aufgabe:</strong> Die Geschwindigkeit einer Rakete ist durch
+          $v(t)=u \ln(\frac{m_{0}}{m_{0}-qt})-gt$ gegeben. Berechnen Sie den
+          zurückgelegten Weg $s(t_1)$ bis zum Zeitpunkt $t_1$. (Hinweis: $s(t) =
+          \int v(t) dt$ und $\int \ln(x) dx = x\ln x - x + C$)
+        </li>
+        <li>
+          <strong>Lösung:</strong> Wir müssen das Integral von $v(t)$ lösen. $$
+          s(t_1) = \int_0^{t_1} \left( u \ln\left(\frac{m_0}{m_0-qt}\right) - gt
+          \right) dt $$ Wir teilen das Integral auf: $$ s(t_1) = u \int_0^{t_1}
+          (\ln(m_0) - \ln(m_0-qt)) dt - g \int_0^{t_1} t dt $$ Der zweite Teil
+          ist einfach: $-g[\frac{t^2}{2}]_0^{t_1} = -\frac{1}{2}gt_1^2$.
+          <br />Der erste Teil erfordert die Stammfunktion von $\ln(m_0-qt)$.
+          Mit der Substitution $z=m_0-qt$ (und $dz = -q dt$) und der Formel für
+          $\int \ln z$ ergibt sich: $$ \int \ln(m_0-qt) dt =
+          -\frac{1}{q}((m_0-qt)\ln(m_0-qt) - (m_0-qt)) $$ Setzt man alles
+          zusammen und wertet die Grenzen aus, erhält man nach Vereinfachung: $$
+          s(t_1) = u \left( t_1 + \frac{m_0-qt_1}{q}
+          \ln\left(\frac{m_0-qt_1}{m_0}\right) \right) - \frac{1}{2}gt_1^2 $$
+        </li>
+      </ul>
+
+      <h3>14.6 Übungsaufgaben</h3>
+      <ol>
+        <li>
+          <strong>(Einfach)</strong> Bestimmen Sie Lösungen der DGL $\dot{x} =
+          -2x$ durch Raten.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Die Funktion muss proportional zu ihrer eigenen Ableitung sein.
+              Das ist ein Merkmal der e-Funktion. Ansatz: $x(t) = C e^{kt}$.<br />
+              Ableiten: $\dot{x}(t) = C k e^{kt}$.<br />
+              Einsetzen: $C k e^{kt} = -2 C e^{kt}$. Kürzen von $C e^{kt}$
+              ergibt $k=-2$.<br />
+              Die allgemeine Lösung ist $x(t) = C e^{-2t}$.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Einfach)</strong> Finden Sie die allgemeine Lösung der DGL
+          $y' = x^2 y$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Trennung der Variablen: $\frac{dy}{y} = x^2 dx$.<br />
+              Integrieren: $\int \frac{1}{y}dy = \int x^2 dx \implies \ln|y| =
+              \frac{x^3}{3} + C_1$.<br />
+              Auflösen nach y: $|y| = e^{\frac{x^3}{3}+C_1} =
+              e^{C_1}e^{\frac{x^3}{3}}$.<br />
+              Allgemeine Lösung: $y(x) = C e^{\frac{x^3}{3}}$.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Mittel)</strong> Lösen Sie das AWP $y' = \frac{x^2}{y}$ mit
+          dem Anfangswert $y(0)=2$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Trennung der Variablen: $y dy = x^2 dx$.<br />
+              Integrieren: $\int y dy = \int x^2 dx \implies \frac{y^2}{2} =
+              \frac{x^3}{3} + C_1 \implies y^2 = \frac{2}{3}x^3 + C$.<br />
+              Anfangswert einsetzen: $2^2 = \frac{2}{3}(0)^3 + C \implies
+              C=4$.<br />
+              Spezielle Lösung: $y^2 = \frac{2}{3}x^3+4 \implies y(x) =
+              \sqrt{\frac{2}{3}x^3+4}$ (positive Wurzel, da $y(0)=2>0$).
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Schwer)</strong> Finden Sie die spezielle Lösung der DGL $y^2
+          y' + x^2 = 1$ mit der Anfangsbedingung $y(2)=1$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Umstellen: $y^2 \frac{dy}{dx} = 1 - x^2$.<br />
+              Trennung der Variablen: $y^2 dy = (1-x^2)dx$.<br />
+              Integrieren: $\int y^2 dy = \int (1-x^2)dx \implies \frac{y^3}{3}
+              = x - \frac{x^3}{3} + C_1 \implies y^3 = 3x-x^3+C$.<br />
+              Anfangswert $y(2)=1$ einsetzen: $1^3 = 3(2)-2^3+C \implies 1 =
+              6-8+C \implies 1 = -2+C \implies C=3$.<br />
+              Spezielle Lösung (implizit): $y^3 = 3x-x^3+3$.
+            </p>
+          </details>
+        </li>
+      </ol>
     </main>
-    
+
     <footer>
-        <nav class="page-nav" aria-label="Seitennavigation">
-            <a href="13-fourierreihen.html">← Vorheriges Kapitel</a>
-            <a href="15-klausurvorbereitung.html">Nächstes Kapitel →</a>
-        </nav>
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a href="13-fourierreihen.html">← Vorheriges Kapitel</a>
+        <a href="15-klausurvorbereitung.html">Nächstes Kapitel →</a>
+      </nav>
     </footer>
 
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
-    
+
     <script type="module" src="../main.js"></script>
-</body>
+  </body>
 </html>

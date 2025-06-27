@@ -1,169 +1,342 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anwendungen der Differentialrechnung: Monotonie, Extremwerte, Krümmung, Kurvendiskussion, Optimierung und die Regel von de l'Hospital.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anwendungen der Differentialrechnung: Monotonie, Extremwerte, Krümmung, Kurvendiskussion, Optimierung und die Regel von de l'Hospital."
+    />
     <title>6 Anwendungen der Ableitung - Lernskript Mathe</title>
-    
-    <script>
-  MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
-    svg: { fontCache: 'global' }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="6 Anwendungen der Ableitung - Lernskript Mathe">
-<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
-<meta property="og:image" content="../images/placeholder.svg">
-<meta property="og:type" content="website">
-<link rel="stylesheet" href="../style.css">
-</head>
-<body>
 
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+        },
+        svg: { fontCache: 'global' },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+    <meta
+      property="og:title"
+      content="6 Anwendungen der Ableitung - Lernskript Mathe"
+    />
+    <meta
+      property="og:description"
+      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
+    />
+    <meta property="og:image" content="../images/placeholder.svg" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
     <header class="page-header" role="banner">
-        <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel 6: Anwendungen der Ableitung</span>
-        <div class="header-controls">
-            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
-        </div>
+      <a href="../index.html">Inhaltsverzeichnis</a>
+      <span>Kapitel 6: Anwendungen der Ableitung</span>
+      <div class="header-controls">
+        <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          🌙
+        </button>
+      </div>
     </header>
 
     <main class="content-wrapper">
-        
-        <h2 id="sec6">6 Anwendungen der Ableitung: Kurvendiskussion & Optimierung</h2>
-        <h3>6.1 Lernziel</h3>
-        <p>Am Ende dieser Lerneinheit wirst du die Ableitung als mächtiges Werkzeug zur Analyse von Funktionen einsetzen können.  Du wirst das Monotonie- und Krümmungsverhalten bestimmen , lokale und globale Extremwerte finden  und eine vollständige Kurvendiskussion durchführen können.  Zudem wirst du in der Lage sein, Optimierungsaufgaben zu lösen und die Regel von de l'Hospital zur Berechnung von Grenzwerten anzuwenden. </p>
-        
-        <h3>6.2 Analyse des Funktionsverlaufs</h3>
-        <p>Die erste und zweite Ableitung einer Funktion geben uns detaillierte Auskunft über deren geometrische Eigenschaften.</p>
-        <dl>
-            <dt>Monotonie und die 1. Ableitung</dt>
-            <dd>Das Vorzeichen der ersten Ableitung $f'(x)$ bestimmt, ob die Funktion steigt oder fällt: 
-                <ul>
-                    <li>Wenn $f'(x) > 0$ auf einem Intervall, dann ist $f(x)$ dort <strong>streng monoton wachsend</strong>. </li>
-                    <li>Wenn $f'(x) < 0$ auf einem Intervall, dann ist $f(x)$ dort <strong>streng monoton fallend</strong>. </li>
-                </ul>
-            </dd>
-            <dt>Lokale Extrema (Maxima/Minima)</dt>
-            <dd>Lokale Extrempunkte sind "Hügel" oder "Täler" im Funktionsgraphen.
-                <ul>
-                    <li><strong>Notwendige Bedingung:</strong> An einer Extremstelle $x_0$ im Inneren des Definitionsbereichs muss die Tangente waagerecht sein, also gilt: $f'(x_0) = 0$.  Solche Stellen nennt man stationäre Punkte.</li>
-                    <li><strong>Hinreichende Bedingung:</strong> Hat man eine stationäre Stelle $x_0$ gefunden, hilft die zweite Ableitung weiter: 
-                        <ul>
-                            <li>Ist $f''(x_0) > 0$, ist die Kurve dort linksgekrümmt (konvex), es liegt ein <strong>lokales Minimum</strong> vor. </li>
-                            <li>Ist $f''(x_0) < 0$, ist die Kurve dort rechtsgekrümmt (konkav), es liegt ein <strong>lokales Maximum</strong> vor. </li>
-                            <li>Ist $f''(x_0) = 0$, kann keine Aussage getroffen werden. Hier muss man auf das Vorzeichenwechselkriterium von $f'$ zurückgreifen oder höhere Ableitungen prüfen. </li>
-                        </ul>
-                    </li>
-                </ul>
-            </dd>
-            <dt>Krümmung und die 2. Ableitung</dt>
-            <dd>Das Vorzeichen der zweiten Ableitung $f''(x)$ bestimmt die Krümmungsrichtung:
-                <ul>
-                    <li>Wenn $f''(x) > 0$ auf einem Intervall, ist die Funktion dort <strong>konvex</strong> (Linkskurve, wie eine Schale, die Wasser hält). Die Steigung $f'$ nimmt zu.</li>
-                    <li>Wenn $f''(x) < 0$ auf einem Intervall, ist die Funktion dort <strong>konkav</strong> (Rechtskurve, wie eine umgedrehte Schale). Die Steigung $f'$ nimmt ab.</li>
-                </ul>
-            </dd>
-            <dt>Wendepunkte</dt>
-            <dd>Ein Wendepunkt ist ein Punkt, an dem sich das Krümmungsverhalten der Funktion ändert. 
-                <ul>
-                    <li><strong>Notwendige Bedingung:</strong> An einem Wendepunkt $x_w$ muss gelten: $f''(x_w) = 0$. </li>
-                    <li><strong>Hinreichende Bedingung:</strong> $f''(x_w)=0$ und $f'''(x_w) \neq 0$.  Alternativ: $f''(x)$ muss an der Stelle $x_w$ das Vorzeichen wechseln.</li>
-                </ul>
-                Ein <strong>Sattelpunkt</strong> ist ein Wendepunkt, bei dem zusätzlich die Tangente waagerecht ist, also auch $f'(x_w)=0$ gilt. 
-            </dd>
-        </dl>
-        
-        <h3>6.3 Das Kochrezept zur Kurvendiskussion</h3>
-        <p>Um eine Funktion vollständig zu analysieren, folgt man am besten einem festen Schema: </p>
-        <ol>
-            <li><strong>Definitionsbereich $D$ bestimmen:</strong> Welche $x$-Werte sind erlaubt? </li>
-            <li><strong>Symmetrie prüfen:</strong> Ist die Funktion achsensymmetrisch ($f(-x)=f(x)$) oder punktsymmetrisch ($f(-x)=-f(x)$)?</li>
-            <li><strong>Nullstellen berechnen:</strong> Wo schneidet der Graph die x-Achse? Ansatz: $f(x)=0$. </li>
-            <li><strong>Verhalten an den Rändern von $D$ untersuchen:</strong> Grenzwerte für $x \to \pm\infty$ und an Polstellen berechnen. </li>
-            <li><strong>Ableitungen bilden:</strong> Berechne $f'(x)$, $f''(x)$ und ggf. $f'''(x)$. </li>
-            <li><strong>Extrempunkte bestimmen:</strong> Nullstellen der 1. Ableitung finden ($f'(x)=0$) und mit der 2. Ableitung überprüfen. </li>
-            <li><strong>Wendepunkte bestimmen:</strong> Nullstellen der 2. Ableitung finden ($f''(x)=0$) und mit der 3. Ableitung überprüfen. </li>
-            <li><strong>Wertetabelle und Skizze:</strong> Wichtige Punkte (Nullstellen, Extrema, Wendepunkte) in eine Tabelle eintragen und den Graphen skizzieren. </li>
-        </ol>
+      <h2 id="sec6">
+        6 Anwendungen der Ableitung: Kurvendiskussion & Optimierung
+      </h2>
+      <h3>6.1 Lernziel</h3>
+      <p>
+        Am Ende dieser Lerneinheit wirst du die Ableitung als mächtiges Werkzeug
+        zur Analyse von Funktionen einsetzen können. Du wirst das Monotonie- und
+        Krümmungsverhalten bestimmen , lokale und globale Extremwerte finden und
+        eine vollständige Kurvendiskussion durchführen können. Zudem wirst du in
+        der Lage sein, Optimierungsaufgaben zu lösen und die Regel von de
+        l'Hospital zur Berechnung von Grenzwerten anzuwenden.
+      </p>
 
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: Kurvendiskussion Schritt für Schritt</h5>
-            <p>Dieses Video führt durch eine vollständige Kurvendiskussion einer gebrochen-rationalen Funktion.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/GpioDtIFtN44" title="ObachtMathe: Kurvendiskussion gebrochen-rationale Funktion" frameborder="0" allowfullscreen></iframe>
-        </div>
-        
-        <h3>6.4 Anwendung 1: Optimierungsaufgaben</h3>
-        <p>Viele praktische Probleme lassen sich als Optimierungs- oder Extremwertaufgabe formulieren: Maximiere den Gewinn, minimiere die Kosten, minimiere den Materialverbrauch etc. </p>
-        <p><strong>Vorgehen:</strong> </p>
-        <ol>
-            <li><strong>Hauptbedingung:</strong> Formuliere die zu optimierende Größe (z.B. Gewinn $G$) als Funktion von einer oder mehreren Variablen. </li>
-            <li><strong>Nebenbedingung(en):</strong> Finde Gleichungen, die die Variablen miteinander verknüpfen. </li>
-            <li><strong>Zielfunktion aufstellen:</strong> Nutze die Nebenbedingungen, um die Hauptbedingung so umzuformen, dass sie nur noch von einer Variablen abhängt. Bestimme den sinnvollen Definitionsbereich. </li>
-            <li><strong>Extrema bestimmen:</strong> Finde das Maximum oder Minimum der Zielfunktion mit den bekannten Methoden der Kurvendiskussion (Ableitung bilden, null setzen, etc.). Berücksichtige dabei auch die Ränder des Definitionsbereichs für globale Extrema.</li>
-        </ol>
+      <h3>6.2 Analyse des Funktionsverlaufs</h3>
+      <p>
+        Die erste und zweite Ableitung einer Funktion geben uns detaillierte
+        Auskunft über deren geometrische Eigenschaften.
+      </p>
+      <dl>
+        <dt>Monotonie und die 1. Ableitung</dt>
+        <dd>
+          Das Vorzeichen der ersten Ableitung $f'(x)$ bestimmt, ob die Funktion
+          steigt oder fällt:
+          <ul>
+            <li>
+              Wenn $f'(x) > 0$ auf einem Intervall, dann ist $f(x)$ dort
+              <strong>streng monoton wachsend</strong>.
+            </li>
+            <li>
+              Wenn $f'(x) < 0$ auf einem Intervall, dann ist $f(x)$ dort
+              <strong>streng monoton fallend</strong>.
+            </li>
+          </ul>
+        </dd>
+        <dt>Lokale Extrema (Maxima/Minima)</dt>
+        <dd>
+          Lokale Extrempunkte sind "Hügel" oder "Täler" im Funktionsgraphen.
+          <ul>
+            <li>
+              <strong>Notwendige Bedingung:</strong> An einer Extremstelle $x_0$
+              im Inneren des Definitionsbereichs muss die Tangente waagerecht
+              sein, also gilt: $f'(x_0) = 0$. Solche Stellen nennt man
+              stationäre Punkte.
+            </li>
+            <li>
+              <strong>Hinreichende Bedingung:</strong> Hat man eine stationäre
+              Stelle $x_0$ gefunden, hilft die zweite Ableitung weiter:
+              <ul>
+                <li>
+                  Ist $f''(x_0) > 0$, ist die Kurve dort linksgekrümmt (konvex),
+                  es liegt ein <strong>lokales Minimum</strong> vor.
+                </li>
+                <li>
+                  Ist $f''(x_0) < 0$, ist die Kurve dort rechtsgekrümmt
+                  (konkav), es liegt ein <strong>lokales Maximum</strong> vor.
+                </li>
+                <li>
+                  Ist $f''(x_0) = 0$, kann keine Aussage getroffen werden. Hier
+                  muss man auf das Vorzeichenwechselkriterium von $f'$
+                  zurückgreifen oder höhere Ableitungen prüfen.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </dd>
+        <dt>Krümmung und die 2. Ableitung</dt>
+        <dd>
+          Das Vorzeichen der zweiten Ableitung $f''(x)$ bestimmt die
+          Krümmungsrichtung:
+          <ul>
+            <li>
+              Wenn $f''(x) > 0$ auf einem Intervall, ist die Funktion dort
+              <strong>konvex</strong> (Linkskurve, wie eine Schale, die Wasser
+              hält). Die Steigung $f'$ nimmt zu.
+            </li>
+            <li>
+              Wenn $f''(x) < 0$ auf einem Intervall, ist die Funktion dort
+              <strong>konkav</strong> (Rechtskurve, wie eine umgedrehte Schale).
+              Die Steigung $f'$ nimmt ab.
+            </li>
+          </ul>
+        </dd>
+        <dt>Wendepunkte</dt>
+        <dd>
+          Ein Wendepunkt ist ein Punkt, an dem sich das Krümmungsverhalten der
+          Funktion ändert.
+          <ul>
+            <li>
+              <strong>Notwendige Bedingung:</strong> An einem Wendepunkt $x_w$
+              muss gelten: $f''(x_w) = 0$.
+            </li>
+            <li>
+              <strong>Hinreichende Bedingung:</strong> $f''(x_w)=0$ und
+              $f'''(x_w) \neq 0$. Alternativ: $f''(x)$ muss an der Stelle $x_w$
+              das Vorzeichen wechseln.
+            </li>
+          </ul>
+          Ein <strong>Sattelpunkt</strong> ist ein Wendepunkt, bei dem
+          zusätzlich die Tangente waagerecht ist, also auch $f'(x_w)=0$ gilt.
+        </dd>
+      </dl>
 
-        <h3>6.5 Anwendung 2: Regel von de l'Hospital</h3>
-        <p>Diese Regel ist ein mächtiges Werkzeug zur Berechnung von Grenzwerten, die auf einen unbestimmten Ausdruck der Form $\frac{0}{0}$ oder $\frac{\infty}{\infty}$ führen. </p>
-        <p><strong>Regel:</strong> Führt der Grenzwert $\lim_{x\to x_0} \frac{f(x)}{g(x)}$ zu einem unbestimmten Ausdruck, so darf man Zähler und Nenner separat ableiten und den Grenzwert des neuen Bruchs betrachten: 
-        $$ \lim_{x\to x_0}\frac{f(x)}{g(x)} = \lim_{x\to x_0}\frac{f'(x)}{g'(x)} $$
-        Dies darf so oft wiederholt werden, bis der Grenzwert berechenbar ist oder die Regel nicht mehr anwendbar ist. Auch die unbestimmten Ausdrücke $0 \cdot \infty$ oder $\infty - \infty$ können oft durch Umformung auf einen Bruch gebracht werden.
+      <h3>6.3 Das Kochrezept zur Kurvendiskussion</h3>
+      <p>
+        Um eine Funktion vollständig zu analysieren, folgt man am besten einem
+        festen Schema:
+      </p>
+      <ol>
+        <li>
+          <strong>Definitionsbereich $D$ bestimmen:</strong> Welche $x$-Werte
+          sind erlaubt?
+        </li>
+        <li>
+          <strong>Symmetrie prüfen:</strong> Ist die Funktion achsensymmetrisch
+          ($f(-x)=f(x)$) oder punktsymmetrisch ($f(-x)=-f(x)$)?
+        </li>
+        <li>
+          <strong>Nullstellen berechnen:</strong> Wo schneidet der Graph die
+          x-Achse? Ansatz: $f(x)=0$.
+        </li>
+        <li>
+          <strong>Verhalten an den Rändern von $D$ untersuchen:</strong>
+          Grenzwerte für $x \to \pm\infty$ und an Polstellen berechnen.
+        </li>
+        <li>
+          <strong>Ableitungen bilden:</strong> Berechne $f'(x)$, $f''(x)$ und
+          ggf. $f'''(x)$.
+        </li>
+        <li>
+          <strong>Extrempunkte bestimmen:</strong> Nullstellen der 1. Ableitung
+          finden ($f'(x)=0$) und mit der 2. Ableitung überprüfen.
+        </li>
+        <li>
+          <strong>Wendepunkte bestimmen:</strong> Nullstellen der 2. Ableitung
+          finden ($f''(x)=0$) und mit der 3. Ableitung überprüfen.
+        </li>
+        <li>
+          <strong>Wertetabelle und Skizze:</strong> Wichtige Punkte
+          (Nullstellen, Extrema, Wendepunkte) in eine Tabelle eintragen und den
+          Graphen skizzieren.
+        </li>
+      </ol>
+
+      <div class="info-box video-box">
+        <h5>Erklärendes Video: Kurvendiskussion Schritt für Schritt</h5>
+        <p>
+          Dieses Video führt durch eine vollständige Kurvendiskussion einer
+          gebrochen-rationalen Funktion.
         </p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/GpioDtIFtN44"
+          title="ObachtMathe: Kurvendiskussion gebrochen-rationale Funktion"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
 
-        <h3>6.6 Übungsaufgaben (aus PA-06)</h3>
-        <div class="task-hint">
-            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer (0→5, 1→6).</p>
-        </div>
-        <ol>
-            <li><strong>(Aufgabe 1)</strong> Betrachten Sie die Funktion $f(x)=-x^{4}+2x^{3}-1$. 
-                <ol type="a">
-                    <li>Bestimmen Sie alle (lokalen) Extremwerte von $f(x)$. </li>
-                    <li>Bestimmen Sie alle Wendepunkte von $f(x)$. </li>
-                </ol>
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>a) <strong>Extremwerte:</strong><br>
-                    $f'(x) = -4x^3+6x^2 = -2x^2(2x-3)$.<br>
-                    Nullstellen von $f'(x)$ sind $x_1=0$ und $x_2=\frac{3}{2}$.<br>
-                    $f''(x) = -12x^2+12x = -12x(x-1)$.<br>
-                    Prüfen: $f''(3/2) = -12(3/2)(3/2-1) = -18(1/2) = -9 < 0 \implies$ Lokales Maximum bei $x=3/2$.<br>
-                    $f''(0)=0$, daher keine Aussage möglich. Vorzeichen von $f'$ um $x=0$ prüfen: $f'(-0.1) > 0$, $f'(0.1) > 0$. Kein Vorzeichenwechsel, also kein Extremum, sondern ein Sattelpunkt.<br>
-                    <br>b) <strong>Wendepunkte:</strong><br>
-                    Nullstellen von $f''(x)$ sind $x_1=0$ und $x_2=1$.<br>
-                    $f'''(x)=-24x+12$.<br>
-                    Prüfen: $f'''(0)=12 \neq 0 \implies$ Wendepunkt bei $x=0$.<br>
-                    $f'''(1)=-12 \neq 0 \implies$ Wendepunkt bei $x=1$.</p>
-                </details>
-            </li>
-            <li><strong>(Aufgabe 3)</strong> Bestimmen Sie den Grenzwert $ \lim_{x\rightarrow0}\frac{\sinh(x^{2})}{(e^{ax}-1)x} $. 
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Einsetzen von $x=0$ führt zu $\frac{\sinh(0)}{(e^0-1)\cdot 0} = \frac{0}{0}$. Dies ist ein Fall für de l'Hospital.<br>
-                    Zähler ableiten: $(\sinh(x^2))' = \cosh(x^2) \cdot 2x$.<br>
-                    Nenner ableiten (Produktregel): $(e^{ax}-1)'\cdot x + (e^{ax}-1)\cdot (x)' = (ae^{ax})\cdot x + (e^{ax}-1)$.<br>
-                    Neuer Grenzwert: $ \lim_{x\rightarrow0}\frac{2x \cosh(x^2)}{axe^{ax} + e^{ax}-1} $.<br>
-                    Erneutes Einsetzen von $x=0$ führt wieder zu $\frac{0}{0+1-1}=\frac{0}{0}$. Wir wenden de l'Hospital erneut an.<br>
-                    Zähler ableiten: $(2x \cosh(x^2))' = 2\cosh(x^2) + 2x \cdot \sinh(x^2)\cdot 2x = 2\cosh(x^2) + 4x^2\sinh(x^2)$.<br>
-                    Nenner ableiten: $(axe^{ax} + e^{ax}-1)' = (a e^{ax} + ax \cdot a e^{ax}) + a e^{ax} = 2a e^{ax} + a^2x e^{ax}$.<br>
-                    Neuer Grenzwert: $ \lim_{x\rightarrow0}\frac{2\cosh(x^2) + 4x^2\sinh(x^2)}{2a e^{ax} + a^2x e^{ax}} = \frac{2\cosh(0)+0}{2ae^0+0} = \frac{2 \cdot 1}{2a} = \frac{1}{a} $.
-                    </p>
-                </details>
-            </li>
-        </ol>
+      <h3>6.4 Anwendung 1: Optimierungsaufgaben</h3>
+      <p>
+        Viele praktische Probleme lassen sich als Optimierungs- oder
+        Extremwertaufgabe formulieren: Maximiere den Gewinn, minimiere die
+        Kosten, minimiere den Materialverbrauch etc.
+      </p>
+      <p><strong>Vorgehen:</strong></p>
+      <ol>
+        <li>
+          <strong>Hauptbedingung:</strong> Formuliere die zu optimierende Größe
+          (z.B. Gewinn $G$) als Funktion von einer oder mehreren Variablen.
+        </li>
+        <li>
+          <strong>Nebenbedingung(en):</strong> Finde Gleichungen, die die
+          Variablen miteinander verknüpfen.
+        </li>
+        <li>
+          <strong>Zielfunktion aufstellen:</strong> Nutze die Nebenbedingungen,
+          um die Hauptbedingung so umzuformen, dass sie nur noch von einer
+          Variablen abhängt. Bestimme den sinnvollen Definitionsbereich.
+        </li>
+        <li>
+          <strong>Extrema bestimmen:</strong> Finde das Maximum oder Minimum der
+          Zielfunktion mit den bekannten Methoden der Kurvendiskussion
+          (Ableitung bilden, null setzen, etc.). Berücksichtige dabei auch die
+          Ränder des Definitionsbereichs für globale Extrema.
+        </li>
+      </ol>
+
+      <h3>6.5 Anwendung 2: Regel von de l'Hospital</h3>
+      <p>
+        Diese Regel ist ein mächtiges Werkzeug zur Berechnung von Grenzwerten,
+        die auf einen unbestimmten Ausdruck der Form $\frac{0}{0}$ oder
+        $\frac{\infty}{\infty}$ führen.
+      </p>
+      <p>
+        <strong>Regel:</strong> Führt der Grenzwert $\lim_{x\to x_0}
+        \frac{f(x)}{g(x)}$ zu einem unbestimmten Ausdruck, so darf man Zähler
+        und Nenner separat ableiten und den Grenzwert des neuen Bruchs
+        betrachten: $$ \lim_{x\to x_0}\frac{f(x)}{g(x)} = \lim_{x\to
+        x_0}\frac{f'(x)}{g'(x)} $$ Dies darf so oft wiederholt werden, bis der
+        Grenzwert berechenbar ist oder die Regel nicht mehr anwendbar ist. Auch
+        die unbestimmten Ausdrücke $0 \cdot \infty$ oder $\infty - \infty$
+        können oft durch Umformung auf einen Bruch gebracht werden.
+      </p>
+
+      <h3>6.6 Übungsaufgaben (aus PA-06)</h3>
+      <div class="task-hint">
+        <p>
+          <strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$
+          durch die letzte Stelle deiner Matrikelnummer (0→5, 1→6).
+        </p>
+      </div>
+      <ol>
+        <li>
+          <strong>(Aufgabe 1)</strong> Betrachten Sie die Funktion
+          $f(x)=-x^{4}+2x^{3}-1$.
+          <ol type="a">
+            <li>Bestimmen Sie alle (lokalen) Extremwerte von $f(x)$.</li>
+            <li>Bestimmen Sie alle Wendepunkte von $f(x)$.</li>
+          </ol>
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              a) <strong>Extremwerte:</strong><br />
+              $f'(x) = -4x^3+6x^2 = -2x^2(2x-3)$.<br />
+              Nullstellen von $f'(x)$ sind $x_1=0$ und $x_2=\frac{3}{2}$.<br />
+              $f''(x) = -12x^2+12x = -12x(x-1)$.<br />
+              Prüfen: $f''(3/2) = -12(3/2)(3/2-1) = -18(1/2) = -9 < 0 \implies$
+              Lokales Maximum bei $x=3/2$.<br />
+              $f''(0)=0$, daher keine Aussage möglich. Vorzeichen von $f'$ um
+              $x=0$ prüfen: $f'(-0.1) > 0$, $f'(0.1) > 0$. Kein
+              Vorzeichenwechsel, also kein Extremum, sondern ein Sattelpunkt.<br />
+              <br />b) <strong>Wendepunkte:</strong><br />
+              Nullstellen von $f''(x)$ sind $x_1=0$ und $x_2=1$.<br />
+              $f'''(x)=-24x+12$.<br />
+              Prüfen: $f'''(0)=12 \neq 0 \implies$ Wendepunkt bei $x=0$.<br />
+              $f'''(1)=-12 \neq 0 \implies$ Wendepunkt bei $x=1$.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Aufgabe 3)</strong> Bestimmen Sie den Grenzwert $
+          \lim_{x\rightarrow0}\frac{\sinh(x^{2})}{(e^{ax}-1)x} $.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Einsetzen von $x=0$ führt zu $\frac{\sinh(0)}{(e^0-1)\cdot 0} =
+              \frac{0}{0}$. Dies ist ein Fall für de l'Hospital.<br />
+              Zähler ableiten: $(\sinh(x^2))' = \cosh(x^2) \cdot 2x$.<br />
+              Nenner ableiten (Produktregel): $(e^{ax}-1)'\cdot x +
+              (e^{ax}-1)\cdot (x)' = (ae^{ax})\cdot x + (e^{ax}-1)$.<br />
+              Neuer Grenzwert: $ \lim_{x\rightarrow0}\frac{2x
+              \cosh(x^2)}{axe^{ax} + e^{ax}-1} $.<br />
+              Erneutes Einsetzen von $x=0$ führt wieder zu
+              $\frac{0}{0+1-1}=\frac{0}{0}$. Wir wenden de l'Hospital erneut
+              an.<br />
+              Zähler ableiten: $(2x \cosh(x^2))' = 2\cosh(x^2) + 2x \cdot
+              \sinh(x^2)\cdot 2x = 2\cosh(x^2) + 4x^2\sinh(x^2)$.<br />
+              Nenner ableiten: $(axe^{ax} + e^{ax}-1)' = (a e^{ax} + ax \cdot a
+              e^{ax}) + a e^{ax} = 2a e^{ax} + a^2x e^{ax}$.<br />
+              Neuer Grenzwert: $ \lim_{x\rightarrow0}\frac{2\cosh(x^2) +
+              4x^2\sinh(x^2)}{2a e^{ax} + a^2x e^{ax}} =
+              \frac{2\cosh(0)+0}{2ae^0+0} = \frac{2 \cdot 1}{2a} = \frac{1}{a}
+              $.
+            </p>
+          </details>
+        </li>
+      </ol>
     </main>
-    
+
     <footer>
-        <nav class="page-nav" aria-label="Seitennavigation">
-            <a href="05-ableitung-einfuehrung.html">← Vorheriges Kapitel</a>
-            <a href="training/06-uebungen-ableitungsregeln-loesungen.html">Zu den Übungen</a>
-            <a href="07-partielle-ableitungen.html">Nächstes Kapitel →</a>
-        </nav>
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a href="05-ableitung-einfuehrung.html">← Vorheriges Kapitel</a>
+        <a href="training/06-uebungen-ableitungsregeln-loesungen.html"
+          >Zu den Übungen</a
+        >
+        <a href="07-partielle-ableitungen.html">Nächstes Kapitel →</a>
+      </nav>
     </footer>
 
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
-    
+
     <script type="module" src="../main.js"></script>
-</body>
+  </body>
 </html>

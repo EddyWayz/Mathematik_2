@@ -1,6 +1,11 @@
+/**
+ * Initializes interactive task elements.
+ * It handles user input for tasks and provides immediate feedback
+ * based on whether the input matches the predefined answer.
+ */
 export default function initTasks() {
   const tasks = document.querySelectorAll('.task[data-answer]');
-  tasks.forEach(task => {
+  tasks.forEach((task) => {
     const input = task.querySelector('input');
     const button = task.querySelector('button');
     const feedback = task.querySelector('.feedback');

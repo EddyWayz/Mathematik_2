@@ -1,238 +1,506 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Einführung in die Integralrechnung, den Hauptsatz der Differential- und Integralrechnung, Integrationstechniken, sowie Anwendungen wie Flächen- und Volumenberechnung.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Einführung in die Integralrechnung, den Hauptsatz der Differential- und Integralrechnung, Integrationstechniken, sowie Anwendungen wie Flächen- und Volumenberechnung."
+    />
     <title>10 Integralrechnung - Lernskript Mathe</title>
 
     <script>
-  MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
-    svg: { fontCache: 'global' }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="10 Integralrechnung - Lernskript Mathe">
-<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
-<meta property="og:image" content="../images/placeholder.svg">
-<meta property="og:type" content="website">
-<link rel="stylesheet" href="../style.css">
-</head>
-<body>
-
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+        },
+        svg: { fontCache: 'global' },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+    <meta
+      property="og:title"
+      content="10 Integralrechnung - Lernskript Mathe"
+    />
+    <meta
+      property="og:description"
+      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
+    />
+    <meta property="og:image" content="../images/placeholder.svg" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
     <header class="page-header" role="banner">
-        <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel 10: Integralrechnung</span>
-        <div class="header-controls">
-            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
-        </div>
+      <a href="../index.html">Inhaltsverzeichnis</a>
+      <span>Kapitel 10: Integralrechnung</span>
+      <div class="header-controls">
+        <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          🌙
+        </button>
+      </div>
     </header>
 
     <main class="content-wrapper">
+      <h2 id="sec10">10 Integralrechnung</h2>
+      <h3>10.1 Lernziel</h3>
+      <p>
+        Nach dieser Lerneinheit wirst du den fundamentalen Zusammenhang zwischen
+        Differenzieren und Integrieren verstehen. Du wirst das bestimmte
+        Integral als Grenzwert von Flächensummen deuten, den Begriff der
+        Stammfunktion kennen und den Hauptsatz der Differential- und
+        Integralrechnung anwenden können, um bestimmte Integrale zu berechnen.
+        Du wirst die grundlegenden Integrationstechniken, insbesondere die
+        partielle Integration und die Integration durch Substitution,
+        beherrschen. Darüber hinaus wirst du in der Lage sein, Anwendungen wie
+        die Berechnung von Flächen, Rotationsvolumina und die Lösung von
+        Problemen mit Änderungsraten durchzuführen.
+      </p>
 
-        <h2 id="sec10">10 Integralrechnung</h2>
-        <h3>10.1 Lernziel</h3>
-        <p>Nach dieser Lerneinheit wirst du den fundamentalen Zusammenhang zwischen Differenzieren und Integrieren verstehen.  Du wirst das bestimmte Integral als Grenzwert von Flächensummen deuten, den Begriff der Stammfunktion kennen und den Hauptsatz der Differential- und Integralrechnung anwenden können, um bestimmte Integrale zu berechnen.  Du wirst die grundlegenden Integrationstechniken, insbesondere die partielle Integration und die Integration durch Substitution, beherrschen.  Darüber hinaus wirst du in der Lage sein, Anwendungen wie die Berechnung von Flächen, Rotationsvolumina und die Lösung von Problemen mit Änderungsraten durchzuführen. </p>
-        
-        <h3>10.2 Motivation und Kontext</h3>
-        <p>Die Integralrechnung ist die Umkehrung der Differentialrechnung.  Während die Ableitung eine momentane Änderungsrate misst (z.B. Geschwindigkeit), kann das Integral aus der Rate die Gesamtänderung über einen Zeitraum rekonstruieren (z.B. den zurückgelegten Weg).  Die Integralrechnung ist unverzichtbar in vielen Bereichen:</p>
+      <h3>10.2 Motivation und Kontext</h3>
+      <p>
+        Die Integralrechnung ist die Umkehrung der Differentialrechnung. Während
+        die Ableitung eine momentane Änderungsrate misst (z.B. Geschwindigkeit),
+        kann das Integral aus der Rate die Gesamtänderung über einen Zeitraum
+        rekonstruieren (z.B. den zurückgelegten Weg). Die Integralrechnung ist
+        unverzichtbar in vielen Bereichen:
+      </p>
+      <ul>
+        <li>
+          <strong>Flächen- und Volumenberechnung:</strong> Die Berechnung der
+          Querschnittsfläche einer Rampe oder des Volumens eines
+          Rotationskörpers sind klassische Anwendungen.
+        </li>
+        <li>
+          <strong>Physik:</strong> Berechnung von Arbeit (Integral von Kraft
+          über den Weg), Ladung (Integral des Stroms über die Zeit) oder
+          Schwerpunkten.
+        </li>
+        <li>
+          <strong>Statistik und Wahrscheinlichkeit:</strong> Die
+          Wahrscheinlichkeit, dass eine Zufallsvariable in einem bestimmten
+          Intervall liegt, wird durch das Integral über die
+          Wahrscheinlichkeitsdichtefunktion berechnet. Ein Beispiel ist die
+          Ausfallwahrscheinlichkeit von Bauteilen.
+        </li>
+        <li>
+          <strong>Signalverarbeitung:</strong> Techniken wie die
+          Fourier-Transformation, die Signale in ihre Frequenzanteile zerlegt,
+          basieren auf der Berechnung von Integralen.
+        </li>
+      </ul>
+
+      <h3>10.3 Das bestimmte Integral als Grenzwert</h3>
+      <p>
+        Die grundlegende Frage der Integralrechnung ist: Wie kann man den
+        Flächeninhalt unter einer krummlinigen Funktion exakt berechnen? Die
+        Idee besteht darin, die Fläche durch einfache geometrische Formen –
+        nämlich schmale Rechtecke – anzunähern und diesen Prozess dann unendlich
+        zu verfeinern.
+      </p>
+      <dl>
+        <dt>Annäherung durch Rechtecksummen (Riemann-Summen)</dt>
+        <dd>
+          Man unterteilt das Intervall $[a, b]$ in $n$ kleine Teilintervalle der
+          Breite $\Delta x_k$. In jedem Teilintervall errichtet man ein
+          Rechteck, dessen Höhe durch einen Funktionswert $f(x_k)$ in diesem
+          Intervall gegeben ist. Die Summe der Flächen dieser Rechtecke, die
+          sogenannte Riemann-Summe, nähert die Gesamtfläche an. $$ A \approx
+          \sum_{k=1}^{n}f(x_{k})\Delta x_{k} $$
+        </dd>
+
+        <dt>Das bestimmte Integral</dt>
+        <dd>
+          Lässt man die Anzahl der Rechtecke $n$ gegen unendlich gehen (und
+          damit die Breite jedes Rechtecks $\Delta x_k$ gegen null), so
+          konvergiert die Summe der Rechteckflächen gegen einen exakten Wert.
+          Dieser Grenzwert wird als <strong>bestimmtes Integral</strong> von $f$
+          über $[a,b]$ bezeichnet. $$ \int_{a}^{b} f(x)dx =
+          \lim_{n\to\infty}\sum_{k=1}^{n}f(x_{k})\Delta x_{k} $$ Der Wert des
+          Integrals ist die <strong>vorzeichenbehaftete Fläche</strong>:
+          Flächenanteile oberhalb der x-Achse zählen positiv, Anteile unterhalb
+          der x-Achse zählen negativ. Daher muss das Integral einer Funktion,
+          die auf dem gesamten Intervall negativ ist, auch negativ sein.
+        </dd>
+      </dl>
+
+      <div class="info-box video-box">
+        <h5>Erklärendes Video: Einführung in die Integralrechnung</h5>
+        <p>
+          Eine grundlegende Einführung, was ein Integral ist und wofür man es
+          braucht.
+        </p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/0vdcvDg-Lkk"
+          title="MathemaTrick: INTEGRALRECHNUNG einfach erklärt"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <h3>10.4 Der Hauptsatz der Differential- und Integralrechnung</h3>
+      <p>
+        Die Berechnung von Integralen über den Grenzwert von Summen ist extrem
+        aufwändig. Der entscheidende Durchbruch, der die Analysis begründete,
+        war die Entdeckung des fundamentalen Zusammenhangs zwischen
+        Differenzieren und Integrieren.
+      </p>
+      <dl>
+        <dt>Die Integralfunktion</dt>
+        <dd>
+          Man definiert eine Funktion $A(t)$, die den Flächeninhalt unter $f(x)$
+          von einer festen unteren Grenze $a$ bis zu einer variablen oberen
+          Grenze $t$ misst. $$ A(t) = \int_{a}^{t} f(x)dx $$ Diese Funktion wird
+          als Integralfunktion bezeichnet. Sie hat die Eigenschaft, dass $A(a) =
+          0$.
+        </dd>
+
+        <dt>Stammfunktion (unbestimmtes Integral)</dt>
+        <dd>
+          Eine Funktion $F(x)$ heißt Stammfunktion von $f(x)$, wenn ihre
+          Ableitung wieder $f(x)$ ergibt, also $F'(x)=f(x)$. Da die Ableitung
+          einer Konstante null ist, gibt es unendlich viele Stammfunktionen, die
+          sich durch eine Konstante $C$ unterscheiden. Man schreibt: $\int
+          f(x)dx = F(x)+C$.
+        </dd>
+
+        <dt>Der Hauptsatz</dt>
+        <dd>
+          Dieser Satz besteht aus zwei Teilen, die Differenzieren und
+          Integrieren als Umkehroperationen entlarven:
+          <ol>
+            <li>
+              Die Ableitung der Integralfunktion $A(t)$ ist die ursprüngliche
+              Funktion $f(t)$: $$ A'(t) = \frac{d}{dt} \int_a^t f(x)dx = f(t) $$
+              Das bedeutet, die Integralfunktion ist eine Stammfunktion von $f$.
+            </li>
+            <li>
+              Der Wert eines bestimmten Integrals ist die Differenz der
+              Stammfunktionswerte an den Grenzen: $$ \int_{a}^{b} f(x)dx =
+              [F(x)]_a^b = F(b) - F(a) $$ Dabei ist $F(x)$ eine beliebige
+              Stammfunktion von $f(x)$.
+            </li>
+          </ol>
+        </dd>
+      </dl>
+
+      <div class="info-box key-concept">
+        <h5>Kernaussage: Die Bedeutung des Hauptsatzes</h5>
+        <p>
+          Der Hauptsatz ist das Herzstück der Analysis. Er gibt uns ein
+          "Kochrezept", um Flächen (bestimmte Integrale) zu berechnen, indem wir
+          lediglich eine Stammfunktion finden und zwei Werte einsetzen. Das
+          umgeht die aufwändige Berechnung über den Grenzwert von Summen.
+        </p>
+        <div class="info-box video-box" style="margin-top: 15px">
+          <h5>Erklärendes Video: Der Hauptsatz</h5>
+          <p>
+            Dieses Video erklärt den fundamentalen Zusammenhang zwischen
+            Ableiten und Integrieren.
+          </p>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/bkSRmaxU58o"
+            title="Herr Locher: Hauptsatz der Differential und Integralrechnung"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <h3>10.5 Integrationstechniken</h3>
+      <p>
+        Während das Ableiten ein rein schematischer Prozess ist, ist das Finden
+        einer Stammfunktion oft eine "Kunst", die Erfahrung und die richtige
+        Strategie erfordert. Es gibt sogar einfache Funktionen wie $e^{-x^2}$,
+        deren Stammfunktion sich nicht durch elementare Funktionen ausdrücken
+        lässt.
+      </p>
+
+      <h4>10.5.1 Partielle Integration ("Produktintegration")</h4>
+      <p>
+        Diese Regel wird aus der Produktregel der Ableitung hergeleitet und
+        eignet sich für Integranden, die ein Produkt sind. Die Formel lautet: $$
+        \int u(x)v'(x)dx = u(x)v(x) - \int u'(x)v(x)dx $$
+      </p>
+      <div class="info-box tip">
+        <h5>Tipps zur Partiellen Integration</h5>
         <ul>
-            <li><strong>Flächen- und Volumenberechnung:</strong> Die Berechnung der Querschnittsfläche einer Rampe oder des Volumens eines Rotationskörpers sind klassische Anwendungen.</li>
-            <li><strong>Physik:</strong> Berechnung von Arbeit (Integral von Kraft über den Weg), Ladung (Integral des Stroms über die Zeit) oder Schwerpunkten.</li>
-            <li><strong>Statistik und Wahrscheinlichkeit:</strong> Die Wahrscheinlichkeit, dass eine Zufallsvariable in einem bestimmten Intervall liegt, wird durch das Integral über die Wahrscheinlichkeitsdichtefunktion berechnet. Ein Beispiel ist die Ausfallwahrscheinlichkeit von Bauteilen.</li>
-            <li><strong>Signalverarbeitung:</strong> Techniken wie die Fourier-Transformation, die Signale in ihre Frequenzanteile zerlegt, basieren auf der Berechnung von Integralen.</li>
+          <li>
+            <strong>Wahl von u und v':</strong> Wähle den Teil als $u(x)$, der
+            beim Ableiten einfacher wird (z.B. Polynome, Logarithmen). Wähle
+            $v'(x)$ so, dass seine Stammfunktion $v(x)$ leicht zu finden ist
+            (z.B. $e^x, \sin x, \cos x$).
+          </li>
+          <li>
+            <strong>Trick für Logarithmen:</strong> Um $\int \ln x \, dx$ zu
+            lösen, schreibe den Integranden als $1 \cdot \ln x$ und wähle $u=\ln
+            x$ und $v'=1$.
+          </li>
+          <li>
+            <strong>Trick "Kreisschluss":</strong> Manchmal führt mehrfache
+            partielle Integration wieder zum Ausgangsintegral. Man erhält dann
+            eine algebraische Gleichung der Form $I = \text{Term} - I$, die man
+            einfach nach dem Integral $I$ auflösen kann.
+          </li>
         </ul>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/S5MopJe3iuk"
+          title="Video: Partielle Integration (Herleitung & Beispiel)"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
 
-        <h3>10.3 Das bestimmte Integral als Grenzwert</h3>
-        <p>Die grundlegende Frage der Integralrechnung ist: Wie kann man den Flächeninhalt unter einer krummlinigen Funktion exakt berechnen?  Die Idee besteht darin, die Fläche durch einfache geometrische Formen – nämlich schmale Rechtecke – anzunähern und diesen Prozess dann unendlich zu verfeinern. </p>
-        <dl>
-            <dt>Annäherung durch Rechtecksummen (Riemann-Summen)</dt>
-            <dd>Man unterteilt das Intervall $[a, b]$ in $n$ kleine Teilintervalle der Breite $\Delta x_k$. In jedem Teilintervall errichtet man ein Rechteck, dessen Höhe durch einen Funktionswert $f(x_k)$ in diesem Intervall gegeben ist. Die Summe der Flächen dieser Rechtecke, die sogenannte Riemann-Summe, nähert die Gesamtfläche an. 
-            $$ A \approx \sum_{k=1}^{n}f(x_{k})\Delta x_{k} $$
-            </dd>
-            
-            <dt>Das bestimmte Integral</dt>
-            <dd>Lässt man die Anzahl der Rechtecke $n$ gegen unendlich gehen (und damit die Breite jedes Rechtecks $\Delta x_k$ gegen null), so konvergiert die Summe der Rechteckflächen gegen einen exakten Wert.  Dieser Grenzwert wird als <strong>bestimmtes Integral</strong> von $f$ über $[a,b]$ bezeichnet. 
-            $$ \int_{a}^{b} f(x)dx = \lim_{n\to\infty}\sum_{k=1}^{n}f(x_{k})\Delta x_{k} $$
-            Der Wert des Integrals ist die <strong>vorzeichenbehaftete Fläche</strong>: Flächenanteile oberhalb der x-Achse zählen positiv, Anteile unterhalb der x-Achse zählen negativ. Daher muss das Integral einer Funktion, die auf dem gesamten Intervall negativ ist, auch negativ sein.</dd>
-        </dl>
+      <h4>10.5.2 Integration durch Substitution ("Kettenregel rückwärts")</h4>
+      <p>
+        Dies ist das schlagkräftigste Verfahren und wird bei verketteten
+        Funktionen angewendet. Es basiert auf der Umkehrung der Kettenregel.
+      </p>
+      <ol>
+        <li>
+          <strong>Analyse:</strong> Der Integrand enthält eine "innere Funktion"
+          $u=g(x)$, deren Ableitung $g'(x)$ (oder ein Vielfaches davon)
+          ebenfalls als Faktor im Integranden vorkommt.
+        </li>
+        <li><strong>Substitution:</strong> Setze $u = g(x)$.</li>
+        <li>
+          <strong>Differential ersetzen:</strong> Berechne $\frac{du}{dx} =
+          g'(x)$ und stelle nach $dx$ um: $dx = \frac{du}{g'(x)}$.
+        </li>
+        <li>
+          <strong>Einsetzen und Kürzen:</strong> Setze $u$ und $dx$ in das
+          Integral ein. Im Idealfall kürzt sich der $g'(x)$-Term weg.
+        </li>
+        <li>
+          <strong>Integrieren und Rücksubstitution:</strong> Löse das Integral
+          nach $u$ und ersetze am Ende $u$ wieder durch $g(x)$. Bei
+          <strong>bestimmten Integralen</strong> müssen auch die Grenzen in die
+          neue Variable umgerechnet werden, oder man substituiert zurück und
+          verwendet die alten Grenzen.
+        </li>
+      </ol>
+      <div class="info-box video-box">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/cLaIbPmqOx8"
+          title="Video: Integration durch SUBSTITUTION"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
 
-        <div class="info-box video-box">
-            <h5>Erklärendes Video: Einführung in die Integralrechnung</h5>
-            <p>Eine grundlegende Einführung, was ein Integral ist und wofür man es braucht.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/0vdcvDg-Lkk" title="MathemaTrick: INTEGRALRECHNUNG einfach erklärt" frameborder="0" allowfullscreen></iframe>
-        </div>
-        
-        <h3>10.4 Der Hauptsatz der Differential- und Integralrechnung</h3>
-        <p>Die Berechnung von Integralen über den Grenzwert von Summen ist extrem aufwändig. Der entscheidende Durchbruch, der die Analysis begründete, war die Entdeckung des fundamentalen Zusammenhangs zwischen Differenzieren und Integrieren. </p>
-        <dl>
-            <dt>Die Integralfunktion</dt>
-            <dd>Man definiert eine Funktion $A(t)$, die den Flächeninhalt unter $f(x)$ von einer festen unteren Grenze $a$ bis zu einer variablen oberen Grenze $t$ misst. 
-            $$ A(t) = \int_{a}^{t} f(x)dx $$
-            Diese Funktion wird als Integralfunktion bezeichnet.  Sie hat die Eigenschaft, dass $A(a) = 0$.</dd>
-            
-            <dt>Stammfunktion (unbestimmtes Integral)</dt>
-            <dd>Eine Funktion $F(x)$ heißt Stammfunktion von $f(x)$, wenn ihre Ableitung wieder $f(x)$ ergibt, also $F'(x)=f(x)$.  Da die Ableitung einer Konstante null ist, gibt es unendlich viele Stammfunktionen, die sich durch eine Konstante $C$ unterscheiden.  Man schreibt: $\int f(x)dx = F(x)+C$.</dd>
-            
-            <dt>Der Hauptsatz</dt>
-            <dd>Dieser Satz besteht aus zwei Teilen, die Differenzieren und Integrieren als Umkehroperationen entlarven: 
-                <ol>
-                    <li>Die Ableitung der Integralfunktion $A(t)$ ist die ursprüngliche Funktion $f(t)$: 
-                    $$ A'(t) = \frac{d}{dt} \int_a^t f(x)dx = f(t) $$
-                    Das bedeutet, die Integralfunktion ist eine Stammfunktion von $f$. 
-                    </li>
-                    <li>Der Wert eines bestimmten Integrals ist die Differenz der Stammfunktionswerte an den Grenzen: 
-                    $$ \int_{a}^{b} f(x)dx = [F(x)]_a^b = F(b) - F(a) $$
-                    Dabei ist $F(x)$ eine beliebige Stammfunktion von $f(x)$. 
-                    </li>
-                </ol>
-            </dd>
-        </dl>
-        
-        <div class="info-box key-concept">
-            <h5>Kernaussage: Die Bedeutung des Hauptsatzes</h5>
-            <p>Der Hauptsatz ist das Herzstück der Analysis. Er gibt uns ein "Kochrezept", um Flächen (bestimmte Integrale) zu berechnen, indem wir lediglich eine Stammfunktion finden und zwei Werte einsetzen.  Das umgeht die aufwändige Berechnung über den Grenzwert von Summen. </p>
-            <div class="info-box video-box" style="margin-top: 15px;">
-                <h5>Erklärendes Video: Der Hauptsatz</h5>
-                <p>Dieses Video erklärt den fundamentalen Zusammenhang zwischen Ableiten und Integrieren.</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/bkSRmaxU58o" title="Herr Locher: Hauptsatz der Differential und Integralrechnung" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
+      <h3>10.6 Weitere Regeln und Anwendungen</h3>
+      <h4>10.6.1 Linearität des Integrals</h4>
+      <p>
+        Wie beim Ableiten dürfen konstante Faktoren vor das Integral gezogen und
+        Summen gliedweise integriert werden. $$ \int (c_1 f(x) + c_2 g(x))dx =
+        c_1\int f(x)dx + c_2\int g(x)dx $$
+      </p>
 
-        <h3>10.5 Integrationstechniken</h3>
-        <p>Während das Ableiten ein rein schematischer Prozess ist, ist das Finden einer Stammfunktion oft eine "Kunst", die Erfahrung und die richtige Strategie erfordert.  Es gibt sogar einfache Funktionen wie $e^{-x^2}$, deren Stammfunktion sich nicht durch elementare Funktionen ausdrücken lässt.</p>
-        
-        <h4>10.5.1 Partielle Integration ("Produktintegration")</h4>
-        <p>Diese Regel wird aus der Produktregel der Ableitung hergeleitet und eignet sich für Integranden, die ein Produkt sind.  Die Formel lautet:
-        $$ \int u(x)v'(x)dx = u(x)v(x) - \int u'(x)v(x)dx $$</p>
-        <div class="info-box tip">
-            <h5>Tipps zur Partiellen Integration</h5>
-            <ul>
-                <li><strong>Wahl von u und v':</strong> Wähle den Teil als $u(x)$, der beim Ableiten einfacher wird (z.B. Polynome, Logarithmen). Wähle $v'(x)$ so, dass seine Stammfunktion $v(x)$ leicht zu finden ist (z.B. $e^x, \sin x, \cos x$).</li>
-                <li><strong>Trick für Logarithmen:</strong> Um $\int \ln x \, dx$ zu lösen, schreibe den Integranden als $1 \cdot \ln x$ und wähle $u=\ln x$ und $v'=1$.</li>
-                <li><strong>Trick "Kreisschluss":</strong> Manchmal führt mehrfache partielle Integration wieder zum Ausgangsintegral. Man erhält dann eine algebraische Gleichung der Form $I = \text{Term} - I$, die man einfach nach dem Integral $I$ auflösen kann.</li>
-            </ul>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/S5MopJe3iuk" title="Video: Partielle Integration (Herleitung & Beispiel)" frameborder="0" allowfullscreen></iframe>
-        </div>
+      <h4>10.6.2 Vereinfachungen für gerade und ungerade Funktionen</h4>
+      <p>
+        Für Integrale über ein zum Ursprung symmetrisches Intervall $[-a, a]$
+        gelten nützliche Vereinfachungen:
+      </p>
+      <ul>
+        <li>
+          Ist $f(x)$ eine <strong>ungerade Funktion</strong> (punktsymmetrisch,
+          $f(-x)=-f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 0$.
+        </li>
+        <li>
+          Ist $f(x)$ eine <strong>gerade Funktion</strong> (achsensymmetrisch,
+          $f(-x)=f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 2 \int_{0}^{a}
+          f(x)dx$.
+        </li>
+      </ul>
 
-        <h4>10.5.2 Integration durch Substitution ("Kettenregel rückwärts")</h4>
-        <p>Dies ist das schlagkräftigste Verfahren und wird bei verketteten Funktionen angewendet.  Es basiert auf der Umkehrung der Kettenregel.</p>
-        <ol>
-            <li><strong>Analyse:</strong> Der Integrand enthält eine "innere Funktion" $u=g(x)$, deren Ableitung $g'(x)$ (oder ein Vielfaches davon) ebenfalls als Faktor im Integranden vorkommt.</li>
-            <li><strong>Substitution:</strong> Setze $u = g(x)$.</li>
-            <li><strong>Differential ersetzen:</strong> Berechne $\frac{du}{dx} = g'(x)$ und stelle nach $dx$ um: $dx = \frac{du}{g'(x)}$.</li>
-            <li><strong>Einsetzen und Kürzen:</strong> Setze $u$ und $dx$ in das Integral ein. Im Idealfall kürzt sich der $g'(x)$-Term weg.</li>
-            <li><strong>Integrieren und Rücksubstitution:</strong> Löse das Integral nach $u$ und ersetze am Ende $u$ wieder durch $g(x)$. Bei <strong>bestimmten Integralen</strong> müssen auch die Grenzen in die neue Variable umgerechnet werden, oder man substituiert zurück und verwendet die alten Grenzen.</li>
-        </ol>
-        <div class="info-box video-box">
-             <iframe width="560" height="315" src="https://www.youtube.com/embed/cLaIbPmqOx8" title="Video: Integration durch SUBSTITUTION" frameborder="0" allowfullscreen></iframe>
-        </div>
+      <h4>10.6.3 Flächenberechnung</h4>
+      <p>
+        Um die physikalische Fläche zwischen einer Kurve und der x-Achse zu
+        berechnen, muss man die Beträge der Flächenstücke addieren. Wenn die
+        Funktion $f(x)$ im Intervall $[a,b]$ Nullstellen hat, muss das Integral
+        aufgeteilt und die Beträge der Teilergebnisse addiert werden. Für eine
+        Nullstelle bei $c \in (a,b)$ gilt: $$ A = \left| \int_a^c f(x)dx \right|
+        + \left| \int_c^b f(x)dx \right| $$
+      </p>
 
-        <h3>10.6 Weitere Regeln und Anwendungen</h3>
-        <h4>10.6.1 Linearität des Integrals</h4>
-        <p>Wie beim Ableiten dürfen konstante Faktoren vor das Integral gezogen und Summen gliedweise integriert werden.
-        $$ \int (c_1 f(x) + c_2 g(x))dx = c_1\int f(x)dx + c_2\int g(x)dx $$
-        </p>
+      <h4>10.6.4 Volumen von Rotationskörpern</h4>
+      <p>
+        Rotiert der Graph der Funktion $f(x)$ im Intervall $[a,b]$ um die
+        x-Achse, so kann das Volumen des entstehenden Körpers mit der
+        "Scheibchenmethode" berechnet werden. Das Volumen ist das Integral über
+        die Flächen der infinitesimal dünnen Kreisscheiben $A(x) = \pi
+        [f(x)]^2$. $$ V = \pi \int_a^b [f(x)]^2 dx $$
+      </p>
 
-        <h4>10.6.2 Vereinfachungen für gerade und ungerade Funktionen</h4>
-        <p>Für Integrale über ein zum Ursprung symmetrisches Intervall $[-a, a]$ gelten nützliche Vereinfachungen:</p>
-        <ul>
-            <li>Ist $f(x)$ eine <strong>ungerade Funktion</strong> (punktsymmetrisch, $f(-x)=-f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 0$.</li>
-            <li>Ist $f(x)$ eine <strong>gerade Funktion</strong> (achsensymmetrisch, $f(-x)=f(x)$), dann ist $\int_{-a}^{a} f(x)dx = 2 \int_{0}^{a} f(x)dx$.</li>
-        </ul>
-
-        <h4>10.6.3 Flächenberechnung</h4>
-        <p>Um die physikalische Fläche zwischen einer Kurve und der x-Achse zu berechnen, muss man die Beträge der Flächenstücke addieren. Wenn die Funktion $f(x)$ im Intervall $[a,b]$ Nullstellen hat, muss das Integral aufgeteilt und die Beträge der Teilergebnisse addiert werden. Für eine Nullstelle bei $c \in (a,b)$ gilt:
-        $$ A = \left| \int_a^c f(x)dx \right| + \left| \int_c^b f(x)dx \right| $$
-        </p>
-        
-        <h4>10.6.4 Volumen von Rotationskörpern</h4>
-        <p>Rotiert der Graph der Funktion $f(x)$ im Intervall $[a,b]$ um die x-Achse, so kann das Volumen des entstehenden Körpers mit der "Scheibchenmethode" berechnet werden. Das Volumen ist das Integral über die Flächen der infinitesimal dünnen Kreisscheiben $A(x) = \pi [f(x)]^2$.
-        $$ V = \pi \int_a^b [f(x)]^2 dx $$
-        </p>
-
-        <h4>10.6.5 Uneigentliche Integrale</h4>
-        <p>Integrale, bei denen mindestens eine der Integrationsgrenzen unendlich ist oder die Funktion innerhalb des Intervalls eine Polstelle hat, werden über einen Grenzwertprozess gelöst. Beispiel für eine unendliche Grenze:
-        $$ \int_a^\infty f(x)dx = \lim_{b \to \infty} \int_a^b f(x)dx $$
+      <h4>10.6.5 Uneigentliche Integrale</h4>
+      <p>
+        Integrale, bei denen mindestens eine der Integrationsgrenzen unendlich
+        ist oder die Funktion innerhalb des Intervalls eine Polstelle hat,
+        werden über einen Grenzwertprozess gelöst. Beispiel für eine unendliche
+        Grenze: $$ \int_a^\infty f(x)dx = \lim_{b \to \infty} \int_a^b f(x)dx $$
         Wenn dieser Grenzwert existiert, konvergiert das Integral.
-        </p>
-        <div class="info-box video-box">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ce9Din83uFY" title="Video: Uneigentliche INTEGRALE berechnen" frameborder="0" allowfullscreen></iframe>
-        </div>
-        
-        <div class="info-box warning">
-            <h5>Häufige Fehler bei der Integration</h5>
-            <ul>
-                <li><strong>Konstante vergessen:</strong> Bei <strong>unbestimmten</strong> Integralen immer die Integrationskonstante `+ C` am Ende hinzufügen!</li>
-                <li><strong>Grenzen nicht transformiert:</strong> Bei der Substitution von <strong>bestimmten</strong> Integralen müssen auch die Integrationsgrenzen in die neue Variable umgerechnet werden.  Vergisst man dies, ist das Ergebnis falsch.</li>
-                <li><strong>Produkt/Quotient falsch integriert:</strong> Das Integral eines Produkts ist NICHT das Produkt der Integrale. Hierfür muss die partielle Integration verwendet werden. </li>
-            </ul>
-        </div>
-        
-        <h3>10.7 Übungsaufgaben</h3>
-        <div class="task-hint">
-            <p><strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$ durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder 1 ist, wähle stattdessen 5 bzw. 6.</p>
-        </div>
-        <ol>
-            <li><strong>(Einfach)</strong> Berechnen Sie das Integral $\int_{-\pi}^{\pi} x^3 \cos(x) \sin^2(x) dx$, ohne zu rechnen.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Der Integrand ist das Produkt aus einer ungeraden Funktion ($x^3$) und geraden Funktionen ($\cos(x)$, $\sin^2(x)$). Das Gesamtprodukt ist eine ungerade Funktion. Das Integral einer ungeraden Funktion über ein symmetrisches Intervall ist immer 0. </p>
-                </details>
-            </li>
-            <li><strong>(Partielle Integration)</strong> Berechnen Sie das unbestimmte Integral $\int x^2 \cos(x) dx$.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Zweifache partielle Integration. 1. Wahl: $u=x^2, v'=\cos x$. Ergibt: $x^2\sin x - \int 2x \sin x dx$.<br>
-                    2. Partielle Integration auf das neue Integral mit $u=2x, v'=\sin x$. Ergibt: $2x(-\cos x) - \int 2(-\cos x)dx = -2x\cos x + 2\sin x$.<br>
-                    Zusammensetzen: $x^2\sin x - (-2x\cos x + 2\sin x) + C = x^2\sin x + 2x\cos x - 2\sin x + C$.</p>
-                </details>
-            </li>
-            <li><strong>(Substitution)</strong> Berechnen Sie das unbestimmte Integral $\int \frac{2^x}{2^x+1} dx$.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Substitution: $u = 2^x+1 \implies \frac{du}{dx} = \ln(2) \cdot 2^x \implies dx = \frac{du}{\ln(2)2^x}$.<br>
-                    Einsetzen: $\int \frac{2^x}{u} \frac{du}{\ln(2)2^x} = \frac{1}{\ln 2} \int \frac{1}{u} du = \frac{1}{\ln 2} \ln|u| + C$.<br>
-                    Rücksubstitution: $\frac{\ln(2^x+1)}{\ln 2} + C$.</p>
-                </details>
-            </li>
-            <li><strong>(Anwendung Wahrscheinlichkeit)</strong> Die Wahrscheinlichkeitsdichte für den Ausfall einer Festplatte sei $h(t)=\frac{a}{750}e^{-(at/750)}$ für $t \ge 0$.  Berechnen Sie die Wahrscheinlichkeit, dass die Festplatte mindestens 50 Tage lebt, also im Intervall $[50, \infty)$ ausfällt.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Gesucht ist das uneigentliche Integral $\int_{50}^{\infty} \frac{a}{750}e^{-at/750} dt$.<br>
-                    Stammfunktion: $F(t) = \frac{a}{750} \cdot \frac{1}{-a/750} e^{-at/750} = -e^{-at/750}$.<br>
-                    Grenzen einsetzen: $[-e^{-at/750}]_{50}^{\infty} = \lim_{b\to\infty}(-e^{-ab/750}) - (-e^{-a \cdot 50/750}) = 0 + e^{-a/15}$.<br>
-                    Die Wahrscheinlichkeit beträgt $e^{-a/15}$.</p>
-                </details>
-            </li>
-             <li><strong>(Flächenberechnung)</strong> Berechnen Sie die Fläche zwischen der Kurve $f(x)=x^2-3$, der x-Achse, $x=0$ und $x=3$.
-                <details>
-                    <summary>Lösung anzeigen</summary>
-                    <p>Die Funktion hat eine Nullstelle bei $x=\sqrt{3}$ im Intervall $[0,3]$. Zwischen 0 und $\sqrt{3}$ ist sie negativ, danach positiv. Wir müssen die Beträge der Teilflächen addieren.<br>
-                    $A = |\int_0^{\sqrt{3}} (x^2-3)dx| + |\int_{\sqrt{3}}^3 (x^2-3)dx|$.<br>
-                    Stammfunktion: $F(x) = \frac{x^3}{3}-3x$.<br>
-                    $F(\sqrt{3}) = \frac{3\sqrt{3}}{3}-3\sqrt{3} = -2\sqrt{3}$.<br>
-                    $F(0) = 0$.<br>
-                    $F(3) = \frac{27}{3}-9 = 0$.<br>
-                    $A = |F(\sqrt{3})-F(0)| + |F(3)-F(\sqrt{3})| = |-2\sqrt{3}| + |0 - (-2\sqrt{3})| = 2\sqrt{3} + 2\sqrt{3} = 4\sqrt{3} \approx 6.9282$.</p>
-                </details>
-            </li>
-        </ol>
+      </p>
+      <div class="info-box video-box">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Ce9Din83uFY"
+          title="Video: Uneigentliche INTEGRALE berechnen"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
 
+      <div class="info-box warning">
+        <h5>Häufige Fehler bei der Integration</h5>
+        <ul>
+          <li>
+            <strong>Konstante vergessen:</strong> Bei
+            <strong>unbestimmten</strong> Integralen immer die
+            Integrationskonstante `+ C` am Ende hinzufügen!
+          </li>
+          <li>
+            <strong>Grenzen nicht transformiert:</strong> Bei der Substitution
+            von <strong>bestimmten</strong> Integralen müssen auch die
+            Integrationsgrenzen in die neue Variable umgerechnet werden.
+            Vergisst man dies, ist das Ergebnis falsch.
+          </li>
+          <li>
+            <strong>Produkt/Quotient falsch integriert:</strong> Das Integral
+            eines Produkts ist NICHT das Produkt der Integrale. Hierfür muss die
+            partielle Integration verwendet werden.
+          </li>
+        </ul>
+      </div>
+
+      <h3>10.7 Übungsaufgaben</h3>
+      <div class="task-hint">
+        <p>
+          <strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$
+          durch die letzte Stelle deiner Matrikelnummer. Falls die Ziffer 0 oder
+          1 ist, wähle stattdessen 5 bzw. 6.
+        </p>
+      </div>
+      <ol>
+        <li>
+          <strong>(Einfach)</strong> Berechnen Sie das Integral
+          $\int_{-\pi}^{\pi} x^3 \cos(x) \sin^2(x) dx$, ohne zu rechnen.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Der Integrand ist das Produkt aus einer ungeraden Funktion ($x^3$)
+              und geraden Funktionen ($\cos(x)$, $\sin^2(x)$). Das Gesamtprodukt
+              ist eine ungerade Funktion. Das Integral einer ungeraden Funktion
+              über ein symmetrisches Intervall ist immer 0.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Partielle Integration)</strong> Berechnen Sie das unbestimmte
+          Integral $\int x^2 \cos(x) dx$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Zweifache partielle Integration. 1. Wahl: $u=x^2, v'=\cos x$.
+              Ergibt: $x^2\sin x - \int 2x \sin x dx$.<br />
+              2. Partielle Integration auf das neue Integral mit $u=2x, v'=\sin
+              x$. Ergibt: $2x(-\cos x) - \int 2(-\cos x)dx = -2x\cos x + 2\sin
+              x$.<br />
+              Zusammensetzen: $x^2\sin x - (-2x\cos x + 2\sin x) + C = x^2\sin x
+              + 2x\cos x - 2\sin x + C$.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Substitution)</strong> Berechnen Sie das unbestimmte Integral
+          $\int \frac{2^x}{2^x+1} dx$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Substitution: $u = 2^x+1 \implies \frac{du}{dx} = \ln(2) \cdot 2^x
+              \implies dx = \frac{du}{\ln(2)2^x}$.<br />
+              Einsetzen: $\int \frac{2^x}{u} \frac{du}{\ln(2)2^x} = \frac{1}{\ln
+              2} \int \frac{1}{u} du = \frac{1}{\ln 2} \ln|u| + C$.<br />
+              Rücksubstitution: $\frac{\ln(2^x+1)}{\ln 2} + C$.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Anwendung Wahrscheinlichkeit)</strong> Die
+          Wahrscheinlichkeitsdichte für den Ausfall einer Festplatte sei
+          $h(t)=\frac{a}{750}e^{-(at/750)}$ für $t \ge 0$. Berechnen Sie die
+          Wahrscheinlichkeit, dass die Festplatte mindestens 50 Tage lebt, also
+          im Intervall $[50, \infty)$ ausfällt.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Gesucht ist das uneigentliche Integral $\int_{50}^{\infty}
+              \frac{a}{750}e^{-at/750} dt$.<br />
+              Stammfunktion: $F(t) = \frac{a}{750} \cdot \frac{1}{-a/750}
+              e^{-at/750} = -e^{-at/750}$.<br />
+              Grenzen einsetzen: $[-e^{-at/750}]_{50}^{\infty} =
+              \lim_{b\to\infty}(-e^{-ab/750}) - (-e^{-a \cdot 50/750}) = 0 +
+              e^{-a/15}$.<br />
+              Die Wahrscheinlichkeit beträgt $e^{-a/15}$.
+            </p>
+          </details>
+        </li>
+        <li>
+          <strong>(Flächenberechnung)</strong> Berechnen Sie die Fläche zwischen
+          der Kurve $f(x)=x^2-3$, der x-Achse, $x=0$ und $x=3$.
+          <details>
+            <summary>Lösung anzeigen</summary>
+            <p>
+              Die Funktion hat eine Nullstelle bei $x=\sqrt{3}$ im Intervall
+              $[0,3]$. Zwischen 0 und $\sqrt{3}$ ist sie negativ, danach
+              positiv. Wir müssen die Beträge der Teilflächen addieren.<br />
+              $A = |\int_0^{\sqrt{3}} (x^2-3)dx| + |\int_{\sqrt{3}}^3
+              (x^2-3)dx|$.<br />
+              Stammfunktion: $F(x) = \frac{x^3}{3}-3x$.<br />
+              $F(\sqrt{3}) = \frac{3\sqrt{3}}{3}-3\sqrt{3} = -2\sqrt{3}$.<br />
+              $F(0) = 0$.<br />
+              $F(3) = \frac{27}{3}-9 = 0$.<br />
+              $A = |F(\sqrt{3})-F(0)| + |F(3)-F(\sqrt{3})| = |-2\sqrt{3}| + |0 -
+              (-2\sqrt{3})| = 2\sqrt{3} + 2\sqrt{3} = 4\sqrt{3} \approx 6.9282$.
+            </p>
+          </details>
+        </li>
+      </ol>
     </main>
-    
+
     <footer>
-        <nav class="page-nav" aria-label="Seitennavigation">
-            <a href="09-anwendungen-diff.html">← Vorheriges Kapitel</a>
-            <a href="training/09-uebungen-integralrechnung-loesungen.html">Zu den Übungen</a>
-            <a href="11-unendliche-reihen.html">Nächstes Kapitel →</a>
-        </nav>
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a href="09-anwendungen-diff.html">← Vorheriges Kapitel</a>
+        <a href="training/09-uebungen-integralrechnung-loesungen.html"
+          >Zu den Übungen</a
+        >
+        <a href="11-unendliche-reihen.html">Nächstes Kapitel →</a>
+      </nav>
     </footer>
 
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
-    
+
     <script type="module" src="../main.js"></script>
-</body>
+  </body>
 </html>

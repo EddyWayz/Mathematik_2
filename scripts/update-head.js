@@ -1,9 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-const fragmentPath = path.join(__dirname, '..', 'templates', 'head-fragment.html');
+const fragmentPath = path.join(
+  __dirname,
+  '..',
+  'templates',
+  'head-fragment.html'
+);
 const chaptersDir = path.join(__dirname, '..', 'chapters');
-
 
 function updateHtml(html, frag, stylePath) {
   const link = `<link rel="stylesheet" href="${stylePath}">`;
@@ -20,7 +24,10 @@ function setOgTitle(html) {
   const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
   if (!titleMatch) return html;
   const title = titleMatch[1];
-  return html.replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`);
+  return html.replace(
+    /<meta property="og:title" content="[^"]*">/,
+    `<meta property="og:title" content="${title}">`
+  );
 }
 
 function updateAll() {

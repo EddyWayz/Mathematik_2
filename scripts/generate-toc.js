@@ -13,20 +13,26 @@ function getTitle(filePath) {
 function buildToc() {
   const files = fs
     .readdirSync(chaptersDir)
-    .filter(f => f.endsWith('.html'))
+    .filter((f) => f.endsWith('.html'))
     .sort();
 
   const items = files
-    .map(f => {
+    .map((f) => {
       const title = getTitle(path.join(chaptersDir, f));
       return `                <li><a href="chapters/${f}">${title}</a></li>`;
     })
     .join('\n');
 
   let indexHtml = fs.readFileSync(indexPath, 'utf8');
-  indexHtml = indexHtml.replace(/<nav class="toc">[\s\S]*?<\/nav>/m, match => {
-    return match.replace(/<ul>[\s\S]*?<\/ul>/m, `<ul>\n${items}\n            </ul>`);
-  });
+  indexHtml = indexHtml.replace(
+    /<nav class="toc">[\s\S]*?<\/nav>/m,
+    (match) => {
+      return match.replace(
+        /<ul>[\s\S]*?<\/ul>/m,
+        `<ul>\n${items}\n            </ul>`
+      );
+    }
+  );
 
   fs.writeFileSync(indexPath, indexHtml);
 }

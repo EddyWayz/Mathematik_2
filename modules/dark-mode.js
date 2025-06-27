@@ -1,9 +1,14 @@
+/**
+ * Initializes dark mode functionality.
+ * Toggles dark mode on and off based on user clicks and stores the preference in local storage.
+ * Applies the saved theme on page load.
+ */
 export default function initDarkMode() {
   const toggleButton = document.getElementById('dark-mode-toggle');
   if (!toggleButton) return;
   const body = document.body;
 
-  const applyTheme = theme => {
+  const applyTheme = (theme) => {
     if (theme === 'dark') {
       body.classList.add('dark-mode');
       toggleButton.textContent = '☀️';

@@ -1,3 +1,7 @@
+/**
+ * Initializes a scroll progress bar at the top of the page.
+ * The bar visually indicates the user's reading progress through the document.
+ */
 export default function initScrollProgress() {
   const bar = document.createElement('div');
   bar.id = 'scroll-progress';
@@ -10,7 +14,8 @@ export default function initScrollProgress() {
 
   const update = () => {
     const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
     const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = progress + '%';
     bar.setAttribute('aria-valuenow', progress.toFixed(0));

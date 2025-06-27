@@ -26,26 +26,30 @@ const ASSETS = [
   '/chapters/12-taylorreihen.html',
   '/chapters/13-fourierreihen.html',
   '/chapters/14-dgl.html',
-  '/chapters/15-klausurvorbereitung.html'
+  '/chapters/15-klausurvorbereitung.html',
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then(resp => {
+    caches.match(event.request).then((resp) => {
       if (resp) return resp;
-      return fetch(event.request).then(networkResp => {
-        if (event.request.method === 'GET' && networkResp.ok) {
-          const clone = networkResp.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        }
-        return networkResp;
-      }).catch(() => caches.match('/index.html'));
+      return fetch(event.request)
+        .then((networkResp) => {
+          if (event.request.method === 'GET' && networkResp.ok) {
+            const clone = networkResp.clone();
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(event.request, clone));
+          }
+          return networkResp;
+        })
+        .catch(() => caches.match('/index.html'));
     })
   );
 });

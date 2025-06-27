@@ -1,310 +1,536 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lösungen und Klassifizierungen zu den Übungsaufgaben der Kombinatorik aus dem Übungsblatt Mathe2-02-Üb-Kombinatorik.pdf.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lösungen und Klassifizierungen zu den Übungsaufgaben der Kombinatorik aus dem Übungsblatt Mathe2-02-Üb-Kombinatorik.pdf."
+    />
     <title>Übungen 02: Variationen und Kombinationen - Lösungen</title>
 
     <script>
-  MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
-    svg: { fontCache: 'global' }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Übungen 02: Variationen und Kombinationen - Lösungen">
-<meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
-<meta property="og:image" content="../../images/placeholder.svg">
-<meta property="og:type" content="website">
-<link rel="stylesheet" href="../../style.css">
-</head>
-<body class="training">
-
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+        },
+        svg: { fontCache: 'global' },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+    <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml" />
+    <meta
+      property="og:title"
+      content="Übungen 02: Variationen und Kombinationen - Lösungen"
+    />
+    <meta
+      property="og:description"
+      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
+    />
+    <meta property="og:image" content="../../images/placeholder.svg" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body class="training">
     <header class="page-header" role="banner">
-        <a href="../../index.html">Inhaltsverzeichnis</a>
-        <span>Übungen Kapitel 2: Kombinationen</span>
-        <div class="header-controls">
-            <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
-        </div>
+      <a href="../../index.html">Inhaltsverzeichnis</a>
+      <span>Übungen Kapitel 2: Kombinationen</span>
+      <div class="header-controls">
+        <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">
+          🌙
+        </button>
+      </div>
     </header>
 
     <main class="content-wrapper">
-        <h2 id="ueb02">Übungen 02: Variationen und Kombinationen - Lösungen</h2>
-        
-        <p>Hier finden Sie die Lösungsformeln und Klassifizierungen für die Aufgaben aus dem PDF <code>Mathe2-02-Üb-Kombinatorik.pdf</code>.</p>
+      <h2 id="ueb02">Übungen 02: Variationen und Kombinationen - Lösungen</h2>
 
-        <div class="info-box tip">
-            <h5>Grundlagen für die Passwort-Aufgaben</h5>
-            <p>Die Anzahl der verfügbaren Zeichen ist: 26 Buchstaben (ohne Umlaute, Groß-/Kleinschreibung nicht unterschieden) + 10 Ziffern = <strong>36 Zeichen</strong>.</p>
-        </div>
+      <p>
+        Hier finden Sie die Lösungsformeln und Klassifizierungen für die
+        Aufgaben aus dem PDF <code>Mathe2-02-Üb-Kombinatorik.pdf</code>.
+      </p>
 
-        <details>
-            <summary><h4>1. Lösungen: Beispiele Zusammenspiel der Summen- und Produktregel</h4></summary>
-            <ol>
-                <li>
-                    <strong>Wie viele Zeichen stehen für jede Stelle des Passworts zur Verfügung?</strong>
-                    <p><strong>Lösung:</strong> $26 + 10 = 36$</p>
-                </li>
-                <li>
-                    <strong>Wie viele achtstellige Passwörter gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> Variation mit Wiederholung (VmW)</p>
-                    <p><strong>Formel:</strong> $36^8$</p>
-                </li>
-                <li>
-                    <strong>Ein Passwort darf nun aus sechs bis acht Zeichen bestehen. Wie viele mögliche Passwörter gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> Summenregel und VmW</p>
-                    <p><strong>Formel:</strong> $36^6 + 36^7 + 36^8$</p>
-                </li>
-                <li>
-                    <strong>Wie viele achtstellige Passwörter gibt es, die mit 'a' beginnen und mit '9' enden?</strong>
-                    <p><strong>Klassifizierung:</strong> VmW</p>
-                    <p><strong>Formel:</strong> $1 \cdot 36^6 \cdot 1 = 36^6$</p>
-                </li>
-                <li>
-                    <strong>Wie viele achtstellige Passwörter gibt es, die nicht aus einer einzigen Ziffer bestehen?</strong>
-                    <p><strong>Klassifizierung:</strong> Komplementärereignis und VmW</p>
-                    <p><strong>Formel:</strong> $36^8 - 10$</p>
-                </li>
-                <li>
-                    <strong>Wie viele achtstellige Passwörter gibt es, wenn mindestens eines der Zeichen eine Ziffer sein muss?</strong>
-                    <p><strong>Klassifizierung:</strong> Komplementärereignis und VmW</p>
-                    <p><strong>Formel:</strong> $36^8 - 26^8$</p>
-                </li>
-            </ol>
-        </details>
+      <div class="info-box tip">
+        <h5>Grundlagen für die Passwort-Aufgaben</h5>
+        <p>
+          Die Anzahl der verfügbaren Zeichen ist: 26 Buchstaben (ohne Umlaute,
+          Groß-/Kleinschreibung nicht unterschieden) + 10 Ziffern =
+          <strong>36 Zeichen</strong>.
+        </p>
+      </div>
 
-        <details>
-            <summary><h4>2. Lösungen: Beispiele KoW</h4></summary>
-            <ol>
-                <li>
-                    <strong>Ein 8-stelliges Passwort beinhalte genau 2 Ziffern. Wie viele unterschiedliche Positionen gibt es für die Ziffern?</strong>
-                    <p><strong>Klassifizierung:</strong> Kombination ohne Wiederholung (KoW)</p>
-                    <p><strong>Formel:</strong> $$\binom{8}{2}$$</p>
-                </li>
-                <li>
-                    <strong>Ein Passwort soll 8 Stellen umfassen. Wie viele Passwörter gibt es mit 7 Kleinbuchstaben und genau einer Ziffer?</strong>
-                    <p><strong>Klassifizierung:</strong> Produktregel, KoW und VmW</p>
-                    <p><strong>Formel:</strong> $$\binom{8}{1} \cdot 10^1 \cdot 26^7$$</p>
-                </li>
-                <li>
-                    <strong>Ein Passwort besteht aus 5 Kleinbuchstaben und 3 Ziffern. Ziffern dürfen mehrfach auftreten, die Buchstaben nicht.</strong>
-                    <p><strong>Klassifizierung:</strong> Produktregel, KoW, Variation ohne Wiederholung (VoW) und VmW</p>
-                    <p><strong>Formel:</strong> $$\binom{8}{5} \cdot \frac{26!}{(26-5)!} \cdot 10^3$$</p>
-                </li>
-            </ol>
-        </details>
+      <details>
+        <summary>
+          <h4>
+            1. Lösungen: Beispiele Zusammenspiel der Summen- und Produktregel
+          </h4>
+        </summary>
+        <ol>
+          <li>
+            <strong
+              >Wie viele Zeichen stehen für jede Stelle des Passworts zur
+              Verfügung?</strong
+            >
+            <p><strong>Lösung:</strong> $26 + 10 = 36$</p>
+          </li>
+          <li>
+            <strong>Wie viele achtstellige Passwörter gibt es?</strong>
+            <p>
+              <strong>Klassifizierung:</strong> Variation mit Wiederholung (VmW)
+            </p>
+            <p><strong>Formel:</strong> $36^8$</p>
+          </li>
+          <li>
+            <strong
+              >Ein Passwort darf nun aus sechs bis acht Zeichen bestehen. Wie
+              viele mögliche Passwörter gibt es?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Summenregel und VmW</p>
+            <p><strong>Formel:</strong> $36^6 + 36^7 + 36^8$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele achtstellige Passwörter gibt es, die mit 'a' beginnen
+              und mit '9' enden?</strong
+            >
+            <p><strong>Klassifizierung:</strong> VmW</p>
+            <p><strong>Formel:</strong> $1 \cdot 36^6 \cdot 1 = 36^6$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele achtstellige Passwörter gibt es, die nicht aus einer
+              einzigen Ziffer bestehen?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Komplementärereignis und VmW
+            </p>
+            <p><strong>Formel:</strong> $36^8 - 10$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele achtstellige Passwörter gibt es, wenn mindestens eines
+              der Zeichen eine Ziffer sein muss?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Komplementärereignis und VmW
+            </p>
+            <p><strong>Formel:</strong> $36^8 - 26^8$</p>
+          </li>
+        </ol>
+      </details>
 
-        <details>
-            <summary><h4>3. Lösungen: Permutationen mit Wiederholung (PmW)</h4></summary>
-            <ol>
-                <li>
-                    <strong>Wie viele 8-stellige Passwörter gibt es aus 3 mal Buchstabe X, 2 mal Buchstabe Q und 3 mal Ziffer 0?</strong>
-                    <p><strong>Klassifizierung:</strong> Permutation mit Wiederholung (PmW)</p>
-                    <p><strong>Formel:</strong> $$\frac{8!}{3! \cdot 2! \cdot 3!}$$</p>
-                </li>
-                <li>
-                    <strong>Wie viele "Wörter" können Sie aus den Buchstaben des Wortes MISSISSIPPI bilden?</strong>
-                    <p><strong>Klassifizierung:</strong> PmW</p>
-                    <p><strong>Formel:</strong> $$\frac{11!}{4! \cdot 4! \cdot 2! \cdot 1!}$$</p>
-                </li>
-            </ol>
-        </details>
+      <details>
+        <summary><h4>2. Lösungen: Beispiele KoW</h4></summary>
+        <ol>
+          <li>
+            <strong
+              >Ein 8-stelliges Passwort beinhalte genau 2 Ziffern. Wie viele
+              unterschiedliche Positionen gibt es für die Ziffern?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Kombination ohne Wiederholung
+              (KoW)
+            </p>
+            <p><strong>Formel:</strong> $$\binom{8}{2}$$</p>
+          </li>
+          <li>
+            <strong
+              >Ein Passwort soll 8 Stellen umfassen. Wie viele Passwörter gibt
+              es mit 7 Kleinbuchstaben und genau einer Ziffer?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Produktregel, KoW und VmW</p>
+            <p>
+              <strong>Formel:</strong> $$\binom{8}{1} \cdot 10^1 \cdot 26^7$$
+            </p>
+          </li>
+          <li>
+            <strong
+              >Ein Passwort besteht aus 5 Kleinbuchstaben und 3 Ziffern. Ziffern
+              dürfen mehrfach auftreten, die Buchstaben nicht.</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Produktregel, KoW, Variation
+              ohne Wiederholung (VoW) und VmW
+            </p>
+            <p>
+              <strong>Formel:</strong> $$\binom{8}{5} \cdot \frac{26!}{(26-5)!}
+              \cdot 10^3$$
+            </p>
+          </li>
+        </ol>
+      </details>
 
-        <details>
-            <summary><h4>4. Lösungen: Übungen: Zahlen und Buchstaben</h4></summary>
-            <ol>
-                <li>
-                    <strong>Wie viele verschiedene 10-stellige Dualzahlen gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> VmW</p>
-                    <p><strong>Formel:</strong> $2^{10}$</p>
-                </li>
-                 <li>
-                    <strong>Wie viele Dualzahlen mit genau 9 Einsen und genau 11 Nullen gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> PmW oder KoW</p>
-                    <p><strong>Formel:</strong> $$\binom{20}{9}$$</p>
-                </li>
-                <li>
-                    <strong>Wie viele 10-stellige Dualzahlen gibt es, die mit 0 beginnen und mit 11 enden?</strong>
-                    <p><strong>Klassifizierung:</strong> VmW</p>
-                    <p><strong>Formel:</strong> $2^7$</p>
-                </li>
-                <li>
-                    <strong>Wie viele 10-stellige Dualzahlen gibt es, die mit 0 beginnen oder mit 11 enden?</strong>
-                    <p><strong>Klassifizierung:</strong> Inklusions-Exklusions-Prinzip und VmW</p>
-                    <p><strong>Formel:</strong> $2^9 + 2^8 - 2^7$</p>
-                </li>
-                <li>
-                    <strong>Wie viele 10-stellige Dualzahlen haben genau drei "0"? höchstens zwei "0"? mindestens zwei "0"?</strong>
-                    <ul>
-                        <li><strong>Genau drei "0":</strong> Formel: $$\binom{10}{3}$$</li>
-                        <li><strong>Höchstens zwei "0":</strong> Formel: $$\binom{10}{0} + \binom{10}{1} + \binom{10}{2}$$</li>
-                        <li><strong>Mindestens zwei "0":</strong> Formel: $$2^{10} - \left(\binom{10}{0} + \binom{10}{1}\right)$$</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Wie viele Variablennamen aus mindestens 3 und höchstens 5 Kleinbuchstaben gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> Summenregel und VmW</p>
-                    <p><strong>Formel:</strong> $26^3 + 26^4 + 26^5$</p>
-                </li>
-                <li>
-                    <strong>In Blindenschrift werden Zeichen durch Anordnung von 6 Punkten dargestellt. Wie viele Zeichen können so codiert werden?</strong>
-                    <p><strong>Klassifizierung:</strong> VmW</p>
-                    <p><strong>Formel:</strong> $2^6$</p>
-                </li>
-            </ol>
-        </details>
+      <details>
+        <summary>
+          <h4>3. Lösungen: Permutationen mit Wiederholung (PmW)</h4>
+        </summary>
+        <ol>
+          <li>
+            <strong
+              >Wie viele 8-stellige Passwörter gibt es aus 3 mal Buchstabe X, 2
+              mal Buchstabe Q und 3 mal Ziffer 0?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Permutation mit Wiederholung
+              (PmW)
+            </p>
+            <p><strong>Formel:</strong> $$\frac{8!}{3! \cdot 2! \cdot 3!}$$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele "Wörter" können Sie aus den Buchstaben des Wortes
+              MISSISSIPPI bilden?</strong
+            >
+            <p><strong>Klassifizierung:</strong> PmW</p>
+            <p>
+              <strong>Formel:</strong> $$\frac{11!}{4! \cdot 4! \cdot 2! \cdot
+              1!}$$
+            </p>
+          </li>
+        </ol>
+      </details>
 
-        <details>
-            <summary><h4>5. Lösungen: Sitzplatzverteilungen, Team Building und Ähnliches</h4></summary>
-            <ol>
-                <li>
-                    <strong>Wie viele Möglichkeiten gibt es, die 40 Studierenden in eine Liste einzutragen?</strong>
-                    <p><strong>Klassifizierung:</strong> Permutation ohne Wiederholung (PoW)</p>
-                    <p><strong>Formel:</strong> $40!$</p>
-                </li>
-                <li>
-                    <strong>Jeder überlegt sich, wo er am liebsten sitzen will (Mehrfachbelegungen möglich). Wie viele Möglichkeiten der Sitzplatzverteilung gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> VmW</p>
-                    <p><strong>Formel:</strong> $60^{40}$</p>
-                </li>
-                <li>
-                    <strong>Jeder setzt sich (keine Mehrfachbelegung). Wie viele Möglichkeiten der Sitzplatzverteilung gibt es?</strong>
-                    <p><strong>Klassifizierung:</strong> Variation ohne Wiederholung (VoW)</p>
-                    <p><strong>Formel:</strong> $$\frac{60!}{(60-40)!} = \frac{60!}{20!}$$</p>
-                </li>
-                <li>
-                    <strong>Die Studierenden begrüßen sich alle gegenseitig mit Handschlag. Wie viele Handschläge?</strong>
-                    <p><strong>Klassifizierung:</strong> KoW</p>
-                    <p><strong>Formel:</strong> $$\binom{40}{2}$$</p>
-                </li>
-                <li>
-                    <strong>Bei wie vielen Handschlägen ist eine Frau beteiligt?</strong>
-                    <p><strong>Klassifizierung:</strong> Komplementärereignis und KoW</p>
-                    <p><strong>Formel:</strong> $$\binom{40}{2} - \binom{30}{2}$$</p>
-                </li>
-                <li>
-                    <strong>Ein Festkomitee aus 5 der Studierenden wird gewählt. Auf wie viele Arten ist dies möglich?</strong>
-                    <p><strong>Klassifizierung:</strong> KoW</p>
-                    <p><strong>Formel:</strong> $$\binom{40}{5}$$</p>
-                </li>
-                <li>
-                    <strong>Im 5-köpfigen Festkomitee sollen 2 Frauen und 3 Männer sein. Wie viele Möglichkeiten?</strong>
-                    <p><strong>Klassifizierung:</strong> Produktregel und KoW</p>
-                    <p><strong>Formel:</strong> $$\binom{10}{2} \cdot \binom{30}{3}$$</p>
-                </li>
-                <li>
-                    <strong>Auf wie viele Arten können sich die 5 für ein Gruppenfoto aufstellen, wenn Harry in der Mitte stehen will?</strong>
-                    <p><strong>Klassifizierung:</strong> PoW</p>
-                    <p><strong>Formel:</strong> $4!$</p>
-                </li>
-                <li>
-                    <strong>Wie viele Möglichkeiten für die Sitzordnung in einem PKW gibt es für das 5-köpfige Team, wenn nur drei einen Führerschein haben?</strong>
-                    <p><strong>Klassifizierung:</strong> Produktregel und PoW</p>
-                    <p><strong>Formel:</strong> $3 \cdot 4!$</p>
-                </li>
-                <li>
-                    <strong>Harry kann aus 7 Zutaten eine, zwei oder drei verschiedene auswählen. Wie viele Pizza-Arten?</strong>
-                    <p><strong>Klassifizierung:</strong> Summenregel und KoW</p>
-                    <p><strong>Formel:</strong> $$\binom{7}{1} + \binom{7}{2} + \binom{7}{3}$$</p>
-                </li>
-                <li>
-                    <strong>Reihenfolge, 5 Schoko- und 4 Blaubeermuffins zu essen.</strong>
-                    <p><strong>Klassifizierung:</strong> PmW</p>
-                    <p><strong>Formel:</strong> $$\binom{9}{5} = \frac{9!}{5!4!}$$</p>
-                </li>
-                <li>
-                    <strong>Wahl von 3 verschiedenen Posten aus 40 Studierenden.</strong>
-                    <p><strong>Klassifizierung:</strong> VoW</p>
-                    <p><strong>Formel:</strong> $$\frac{40!}{(40-3)!} = 40 \cdot 39 \cdot 38$$</p>
-                </li>
-                <li>
-                    <strong>A) Genau eine Frau als Sprecher/Stellv.? B) Mindestens eine Frau als Sprecher/Stellv.?</strong>
-                     <ul>
-                        <li><strong>A) Genau eine Frau:</strong> Formel: $$2 \cdot 10 \cdot 30 \cdot 38$$</li>
-                        <li><strong>B) Mindestens eine Frau:</strong> Formel: $$(40 \cdot 39 \cdot 38) - (30 \cdot 29 \cdot 38)$$</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>3 Punkte auf 40 Kandidaten vergeben (Mehrfachpunkte erlaubt).</strong>
-                    <p><strong>Klassifizierung:</strong> Kombination mit Wiederholung (KmW)</p>
-                    <p><strong>Formel:</strong> $$\binom{40+3-1}{3} = \binom{42}{3}$$</p>
-                </li>
-            </ol>
-        </details>
+      <details>
+        <summary><h4>4. Lösungen: Übungen: Zahlen und Buchstaben</h4></summary>
+        <ol>
+          <li>
+            <strong
+              >Wie viele verschiedene 10-stellige Dualzahlen gibt es?</strong
+            >
+            <p><strong>Klassifizierung:</strong> VmW</p>
+            <p><strong>Formel:</strong> $2^{10}$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele Dualzahlen mit genau 9 Einsen und genau 11 Nullen gibt
+              es?</strong
+            >
+            <p><strong>Klassifizierung:</strong> PmW oder KoW</p>
+            <p><strong>Formel:</strong> $$\binom{20}{9}$$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele 10-stellige Dualzahlen gibt es, die mit 0 beginnen und
+              mit 11 enden?</strong
+            >
+            <p><strong>Klassifizierung:</strong> VmW</p>
+            <p><strong>Formel:</strong> $2^7$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele 10-stellige Dualzahlen gibt es, die mit 0 beginnen oder
+              mit 11 enden?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Inklusions-Exklusions-Prinzip
+              und VmW
+            </p>
+            <p><strong>Formel:</strong> $2^9 + 2^8 - 2^7$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele 10-stellige Dualzahlen haben genau drei "0"? höchstens
+              zwei "0"? mindestens zwei "0"?</strong
+            >
+            <ul>
+              <li>
+                <strong>Genau drei "0":</strong> Formel: $$\binom{10}{3}$$
+              </li>
+              <li>
+                <strong>Höchstens zwei "0":</strong> Formel: $$\binom{10}{0} +
+                \binom{10}{1} + \binom{10}{2}$$
+              </li>
+              <li>
+                <strong>Mindestens zwei "0":</strong> Formel: $$2^{10} -
+                \left(\binom{10}{0} + \binom{10}{1}\right)$$
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong
+              >Wie viele Variablennamen aus mindestens 3 und höchstens 5
+              Kleinbuchstaben gibt es?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Summenregel und VmW</p>
+            <p><strong>Formel:</strong> $26^3 + 26^4 + 26^5$</p>
+          </li>
+          <li>
+            <strong
+              >In Blindenschrift werden Zeichen durch Anordnung von 6 Punkten
+              dargestellt. Wie viele Zeichen können so codiert werden?</strong
+            >
+            <p><strong>Klassifizierung:</strong> VmW</p>
+            <p><strong>Formel:</strong> $2^6$</p>
+          </li>
+        </ol>
+      </details>
 
-        <details>
-            <summary><h4>6. Lösungen: Urnen, Würfel, Münzen</h4></summary>
-            <ol>
-                <li>
-                    <strong>Es wird 10-mal gewürfelt. Reihenfolge spielt eine Rolle.</strong>
-                    <p><strong>Klassifizierung:</strong> VmW</p>
-                    <p><strong>Formel:</strong> $6^{10}$</p>
-                </li>
-                <li>
-                    <strong>Wurf mit 10 gleichartigen Würfeln.</strong>
-                    <p><strong>Klassifizierung:</strong> KmW</p>
-                    <p><strong>Formel:</strong> $$\binom{6+10-1}{10} = \binom{15}{10}$$</p>
-                </li>
-                <li>
-                    <strong>Eine Münze wird 5 mal geworfen.</strong>
-                    <ul>
-                        <li><strong>a) Wie viele verschiedene Folgen sind möglich?</strong>
-                            <p><strong>Formel:</strong> $2^5$</p>
-                        </li>
-                        <li><strong>b) Wie viele Folgen haben genau drei K?</strong>
-                            <p><strong>Formel:</strong> $$\binom{5}{3}$$</p>
-                        </li>
-                         <li><strong>c) Wie viele Folgen haben höchstens zwei K?</strong>
-                            <p><strong>Formel:</strong> $$\binom{5}{0} + \binom{5}{1} + \binom{5}{2}$$</p>
-                        </li>
-                        <li><strong>d) Wie viele haben mindestens zwei K?</strong>
-                            <p><strong>Formel:</strong> $$2^5 - \left(\binom{5}{0} + \binom{5}{1}\right)$$</p>
-                        </li>
-                    </ul>
-                </li>
-            </ol>
-        </details>
+      <details>
+        <summary>
+          <h4>
+            5. Lösungen: Sitzplatzverteilungen, Team Building und Ähnliches
+          </h4>
+        </summary>
+        <ol>
+          <li>
+            <strong
+              >Wie viele Möglichkeiten gibt es, die 40 Studierenden in eine
+              Liste einzutragen?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Permutation ohne Wiederholung
+              (PoW)
+            </p>
+            <p><strong>Formel:</strong> $40!$</p>
+          </li>
+          <li>
+            <strong
+              >Jeder überlegt sich, wo er am liebsten sitzen will
+              (Mehrfachbelegungen möglich). Wie viele Möglichkeiten der
+              Sitzplatzverteilung gibt es?</strong
+            >
+            <p><strong>Klassifizierung:</strong> VmW</p>
+            <p><strong>Formel:</strong> $60^{40}$</p>
+          </li>
+          <li>
+            <strong
+              >Jeder setzt sich (keine Mehrfachbelegung). Wie viele
+              Möglichkeiten der Sitzplatzverteilung gibt es?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Variation ohne Wiederholung
+              (VoW)
+            </p>
+            <p>
+              <strong>Formel:</strong> $$\frac{60!}{(60-40)!} =
+              \frac{60!}{20!}$$
+            </p>
+          </li>
+          <li>
+            <strong
+              >Die Studierenden begrüßen sich alle gegenseitig mit Handschlag.
+              Wie viele Handschläge?</strong
+            >
+            <p><strong>Klassifizierung:</strong> KoW</p>
+            <p><strong>Formel:</strong> $$\binom{40}{2}$$</p>
+          </li>
+          <li>
+            <strong
+              >Bei wie vielen Handschlägen ist eine Frau beteiligt?</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Komplementärereignis und KoW
+            </p>
+            <p><strong>Formel:</strong> $$\binom{40}{2} - \binom{30}{2}$$</p>
+          </li>
+          <li>
+            <strong
+              >Ein Festkomitee aus 5 der Studierenden wird gewählt. Auf wie
+              viele Arten ist dies möglich?</strong
+            >
+            <p><strong>Klassifizierung:</strong> KoW</p>
+            <p><strong>Formel:</strong> $$\binom{40}{5}$$</p>
+          </li>
+          <li>
+            <strong
+              >Im 5-köpfigen Festkomitee sollen 2 Frauen und 3 Männer sein. Wie
+              viele Möglichkeiten?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Produktregel und KoW</p>
+            <p>
+              <strong>Formel:</strong> $$\binom{10}{2} \cdot \binom{30}{3}$$
+            </p>
+          </li>
+          <li>
+            <strong
+              >Auf wie viele Arten können sich die 5 für ein Gruppenfoto
+              aufstellen, wenn Harry in der Mitte stehen will?</strong
+            >
+            <p><strong>Klassifizierung:</strong> PoW</p>
+            <p><strong>Formel:</strong> $4!$</p>
+          </li>
+          <li>
+            <strong
+              >Wie viele Möglichkeiten für die Sitzordnung in einem PKW gibt es
+              für das 5-köpfige Team, wenn nur drei einen Führerschein
+              haben?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Produktregel und PoW</p>
+            <p><strong>Formel:</strong> $3 \cdot 4!$</p>
+          </li>
+          <li>
+            <strong
+              >Harry kann aus 7 Zutaten eine, zwei oder drei verschiedene
+              auswählen. Wie viele Pizza-Arten?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Summenregel und KoW</p>
+            <p>
+              <strong>Formel:</strong> $$\binom{7}{1} + \binom{7}{2} +
+              \binom{7}{3}$$
+            </p>
+          </li>
+          <li>
+            <strong
+              >Reihenfolge, 5 Schoko- und 4 Blaubeermuffins zu essen.</strong
+            >
+            <p><strong>Klassifizierung:</strong> PmW</p>
+            <p><strong>Formel:</strong> $$\binom{9}{5} = \frac{9!}{5!4!}$$</p>
+          </li>
+          <li>
+            <strong
+              >Wahl von 3 verschiedenen Posten aus 40 Studierenden.</strong
+            >
+            <p><strong>Klassifizierung:</strong> VoW</p>
+            <p>
+              <strong>Formel:</strong> $$\frac{40!}{(40-3)!} = 40 \cdot 39 \cdot
+              38$$
+            </p>
+          </li>
+          <li>
+            <strong
+              >A) Genau eine Frau als Sprecher/Stellv.? B) Mindestens eine Frau
+              als Sprecher/Stellv.?</strong
+            >
+            <ul>
+              <li>
+                <strong>A) Genau eine Frau:</strong> Formel: $$2 \cdot 10 \cdot
+                30 \cdot 38$$
+              </li>
+              <li>
+                <strong>B) Mindestens eine Frau:</strong> Formel: $$(40 \cdot 39
+                \cdot 38) - (30 \cdot 29 \cdot 38)$$
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong
+              >3 Punkte auf 40 Kandidaten vergeben (Mehrfachpunkte
+              erlaubt).</strong
+            >
+            <p>
+              <strong>Klassifizierung:</strong> Kombination mit Wiederholung
+              (KmW)
+            </p>
+            <p>
+              <strong>Formel:</strong> $$\binom{40+3-1}{3} = \binom{42}{3}$$
+            </p>
+          </li>
+        </ol>
+      </details>
 
-        <details>
-            <summary><h4>7. Lösungen: IP-Adressen</h4></summary>
-            <ol>
-                <li>
-                    <strong>Wie viele Host-IDs können innerhalb eines Klasse A, B bzw. C Netzwerkes vergeben werden?</strong>
-                    <ul>
-                        <li><strong>Klasse A (24 Host-Bits):</strong> $2^{24} - 2$</li>
-                        <li><strong>Klasse B (16 Host-Bits):</strong> $2^{16} - 2$</li>
-                        <li><strong>Klasse C (8 Host-Bits):</strong> $2^8 - 2$</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Wie viele Klasse A, B bzw. C-Netzwerke gibt es?</strong>
-                    <ul>
-                        <li><strong>Klasse A (startet mit '0', 8-Bit ID):</strong> $2^7$</li>
-                        <li><strong>Klasse B (startet mit '10', 16-Bit ID):</strong> $2^{14}$</li>
-                        <li><strong>Klasse C (startet mit '110', 24-Bit ID):</strong> $2^{21}$</li>
-                    </ul>
-                </li>
-                 <li>
-                    <strong>Wie viele IP-Adressen können insgesamt nach diesem Schema erstellt werden?</strong>
-                    <p><strong>Klassifizierung:</strong> Produkt- und Summenregel</p>
-                    <p><strong>Formel:</strong> $$(2^7 \cdot (2^{24} - 2)) + (2^{14} \cdot (2^{16} - 2)) + (2^{21} \cdot (2^8 - 2))$$</p>
-                </li>
-            </ol>
-        </details>
-        
+      <details>
+        <summary><h4>6. Lösungen: Urnen, Würfel, Münzen</h4></summary>
+        <ol>
+          <li>
+            <strong
+              >Es wird 10-mal gewürfelt. Reihenfolge spielt eine Rolle.</strong
+            >
+            <p><strong>Klassifizierung:</strong> VmW</p>
+            <p><strong>Formel:</strong> $6^{10}$</p>
+          </li>
+          <li>
+            <strong>Wurf mit 10 gleichartigen Würfeln.</strong>
+            <p><strong>Klassifizierung:</strong> KmW</p>
+            <p>
+              <strong>Formel:</strong> $$\binom{6+10-1}{10} = \binom{15}{10}$$
+            </p>
+          </li>
+          <li>
+            <strong>Eine Münze wird 5 mal geworfen.</strong>
+            <ul>
+              <li>
+                <strong>a) Wie viele verschiedene Folgen sind möglich?</strong>
+                <p><strong>Formel:</strong> $2^5$</p>
+              </li>
+              <li>
+                <strong>b) Wie viele Folgen haben genau drei K?</strong>
+                <p><strong>Formel:</strong> $$\binom{5}{3}$$</p>
+              </li>
+              <li>
+                <strong>c) Wie viele Folgen haben höchstens zwei K?</strong>
+                <p>
+                  <strong>Formel:</strong> $$\binom{5}{0} + \binom{5}{1} +
+                  \binom{5}{2}$$
+                </p>
+              </li>
+              <li>
+                <strong>d) Wie viele haben mindestens zwei K?</strong>
+                <p>
+                  <strong>Formel:</strong> $$2^5 - \left(\binom{5}{0} +
+                  \binom{5}{1}\right)$$
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </details>
+
+      <details>
+        <summary><h4>7. Lösungen: IP-Adressen</h4></summary>
+        <ol>
+          <li>
+            <strong
+              >Wie viele Host-IDs können innerhalb eines Klasse A, B bzw. C
+              Netzwerkes vergeben werden?</strong
+            >
+            <ul>
+              <li><strong>Klasse A (24 Host-Bits):</strong> $2^{24} - 2$</li>
+              <li><strong>Klasse B (16 Host-Bits):</strong> $2^{16} - 2$</li>
+              <li><strong>Klasse C (8 Host-Bits):</strong> $2^8 - 2$</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Wie viele Klasse A, B bzw. C-Netzwerke gibt es?</strong>
+            <ul>
+              <li>
+                <strong>Klasse A (startet mit '0', 8-Bit ID):</strong> $2^7$
+              </li>
+              <li>
+                <strong>Klasse B (startet mit '10', 16-Bit ID):</strong>
+                $2^{14}$
+              </li>
+              <li>
+                <strong>Klasse C (startet mit '110', 24-Bit ID):</strong>
+                $2^{21}$
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong
+              >Wie viele IP-Adressen können insgesamt nach diesem Schema
+              erstellt werden?</strong
+            >
+            <p><strong>Klassifizierung:</strong> Produkt- und Summenregel</p>
+            <p>
+              <strong>Formel:</strong> $$(2^7 \cdot (2^{24} - 2)) + (2^{14}
+              \cdot (2^{16} - 2)) + (2^{21} \cdot (2^8 - 2))$$
+            </p>
+          </li>
+        </ol>
+      </details>
     </main>
-    
+
     <footer>
-        <nav class="page-nav" aria-label="Seitennavigation">
-            <a href="../02-kombinationen.html">← Zurück zum Kapitel</a>
-            <a href="../03-folgen-einfuehrung.html">Nächstes Kapitel →</a>
-        </nav>
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a href="../02-kombinationen.html">← Zurück zum Kapitel</a>
+        <a href="../03-folgen-einfuehrung.html">Nächstes Kapitel →</a>
+      </nav>
     </footer>
 
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
-    
+
     <script type="module" src="../../main.js"></script>
-</body>
+  </body>
 </html>
