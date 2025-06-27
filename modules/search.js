@@ -20,7 +20,7 @@ export default function initSearch() {
   tocList.appendChild(notFoundMessage);
 
   // Fetch the pre-built search index
-  fetch('search-index.json')
+  fetch('./search-index.json')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

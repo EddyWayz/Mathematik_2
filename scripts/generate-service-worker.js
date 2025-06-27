@@ -3,13 +3,13 @@ const path = require('path');
 const glob = require('glob');
 
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/main.js',
-  '/css/dark-mode.css',
-  '/images/favicon.svg',
-  '/images/placeholder.svg',
+  './',
+  './index.html',
+  './style.css',
+  './main.js',
+  './css/dark-mode.css',
+  './images/favicon.svg',
+  './images/placeholder.svg',
 ];
 
 // Dynamically add all HTML chapter files
@@ -17,7 +17,7 @@ const chapterFiles = glob.sync('chapters/**/*.html', { cwd: path.join(__dirname,
 chapterFiles.forEach(file => {
     const filePath = path.join(__dirname, '..', file);
     if (fs.existsSync(filePath)) {
-        ASSETS_TO_CACHE.push(`/${file}`);
+        ASSETS_TO_CACHE.push(`./${file}`);
     }
 });
 
