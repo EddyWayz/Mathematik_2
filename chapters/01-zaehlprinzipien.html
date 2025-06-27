@@ -1,12 +1,7 @@
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Lerneinheit über die grundlegenden Zählprinzipien der Kombinatorik: Summenregel, Produktregel und Inklusion-Exklusion."
-    />
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lerneinheit über die grundlegenden Zählprinzipien der Kombinatorik: Summenregel, Produktregel und Inklusion-Exklusion.">
     <title>1 Grundlegende Zählprinzipien - Lernskript Mathe</title>
 
     <script>
@@ -25,23 +20,13 @@
         svg: { fontCache: 'global' },
       };
     </script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-    ></script>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-    <meta
-      property="og:title"
-      content="1 Grundlegende Zählprinzipien - Lernskript Mathe"
-    />
-    <meta
-      property="og:description"
-      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
-    />
-    <meta property="og:image" content="../images/placeholder.svg" />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="../style.css" />
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta property="og:title" content="1 Grundlegende Zählprinzipien - Lernskript Mathe">
+    <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+    <meta property="og:image" content="../images/placeholder.svg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -57,7 +42,7 @@
     <main class="content-wrapper">
       <h2 id="sec1">1 Grundlegende Zählprinzipien</h2>
 
-      <h3>1.1 Lernziel</h3>
+      <h3 id="11-lernziel">1.1 Lernziel</h3>
       <p>
         Am Ende dieser Lerneinheit wirst du in der Lage sein, die grundlegenden
         Zählprinzipien – die Summenregel, die Produktregel und das
@@ -68,7 +53,7 @@
         Anwendung im Binomischen Lehrsatz kennen.
       </p>
 
-      <h3>1.2 Motivation und Kontext</h3>
+      <h3 id="12-motivation-und-kontext">1.2 Motivation und Kontext</h3>
       <p>
         Die Kombinatorik ist ein faszinierendes Gebiet der Mathematik, das man
         auch als <strong>„Kunst des Zählens“</strong> bezeichnen kann. Sie
@@ -98,7 +83,7 @@
       </p>
 
       <div class="info-box tip">
-        <h5>Voraussetzung: Mengenlehre</h5>
+        <h5 id="voraussetzung-mengenlehre">Voraussetzung: Mengenlehre</h5>
         <p>
           Dieses Kapitel baut direkt auf deinem Wissen über Mengen und
           Mengenoperationen auf. Visuelle Hilfsmittel wie Venn-Diagramme sind
@@ -110,7 +95,7 @@
       </div>
 
       <div class="info-box tip">
-        <h5>Praxis-Tipp: Die zentrale Entscheidungsfrage</h5>
+        <h5 id="praxis-tipp-die-zentrale-entscheidungsfrage">Praxis-Tipp: Die zentrale Entscheidungsfrage</h5>
         <p>
           Um zwischen Summen- und Produktregel zu unterscheiden, stelle dir die
           Frage: "Muss ich eine <strong>'ENTWEDER-ODER'</strong>-Entscheidung
@@ -128,7 +113,7 @@
         </ul>
       </div>
 
-      <h3>1.3 Definitionen & Begriffe</h3>
+      <h3 id="13-definitionen-begriffe">1.3 Definitionen &amp; Begriffe</h3>
       <dl>
         <dt>Kombinatorik</dt>
         <dd>
@@ -144,10 +129,8 @@
           <strong>„Entweder-oder“-Entscheidung</strong> an.
           <ul>
             <li>
-              <em
-                >Formel für disjunkte (sich ausschließende) Mengen A und B,
-                wobei $A \cap B = \emptyset$:</em
-              >
+              <em>Formel für disjunkte (sich ausschließende) Mengen A und B,
+                wobei $A \cap B = \emptyset$:</em>
               $ |A \cup B| = |A| + |B| $
             </li>
           </ul>
@@ -201,9 +184,9 @@
         </dd>
       </dl>
 
-      <h3>1.4 Schritt-für-Schritt-Erklärung</h3>
+      <h3 id="14-schritt-fr-schritt-erklrung">1.4 Schritt-für-Schritt-Erklärung</h3>
 
-      <h4>1.4.1 Summenregel (für getrennte Fälle)</h4>
+      <h4 id="141-summenregel-fr-getrennte-flle">1.4.1 Summenregel (für getrennte Fälle)</h4>
       <p>
         <strong>Beispiel:</strong> Eine Mietwagenfirma bietet 12 Kleinwagen und
         7 Mittelklassewagen an. Da ein Auto nicht gleichzeitig ein Kleinwagen
@@ -211,7 +194,7 @@
         $12 + 7 = 19$ Möglichkeiten, ein Auto auszuwählen.
       </p>
 
-      <h4>1.4.2 Produktregel (für sequentielle Schritte)</h4>
+      <h4 id="142-produktregel-fr-sequentielle-schritte">1.4.2 Produktregel (für sequentielle Schritte)</h4>
       <p>
         <strong>Beispiel:</strong> Um von Wien über Graz nach Marburg zu fahren,
         gibt es 3 Routen von Wien nach Graz und 4 Routen von Graz nach Marburg.
@@ -220,7 +203,7 @@
       </p>
 
       <div class="info-box">
-        <h5>Visualisierung mit dem Baumdiagramm</h5>
+        <h5 id="visualisierung-mit-dem-baumdiagramm">Visualisierung mit dem Baumdiagramm</h5>
         <p>
           Die Produktregel lässt sich hervorragend mit einem
           <strong>Baumdiagramm</strong> visualisieren. Jede Stufe des Baumes
@@ -235,22 +218,15 @@
       </div>
 
       <div class="info-box video-box">
-        <h5>Erklärendes Video: Zählprinzipien in der Praxis</h5>
+        <h5 id="erklrendes-video-zhlprinzipien-in-der-praxis">Erklärendes Video: Zählprinzipien in der Praxis</h5>
         <p>
           Dieses Video erklärt die grundlegenden Zählprinzipien (Summen- und
           Produktregel) anhand von Beispielen wie dem Baumdiagramm.
         </p>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/GpioDtIFtN4"
-          title="Lehrerschmidt: Anzahl der Möglichkeiten berechnen"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/GpioDtIFtN4" title="Lehrerschmidt: Anzahl der Möglichkeiten berechnen" frameborder="0" allowfullscreen=""></iframe>
       </div>
 
-      <h4>1.4.3 Inklusions-Exklusions-Prinzip (für überlappende Fälle)</h4>
+      <h4 id="143-inklusions-exklusions-prinzip-fr-berlappende-flle">1.4.3 Inklusions-Exklusions-Prinzip (für überlappende Fälle)</h4>
       <p>
         <strong>Beispiel:</strong> Wie viele achtstellige Dualzahlen beginnen
         mit `0` <em>oder</em> enden mit `11`?
@@ -275,22 +251,15 @@
       </p>
 
       <div class="info-box video-box">
-        <h5>Erklärendes Video: Inklusions-Exklusions-Prinzip</h5>
+        <h5 id="erklrendes-video-inklusions-exklusions-prinzip">Erklärendes Video: Inklusions-Exklusions-Prinzip</h5>
         <p>
           Eine detaillierte Erklärung, wie man mit überlappenden Mengen umgeht,
           um Doppelzählungen zu vermeiden.
         </p>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/R2ySKsTBeDU"
-          title="Weitz / HAW Hamburg: Das Inklusions-Exklusions-Prinzip (Kombinatorik)"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/R2ySKsTBeDU" title="Weitz / HAW Hamburg: Das Inklusions-Exklusions-Prinzip (Kombinatorik)" frameborder="0" allowfullscreen=""></iframe>
       </div>
 
-      <h4>1.4.4 Komplementärzählen</h4>
+      <h4 id="144-komplementrzhlen">1.4.4 Komplementärzählen</h4>
       <p>
         <strong>Beispiel:</strong> Wie viele Passwörter der Länge 6 (nur
         Kleinbuchstaben oder Ziffern) enthalten <em>mindestens eine Ziffer</em>?
@@ -311,7 +280,7 @@
         (Alle ohne Ziffern mit Länge 6) = $36^6 - 26^6$.
       </p>
 
-      <h3>
+      <h3 id="-15-werkzeuge-fr-die-kombinatorik-fakultt-und-binomialkoeffizient-">
         1.5 Werkzeuge für die Kombinatorik: Fakultät und Binomialkoeffizient
       </h3>
       <p>
@@ -345,31 +314,29 @@
       </dl>
 
       <div class="info-box tip">
-        <h5>Das Pascalsche Dreieck</h5>
+        <h5 id="das-pascalsche-dreieck">Das Pascalsche Dreieck</h5>
         <p>
           Das Pascalsche Dreieck ist eine visuelle Methode, um
           Binomialkoeffizienten zu finden. Jeder Eintrag ist die Summe der
           beiden direkt darüber liegenden Einträge, was der rekursiven Formel
           $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ entspricht.
         </p>
-        <pre style="text-align: center; font-size: 1.1em; line-height: 1.5">
-    1
+        <pre style="text-align: center; font-size: 1.1em; line-height: 1.5">    1
    1 1
   1 2 1
  1 3 3 1
 1 4 6 4 1
-            </pre
-        >
+            </pre>
         <p>
           Die 5. Zeile (beginnend mit Zeile 0) enthält zum Beispiel die
           Koeffizienten für $(x+y)^4$: $1, 4, 6, 4, 1$.
         </p>
       </div>
 
-      <h3>1.6 Übungsaufgaben</h3>
+      <h3 id="16-bungsaufgaben">1.6 Übungsaufgaben</h3>
 
       <div class="info-box warning">
-        <h5>Wichtige Hinweise zur Bearbeitung</h5>
+        <h5 id="wichtige-hinweise-zur-bearbeitung">Wichtige Hinweise zur Bearbeitung</h5>
         <p>
           Beachte die allgemeinen Anweisungen aus den Übungsblättern, die auch
           in einer Klausur gelten könnten:
@@ -473,5 +440,6 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
     <script type="module" src="../main.js"></script>
-  </body>
-</html>
+  
+
+</body></html>

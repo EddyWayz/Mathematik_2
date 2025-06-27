@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
+<!DOCTYPE html><html lang="de"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lerneinheit über Taylorreihen und Taylorpolynome zur Approximation von Funktionen durch Polynome, inklusive Konvergenzradius und Anwendungen.">
@@ -12,7 +10,7 @@
     svg: { fontCache: 'global' }
   };
 </script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="12 Taylorreihen und Potenzreihen - Lernskript Mathe">
 <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
@@ -24,7 +22,7 @@
 
     <header class="page-header" role="banner">
         <a href="../index.html">Inhaltsverzeichnis</a>
-        <span>Kapitel 12: Taylor- & Potenzreihen</span>
+        <span>Kapitel 12: Taylor- &amp; Potenzreihen</span>
         <div class="header-controls">
             <button id="dark-mode-toggle" aria-label="Dunkelmodus umschalten">🌙</button>
         </div>
@@ -33,24 +31,24 @@
     <main class="content-wrapper">
 
         <h2 id="sec12">12 Taylor- und Potenzreihen: Funktionen durch Polynome annähern</h2>
-        <h3>12.1 Lernziel</h3>
+        <h3 id="121-lernziel">12.1 Lernziel</h3>
         <p>Am Ende dieser Lerneinheit wirst du verstehen, wie man eine Funktion in der Nähe eines Punktes durch ein Polynom (das Taylorpolynom) annähert. Du wirst in der Lage sein, die Koeffizienten eines Taylorpolynoms durch Ableiten zu berechnen und die Taylorreihe als unendliche Fortsetzung dieses Gedankens zu verstehen. Du wirst die bekannten Reihen von Grundfunktionen nutzen, um neue Reihen herzuleiten, und deren Konvergenzbereich bestimmen. Zudem wirst du Taylorreihen anwenden können, um Grenzwerte und Integrale näherungsweise zu berechnen.</p>
         
-        <h3>12.2 Motivation und Kontext</h3>
+        <h3 id="122-motivation-und-kontext">12.2 Motivation und Kontext</h3>
         <p>Viele Funktionen, insbesondere transzendente Funktionen wie Sinus oder die Exponentialfunktion, sind für einen Computer schwer direkt zu berechnen. Polynome hingegen, die nur aus Additionen und Multiplikationen bestehen, sind trivial auszuwerten. Die Idee der Taylorreihe ist es, eine <strong>beliebige (glatte) Funktion lokal durch ein Polynom zu ersetzen</strong>.</p>
         <ul>
-            <li><strong>Taschenrechner & Computer:</strong> Wenn dein Taschenrechner $\sin(0.1)$ berechnet, löst er keine Dreiecke. Er setzt $0.1$ in die ersten Glieder der Taylorreihe des Sinus ein: $\sin(x) \approx x - \frac{x^3}{6} + \dots$.</li>
-            <li><strong>Physik & Ingenieurwesen:</strong> In der Relativitätstheorie treten komplexe Terme auf. Für kleine Geschwindigkeiten kann man diese durch ihr Taylorpolynom ersetzen und erhält so die klassische Newtonsche Physik als Näherung zurück. Dieses Prinzip der <strong>Linearisierung</strong> ist ein universelles Werkzeug.</li>
+            <li><strong>Taschenrechner &amp; Computer:</strong> Wenn dein Taschenrechner $\sin(0.1)$ berechnet, löst er keine Dreiecke. Er setzt $0.1$ in die ersten Glieder der Taylorreihe des Sinus ein: $\sin(x) \approx x - \frac{x^3}{6} + \dots$.</li>
+            <li><strong>Physik &amp; Ingenieurwesen:</strong> In der Relativitätstheorie treten komplexe Terme auf. Für kleine Geschwindigkeiten kann man diese durch ihr Taylorpolynom ersetzen und erhält so die klassische Newtonsche Physik als Näherung zurück. Dieses Prinzip der <strong>Linearisierung</strong> ist ein universelles Werkzeug.</li>
             <li><strong>Numerische Mathematik:</strong> Wenn Integrale nicht exakt lösbar sind, kann man den Integranden durch sein Taylorpolynom ersetzen und dieses (einfache) <a href="10-integralrechnung.html#sec10">Integral</a> gliedweise lösen, um eine exzellente Näherung zu erhalten.</li>
         </ul>
 
         <div class="info-box video-box">
-            <h5>Erklärendes Video: Das Taylorpolynom</h5>
+            <h5 id="erklrendes-video-das-taylorpolynom">Erklärendes Video: Das Taylorpolynom</h5>
             <p>Dieses Video erklärt anschaulich, was ein Taylorpolynom ist und wie man es Schritt für Schritt berechnet.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ELPvMyhNrz8" title="MathePeter: Taylorpolynom | Einfach Erklärt + Beispiel" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ELPvMyhNrz8" title="MathePeter: Taylorpolynom | Einfach Erklärt + Beispiel" frameborder="0" allowfullscreen=""></iframe>
         </div>
 
-        <h3>12.3 Definitionen & Begriffe</h3>
+        <h3 id="123-definitionen-begriffe">12.3 Definitionen &amp; Begriffe</h3>
         <dl>
             <dt>Taylorpolynom</dt>
             <dd>Das Taylorpolynom $T_m(x)$ vom Grad $m$ einer Funktion $f$ um den <strong>Entwicklungspunkt</strong> $x_0$ ist jenes Polynom $m$-ten Grades, das mit der Funktion $f$ an der Stelle $x_0$ im Funktionswert und in allen Ableitungen bis zur $m$-ten Ordnung übereinstimmt. Es ist die <strong>bestmögliche lokale Annäherung</strong> durch ein Polynom dieses Grades.</dd>
@@ -65,15 +63,15 @@
         </dl>
         
          <div class="info-box tip">
-            <h5>Fehlerabschätzung mit dem Lagrange-Restglied</h5>
+            <h5 id="fehlerabschtzung-mit-dem-lagrange-restglied">Fehlerabschätzung mit dem Lagrange-Restglied</h5>
             <p>Wie gut ist die Näherung durch ein Taylorpolynom? Die Differenz zwischen der wahren Funktion und dem Polynom, das Restglied $R_m(x) = f(x) - T_m(x)$, lässt sich exakt darstellen:</p>
             $$ R_m(x) = \frac{f^{(m+1)}(z)}{(m+1)!}(x-x_0)^{m+1} $$
             <p>Dabei ist $z$ eine (unbekannte) Zwischenstelle zwischen $x$ und $x_0$. Auch wenn man $z$ nicht kennt, kann man oft den Term $|f^{(m+1)}(z)|$ nach oben abschätzen, um eine Obergrenze für den Fehler der Approximation zu erhalten.</p>
         </div>
         
-        <h3>12.4 Wichtige Maclaurin-Reihen (Spickzettel)</h3>
+        <h3 id="124-wichtige-maclaurin-reihen-spickzettel">12.4 Wichtige Maclaurin-Reihen (Spickzettel)</h3>
         <div class="spickzettel-box">
-            <h5>Entwicklung um $x_0=0$</h5>
+            <h5 id="entwicklung-um-x00">Entwicklung um $x_0=0$</h5>
             <table>
                 <thead>
                     <tr><th>Funktion</th><th>Reihenentwicklung</th><th>Konvergenzbereich</th></tr>
@@ -82,32 +80,32 @@
                     <tr><td>$e^x$</td><td>$\sum_{k=0}^{\infty} \frac{x^k}{k!} = 1 + x + \frac{x^2}{2!} + \dots$</td><td>$x \in \mathbb{R}$</td></tr>
                     <tr><td>$\sin x$</td><td>$\sum_{k=0}^{\infty} (-1)^k \frac{x^{2k+1}}{(2k+1)!} = x - \frac{x^3}{3!} + \dots$</td><td>$x \in \mathbb{R}$</td></tr>
                     <tr><td>$\cos x$</td><td>$\sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} = 1 - \frac{x^2}{2!} + \dots$</td><td>$x \in \mathbb{R}$</td></tr>
-                    <tr><td>$\frac{1}{1-x}$</td><td>$\sum_{k=0}^{\infty} x^k = 1 + x + x^2 + \dots$</td><td>$|x|<1$</td></tr>
-                    <tr><td>$\ln(1+x)$</td><td>$\sum_{k=1}^{\infty} (-1)^{k+1} \frac{x^k}{k} = x - \frac{x^2}{2} + \dots$</td><td>$-1<x \le 1$</td></tr>
-                    <tr><td>$(1+x)^\alpha$</td><td>$1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \dots = \sum_{k=0}^{\infty} \binom{\alpha}{k} x^k$</td><td>$|x|<1$</td></tr>
+                    <tr><td>$\frac{1}{1-x}$</td><td>$\sum_{k=0}^{\infty} x^k = 1 + x + x^2 + \dots$</td><td>$|x|&lt;1$</td></tr>
+                    <tr><td>$\ln(1+x)$</td><td>$\sum_{k=1}^{\infty} (-1)^{k+1} \frac{x^k}{k} = x - \frac{x^2}{2} + \dots$</td><td>$-1<x \le="" 1$<="" td=""></x></td></tr>
+                    <tr><td>$(1+x)^\alpha$</td><td>$1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \dots = \sum_{k=0}^{\infty} \binom{\alpha}{k} x^k$</td><td>$|x|&lt;1$</td></tr>
                 </tbody>
             </table>
         </div>
         
-        <h3>12.5 Methoden und Anwendungen</h3>
-        <h4>12.5.1 Weg 1: Taylorpolynom explizit berechnen</h4>
+        <h3 id="125-methoden-und-anwendungen">12.5 Methoden und Anwendungen</h3>
+        <h4 id="1251-weg-1-taylorpolynom-explizit-berechnen">12.5.1 Weg 1: Taylorpolynom explizit berechnen</h4>
         <p>Dieser Weg wird genutzt, wenn keine bekannte Reihe zur Verfügung steht oder explizit verlangt wird. Die Schritte sind: 1. Funktion mehrfach ableiten. 2. Ableitungen am Entwicklungspunkt $x_0$ auswerten. 3. Koeffizienten $a_k = f^{(k)}(x_0)/k!$ berechnen. 4. Polynom zusammensetzen.</p>
 
-        <h4>12.5.2 Weg 2: Bekannte Reihen nutzen (der schlaue Weg)</h4>
+        <h4 id="1252-weg-2-bekannte-reihen-nutzen-der-schlaue-weg">12.5.2 Weg 2: Bekannte Reihen nutzen (der schlaue Weg)</h4>
         <p>Man muss das Rad nicht neu erfinden! Durch Substitution, Addition, Multiplikation oder Integration/Differentiation bekannter Reihen lassen sich schnell neue Reihen gewinnen. Dieser Weg ist meist viel schneller als das explizite Ableiten.</p>
 
         <div class="info-box video-box">
-            <h5>Erklärendes Video: Taylor- und Maclaurin-Reihen nutzen</h5>
+            <h5 id="erklrendes-video-taylor-und-maclaurin-reihen-nutzen">Erklärendes Video: Taylor- und Maclaurin-Reihen nutzen</h5>
             <p>Dieses Video zeigt, wie man durch Einsetzen in bekannte Reihen (hier am Beispiel Cosinus) schnell zu neuen Taylorreihen kommt.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/W0n4_EGs3ms" title="MathemaTrick: TAYLORENTWICKLUNG Cosinus – Taylorreihe, MacLaurin Reihe" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/W0n4_EGs3ms" title="MathemaTrick: TAYLORENTWICKLUNG Cosinus – Taylorreihe, MacLaurin Reihe" frameborder="0" allowfullscreen=""></iframe>
         </div>
         
-        <h4>12.5.3 Anwendung 1: Berechnung von Grenzwerten</h4>
+        <h4 id="1253-anwendung-1-berechnung-von-grenzwerten">12.5.3 Anwendung 1: Berechnung von Grenzwerten</h4>
         <p>Taylorreihen sind eine mächtige Alternative zur Regel von de l'Hospital. Man ersetzt die Funktionen im Grenzwert durch ihre Reihen, kürzt und wertet den Grenzwert dann direkt aus.</p>
         <p><strong>Beispiel:</strong> Berechne $\lim_{x\to 0}\frac{e^x - 1}{x}$.</p>
         <p>$\lim_{x\to 0}\frac{(1 + x + \frac{x^2}{2!} + \dots) - 1}{x} = \lim_{x\to 0}\frac{x + \frac{x^2}{2!} + \dots}{x} = \lim_{x\to 0}(1 + \frac{x}{2!} + \dots) = 1$.</p>
 
-        <h4>12.5.4 Anwendung 2: Näherungsweise Integration</h4>
+        <h4 id="1254-anwendung-2-nherungsweise-integration">12.5.4 Anwendung 2: Näherungsweise Integration</h4>
         <p>Funktionen ohne elementare Stammfunktion (wie $e^{-t^2}$) können integriert werden, indem man den Integranden durch sein Taylorpolynom ersetzt und dieses dann gliedweise integriert.</p>
         <p><strong>Beispiel:</strong> Berechne $\int_0^x e^{-t^2} dt$ näherungsweise.</p>
         <p>
@@ -115,13 +113,13 @@
         $\int_0^x (1 - t^2 + \frac{t^4}{2}) dt = [t - \frac{t^3}{3} + \frac{t^5}{10}]_0^x = x - \frac{x^3}{3} + \frac{x^5}{10}$.
         </p>
 
-        <h3>12.6 Allgemeine Potenzreihen und Konvergenz</h3>
+        <h3 id="126-allgemeine-potenzreihen-und-konvergenz">12.6 Allgemeine Potenzreihen und Konvergenz</h3>
         <p>Eine Taylorreihe ist ein Spezialfall einer allgemeinen <strong>Potenzreihe</strong>. Dies ist eine Reihe der Form $\sum_{k=0}^{\infty} a_k (x-x_0)^k$, deren Koeffizienten $a_k$ eine beliebige Zahlenfolge sein können.</p>
         <p>Eine solche Reihe konvergiert nicht notwendigerweise für alle $x$. Der Bereich, in dem sie konvergiert, ist das <strong>Konvergenzintervall</strong>. Dessen "halbe Breite" ist der <strong>Konvergenzradius $R$</strong>, den man oft über das Quotientenkriterium bestimmen kann:</p>
         $$ R = \lim_{k\to\infty} \left| \frac{a_k}{a_{k+1}} \right| $$
-        Die Reihe konvergiert dann (mindestens) für alle $x$ mit $|x-x_0| < R$. Das Verhalten an den Rändern des Intervalls ($x = x_0 \pm R$) muss separat mit anderen Kriterien geprüft werden.
+        Die Reihe konvergiert dann (mindestens) für alle $x$ mit $|x-x_0| &lt; R$. Das Verhalten an den Rändern des Intervalls ($x = x_0 \pm R$) muss separat mit anderen Kriterien geprüft werden.
 
-        <h3>12.7 Übungsaufgaben</h3>
+        <h3 id="127-bungsaufgaben">12.7 Übungsaufgaben</h3>
         <ol>
             <li><strong>(Einfach)</strong> Leiten Sie das Taylorpolynom 2. Grades von $f(x) = \frac{1}{\sqrt{x}}$ um den Entwicklungspunkt $x_0=1$ durch explizite Berechnung her.
                 <details>
@@ -169,5 +167,5 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
     
     <script type="module" src="../main.js"></script>
-</body>
-</html>
+
+</body></html>

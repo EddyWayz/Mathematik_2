@@ -1,12 +1,7 @@
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Eine umfassende Lerneinheit über Zahlenfolgen, von den Grundlagen (Monotonie, Beschränktheit) bis zur Konvergenz, Grenzwertberechnung und Wachstumshierarchie."
-    />
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eine umfassende Lerneinheit über Zahlenfolgen, von den Grundlagen (Monotonie, Beschränktheit) bis zur Konvergenz, Grenzwertberechnung und Wachstumshierarchie.">
     <title>
       3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte - Lernskript Mathe
     </title>
@@ -27,23 +22,13 @@
         svg: { fontCache: 'global' },
       };
     </script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-    ></script>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-    <meta
-      property="og:title"
-      content="3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte - Lernskript Mathe"
-    />
-    <meta
-      property="og:description"
-      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
-    />
-    <meta property="og:image" content="../images/placeholder.svg" />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="../style.css" />
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta property="og:title" content="3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte - Lernskript Mathe">
+    <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+    <meta property="og:image" content="../images/placeholder.svg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -59,7 +44,7 @@
     <main class="content-wrapper">
       <h2 id="sec3">3 Zahlenfolgen: Grundlagen, Konvergenz und Grenzwerte</h2>
 
-      <h3>3.1 Lernziel</h3>
+      <h3 id="31-lernziel">3.1 Lernziel</h3>
       <p>
         Nach dieser Lerneinheit wirst du die Konzepte von Zahlenfolgen, ihren
         Eigenschaften und ihrem Langzeitverhalten beherrschen. Du wirst
@@ -68,7 +53,7 @@
         Rechenregeln und der Wachstumshierarchie sicher berechnen können.
       </p>
 
-      <h3>3.2 Motivation und Kontext</h3>
+      <h3 id="32-motivation-und-kontext">3.2 Motivation und Kontext</h3>
       <p>
         Folgen sind ein fundamentales Konzept der Analysis und haben direkte
         Anwendungen in der Informatik. Sie sind die Brücke zwischen der
@@ -96,7 +81,7 @@
         </li>
       </ul>
 
-      <h3>3.3 Definitionen und grundlegende Eigenschaften</h3>
+      <h3 id="33-definitionen-und-grundlegende-eigenschaften">3.3 Definitionen und grundlegende Eigenschaften</h3>
       <dl>
         <dt>Zahlenfolge</dt>
         <dd>
@@ -146,7 +131,7 @@
       </dl>
 
       <div class="info-box tip">
-        <h5>Wichtige rekursive Folgen</h5>
+        <h5 id="wichtige-rekursive-folgen">Wichtige rekursive Folgen</h5>
         <ul>
           <li>
             <strong>Fibonacci-Folge:</strong> $a_{n+1}=a_{n}+a_{n-1}$ mit
@@ -162,15 +147,15 @@
         </ul>
       </div>
 
-      <h3>3.4 Konvergenz und Grenzwerte</h3>
+      <h3 id="34-konvergenz-und-grenzwerte">3.4 Konvergenz und Grenzwerte</h3>
       <dl>
         <dt>Konvergenz</dt>
         <dd>
           Eine Folge $(a_n)$ konvergiert gegen einen Grenzwert $a$, wenn der
           Abstand der Folgenglieder zu $a$ für hinreichend große $n$ beliebig
           klein wird. Formal bedeutet das: Für jede noch so kleine positive Zahl
-          $\epsilon$ gibt es einen Index $N$, sodass für alle $n > N$ gilt:
-          $|a_n - a| < \epsilon$.
+          $\epsilon$ gibt es einen Index $N$, sodass für alle $n &gt; N$ gilt:
+          $|a_n - a| &lt; \epsilon$.
         </dd>
 
         <dt>Divergenz</dt>
@@ -190,12 +175,10 @@
         </dd>
       </dl>
       <div class="info-box key-concept">
-        <h5>Kernaussage: Der Monotoniesatz</h5>
+        <h5 id="kernaussage-der-monotoniesatz">Kernaussage: Der Monotoniesatz</h5>
         <p>
-          <strong
-            >Jede Folge, die sowohl monoton als auch beschränkt ist, ist
-            konvergent.</strong
-          >
+          <strong>Jede Folge, die sowohl monoton als auch beschränkt ist, ist
+            konvergent.</strong>
         </p>
         <p>
           Dies ist ein zentraler Satz, der die Existenz eines Grenzwertes
@@ -204,7 +187,7 @@
       </div>
 
       <div class="info-box tip">
-        <h5>Strategie: Divergenz bei alternierenden Folgen nachweisen</h5>
+        <h5 id="strategie-divergenz-bei-alternierenden-folgen-nachweisen">Strategie: Divergenz bei alternierenden Folgen nachweisen</h5>
         <p>
           Um zu beweisen, dass eine alternierende Folge (mit einem Faktor wie
           $(-1)^n$) divergiert, ist die Analyse von Teilfolgen die beste
@@ -231,17 +214,17 @@
         </ol>
         <p>
           <strong>Beispiel (Klausurtyp):</strong> Untersuche
-          $a_{n}=\frac{(-1)^{n}(-6n^{3})}{ -n^{2}} = (-1)^n \cdot 6n$.<br />
+          $a_{n}=\frac{(-1)^{n}(-6n^{3})}{ -n^{2}} = (-1)^n \cdot 6n$.<br>
           - Teilfolge für gerade n ($a_{2k}$): $a_{2k} = (-1)^{2k} \cdot 6(2k) =
-          12k \to +\infty$.<br />
+          12k \to +\infty$.<br>
           - Teilfolge für ungerade n ($a_{2k+1}$): $a_{2k+1} = (-1)^{2k+1} \cdot
-          6(2k+1) = -6(2k+1) \to -\infty$.<br />
+          6(2k+1) = -6(2k+1) \to -\infty$.<br>
           Da die Teilfolgen unterschiedliche (uneigentliche) Grenzwerte haben,
           ist die Folge $(a_n)$ unbestimmt divergent.
         </p>
       </div>
 
-      <h3>3.5 Rechenregeln für Grenzwerte</h3>
+      <h3 id="35-rechenregeln-fr-grenzwerte">3.5 Rechenregeln für Grenzwerte</h3>
       <p>
         Für konvergente Folgen $ \lim a_n = A $ und $ \lim b_n = B $ gelten
         folgende Regeln, solange die Ergebnisse definiert sind:
@@ -261,7 +244,7 @@
       </ul>
 
       <div class="info-box warning">
-        <h5>Unbestimmte Ausdrücke</h5>
+        <h5 id="unbestimmte-ausdrcke">Unbestimmte Ausdrücke</h5>
         <p>
           Die Rechenregeln sind nicht direkt anwendbar, wenn folgende Formen
           auftreten. Hier sind Umformungen oder spezielle Verfahren nötig.
@@ -273,7 +256,7 @@
         </p>
       </div>
 
-      <h3>3.6 Wichtiges Werkzeug: Die Wachstumshierarchie</h3>
+      <h3 id="36-wichtiges-werkzeug-die-wachstumshierarchie">3.6 Wichtiges Werkzeug: Die Wachstumshierarchie</h3>
       <p>
         Um Grenzwerte von Brüchen zu bestimmen (Fall $\frac{\infty}{\infty}$),
         ist es entscheidend zu wissen, welche Funktionen für große $n$ am
@@ -283,10 +266,10 @@
       <p><strong>Hierarchie (langsam nach schnell für große $n$):</strong></p>
       <p style="text-align: center; font-size: 1.2em">
         $ \ln(n) \ll \sqrt[p]{n} \ll n \ll n \log n \ll n^p \ll a^n \ll n! \ll
-        n^n $ (für $p>1, a>1$)
+        n^n $ (für $p&gt;1, a&gt;1$)
       </p>
       <div class="info-box tip">
-        <h5>Anwendung der Hierarchie bei Brüchen:</h5>
+        <h5 id="anwendung-der-hierarchie-bei-brchen">Anwendung der Hierarchie bei Brüchen:</h5>
         <p>
           Klammere im Zähler und Nenner jeweils den dominantesten Term aus und
           kürze. Das Ergebnis hängt davon ab, ob der Zähler, der Nenner oder
@@ -294,8 +277,8 @@
         </p>
       </div>
 
-      <h3>3.7 Beispielaufgaben</h3>
-      <h4>3.7.1 Bildungsvorschriften finden</h4>
+      <h3 id="37-beispielaufgaben">3.7 Beispielaufgaben</h3>
+      <h4 id="371-bildungsvorschriften-finden">3.7.1 Bildungsvorschriften finden</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Gegeben sei die Folge $2, 4a, 8a^2, 16a^3,
@@ -318,7 +301,7 @@
           </ol>
         </li>
       </ul>
-      <h4>3.7.2 Grenzwert eines Bruchs berechnen</h4>
+      <h4 id="372-grenzwert-eines-bruchs-berechnen">3.7.2 Grenzwert eines Bruchs berechnen</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Berechnen Sie den Grenzwert $L =
@@ -350,7 +333,7 @@
         </li>
       </ul>
 
-      <h3>3.8 Übungsaufgaben aus dem Skript</h3>
+      <h3 id="38-bungsaufgaben-aus-dem-skript">3.8 Übungsaufgaben aus dem Skript</h3>
       <div class="task-hint">
         <p>
           <strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$
@@ -365,7 +348,7 @@
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              <strong>Rekursiv:</strong> $a_n = -a_{n-1} - 2$ mit $a_0=1$.<br />
+              <strong>Rekursiv:</strong> $a_n = -a_{n-1} - 2$ mit $a_0=1$.<br>
               <strong>Explizit:</strong> $a_n = -1 + 2 \cdot (-1)^n$.
             </p>
           </details>
@@ -378,13 +361,11 @@
             <summary>Lösung anzeigen</summary>
             <p>
               Die Glieder sind $a_0=3$, $a_1=3^{0.2} \approx 1.24$,
-              $a_2=(1.24)^{0.2} \approx 1.04$, ... Die Glieder sind immer $>1$
-              und werden kleiner. <br /><strong>Monoton:</strong> Ja (fallend).
-              <br /><strong>Beschränkt:</strong> Ja (nach oben durch 3, nach
-              unten durch 1). <br /><strong>Konvergent:</strong> Ja (da monoton
-              und beschränkt). Der Grenzwert ist 1. <br /><strong
-                >Bestimmt divergent:</strong
-              >
+              $a_2=(1.24)^{0.2} \approx 1.04$, ... Die Glieder sind immer $&gt;1$
+              und werden kleiner. <br><strong>Monoton:</strong> Ja (fallend).
+              <br><strong>Beschränkt:</strong> Ja (nach oben durch 3, nach
+              unten durch 1). <br><strong>Konvergent:</strong> Ja (da monoton
+              und beschränkt). Der Grenzwert ist 1. <br><strong>Bestimmt divergent:</strong>
               Nein.
             </p>
           </details>
@@ -409,9 +390,7 @@
     <footer>
       <nav class="page-nav" aria-label="Seitennavigation">
         <a href="02-kombinationen.html">← Vorheriges Kapitel</a>
-        <a href="training/03-uebungen-folgen-einfuehrung-loesungen.html"
-          >Zu den Übungen</a
-        >
+        <a href="training/03-uebungen-folgen-einfuehrung-loesungen.html">Zu den Übungen</a>
         <a href="04-grenzwerte.html">Nächstes Kapitel →</a>
       </nav>
     </footer>
@@ -419,5 +398,6 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
     <script type="module" src="../main.js"></script>
-  </body>
-</html>
+  
+
+</body></html>

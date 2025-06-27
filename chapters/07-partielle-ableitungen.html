@@ -1,12 +1,7 @@
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Lerneinheit über partielle Ableitungen für Funktionen mehrerer Veränderlicher, den Gradientenvektor und das totale Differential."
-    />
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lerneinheit über partielle Ableitungen für Funktionen mehrerer Veränderlicher, den Gradientenvektor und das totale Differential.">
     <title>7 Partielle Ableitungen und der Gradient - Lernskript Mathe</title>
 
     <script>
@@ -25,23 +20,13 @@
         svg: { fontCache: 'global' },
       };
     </script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-    ></script>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-    <meta
-      property="og:title"
-      content="7 Partielle Ableitungen und der Gradient - Lernskript Mathe"
-    />
-    <meta
-      property="og:description"
-      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
-    />
-    <meta property="og:image" content="../images/placeholder.svg" />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="../style.css" />
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta property="og:title" content="7 Partielle Ableitungen und der Gradient - Lernskript Mathe">
+    <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+    <meta property="og:image" content="../images/placeholder.svg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -56,7 +41,7 @@
 
     <main class="content-wrapper">
       <h2 id="sec7">7 Partielle Ableitungen und der Gradient</h2>
-      <h3>7.1 Lernziel</h3>
+      <h3 id="71-lernziel">7.1 Lernziel</h3>
       <p>
         Nach dieser Lerneinheit wirst du verstehen, wie das Konzept der
         Ableitung auf Funktionen mit mehreren Variablen erweitert wird. Du wirst
@@ -69,7 +54,7 @@
         Steigung in eine beliebige Richtung zu bestimmen.
       </p>
 
-      <h3>7.2 Motivation und Kontext</h3>
+      <h3 id="72-motivation-und-kontext">7.2 Motivation und Kontext</h3>
       <p>
         In der realen Welt hängen die meisten Größen von mehr als nur einem
         Faktor ab. Der Gewinn einer Firma hängt vom Preis, den Werbeausgaben und
@@ -90,7 +75,7 @@
         neuronale Netze zu trainieren.
       </p>
 
-      <h3>7.3 Definitionen & Begriffe</h3>
+      <h3 id="73-definitionen-begriffe">7.3 Definitionen &amp; Begriffe</h3>
       <dl>
         <dt>Funktion mehrerer Veränderlicher</dt>
         <dd>
@@ -110,23 +95,16 @@
         </dd>
 
         <div class="info-box video-box">
-          <h5>Erklärendes Video: Partielle Ableitungen</h5>
+          <h5 id="erklrendes-video-partielle-ableitungen">Erklärendes Video: Partielle Ableitungen</h5>
           <p>
             Dieses Video erklärt anschaulich, wie man eine Funktion mit mehreren
             Variablen partiell ableitet.
           </p>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/N0Y9E0wdLKk"
-            title="MathemaTrick: PARTIELLE ABLEITUNG einfach erklärt"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/N0Y9E0wdLKk" title="MathemaTrick: PARTIELLE ABLEITUNG einfach erklärt" frameborder="0" allowfullscreen=""></iframe>
         </div>
 
         <div class="info-box tip">
-          <h5>Praxis-Tipp: Die goldene Regel des partiellen Ableitens</h5>
+          <h5 id="praxis-tipp-die-goldene-regel-des-partiellen-ableitens">Praxis-Tipp: Die goldene Regel des partiellen Ableitens</h5>
           <p>
             Wenn du nach einer Variable (z.B. $x$) ableitest, stelle dir vor,
             alle anderen Variablen (z.B. $y$ und $z$) wären konkrete Zahlen wie
@@ -145,7 +123,7 @@
         </dd>
 
         <div class="info-box key-concept">
-          <h5>Kernaussage: Der Gradient als Kompass</h5>
+          <h5 id="kernaussage-der-gradient-als-kompass">Kernaussage: Der Gradient als Kompass</h5>
           <p>
             Stell dir vor, du stehst an einem Punkt auf einem "Funktionsgebirge"
             $f(x,y)$. Der Gradientenvektor $\nabla f$ an diesem Punkt ist wie
@@ -166,19 +144,12 @@
             </li>
           </ul>
           <div class="info-box video-box" style="margin-top: 15px">
-            <h5>Erklärendes Video: Der Gradient</h5>
+            <h5 id="erklrendes-video-der-gradient">Erklärendes Video: Der Gradient</h5>
             <p>
               Hier wird die Bedeutung des Gradienten als Vektor der steilsten
               Steigung anschaulich erklärt.
             </p>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/Iav4s81ctWI"
-              title="Mathe by Daniel Jung: Gradient formell und anschaulich"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Iav4s81ctWI" title="Mathe by Daniel Jung: Gradient formell und anschaulich" frameborder="0" allowfullscreen=""></iframe>
           </div>
         </div>
 
@@ -201,30 +172,23 @@
         </dd>
 
         <div class="info-box tip">
-          <h5>Anwendung: Fehlerfortpflanzung</h5>
+          <h5 id="anwendung-fehlerfortpflanzung">Anwendung: Fehlerfortpflanzung</h5>
           <p>
             Das totale Differential ist perfekt zur Abschätzung von Fehlern.
             Beispiel: Die Fläche eines Rechtecks ist $A(x,y) = xy$. Du misst $x$
             und $y$ mit kleinen Fehlern $\Delta x$ und $\Delta y$. Wie groß ist
-            der maximale Fehler $\Delta A$ der Fläche?<br />
+            der maximale Fehler $\Delta A$ der Fläche?<br>
             $\Delta A \approx dA = \frac{\partial A}{\partial x} \Delta x +
             \frac{\partial A}{\partial y} \Delta y = y \cdot \Delta x + x \cdot
             \Delta y$.
           </p>
           <div class="info-box video-box" style="margin-top: 15px">
-            <h5>Erklärendes Video: Das Totale Differential</h5>
+            <h5 id="erklrendes-video-das-totale-differential">Erklärendes Video: Das Totale Differential</h5>
             <p>
               Dieses Video zeigt, wie man das totale Differential berechnet und
               wofür man es verwendet.
             </p>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/T8Qy5czGWgo"
-              title="MathemaTrick: Totales Differential berechnen"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/T8Qy5czGWgo" title="MathemaTrick: Totales Differential berechnen" frameborder="0" allowfullscreen=""></iframe>
           </div>
         </div>
 
@@ -243,8 +207,8 @@
         </dd>
       </dl>
 
-      <h3>7.4 Beispielaufgaben</h3>
-      <h4>7.4.1 Beispiel 1: Partielle Ableitungen berechnen</h4>
+      <h3 id="74-beispielaufgaben">7.4 Beispielaufgaben</h3>
+      <h4 id="741-beispiel-1-partielle-ableitungen-berechnen">7.4.1 Beispiel 1: Partielle Ableitungen berechnen</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Berechnen Sie alle partiellen Ableitungen
@@ -271,7 +235,7 @@
           </ol>
         </li>
       </ul>
-      <h4>7.4.2 Beispiel 2: Gradient und totales Differential</h4>
+      <h4 id="742-beispiel-2-gradient-und-totales-differential">7.4.2 Beispiel 2: Gradient und totales Differential</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Gegeben sei $f(x,y) = x^2y - 3y$. Bestimmen
@@ -299,7 +263,7 @@
           </ol>
         </li>
       </ul>
-      <h3>7.5 Übungsaufgaben</h3>
+      <h3 id="75-bungsaufgaben">7.5 Übungsaufgaben</h3>
       <div class="task-hint">
         <p>
           <strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$
@@ -314,9 +278,9 @@
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              $f_x = z \cdot e^{x/y} \cdot \frac{1}{y} = \frac{z}{y}e^{x/y}$<br />
+              $f_x = z \cdot e^{x/y} \cdot \frac{1}{y} = \frac{z}{y}e^{x/y}$<br>
               $f_y = z \cdot e^{x/y} \cdot (-\frac{x}{y^2}) =
-              -\frac{zx}{y^2}e^{x/y}$<br />
+              -\frac{zx}{y^2}e^{x/y}$<br>
               $f_z = 1 \cdot e^{x/y} = e^{x/y}$
             </p>
           </details>
@@ -332,19 +296,19 @@
               $\frac{\partial T}{\partial x} = e^{\frac{ay}{x^2}} + x \cdot
               e^{\frac{ay}{x^2}} \cdot (-\frac{2ay}{x^3}) +
               \frac{1}{2\sqrt{x-y}} = e^{\frac{ay}{x^2}}(1 - \frac{2ay}{x^2}) +
-              \frac{1}{2\sqrt{x-y}}$<br />
+              \frac{1}{2\sqrt{x-y}}$<br>
               $\frac{\partial T}{\partial y} = x \cdot e^{\frac{ay}{x^2}} \cdot
               \frac{a}{x^2} - \frac{1}{2\sqrt{x-y}} =
-              \frac{a}{x}e^{\frac{ay}{x^2}} - \frac{1}{2\sqrt{x-y}}$<br />
+              \frac{a}{x}e^{\frac{ay}{x^2}} - \frac{1}{2\sqrt{x-y}}$<br>
               $\frac{\partial T}{\partial r} = \frac{1(r^2+1) -
               (r-t)(2r)}{(r^2+1)^2} + \frac{1}{r} = \frac{-r^2+2rt+1}{(r^2+1)^2}
-              + \frac{1}{r}$<br />
+              + \frac{1}{r}$<br>
               $\frac{\partial T}{\partial s} = \frac{1}{2s}$ (nach Vereinfachung
               des Logarithmus $\ln(\dots) = \dots + \frac{1}{2}\ln s +
-              \dots$)<br />
+              \dots$)<br>
               $\frac{\partial T}{\partial t} = \frac{-1}{r^2+1} + \frac{2}{t}$
               (nach Vereinfachung des Logarithmus $\ln(\dots) = \dots + 2\ln
-              t$)<br />
+              t$)<br>
               Der Gradient $\nabla T$ ist der Vektor dieser fünf Ableitungen.
             </p>
           </details>
@@ -357,14 +321,14 @@
             <p>
               1. <strong>Punkt vervollständigen:</strong> $z_0 = f(\pi, 0) =
               \sin(\pi)\cos(0) = 0 \cdot 1 = 0$. Der Punkt ist $P(\pi, 0,
-              0)$.<br />
+              0)$.<br>
               2. <strong>Partielle Ableitungen:</strong> $f_x = \cos(x)\cos(y)$,
-              $f_y = -\sin(x)\sin(y)$.<br />
+              $f_y = -\sin(x)\sin(y)$.<br>
               3. <strong>Ableitungen am Punkt auswerten:</strong> $f_x(\pi, 0) =
               \cos(\pi)\cos(0) = -1 \cdot 1 = -1$. $f_y(\pi, 0) =
-              -\sin(\pi)\sin(0) = 0$.<br />
+              -\sin(\pi)\sin(0) = 0$.<br>
               4. <strong>Formel anwenden:</strong> $z - z_0 = f_x(x-x_0) +
-              f_y(y-y_0) \implies z - 0 = -1(x-\pi) + 0(y-0)$.<br />
+              f_y(y-y_0) \implies z - 0 = -1(x-\pi) + 0(y-0)$.<br>
               <strong>Ergebnis:</strong> $z = -x + \pi$.
             </p>
           </details>
@@ -377,21 +341,21 @@
             <summary>Lösung anzeigen</summary>
             <p>
               Dies ist eine Richtungsableitung. Formel: $D_u f = \nabla f \cdot
-              \vec{u}$.<br />
+              \vec{u}$.<br>
               1.
               <strong>Richtungsvektor normieren:</strong>
               $|\vec{r}|=\sqrt{3^2+4^2}=5$. $\vec{u} =
-              \frac{1}{5}\binom{3}{4}$.<br />
+              \frac{1}{5}\binom{3}{4}$.<br>
               2. <strong>Gradient berechnen:</strong> $f_x = 1 \cdot e^{-y/x} +
               x \cdot e^{-y/x} \cdot (\frac{y}{x^2}) = e^{-y/x}(1+\frac{y}{x})$.
-              $f_y = x \cdot e^{-y/x} \cdot (-\frac{1}{x}) = -e^{-y/x}$.<br />
+              $f_y = x \cdot e^{-y/x} \cdot (-\frac{1}{x}) = -e^{-y/x}$.<br>
               3.
               <strong>Gradient am Punkt $p(1,0)$ auswerten:</strong> $f_x(1,0) =
               e^0(1+0) = 1$. $f_y(1,0) = -e^0 = -1$. $\nabla f(1,0) =
-              \binom{1}{-1}$.<br />
+              \binom{1}{-1}$.<br>
               4. <strong>Skalarprodukt bilden:</strong> $D_u f = \binom{1}{-1}
               \cdot \binom{3/5}{4/5} = 1 \cdot \frac{3}{5} + (-1) \cdot
-              \frac{4}{5} = \frac{3}{5} - \frac{4}{5} = -\frac{1}{5}$.<br />
+              \frac{4}{5} = \frac{3}{5} - \frac{4}{5} = -\frac{1}{5}$.<br>
               <strong>Ergebnis:</strong> Die Steigung in die angegebene Richtung
               ist $-0.2$.
             </p>
@@ -408,18 +372,18 @@
             <p>
               1. <strong>Totales Differential bilden:</strong> $dV =
               \frac{\partial V}{\partial R}dR + \frac{\partial V}{\partial
-              h}dh$.<br />
+              h}dh$.<br>
               2. <strong>Partielle Ableitungen:</strong> $\frac{\partial
               V}{\partial R} = 2\pi R h$. $\frac{\partial V}{\partial h} = \pi
-              R^2$.<br />
+              R^2$.<br>
               3. <strong>Einsetzen:</strong> $dV = (2\pi R h)dR + (\pi
-              R^2)dh$.<br />
+              R^2)dh$.<br>
               4. <strong>Durch V teilen:</strong> Wir teilen die ganze Gleichung
-              durch $V = \pi R^2 h$.<br />
+              durch $V = \pi R^2 h$.<br>
               $\frac{dV}{V} = \frac{2\pi R h \cdot dR}{\pi R^2 h} + \frac{\pi
-              R^2 \cdot dh}{\pi R^2 h}$.<br />
+              R^2 \cdot dh}{\pi R^2 h}$.<br>
               5. <strong>Kürzen und Ergebnis:</strong> $\frac{dV}{V} =
-              2\frac{dR}{R} + \frac{dh}{h}$.<br />
+              2\frac{dR}{R} + \frac{dh}{h}$.<br>
               Die relative Volumenänderung ist also die Summe aus der relativen
               Höhenänderung und dem Doppelten der relativen Radiusänderung.
             </p>
@@ -431,10 +395,7 @@
     <footer>
       <nav class="page-nav" aria-label="Seitennavigation">
         <a href="06-ableitungsregeln.html">← Vorheriges Kapitel</a>
-        <a
-          href="training/07-uebungen-mehrdimensionale-differentialrechnung-loesungen.html"
-          >Zu den Übungen</a
-        >
+        <a href="training/07-uebungen-mehrdimensionale-differentialrechnung-loesungen.html">Zu den Übungen</a>
         <a href="08-extremwerte-mehrere-var.html">Nächstes Kapitel →</a>
       </nav>
     </footer>
@@ -442,5 +403,6 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
     <script type="module" src="../main.js"></script>
-  </body>
-</html>
+  
+
+</body></html>

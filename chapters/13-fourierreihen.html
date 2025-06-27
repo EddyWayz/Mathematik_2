@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
+<!DOCTYPE html><html lang="de"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Einführung in Fourierreihen zur Darstellung periodischer Funktionen durch Sinus- und Cosinus-Schwingungen, inklusive Koeffizienten, Orthogonalität und Diskreter Fouriertransformation (DFT).">
@@ -12,7 +10,7 @@
     svg: { fontCache: 'global' }
   };
 </script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="13 Fourierreihen und Transformation - Lernskript Mathe">
 <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
@@ -33,10 +31,10 @@
     <main class="content-wrapper">
 
         <h2 id="sec13">13 Fourierreihen: Periodische Signale analysieren</h2>
-        <h3>13.1 Lernziel</h3>
+        <h3 id="131-lernziel">13.1 Lernziel</h3>
         <p>Nach dieser Lerneinheit wirst du verstehen, wie periodische Funktionen – selbst solche mit Ecken oder Sprüngen – als unendliche Summe von einfachen Sinus- und Cosinus-Schwingungen dargestellt werden können. Du wirst in der Lage sein, die Fourierkoeffizienten ($a_k, b_k$) für eine gegebene Funktion zu berechnen und die zugrundeliegende Orthogonalität zu verstehen. Du wirst die Bedeutung der Diskreten Fouriertransformation (DFT) für die digitale Signalverarbeitung kennen und wissen, was der FFT-Algorithmus leistet.</p>
         
-        <h3>13.2 Motivation: Von Taylor zu Fourier</h3>
+        <h3 id="132-motivation-von-taylor-zu-fourier">13.2 Motivation: Von Taylor zu Fourier</h3>
         <p>Taylorreihen sind exzellent für die lokale Approximation von "glatten" Funktionen. Aber was tun wir bei periodischen Signalen, wie sie in der Elektrotechnik, Akustik oder Bildverarbeitung allgegenwärtig sind? Oder bei Funktionen, die nicht glatt sind, sondern Sprünge haben (wie ein Rechtecksignal)? Hier versagen Taylorreihen.</p>
         <p>Die geniale Idee von Jean-Baptiste Joseph Fourier war, solche Funktionen nicht durch Potenzen, sondern durch eine Überlagerung von harmonischen Schwingungen (Sinus und Cosinus) darzustellen. Dies ist die Grundlage der modernen <strong>Signalanalyse</strong>.</p>
         <ul>
@@ -45,8 +43,8 @@
             <li><strong>Lösung von Differentialgleichungen:</strong> Viele partielle DGLs, wie die Wärmeleitungs- oder Wellengleichung, werden durch den Ansatz mit Fourierreihen lösbar.</li>
         </ul>
         
-        <h3>13.3 Die Fourierreihe</h3>
-        <h4>13.3.1 Definitionen & Begriffe</h4>
+        <h3 id="133-die-fourierreihe">13.3 Die Fourierreihe</h3>
+        <h4 id="1331-definitionen-begriffe">13.3.1 Definitionen &amp; Begriffe</h4>
         <dl>
             <dt>Periodische Funktion</dt>
             <dd>Eine Funktion $f(t)$ mit $f(t+T) = f(t)$ für alle $t$. Die kleinste solche positive Zahl $T$ heißt <strong>Periode</strong>.</dd>
@@ -57,26 +55,26 @@
             $$ F(t) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left( a_k \cos(k\omega t) + b_k \sin(k\omega t) \right) $$</dd>
             <dt>Fourierkoeffizienten</dt>
             <dd>Die Amplituden $a_k$ und $b_k$ der einzelnen Schwingungen. Sie werden über Integrale berechnet, um die beste Näherung im Sinne der mittleren quadratischen Abweichung zu erhalten:
-            \begin{align*} a_k &= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \cos(k\omega t) dt \quad (k \ge 0) \\ b_k &= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \sin(k\omega t) dt \quad (k \ge 1) \end{align*}</dd>
+            \begin{align*} a_k &amp;= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \cos(k\omega t) dt \quad (k \ge 0) \\ b_k &amp;= \frac{2}{T} \int_{-T/2}^{T/2} f(t) \sin(k\omega t) dt \quad (k \ge 1) \end{align*}</dd>
         </dl>
 
         <div class="info-box tip">
-            <h5>Praxis-Tipp: Was bedeuten die Koeffizienten?</h5>
+            <h5 id="praxis-tipp-was-bedeuten-die-koeffizienten">Praxis-Tipp: Was bedeuten die Koeffizienten?</h5>
             <ul>
                 <li>$\frac{a_0}{2}$: Dies ist der <strong>Gleichanteil</strong> (engl. DC offset) des Signals. Er entspricht dem Mittelwert der Funktion über eine Periode.</li>
                 <li>$a_1, b_1$: Bestimmen Amplitude und Phase der <strong>Grundschwingung</strong> (1. Harmonische).</li>
-                <li>$a_k, b_k$ ($k>1$): Bestimmen die Anteile der <strong>Oberschwingungen</strong> (k-te Harmonische) mit Vielfachen der Grundfrequenz.</li>
+                <li>$a_k, b_k$ ($k&gt;1$): Bestimmen die Anteile der <strong>Oberschwingungen</strong> (k-te Harmonische) mit Vielfachen der Grundfrequenz.</li>
             </ul>
         </div>
         
-        <h4>13.3.2 Symmetrie-Regeln</h4>
+        <h4 id="1332-symmetrie-regeln">13.3.2 Symmetrie-Regeln</h4>
         <p>Die Berechnung der Koeffizienten vereinfacht sich bei symmetrischen Funktionen erheblich:</p>
         <ul>
             <li>Ist $f(t)$ eine <strong>gerade Funktion</strong> ($f(-t) = f(t)$, achsensymmetrisch), sind alle $b_k = 0$.</li>
             <li>Ist $f(t)$ eine <strong>ungerade Funktion</strong> ($f(-t) = -f(t)$, punktsymmetrisch), sind alle $a_k = 0$ (inkl. $a_0$).</li>
         </ul>
 
-        <h3>13.4 Die Mathematik dahinter: Orthogonalität</h3>
+        <h3 id="134-die-mathematik-dahinter-orthogonalitt">13.4 Die Mathematik dahinter: Orthogonalität</h3>
         <p>Warum haben die Formeln für die Fourierkoeffizienten genau diese Form? Der Grund liegt in einer fundamentalen Eigenschaft der Sinus- und Kosinusfunktionen: der <strong>Orthogonalität</strong>. Man kann für Funktionen ein Skalarprodukt definieren, z.B. $\langle f,g\rangle=\frac{2}{T}\int_{0}^{T}f(x) g(x)dx$. Bezüglich dieses Skalarprodukts verhalten sich die trigonometrischen Basisfunktionen wie senkrecht aufeinander stehende Einheitsvektoren:</p>
         <ul>
             <li>$\langle \cos(k\omega t), \sin(n\omega t) \rangle = 0$ für alle $k, n$.</li>
@@ -85,7 +83,7 @@
         </ul>
         <p>Multipliziert man die Fourierreihen-Gleichung mit z.B. $\cos(n\omega t)$ und integriert über eine Periode, "löschen" sich aufgrund dieser Orthogonalität alle Terme bis auf den mit $a_n$ aus. So lässt sich die Formel für $a_n$ direkt herleiten. Die Fourieranalyse ist also im Kern eine Projektion einer Funktion auf orthogonale Basisvektoren.</p>
 
-        <h3>13.5 Für die Informatik: Diskrete Fouriertransformation (DFT)</h3>
+        <h3 id="135-fr-die-informatik-diskrete-fouriertransformation-dft">13.5 Für die Informatik: Diskrete Fouriertransformation (DFT)</h3>
         <p>In der Praxis liegen Signale (Audio, Bild) nicht als kontinuierliche Funktion vor, sondern als eine endliche Folge von $N$ abgetasteten Werten (Samples). Um diese zu analysieren, ersetzt man die Integrale der Fourierkoeffizienten durch Summen. Das Ergebnis ist die <strong>Diskrete Fouriertransformation (DFT)</strong>.</p>
         <dl>
             <dt>DFT</dt>
@@ -97,7 +95,7 @@
             <dd>Die direkte Berechnung der DFT benötigt ca. $O(N^2)$ Rechenoperationen. Der <strong>FFT-Algorithmus</strong> ist ein genialer "Divide and Conquer"-Ansatz, der dasselbe Ergebnis in nur $O(N \log N)$ Operationen berechnet. Dies war ein entscheidender Durchbruch, der die digitale Signalverarbeitung in Echtzeit erst ermöglichte.</dd>
         </dl>
         
-        <h3>13.6 Ausblick: Komplexe Schreibweise und Splines</h3>
+        <h3 id="136-ausblick-komplexe-schreibweise-und-splines">13.6 Ausblick: Komplexe Schreibweise und Splines</h3>
         <dl>
             <dt>Komplexe Fourierreihe</dt>
             <dd>Mit der Euler'schen Formel ($e^{i\phi} = \cos\phi + i\sin\phi$) lässt sich die Fourierreihe viel kompakter schreiben:
@@ -107,9 +105,9 @@
             <dd>Wenn man eine Kurve durch gegebene Punkte nicht global (wie mit Fourier oder Taylor), sondern stückweise möglichst "glatt" annähern will, verwendet man Splines. Dabei werden Polynome niedrigen Grades (oft 3. Grades, "kubische Splines") so aneinandergefügt, dass an den Nahtstellen nicht nur die Funktionswerte, sondern auch die ersten und zweiten Ableitungen übereinstimmen. Dies vermeidet unerwünschte Oszillationen und ist ein Standardverfahren in der Computergrafik.</dd>
         </dl>
 
-        <h3>13.7 Übungsaufgaben mit Rechenweg</h3>
+        <h3 id="137-bungsaufgaben-mit-rechenweg">13.7 Übungsaufgaben mit Rechenweg</h3>
         <ol>
-            <li><strong>(Mittel) Entwickeln Sie die Funktion für ein Rechtecksignal mit Periode $T=2\pi$ und Amplitude g, gegeben durch $f(x) = \begin{cases} -g & \text{für } -\pi \le x < 0 \\ +g & \text{für } 0 \le x < \pi \end{cases}$, in eine Fourierreihe.</strong>
+            <li><strong>(Mittel) Entwickeln Sie die Funktion für ein Rechtecksignal mit Periode $T=2\pi$ und Amplitude g, gegeben durch $f(x) = \begin{cases} -g &amp; \text{für } -\pi \le x &lt; 0 \\ +g &amp; \text{für } 0 \le x &lt; \pi \end{cases}$, in eine Fourierreihe.</strong>
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p>
@@ -120,7 +118,7 @@
                         $$ b_n = \frac{2}{\pi} \int_0^\pi g \sin(nx)dx = \frac{2g}{\pi} [-\frac{\cos(nx)}{n}]_0^\pi $$
                         $$ b_n = -\frac{2g}{n\pi} (\cos(n\pi) - \cos(0)) = -\frac{2g}{n\pi}((-1)^n - 1) = \frac{2g}{n\pi}(1 - (-1)^n) $$
                         3. <strong>Fallunterscheidung für $b_n$:</strong>
-                        <ul>
+                        </p><ul>
                             <li>Wenn n gerade ist, ist $(-1)^n=1$, also $b_n = \frac{2g}{n\pi}(1-1) = 0$.</li>
                             <li>Wenn n ungerade ist, ist $(-1)^n=-1$, also $b_n = \frac{2g}{n\pi}(1-(-1)) = \frac{4g}{n\pi}$.</li>
                         </ul>
@@ -129,7 +127,7 @@
                         $ F(x) = \frac{4g}{\pi} \left( \sin(x) + \frac{1}{3}\sin(3x) + \frac{1}{5}\sin(5x) + \dots \right) $
                 </details>
             </li>
-            <li><strong>(Einfach)</strong> Gegeben sei die Funktion $f(x)=x^2$ für $0 \le x < 4$ mit Periode $T=4$. Skizzieren Sie die Funktion für $-4 \le x < 12$. Ist die periodisch fortgesetzte Funktion gerade, ungerade oder keines von beiden?
+            <li><strong>(Einfach)</strong> Gegeben sei die Funktion $f(x)=x^2$ für $0 \le x &lt; 4$ mit Periode $T=4$. Skizzieren Sie die Funktion für $-4 \le x &lt; 12$. Ist die periodisch fortgesetzte Funktion gerade, ungerade oder keines von beiden?
                 <details>
                     <summary>Lösung anzeigen</summary>
                     <p><strong>Skizze:</strong> Die Funktion ist eine Parabel von (0,0) bis (fast) (4,16). Dieses Muster wiederholt sich. Im Intervall $[-4, 0)$ sieht sie aus wie die Parabel im Intervall $[0,4)$, also nicht wie $(x+4)^2$.<br>
@@ -151,5 +149,5 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
     
     <script type="module" src="../main.js"></script>
-</body>
-</html>
+
+</body></html>

@@ -1,12 +1,7 @@
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Lerneinheit über die vier kombinatorischen Auswahlmodelle: Variationen und Kombinationen, jeweils mit und ohne Wiederholung."
-    />
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lerneinheit über die vier kombinatorischen Auswahlmodelle: Variationen und Kombinationen, jeweils mit und ohne Wiederholung.">
     <title>2 Variationen und Kombinationen - Lernskript Mathe</title>
 
     <script>
@@ -25,23 +20,13 @@
         svg: { fontCache: 'global' },
       };
     </script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-    ></script>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-    <meta
-      property="og:title"
-      content="2 Variationen und Kombinationen - Lernskript Mathe"
-    />
-    <meta
-      property="og:description"
-      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
-    />
-    <meta property="og:image" content="../images/placeholder.svg" />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="../style.css" />
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta property="og:title" content="2 Variationen und Kombinationen - Lernskript Mathe">
+    <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+    <meta property="og:image" content="../images/placeholder.svg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -57,7 +42,7 @@
     <main class="content-wrapper">
       <h2 id="sec2">2 Variationen und Kombinationen – Die 4 Auswahlmodelle</h2>
 
-      <h3>2.1 Lernziel</h3>
+      <h3 id="21-lernziel">2.1 Lernziel</h3>
       <p>
         Am Ende dieser Lerneinheit wirst du in der Lage sein, kombinatorische
         Probleme systematisch zu analysieren und einem der vier grundlegenden
@@ -67,7 +52,7 @@
         Produktregel kombiniert werden.
       </p>
 
-      <h3>2.2 Motivation und Kontext</h3>
+      <h3 id="22-motivation-und-kontext">2.2 Motivation und Kontext</h3>
       <p>
         Viele Abzählprobleme können formuliert werden, indem man geordnete oder
         ungeordnete Auswahlen von Objekten trifft. Diese werden als Variationen
@@ -78,22 +63,15 @@
       </p>
 
       <div class="info-box video-box">
-        <h5>Erklärendes Video: Überblick der Modelle</h5>
+        <h5 id="erklrendes-video-berblick-der-modelle">Erklärendes Video: Überblick der Modelle</h5>
         <p>
           Dieses Video gibt eine gute Übersicht über die verschiedenen Modelle
           der Kombinatorik und wann man welches anwendet.
         </p>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/aHeqPnTyMI0"
-          title="Mathe by Daniel Jung: Kombinatorik, Permutation, Variation, Kombination, Beispiele"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/aHeqPnTyMI0" title="Mathe by Daniel Jung: Kombinatorik, Permutation, Variation, Kombination, Beispiele" frameborder="0" allowfullscreen=""></iframe>
       </div>
 
-      <h3>2.3 Definitionen & Begriffe</h3>
+      <h3 id="23-definitionen-begriffe">2.3 Definitionen &amp; Begriffe</h3>
       <p>
         Um ein Abzählproblem zu klassifizieren, müssen wir immer zwei zentrale
         Fragen beantworten: Spielt die Reihenfolge eine Rolle und sind
@@ -106,12 +84,12 @@
           <ul>
             <li>
               <strong>Variation mit Wiederholung (VmW):</strong> k aus n
-              auswählen, Reihenfolge zählt, Wiederholung erlaubt .<br />
+              auswählen, Reihenfolge zählt, Wiederholung erlaubt .<br>
               Formel: $V_{mW}(n,k) = n^k$
             </li>
             <li>
               <strong>Variation ohne Wiederholung (VoW):</strong> k aus n
-              auswählen, Reihenfolge zählt, Wiederholung verboten .<br />
+              auswählen, Reihenfolge zählt, Wiederholung verboten .<br>
               Formel: $V_{oW}(n,k) = \frac{n!}{(n-k)!}$
             </li>
           </ul>
@@ -122,12 +100,12 @@
           <ul>
             <li>
               <strong>Kombination ohne Wiederholung (KoW):</strong> k aus n
-              auswählen, Reihenfolge egal, Wiederholung verboten .<br />
+              auswählen, Reihenfolge egal, Wiederholung verboten .<br>
               Formel: $K_{oW}(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$
             </li>
             <li>
               <strong>Kombination mit Wiederholung (KmW):</strong> k aus n
-              auswählen, Reihenfolge egal, Wiederholung erlaubt .<br />
+              auswählen, Reihenfolge egal, Wiederholung erlaubt .<br>
               Formel: $K_{mW}(n,k) = \binom{n+k-1}{k}$
             </li>
           </ul>
@@ -139,12 +117,12 @@
             <li>
               <strong>Permutation ohne Wiederholung (PoW):</strong> Ein
               Spezialfall der VoW, bei dem <em>alle</em> n Elemente der Menge
-              angeordnet werden ($k=n$) .<br />Formel: $P(n) = n!$
+              angeordnet werden ($k=n$) .<br>Formel: $P(n) = n!$
             </li>
             <li>
               <strong>Permutation mit Wiederholung (PmW):</strong> Anordnung von
               n Elementen, die nicht alle unterscheidbar sind (z.B. $n_1$
-              Elemente der Sorte 1, $n_2$ der Sorte 2, etc.).<br />Formel:
+              Elemente der Sorte 1, $n_2$ der Sorte 2, etc.).<br>Formel:
               $P_{mW} = \frac{n!}{n_1! n_2! \dots n_k!}$
             </li>
           </ul>
@@ -152,7 +130,7 @@
       </dl>
 
       <div class="info-box warning">
-        <h5>Häufiger Fehler: Alltagssprache vs. Mathematik</h5>
+        <h5 id="hufiger-fehler-alltagssprache-vs-mathematik">Häufiger Fehler: Alltagssprache vs. Mathematik</h5>
         <p>
           Im Alltag sprechen wir von einem "Kombinationsschloss"
           (Fahrradschloss, Tresor). Mathematisch ist das falsch! Bei einem
@@ -166,8 +144,8 @@
         </p>
       </div>
 
-      <h3>2.4 Schritt-für-Schritt-Erklärung</h3>
-      <h4>2.4.1 Schritt 1: Reihenfolge wichtig? Ja oder Nein?</h4>
+      <h3 id="24-schritt-fr-schritt-erklrung">2.4 Schritt-für-Schritt-Erklärung</h3>
+      <h4 id="241-schritt-1-reihenfolge-wichtig-ja-oder-nein">2.4.1 Schritt 1: Reihenfolge wichtig? Ja oder Nein?</h4>
       <ul>
         <li>
           <strong>JA, Reihenfolge ist wichtig</strong> → Es ist eine
@@ -181,7 +159,7 @@
         </li>
       </ul>
 
-      <h4>2.4.2 Schritt 2: Wiederholung erlaubt? Ja oder Nein?</h4>
+      <h4 id="242-schritt-2-wiederholung-erlaubt-ja-oder-nein">2.4.2 Schritt 2: Wiederholung erlaubt? Ja oder Nein?</h4>
       <ul>
         <li>
           <strong>JA, Wiederholung ist erlaubt</strong> → Modell
@@ -196,7 +174,7 @@
       </ul>
 
       <div class="info-box tip">
-        <h5>Praxis-Tipp: Denkmodelle zur Einordnung</h5>
+        <h5 id="praxis-tipp-denkmodelle-zur-einordnung">Praxis-Tipp: Denkmodelle zur Einordnung</h5>
         <p>
           Neben dem klassischen <strong>Urnenmodell</strong> (k Kugeln aus einer
           Urne mit n Kugeln ziehen) helfen auch andere Vorstellungen:
@@ -216,8 +194,8 @@
         </ul>
       </div>
 
-      <h3>2.5 Beispielaufgaben</h3>
-      <h4>2.5.1 Beispiel 1: Lottoproblem (Kombination ohne Wiederholung)</h4>
+      <h3 id="25-beispielaufgaben">2.5 Beispielaufgaben</h3>
+      <h4 id="251-beispiel-1-lottoproblem-kombination-ohne-wiederholung">2.5.1 Beispiel 1: Lottoproblem (Kombination ohne Wiederholung)</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Wie viele Möglichkeiten gibt es, 6 aus 49
@@ -232,14 +210,14 @@
               ohne Wiederholung (KoW).
             </li>
             <li>
-              <strong>Modell & Formel:</strong> $n=49$, $k=6$. $$ K_{oW}(49, 6)
+              <strong>Modell &amp; Formel:</strong> $n=49$, $k=6$. $$ K_{oW}(49, 6)
               = \binom{49}{6} = \frac{49!}{6!(49-6)!} = 13.983.816 $$
             </li>
           </ol>
         </li>
       </ul>
 
-      <h4>
+      <h4 id="-252-beispiel-2-passwort-mit-exakter-zeichen-anzahl-kombinierte-anwendung-">
         2.5.2 Beispiel 2: Passwort mit exakter Zeichen-Anzahl (Kombinierte
         Anwendung)
       </h4>
@@ -284,7 +262,7 @@
         </li>
       </ul>
 
-      <h4>2.5.3 Beispiel 3: Anagramme (Permutation mit Wiederholung)</h4>
+      <h4 id="253-beispiel-3-anagramme-permutation-mit-wiederholung">2.5.3 Beispiel 3: Anagramme (Permutation mit Wiederholung)</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Wie viele verschiedene "Wörter" kann man aus
@@ -299,7 +277,7 @@
               Permutation mit Wiederholung (PmW).
             </li>
             <li>
-              <strong>Modell & Formel:</strong> Gesamtlänge $n=11$.
+              <strong>Modell &amp; Formel:</strong> Gesamtlänge $n=11$.
               Häufigkeiten: M (1), I (4), S (4), P (2). $$ P_{mW} =
               \frac{11!}{1! \cdot 4! \cdot 4! \cdot 2!} = \frac{39.916.800}{1
               \cdot 24 \cdot 24 \cdot 2} = 34.650 $$
@@ -308,7 +286,7 @@
         </li>
       </ul>
 
-      <h3>2.6 Übungsaufgaben</h3>
+      <h3 id="26-bungsaufgaben">2.6 Übungsaufgaben</h3>
       <div class="task-hint">
         <p>
           <strong>Hinweis:</strong> Ersetze in den Aufgaben die Variable $a$
@@ -327,11 +305,11 @@
             <summary>Lösung anzeigen</summary>
             <p>
               Inklusions-Exklusions-Prinzip: $|A \cup B| = |A| + |B| - |A \cap
-              B|$. $n=66$ Zeichen, $k=a+6$.<br />
-              $|A|$ (beginnt mit Kleinbuchstabe): $26 \cdot 66^{k-1}$.<br />
-              $|B|$ (endet mit Sonderzeichen): $4 \cdot 66^{k-1}$.<br />
+              B|$. $n=66$ Zeichen, $k=a+6$.<br>
+              $|A|$ (beginnt mit Kleinbuchstabe): $26 \cdot 66^{k-1}$.<br>
+              $|B|$ (endet mit Sonderzeichen): $4 \cdot 66^{k-1}$.<br>
               $|A \cap B|$ (beginnt mit Kleinbuchstabe UND endet mit
-              Sonderzeichen): $26 \cdot 66^{k-2} \cdot 4$.<br />
+              Sonderzeichen): $26 \cdot 66^{k-2} \cdot 4$.<br>
               Ergebnis: $26 \cdot 66^{a+5} + 4 \cdot 66^{a+5} - 104 \cdot
               66^{a+4}$.
             </p>
@@ -347,14 +325,14 @@
             <p>
               Mehrstufiger Prozess (Produktregel): Ihre Hand muss aus 4 Assen
               UND 4 Nicht-Assen bestehen. Die Hände der anderen sind dadurch
-              bestimmt.<br />
+              bestimmt.<br>
               1. Auswahl der Asse für Sie: 4 aus 4 Assen auswählen (KoW) →
-              $\binom{4}{4} = 1$.<br />
+              $\binom{4}{4} = 1$.<br>
               2. Auswahl der restlichen Karten für Sie: 4 aus den 28 Nicht-Assen
-              auswählen (KoW) → $\binom{28}{4}$.<br />
+              auswählen (KoW) → $\binom{28}{4}$.<br>
               3. Verteilung der restlichen 24 Karten an die 3 anderen Spieler:
               (KoW, mehrstufig) → $\binom{24}{8} \cdot \binom{16}{8} \cdot
-              \binom{8}{8}$.<br />
+              \binom{8}{8}$.<br>
               Gesamt: $\binom{4}{4} \cdot \binom{28}{4} \cdot \binom{24}{8}
               \cdot \binom{16}{8} \cdot \binom{8}{8}$.
             </p>
@@ -367,11 +345,11 @@
             <summary>Lösung anzeigen</summary>
             <p>
               Komplementäransatz: (Alle Passwörter) - (Passwörter mit 0 Ziffern)
-              - (Passwörter mit genau 1 Ziffer).<br />
-              Alle: $66^{a+6}$.<br />
-              Keine Ziffer (nur 56 Zeichen erlaubt): $56^{a+6}$.<br />
+              - (Passwörter mit genau 1 Ziffer).<br>
+              Alle: $66^{a+6}$.<br>
+              Keine Ziffer (nur 56 Zeichen erlaubt): $56^{a+6}$.<br>
               Genau 1 Ziffer (kombinierte Aufgabe): $\binom{a+6}{1} \cdot 10^1
-              \cdot 56^{a+5}$.<br />
+              \cdot 56^{a+5}$.<br>
               Gesamt: $66^{a+6} - 56^{a+6} - (a+6) \cdot 10 \cdot 56^{a+5}$.
             </p>
           </details>
@@ -379,67 +357,59 @@
       </ol>
 
       <div class="info-box key-concept">
-        <h5>Kernaussage: Die 4 Auswahlmodelle im Überblick</h5>
-        <table
-          style="
+        <h5 id="kernaussage-die-4-auswahlmodelle-im-berblick">Kernaussage: Die 4 Auswahlmodelle im Überblick</h5>
+        <table style="
             line-height: 1.5;
             width: 100%;
             border-collapse: collapse;
             text-align: center;
-          "
-        >
+          ">
           <thead style="background-color: #f2f2f2">
             <tr>
               <th style="padding: 8px; border: 1px solid #ddd"></th>
               <th style="padding: 8px; border: 1px solid #ddd">
-                <strong>Mit Beachtung der Reihenfolge</strong> <br />
+                <strong>Mit Beachtung der Reihenfolge</strong> <br>
                 (geordnete Auswahl: <em>Variation</em>)
               </th>
               <th style="padding: 8px; border: 1px solid #ddd">
-                <strong>Ohne Beachtung der Reihenfolge</strong> <br />
+                <strong>Ohne Beachtung der Reihenfolge</strong> <br>
                 (ungeordnete Auswahl: <em>Kombination</em>)
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td
-                style="padding: 8px; border: 1px solid #ddd; text-align: left"
-              >
+              <td style="padding: 8px; border: 1px solid #ddd; text-align: left">
                 <strong>Mit Wiederholung</strong>
               </td>
               <td style="padding: 8px; border: 1px solid #ddd">
-                <strong>VmW</strong> <br />
+                <strong>VmW</strong> <br>
                 $n^k$
               </td>
               <td style="padding: 8px; border: 1px solid #ddd">
-                <strong>KmW</strong> <br />
+                <strong>KmW</strong> <br>
                 $\binom{n+k-1}{k}$
               </td>
             </tr>
             <tr>
-              <td
-                style="padding: 8px; border: 1px solid #ddd; text-align: left"
-              >
+              <td style="padding: 8px; border: 1px solid #ddd; text-align: left">
                 <strong>Ohne Wiederholung</strong>
               </td>
               <td style="padding: 8px; border: 1px solid #ddd">
-                <strong>VoW</strong> <br />
+                <strong>VoW</strong> <br>
                 $\frac{n!}{(n-k)!}$
               </td>
               <td style="padding: 8px; border: 1px solid #ddd">
-                <strong>KoW</strong> <br />
+                <strong>KoW</strong> <br>
                 $\binom{n}{k}$
               </td>
             </tr>
             <tr>
-              <td
-                style="padding: 8px; border: 1px solid #ddd; text-align: left"
-              >
+              <td style="padding: 8px; border: 1px solid #ddd; text-align: left">
                 <strong>Sonderfall: Anordnung</strong>
               </td>
               <td style="padding: 8px; border: 1px solid #ddd" colspan="2">
-                <strong>Permutation ohne Wdh. (PoW):</strong> $n!$ <br />
+                <strong>Permutation ohne Wdh. (PoW):</strong> $n!$ <br>
                 <strong>Permutation mit Wdh. (PmW):</strong> $\frac{n!}{n_1!
                 n_2! \dots}$
               </td>
@@ -452,9 +422,7 @@
     <footer>
       <nav class="page-nav" aria-label="Seitennavigation">
         <a href="01-zaehlprinzipien.html">← Vorheriges Kapitel</a>
-        <a href="training/02-uebungen-kombinationen-loesungen.html"
-          >Zu den Übungen</a
-        >
+        <a href="training/02-uebungen-kombinationen-loesungen.html">Zu den Übungen</a>
         <a href="03-folgen-einfuehrung.html">Nächstes Kapitel →</a>
       </nav>
     </footer>
@@ -462,5 +430,6 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
     <script type="module" src="../main.js"></script>
-  </body>
-</html>
+  
+
+</body></html>

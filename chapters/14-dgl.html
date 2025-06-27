@@ -1,12 +1,7 @@
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Einführung in gewöhnliche Differentialgleichungen (DGLs), Anfangswertprobleme und die Lösungsmethode der Trennung der Variablen."
-    />
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Einführung in gewöhnliche Differentialgleichungen (DGLs), Anfangswertprobleme und die Lösungsmethode der Trennung der Variablen.">
     <title>14 Gewöhnliche Differentialgleichungen - Lernskript Mathe</title>
 
     <script>
@@ -25,23 +20,13 @@
         svg: { fontCache: 'global' },
       };
     </script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-    ></script>
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-    <meta
-      property="og:title"
-      content="14 Gewöhnliche Differentialgleichungen - Lernskript Mathe"
-    />
-    <meta
-      property="og:description"
-      content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen."
-    />
-    <meta property="og:image" content="../images/placeholder.svg" />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="../style.css" />
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <meta property="og:title" content="14 Gewöhnliche Differentialgleichungen - Lernskript Mathe">
+    <meta property="og:description" content="Interaktives Lernskript von Kombinatorik bis Differentialgleichungen.">
+    <meta property="og:image" content="../images/placeholder.svg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -56,7 +41,7 @@
 
     <main class="content-wrapper">
       <h2 id="sec14">14 Gewöhnliche Differentialgleichungen (DGLs)</h2>
-      <h3>14.1 Lernziel</h3>
+      <h3 id="141-lernziel">14.1 Lernziel</h3>
       <p>
         Nach dieser Lerneinheit wirst du verstehen, was eine gewöhnliche
         Differentialgleichung (DGL) ist und was es bedeutet, sie zu lösen. Du
@@ -69,7 +54,7 @@
       </p>
 
       <div class="info-box key-concept">
-        <h5>Die wichtigste Kernaussage: Die Lösung ist eine Funktion!</h5>
+        <h5 id="die-wichtigste-kernaussage-die-lsung-ist-eine-funktion">Die wichtigste Kernaussage: Die Lösung ist eine Funktion!</h5>
         <p>
           Der größte Unterschied zwischen algebraischen Gleichungen (z.B.
           $x^2-4=0$) und Differentialgleichungen ist die Art der Lösung.
@@ -92,7 +77,7 @@
         </p>
       </div>
 
-      <h3>14.2 Motivation und Kontext</h3>
+      <h3 id="142-motivation-und-kontext">14.2 Motivation und Kontext</h3>
       <p>
         Viele fundamentale Gesetze in Naturwissenschaft und Technik beschreiben
         nicht einen Zustand, sondern eine <strong>Änderung</strong>. Newtons
@@ -111,7 +96,7 @@
           DGLs beschrieben.
         </li>
         <li>
-          <strong>Biologie & Chemie:</strong> Populationsdynamik
+          <strong>Biologie &amp; Chemie:</strong> Populationsdynamik
           (Räuber-Beute-Modelle), Ausbreitung von Krankheiten (SIR-Modell) und
           chemische Reaktionsgeschwindigkeiten werden mit DGLs modelliert.
         </li>
@@ -127,22 +112,15 @@
       </ul>
 
       <div class="info-box video-box">
-        <h5>Erklärendes Video: Was ist eine DGL?</h5>
+        <h5 id="erklrendes-video-was-ist-eine-dgl">Erklärendes Video: Was ist eine DGL?</h5>
         <p>
           Dieses Video gibt eine grundlegende Einführung in das Konzept der
           Differentialgleichungen.
         </p>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/2qQYxam2QGg"
-          title="Mathe - simpleclub: Was ist eine Differentialgleichung? - Einführung"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2qQYxam2QGg" title="Mathe - simpleclub: Was ist eine Differentialgleichung? - Einführung" frameborder="0" allowfullscreen=""></iframe>
       </div>
 
-      <h3>14.3 Definitionen & Begriffe</h3>
+      <h3 id="143-definitionen-begriffe">14.3 Definitionen &amp; Begriffe</h3>
       <dl>
         <dt>Differentialgleichung (DGL)</dt>
         <dd>
@@ -193,7 +171,7 @@
         </dd>
       </dl>
 
-      <h3>14.4 Die einfachste Lösungsmethode: Trennung der Variablen</h3>
+      <h3 id="144-die-einfachste-lsungsmethode-trennung-der-variablen">14.4 Die einfachste Lösungsmethode: Trennung der Variablen</h3>
       <p>
         Dies ist eine der wichtigsten Methoden für DGLs erster Ordnung, die sich
         auf die Form $y' = f(x) \cdot g(y)$ bringen lassen.
@@ -219,24 +197,17 @@
       </ol>
 
       <div class="info-box video-box">
-        <h5>Erklärendes Video: DGL lösen durch Trennung der Variablen</h5>
+        <h5 id="erklrendes-video-dgl-lsen-durch-trennung-der-variablen">Erklärendes Video: DGL lösen durch Trennung der Variablen</h5>
         <p>
           Dieses Video zeigt das schrittweise Vorgehen, um eine DGL durch
           Trennung der Variablen zu lösen und ein Anfangswertproblem zu
           bestimmen.
         </p>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/Sm0Go9IioJ4"
-          title="MathemaTrick: Differentialgleichung lösen – DGL 1. Ordnung, Anfangswertproblem"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Sm0Go9IioJ4" title="MathemaTrick: Differentialgleichung lösen – DGL 1. Ordnung, Anfangswertproblem" frameborder="0" allowfullscreen=""></iframe>
       </div>
 
-      <h3>14.5 Beispielaufgaben</h3>
-      <h4>14.5.1 Beispiel 1: Radioaktiver Zerfall (Trennung der Variablen)</h4>
+      <h3 id="145-beispielaufgaben">14.5 Beispielaufgaben</h3>
+      <h4 id="1451-beispiel-1-radioaktiver-zerfall-trennung-der-variablen">14.5.1 Beispiel 1: Radioaktiver Zerfall (Trennung der Variablen)</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Die Zerfallsrate einer Substanz ist
@@ -270,7 +241,7 @@
         </li>
       </ul>
 
-      <h4>14.5.2 Beispiel 2: Newtonsches Abkühlungsgesetz</h4>
+      <h4 id="1452-beispiel-2-newtonsches-abkhlungsgesetz">14.5.2 Beispiel 2: Newtonsches Abkühlungsgesetz</h4>
       <ul>
         <li>
           <strong>Aufgabe:</strong> Ein Körper mit Anfangstemperatur
@@ -293,9 +264,7 @@
               e^{-kt+C_1} \implies T(t) = T^* + C e^{-kt}$.
             </li>
             <li>
-              <strong
-                >Anfangswert einsetzen ($T(0)=100, T^*=20, k=0.1$):</strong
-              >
+              <strong>Anfangswert einsetzen ($T(0)=100, T^*=20, k=0.1$):</strong>
               $100 = 20 + C e^0 \implies C=80$.
             </li>
             <li>
@@ -305,7 +274,7 @@
         </li>
       </ul>
 
-      <h4>
+      <h4 id="-1453-beispiel-3-raketengleichung-anwendung-der-integralrechnung-">
         14.5.3 Beispiel 3: Raketengleichung (Anwendung der Integralrechnung)
       </h4>
       <ul>
@@ -321,7 +290,7 @@
           \right) dt $$ Wir teilen das Integral auf: $$ s(t_1) = u \int_0^{t_1}
           (\ln(m_0) - \ln(m_0-qt)) dt - g \int_0^{t_1} t dt $$ Der zweite Teil
           ist einfach: $-g[\frac{t^2}{2}]_0^{t_1} = -\frac{1}{2}gt_1^2$.
-          <br />Der erste Teil erfordert die Stammfunktion von $\ln(m_0-qt)$.
+          <br>Der erste Teil erfordert die Stammfunktion von $\ln(m_0-qt)$.
           Mit der Substitution $z=m_0-qt$ (und $dz = -q dt$) und der Formel für
           $\int \ln z$ ergibt sich: $$ \int \ln(m_0-qt) dt =
           -\frac{1}{q}((m_0-qt)\ln(m_0-qt) - (m_0-qt)) $$ Setzt man alles
@@ -331,7 +300,7 @@
         </li>
       </ul>
 
-      <h3>14.6 Übungsaufgaben</h3>
+      <h3 id="146-bungsaufgaben">14.6 Übungsaufgaben</h3>
       <ol>
         <li>
           <strong>(Einfach)</strong> Bestimmen Sie Lösungen der DGL $\dot{x} =
@@ -340,10 +309,10 @@
             <summary>Lösung anzeigen</summary>
             <p>
               Die Funktion muss proportional zu ihrer eigenen Ableitung sein.
-              Das ist ein Merkmal der e-Funktion. Ansatz: $x(t) = C e^{kt}$.<br />
-              Ableiten: $\dot{x}(t) = C k e^{kt}$.<br />
+              Das ist ein Merkmal der e-Funktion. Ansatz: $x(t) = C e^{kt}$.<br>
+              Ableiten: $\dot{x}(t) = C k e^{kt}$.<br>
               Einsetzen: $C k e^{kt} = -2 C e^{kt}$. Kürzen von $C e^{kt}$
-              ergibt $k=-2$.<br />
+              ergibt $k=-2$.<br>
               Die allgemeine Lösung ist $x(t) = C e^{-2t}$.
             </p>
           </details>
@@ -354,11 +323,11 @@
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              Trennung der Variablen: $\frac{dy}{y} = x^2 dx$.<br />
+              Trennung der Variablen: $\frac{dy}{y} = x^2 dx$.<br>
               Integrieren: $\int \frac{1}{y}dy = \int x^2 dx \implies \ln|y| =
-              \frac{x^3}{3} + C_1$.<br />
+              \frac{x^3}{3} + C_1$.<br>
               Auflösen nach y: $|y| = e^{\frac{x^3}{3}+C_1} =
-              e^{C_1}e^{\frac{x^3}{3}}$.<br />
+              e^{C_1}e^{\frac{x^3}{3}}$.<br>
               Allgemeine Lösung: $y(x) = C e^{\frac{x^3}{3}}$.
             </p>
           </details>
@@ -369,13 +338,13 @@
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              Trennung der Variablen: $y dy = x^2 dx$.<br />
+              Trennung der Variablen: $y dy = x^2 dx$.<br>
               Integrieren: $\int y dy = \int x^2 dx \implies \frac{y^2}{2} =
-              \frac{x^3}{3} + C_1 \implies y^2 = \frac{2}{3}x^3 + C$.<br />
+              \frac{x^3}{3} + C_1 \implies y^2 = \frac{2}{3}x^3 + C$.<br>
               Anfangswert einsetzen: $2^2 = \frac{2}{3}(0)^3 + C \implies
-              C=4$.<br />
+              C=4$.<br>
               Spezielle Lösung: $y^2 = \frac{2}{3}x^3+4 \implies y(x) =
-              \sqrt{\frac{2}{3}x^3+4}$ (positive Wurzel, da $y(0)=2>0$).
+              \sqrt{\frac{2}{3}x^3+4}$ (positive Wurzel, da $y(0)=2&gt;0$).
             </p>
           </details>
         </li>
@@ -385,12 +354,12 @@
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              Umstellen: $y^2 \frac{dy}{dx} = 1 - x^2$.<br />
-              Trennung der Variablen: $y^2 dy = (1-x^2)dx$.<br />
+              Umstellen: $y^2 \frac{dy}{dx} = 1 - x^2$.<br>
+              Trennung der Variablen: $y^2 dy = (1-x^2)dx$.<br>
               Integrieren: $\int y^2 dy = \int (1-x^2)dx \implies \frac{y^3}{3}
-              = x - \frac{x^3}{3} + C_1 \implies y^3 = 3x-x^3+C$.<br />
+              = x - \frac{x^3}{3} + C_1 \implies y^3 = 3x-x^3+C$.<br>
               Anfangswert $y(2)=1$ einsetzen: $1^3 = 3(2)-2^3+C \implies 1 =
-              6-8+C \implies 1 = -2+C \implies C=3$.<br />
+              6-8+C \implies 1 = -2+C \implies C=3$.<br>
               Spezielle Lösung (implizit): $y^3 = 3x-x^3+3$.
             </p>
           </details>
@@ -408,5 +377,6 @@
     <button id="back-to-top" title="Nach oben" aria-label="Nach oben">↑</button>
 
     <script type="module" src="../main.js"></script>
-  </body>
-</html>
+  
+
+</body></html>
