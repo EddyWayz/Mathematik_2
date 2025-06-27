@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'mathe-cache-v1751061592718';
+const CACHE_NAME = 'mathe-cache-v1751061686720';
 const ASSETS = [
   '/',
   '/index.html',

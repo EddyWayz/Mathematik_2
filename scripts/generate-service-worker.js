@@ -14,7 +14,12 @@ const ASSETS_TO_CACHE = [
 
 // Dynamically add all HTML chapter files
 const chapterFiles = glob.sync('chapters/**/*.html', { cwd: path.join(__dirname, '..') });
-ASSETS_TO_CACHE.push(...chapterFiles.map(file => `/${file}`));
+chapterFiles.forEach(file => {
+    const filePath = path.join(__dirname, '..', file);
+    if (fs.existsSync(filePath)) {
+        ASSETS_TO_CACHE.push(`/${file}`);
+    }
+});
 
 // Generate a unique cache name based on current timestamp
 const CACHE_NAME = `mathe-cache-v${Date.now()}`;
