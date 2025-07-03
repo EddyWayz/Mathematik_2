@@ -223,8 +223,8 @@
       </h4>
       <ul>
         <li>
-          <strong>Aufgabe:</strong> Wie viele $(a+6)$-stellige Passwörter gibt
-          es, die genau $a$ Ziffern enthalten? (Zeichen: 26 Klein-, 26
+          <strong>Aufgabe:</strong> Wie viele $9$-stellige Passwörter gibt
+          es, die genau $3$ Ziffern enthalten? (Zeichen: 26 Klein-, 26
           Großbuchstaben, 10 Ziffern, 4 Sonderzeichen; $n=66$)
         </li>
         <li>
@@ -237,16 +237,16 @@
             </li>
             <li>
               <strong>Schritt 1: Positionen für die Ziffern wählen:</strong>
-              Wähle $a$ von den $(a+6)$ Positionen aus. Die Reihenfolge ist
-              egal. → KoW. Es gibt $\binom{a+6}{a}$ Möglichkeiten für die
+              Wähle $3$ von den $9$ Positionen aus. Die Reihenfolge ist
+              egal. → KoW. Es gibt $\binom{9}{3}$ Möglichkeiten für die
               Platzierung der Ziffern.
             </li>
             <li>
               <strong>Schritt 2: Positionen füllen (Produktregel):</strong>
               <ul>
                 <li>
-                  Fülle die $a$ Ziffern-Positionen: Für jede gibt es 10
-                  Möglichkeiten (VmW). → $10^a$
+                  Fülle die $3$ Ziffern-Positionen: Für jede gibt es 10
+                  Möglichkeiten (VmW). → $10^3$
                 </li>
                 <li>
                   Fülle die restlichen 6 Nicht-Ziffern-Positionen: Für jede gibt
@@ -255,8 +255,8 @@
               </ul>
             </li>
             <li>
-              <strong>Gesamtergebnis (Produktregel):</strong> $$ \text{Anzahl} =
-              \binom{a+6}{a} \cdot 10^a \cdot 56^6 $$
+              <strong>Gesamtergebnis (Produktregel):</strong> $ \text{Anzahl} =
+              \binom{9}{3} \cdot 10^3 \cdot 56^6 = 84 \cdot 1000 \cdot 56^6 \approx 2.54 \cdot 10^{15} $
             </li>
           </ol>
         </li>
@@ -278,9 +278,9 @@
             </li>
             <li>
               <strong>Modell &amp; Formel:</strong> Gesamtlänge $n=11$.
-              Häufigkeiten: M (1), I (4), S (4), P (2). $$ P_{mW} =
+              Häufigkeiten: M (1), I (4), S (4), P (2). $ P_{mW} =
               \frac{11!}{1! \cdot 4! \cdot 4! \cdot 2!} = \frac{39.916.800}{1
-              \cdot 24 \cdot 24 \cdot 2} = 34.650 $$
+              \cdot 24 \cdot 24 \cdot 2} = 34.650 $
             </li>
           </ol>
         </li>
@@ -299,19 +299,19 @@
         <li>
           <strong>(Einfach)</strong> Die zulässigen Zeichen eines Passworts
           seien Groß-, Kleinbuchstaben, Ziffern und die vier Sonderzeichen
-          *,+,=,\$. Wie viele $(a+6)$-stellige Passwörter gibt es, die mit einem
+          *,+,=,$. Wie viele $9$-stellige Passwörter gibt es, die mit einem
           Kleinbuchstaben beginnen oder mit einem Sonderzeichen enden?
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
               Inklusions-Exklusions-Prinzip: $|A \cup B| = |A| + |B| - |A \cap
-              B|$. $n=66$ Zeichen, $k=a+6$.<br>
-              $|A|$ (beginnt mit Kleinbuchstabe): $26 \cdot 66^{k-1}$.<br>
-              $|B|$ (endet mit Sonderzeichen): $4 \cdot 66^{k-1}$.<br>
+              B|$. $n=66$ Zeichen, $k=9$.<br>
+              $|A|$ (beginnt mit Kleinbuchstabe): $26 \cdot 66^{8}$.<br>
+              $|B|$ (endet mit Sonderzeichen): $4 \cdot 66^{8}$.<br>
               $|A \cap B|$ (beginnt mit Kleinbuchstabe UND endet mit
-              Sonderzeichen): $26 \cdot 66^{k-2} \cdot 4$.<br>
-              Ergebnis: $26 \cdot 66^{a+5} + 4 \cdot 66^{a+5} - 104 \cdot
-              66^{a+4}$.
+              Sonderzeichen): $26 \cdot 66^{7} \cdot 4$.<br>
+              Ergebnis: $26 \cdot 66^{8} + 4 \cdot 66^{8} - 104 \cdot
+              66^{7}$.
             </p>
           </details>
         </li>
@@ -339,18 +339,18 @@
           </details>
         </li>
         <li>
-          <strong>(Mittel)</strong> Wie viele $(a+6)$-stellige Passwörter gibt
+          <strong>(Mittel)</strong> Wie viele $9$-stellige Passwörter gibt
           es, die mindestens zwei Ziffern enthalten?
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
               Komplementäransatz: (Alle Passwörter) - (Passwörter mit 0 Ziffern)
               - (Passwörter mit genau 1 Ziffer).<br>
-              Alle: $66^{a+6}$.<br>
-              Keine Ziffer (nur 56 Zeichen erlaubt): $56^{a+6}$.<br>
-              Genau 1 Ziffer (kombinierte Aufgabe): $\binom{a+6}{1} \cdot 10^1
-              \cdot 56^{a+5}$.<br>
-              Gesamt: $66^{a+6} - 56^{a+6} - (a+6) \cdot 10 \cdot 56^{a+5}$.
+              Alle: $66^{9}$.<br>
+              Keine Ziffer (nur 56 Zeichen erlaubt): $56^{9}$.<br>
+              Genau 1 Ziffer (kombinierte Aufgabe): $\binom{9}{1} \cdot 10^1
+              \cdot 56^{8}$.<br>
+              Gesamt: $66^{9} - 56^{9} - 9 \cdot 10 \cdot 56^{8}$.
             </p>
           </details>
         </li>

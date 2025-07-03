@@ -47,15 +47,15 @@
                 <li><strong>1.4: $\int_{-2}^{1}\text{sign}(x)dx$</strong>
                     <p><strong>Lösung:</strong> $\int_{-2}^{0}(-1)dx + \int_{0}^{1}(1)dx = -2+1 = -1$.</p>
                 </li>
-                 <li><strong>1.5: $\int\frac{1}{(1-2x)^{2}}+\frac{1}{\sqrt{1-x}}+\frac{1}{1-ax}+\frac{1}{a}dx$</strong>
+                 <li><strong>1.5: $\int\frac{1}{(1-2x)^{2}}+\frac{1}{\sqrt{1-x}}+\frac{1}{1-3x}+\frac{1}{3}dx$</strong>
                     <p><strong>Lösung:</strong> Die Terme werden einzeln integriert:
                     <ul>
                         <li>$\int (1-2x)^{-2} dx = \frac{(1-2x)^{-1}}{-1 \cdot (-2)} = \frac{1}{2(1-2x)}$</li>
                         <li>$\int (1-x)^{-1/2} dx = \frac{(1-x)^{1/2}}{1/2 \cdot (-1)} = -2\sqrt{1-x}$</li>
-                        <li>$\int \frac{1}{1-ax} dx = \frac{\ln|1-ax|}{-a} = -\frac{1}{a}\ln|1-ax|$</li>
-                        <li>$\int \frac{1}{a} dx = \frac{1}{a}x$</li>
+                        <li>$\int \frac{1}{1-3x} dx = \frac{\ln|1-3x|}{-3} = -\frac{1}{3}\ln|1-3x|$</li>
+                        <li>$\int \frac{1}{3} dx = \frac{1}{3}x$</li>
                     </ul>
-                    Gesamtergebnis: $\frac{1}{2(1-2x)} - 2\sqrt{1-x} - \frac{1}{a}\ln|1-ax| + \frac{1}{a}x + C
+                    Gesamtergebnis: $\frac{1}{2(1-2x)} - 2\sqrt{1-x} - \frac{1}{3}\ln|1-3x| + \frac{1}{3}x + C
                 </li>
             </ol>
         </details>
@@ -65,10 +65,10 @@
             <ol>
                 <li><strong>2.1: $\int e^{2x}(1-2x)dx$</strong> <p> $\to (1-x)e^{2x}+C$ (Partielle Integration mit $u=1-2x, v'=e^{2x}$)</p> </li>
                 <li><strong>2.2: $\int \cos^{3}(x)\sin(x)dx$</strong> <p> $\to -\frac{1}{4}\cos^{4}(x)+C$ (Substitution mit $u=\cos(x), du=-\sin(x)dx$)</p> </li>
-                <li><strong>2.3: $\int x\sqrt{1-ax^{2}}dx$</strong> <p> $\to -\frac{1}{3a}(1-ax^2)^{3/2}+C$ (Substitution mit $u=1-ax^2, du=-2ax dx$)</p> </li>
+                <li><strong>2.3: $\int x\sqrt{1-3x^{2}}dx$</strong> <p> $\to -\frac{1}{9}(1-3x^2)^{3/2}+C$ (Substitution mit $u=1-3x^2, du=-6x dx$)</p> </li>
                 <li><strong>2.4: $\int x \cos(n\omega x)dx$</strong> <p> $\to \frac{x\sin(n\omega x)}{n\omega}+\frac{\cos(n\omega x)}{n^{2}\omega^{2}}+C$ (Partielle Integration mit $u=x, v'=\cos(n\omega x)$)</p> </li>
                 <li><strong>2.5: $\int\frac{2^{x}}{2^{x}+1}dx$</strong> <p> $\to \frac{\ln(2^x+1)}{\ln 2} + C$ (Substitution mit $u=2^x+1, du=\ln(2)2^x dx$)</p> </li>
-                <li><strong>2.6: $\int\frac{1}{x^{2}}e^{\frac{a}{x}}dx$</strong> <p> $\to -\frac{1}{a}e^{a/x}+C$ (Substitution mit $u=a/x, du=-a/x^2 dx$)</p> </li>
+                <li><strong>2.6: $\int\frac{1}{x^{2}}e^{\frac{3}{x}}dx$</strong> <p> $\to -\frac{1}{3}e^{3/x}+C$ (Substitution mit $u=3/x, du=-3/x^2 dx$)</p> </li>
                 <li><strong>2.7: $\int x\ln(x+2)dx$</strong> <p> $\to \frac{1}{2}(x^2-4)\ln|x+2|-\frac{x^2}{4}+x+C$ (Partielle Integration mit $u=\ln(x+2), v'=x$)</p> </li>
                 <li><strong>2.8: $\int x^{2}\cos(x)dx$</strong> <p> $\to x^{2}\sin(x)+2x\cos(x)-2\sin(x)+C$ (Zweifache partielle Integration)</p> </li>
             </ol>

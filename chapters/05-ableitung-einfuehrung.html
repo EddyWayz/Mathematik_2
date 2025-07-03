@@ -252,8 +252,8 @@
       <h3 id="55-beispielaufgabe-kombinierte-anwendung">5.5 Beispielaufgabe (Kombinierte Anwendung)</h3>
       <ul>
         <li>
-          <strong>Aufgabe:</strong> Leiten Sie die Funktion $k(x)=\sin(ax)\cdot
-          \cos(\frac{x}{a})$ ab.
+          <strong>Aufgabe:</strong> Leiten Sie die Funktion $k(x)=\sin(3x)\cdot
+          \cos(\frac{x}{3})$ ab.
         </li>
         <li>
           <strong>Lösung:</strong>
@@ -266,30 +266,30 @@
               <strong>Kettenregel</strong>.
             </li>
             <li>
-              <strong>Struktur (Produktregel):</strong> $k'(x) = (\sin(ax))'
-              \cdot \cos(\frac{x}{a}) + \sin(ax) \cdot (\cos(\frac{x}{a}))'$.
+              <strong>Struktur (Produktregel):</strong> $k'(x) = (\sin(3x))'
+              \cdot \cos(\frac{x}{3}) + \sin(3x) \cdot (\cos(\frac{x}{3}))'$.
             </li>
             <li>
               <strong>Teilableitungen (Kettenregel):</strong>
               <ul>
                 <li>
-                  $(\sin(ax))' = \cos(ax) \cdot a$ (äußere Ableitung $\cos$,
-                  innere Ableitung $a$).
+                  $(\sin(3x))' = \cos(3x) \cdot 3$ (äußere Ableitung $\cos$,
+                  innere Ableitung $3$).
                 </li>
                 <li>
-                  $(\cos(\frac{x}{a}))' = -\sin(\frac{x}{a}) \cdot \frac{1}{a}$
-                  (äußere Ableitung $-\sin$, innere Ableitung $\frac{1}{a}$).
+                  $(\cos(\frac{x}{3}))' = -\sin(\frac{x}{3}) \cdot \frac{1}{3}$
+                  (äußere Ableitung $-\sin$, innere Ableitung $\frac{1}{3}$).
                 </li>
               </ul>
             </li>
             <li>
               <strong>Zusammensetzen:</strong>
-              $$ k'(x) = a \cdot \cos(ax) \cdot \cos(\frac{x}{a}) + \sin(ax)
-              \cdot \left(-\frac{1}{a} \sin(\frac{x}{a})\right) $$
+              $ k'(x) = 3 \cdot \cos(3x) \cdot \cos(\frac{x}{3}) + \sin(3x)
+              \cdot \left(-\frac{1}{3} \sin(\frac{x}{3})\right) $
             </li>
             <li>
-              <strong>Antwort:</strong> $ k'(x) = a \cos(ax)\cos(\frac{x}{a}) -
-              \frac{1}{a} \sin(ax)\sin(\frac{x}{a}) $
+              <strong>Antwort:</strong> $ k'(x) = 3 \cos(3x)\cos(\frac{x}{3}) -
+              \frac{1}{3} \sin(3x)\sin(\frac{x}{3}) $
             </li>
           </ol>
         </li>
@@ -306,61 +306,61 @@
       <ol>
         <li>
           <strong>(Aufgabe 2a)</strong> Leiten Sie ab:
-          $f(x)=5a^{x}+\frac{1}{ax}-\sqrt[a]{x^{2}}+e^{ax}+(ax)^{3}$.
+          $f(x)=5 \cdot 3^{x}+\frac{1}{3x}-\sqrt[3]{x^{2}}+e^{3x}+(3x)^{3}$.
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              1. <strong>Terme umschreiben:</strong> $f(x) = 5a^x + (ax)^{-1} -
-              x^{\frac{2}{a}} + e^{ax} + a^3x^3$.<br>
+              1. <strong>Terme umschreiben:</strong> $f(x) = 5 \cdot 3^x + (3x)^{-1} -
+              x^{\frac{2}{3}} + e^{3x} + 27x^3$.<br>
               2.
               <strong>Ableiten (Summen-, Faktor-, Potenz-, Kettenregel):</strong><br>
-              $f'(x) = 5 \cdot \ln(a)a^x + (-1)(ax)^{-2} \cdot a -
-              \frac{2}{a}x^{\frac{2}{a}-1} + e^{ax} \cdot a + a^3 \cdot 3x^2$<br>
+              $f'(x) = 5 \cdot \ln(3)3^x + (-1)(3x)^{-2} \cdot 3 -
+              \frac{2}{3}x^{\frac{2}{3}-1} + e^{3x} \cdot 3 + 27 \cdot 3x^2$<br>
               3. <strong>Vereinfachen und zurückformen:</strong><br>
-              $f'(x) = 5\ln(a)a^x - \frac{a}{(ax)^2} -
-              \frac{2}{a}x^{\frac{2-a}{a}} + ae^{ax} + 3a^3x^2$<br>
-              $f'(x) = 5\ln(a)a^x - \frac{1}{ax^2} -
-              \frac{2}{a\sqrt[a]{x^{a-2}}} + ae^{ax} + 3a^3x^2$
+              $f'(x) = 5\ln(3)3^x - \frac{3}{(3x)^2} -
+              \frac{2}{3}x^{-\frac{1}{3}} + 3e^{3x} + 81x^2$<br>
+              $f'(x) = 5\ln(3)3^x - \frac{1}{3x^2} -
+              \frac{2}{3\sqrt[3]{x}} + 3e^{3x} + 81x^2$
             </p>
           </details>
         </li>
         <li>
           <strong>(Aufgabe 2b)</strong> Leiten Sie ab:
-          $h(x)=\frac{a}{(1-x)^{2}}-\frac{1}{a^{2}x^{2}+1}+\frac{1}{\sqrt{x-1}}$.
+          $h(x)=\frac{3}{(1-x)^{2}}-\frac{1}{9x^{2}+1}+\frac{1}{\sqrt{x-1}}$.
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
-              1. <strong>Terme umschreiben:</strong> $h(x) = a(1-x)^{-2} -
-              (a^2x^2+1)^{-1} + (x-1)^{-\frac{1}{2}}$.<br>
+              1. <strong>Terme umschreiben:</strong> $h(x) = 3(1-x)^{-2} -
+              (9x^2+1)^{-1} + (x-1)^{-\frac{1}{2}}$.<br>
               2. <strong>Ableiten (Kettenregel):</strong><br>
-              $h'(x) = a(-2)(1-x)^{-3}\cdot(-1) -
-              (-1)(a^2x^2+1)^{-2}\cdot(2a^2x) +
+              $h'(x) = 3(-2)(1-x)^{-3}\cdot(-1) -
+              (-1)(9x^2+1)^{-2}\cdot(18x) +
               (-\frac{1}{2})(x-1)^{-\frac{3}{2}}\cdot(1)$<br>
               3. <strong>Vereinfachen und zurückformen:</strong><br>
-              $h'(x) = \frac{2a}{(1-x)^3} + \frac{2a^2x}{(a^2x^2+1)^2} -
+              $h'(x) = \frac{6}{(1-x)^3} + \frac{18x}{(9x^2+1)^2} -
               \frac{1}{2\sqrt{(x-1)^3}}$
             </p>
           </details>
         </li>
         <li>
           <strong>(Aufgabe 2e)</strong> Leiten Sie ab:
-          $y(t)=\frac{S}{b+e^{(\frac{a}{1-t})}}$.
+          $y(t)=\frac{S}{b+e^{(\frac{3}{1-t})}}$.
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
               1. <strong>Analyse:</strong> Quotientenregel und mehrfache
               Kettenregel.<br>
               $u(t)=S \implies u'(t)=0$.<br>
-              $v(t)=b+e^{(a(1-t)^{-1})} \implies v'(t) = e^{(a(1-t)^{-1})} \cdot
-              (a(-1)(1-t)^{-2}\cdot(-1)) = e^{(\frac{a}{1-t})} \cdot
-              \frac{a}{(1-t)^2}$.<br>
+              $v(t)=b+e^{(3(1-t)^{-1})} \implies v'(t) = e^{(3(1-t)^{-1})} \cdot
+              (3(-1)(1-t)^{-2}\cdot(-1)) = e^{(\frac{3}{1-t})} \cdot
+              \frac{3}{(1-t)^2}$.<br>
               2. <strong>Quotientenregel anwenden:</strong><br>
               $y'(t) = \frac{0 \cdot v(t) - S \cdot v'(t)}{(v(t))^2} = \frac{-S
-              \cdot e^{(\frac{a}{1-t})} \cdot
-              \frac{a}{(1-t)^2}}{(b+e^{(\frac{a}{1-t})})^2}$<br>
+              \cdot e^{(\frac{3}{1-t})} \cdot
+              \frac{3}{(1-t)^2}}{(b+e^{(\frac{3}{1-t})})^2}$<br>
               3. <strong>Vereinfachen:</strong><br>
-              $y'(t) = -\frac{aS \cdot
-              e^{\frac{a}{1-t}}}{(1-t)^2(b+e^{\frac{a}{1-t}})^2}$
+              $y'(t) = -\frac{3S \cdot
+              e^{\frac{3}{1-t}}}{(1-t)^2(b+e^{\frac{3}{1-t}})^2}$
             </p>
           </details>
         </li>

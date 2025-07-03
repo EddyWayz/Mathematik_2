@@ -171,27 +171,27 @@
                     <p>Zählergrad (3) = Nennergrad (3). Der Grenzwert ist das Verhältnis der Koeffizienten der höchsten Potenzen: $\frac{4}{-3} = -\frac{4}{3}$. Dies gilt für $x \to \infty$ und $x \to -\infty$.</p>
                 </details>
             </li>
-            <li><strong>(Mittel)</strong> Bestimmen Sie für die Funktion $f_2(x)=\frac{x+a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$.
+            <li><strong>(Mittel)</strong> Bestimmen Sie für die Funktion $f_2(x)=\frac{x+3}{(x^{2}-9) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=3$.
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>Zuerst den Nenner faktorisieren: $f_2(x) = \frac{x+a}{(x-a)(x+a)x}$.<br>
-                    <strong>Definitionsbereich:</strong> $D = \mathbb{R} \setminus \{-a, 0, a\}$.<br>
-                    <strong>Analyse an $x_0=a$:</strong> Der Term $(x-a)$ ist im Nenner, aber nicht im Zähler. Es liegt eine <strong>Polstelle</strong> vor. Wir prüfen die einseitigen Grenzwerte:
+                    <p>Zuerst den Nenner faktorisieren: $f_2(x) = \frac{x+3}{(x-3)(x+3)x}$.<br>
+                    <strong>Definitionsbereich:</strong> $D = \mathbb{R} \setminus \{-3, 0, 3\}$.<br>
+                    <strong>Analyse an $x_0=3$:</strong> Der Term $(x-3)$ ist im Nenner, aber nicht im Zähler. Es liegt eine <strong>Polstelle</strong> vor. Wir prüfen die einseitigen Grenzwerte:
                     </p><ul>
-                        <li>$\lim_{x \to a^+} \frac{x+a}{(x-a)(x+a)x} = \lim_{x \to a^+} \frac{1}{(x-a)x}$. Der Nenner wird $0^+ \cdot a$. Wenn $a&gt;0$, ist das Ergebnis $+\infty$. Wenn $a&lt;0$, ist das Ergebnis $-\infty$.</li>
-                        <li>$\lim_{x \to a^-} \frac{1}{(x-a)x}$. Der Nenner wird $0^- \cdot a$. Wenn $a&gt;0$, ist das Ergebnis $-\infty$. Wenn $a&lt;0$, ist das Ergebnis $+\infty$.</li>
+                        <li>$\lim_{x \to 3^+} \frac{x+3}{(x-3)(x+3)x} = \lim_{x \to 3^+} \frac{1}{(x-3)x}$. Der Nenner wird $0^+ \cdot 3$. Das Ergebnis ist $+\infty$.</li>
+                        <li>$\lim_{x \to 3^-} \frac{1}{(x-3)x}$. Der Nenner wird $0^- \cdot 3$. Das Ergebnis ist $-\infty$.</li>
                     </ul>
                     Es liegt eine Polstelle mit Vorzeichenwechsel vor.<p></p>
                 </details>
             </li>
-             <li><strong>(Schwer)</strong> Bestimmen Sie für die Funktion $f_3(x)=\frac{x-a}{(x^{2}-a^{2}) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=a$.
+             <li><strong>(Schwer)</strong> Bestimmen Sie für die Funktion $f_3(x)=\frac{x-3}{(x^{2}-9) \cdot x}$ den Definitionsbereich und analysieren Sie das Verhalten an der Stelle $x_0=3$.
                 <details>
                     <summary>Lösung anzeigen</summary>
-                    <p>Zuerst den Nenner faktorisieren und kürzen: $f_3(x) = \frac{x-a}{(x-a)(x+a)x} = \frac{1}{(x+a)x}$ für $x \neq a$.<br>
-                    <strong>Definitionsbereich:</strong> $D = \mathbb{R} \setminus \{-a, 0, a\}$.<br>
-                    <strong>Analyse an $x_0=a$:</strong> Da wir den Term $(x-a)$ kürzen konnten, liegt eine <strong>hebbare Unstetigkeit</strong> vor. Der Grenzwert existiert:
-                    $$ \lim_{x \to a} f_3(x) = \lim_{x \to a} \frac{1}{(x+a)x} = \frac{1}{(a+a)a} = \frac{1}{2a^2} $$
-                    Da die Funktion an der Stelle $a$ nicht definiert ist, ist sie dort nicht stetig. Man könnte sie aber stetig machen, indem man $f(a) = \frac{1}{2a^2}$ definiert.</p>
+                    <p>Zuerst den Nenner faktorisieren und kürzen: $f_3(x) = \frac{x-3}{(x-3)(x+3)x} = \frac{1}{(x+3)x}$ für $x \neq 3$.<br>
+                    <strong>Definitionsbereich:</strong> $D = \mathbb{R} \setminus \{-3, 0, 3\}$.<br>
+                    <strong>Analyse an $x_0=3$:</strong> Da wir den Term $(x-3)$ kürzen konnten, liegt eine <strong>hebbare Unstetigkeit</strong> vor. Der Grenzwert existiert:
+                    $ \lim_{x \to 3} f_3(x) = \lim_{x \to 3} \frac{1}{(x+3)x} = \frac{1}{(3+3)3} = \frac{1}{18} $
+                    Da die Funktion an der Stelle $3$ nicht definiert ist, ist sie dort nicht stetig. Man könnte sie aber stetig machen, indem man $f(3) = \frac{1}{18}$ definiert.</p>
                 </details>
             </li>
         </ol>

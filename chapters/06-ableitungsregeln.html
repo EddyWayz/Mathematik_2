@@ -274,28 +274,28 @@
           </details>
         </li>
         <li>
-          <strong>(Aufgabe 3)</strong> Bestimmen Sie den Grenzwert $
-          \lim_{x\rightarrow0}\frac{\sinh(x^{2})}{(e^{ax}-1)x} $.
+          <strong>(Aufgabe 3)<> Bestimmen Sie den Grenzwert $
+          \lim_{x\rightarrow0}\frac{\sinh(x^{2})}{(e^{3x}-1)x} $.
           <details>
             <summary>Lösung anzeigen</summary>
             <p>
               Einsetzen von $x=0$ führt zu $\frac{\sinh(0)}{(e^0-1)\cdot 0} =
               \frac{0}{0}$. Dies ist ein Fall für de l'Hospital.<br>
               Zähler ableiten: $(\sinh(x^2))' = \cosh(x^2) \cdot 2x$.<br>
-              Nenner ableiten (Produktregel): $(e^{ax}-1)'\cdot x +
-              (e^{ax}-1)\cdot (x)' = (ae^{ax})\cdot x + (e^{ax}-1)$.<br>
+              Nenner ableiten (Produktregel): $(e^{3x}-1)'\cdot x +
+              (e^{3x}-1)\cdot (x)' = (3e^{3x})\cdot x + (e^{3x}-1)$.<br>
               Neuer Grenzwert: $ \lim_{x\rightarrow0}\frac{2x
-              \cosh(x^2)}{axe^{ax} + e^{ax}-1} $.<br>
+              \cosh(x^2)}{3xe^{3x} + e^{3x}-1} $.<br>
               Erneutes Einsetzen von $x=0$ führt wieder zu
               $\frac{0}{0+1-1}=\frac{0}{0}$. Wir wenden de l'Hospital erneut
               an.<br>
               Zähler ableiten: $(2x \cosh(x^2))' = 2\cosh(x^2) + 2x \cdot
               \sinh(x^2)\cdot 2x = 2\cosh(x^2) + 4x^2\sinh(x^2)$.<br>
-              Nenner ableiten: $(axe^{ax} + e^{ax}-1)' = (a e^{ax} + ax \cdot a
-              e^{ax}) + a e^{ax} = 2a e^{ax} + a^2x e^{ax}$.<br>
+              Nenner ableiten: $(3xe^{3x} + e^{3x}-1)' = (3 e^{3x} + 3x \cdot 3
+              e^{3x}) + 3 e^{3x} = 6e^{3x} + 9x e^{3x}$.<br>
               Neuer Grenzwert: $ \lim_{x\rightarrow0}\frac{2\cosh(x^2) +
-              4x^2\sinh(x^2)}{2a e^{ax} + a^2x e^{ax}} =
-              \frac{2\cosh(0)+0}{2ae^0+0} = \frac{2 \cdot 1}{2a} = \frac{1}{a}
+              4x^2\sinh(x^2)}{6e^{3x} + 9x e^{3x}} =
+              \frac{2\cosh(0)+0}{6e^0+0} = \frac{2 \cdot 1}{6} = \frac{1}{3}
               $.
             </p>
           </details>
